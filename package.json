@@ -6,12 +6,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bulma": "^0.8.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.13.0",
+    "nprogress": "^0.2.0",
+    "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-scripts": "3.3.0",
     "react-snap": "^1.23.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "styled-normalize": "^8.0.6"
   },
   "scripts": {
     "start": "react-scripts start",
