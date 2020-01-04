@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import { hydrate, render } from "react-dom";
-import MyApp from './App';
+import MyApp from "./App";
 //
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from "./serviceWorker";
 //
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
