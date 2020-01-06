@@ -1,27 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import Container from "./Container";
 
 function Header() {
   return (
     <StyledHeader>
-      <div className="container">
-        <Logo>
-          <img
-            src="https://www.google.com.tw/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png"
-            alt="logo"
-          />
-        </Logo>
-        <DonateButton className="button">Button</DonateButton>
-      </div>
+      <StyledContainer>
+        <Logo>Logo</Logo>
+        <DonateButton>Button</DonateButton>
+      </StyledContainer>
     </StyledHeader>
   );
 }
 
 const StyledHeader = styled.header`
   background-color: #fff;
-  > .container {
-    display: flex;
-    align-items: center;
+`;
+
+const StyledContainer = styled(Container)`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  @media (max-width: 767px) {
+    height: 48px;
   }
 `;
 

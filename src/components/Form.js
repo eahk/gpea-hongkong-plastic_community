@@ -22,10 +22,13 @@ function reducer(state, action) {
 }
 
 const FormField = styled.div`
-  margin-bottom: 20px;
   > label {
     display: block;
+    text-align: left;
+    margin-bottom: 13px;
+    margin-top: 20px;
     font-size: 14px;
+    font-weight: 200;
   }
 `;
 
@@ -35,7 +38,6 @@ function Form() {
   const onSubmit = data => {
     console.log(data);
   };
-  console.log(watch("example")); // watch input value by passing the name of it
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -79,15 +81,11 @@ function Form() {
         </FormField>
         <FormField>
           <label>信用卡號碼 Card number</label>
-          <InputMask
-            className="input"
-            placeholder="xxxx-xxxx-xxxx-xxxx"
-            mask="9999-9999-9999-9999"
-          />
+          <input name="example" ref={register} />
+          <input name="exampleRequired" ref={register({ required: true })} />
+          {errors.exampleRequired && <span>This field is required</span>}
         </FormField>
-        <input name="example" ref={register} />
-        <input name="exampleRequired" ref={register({ required: true })} />
-        {errors.exampleRequired && <span>This field is required</span>}
+
         <input type="submit" />
       </form>
     </div>

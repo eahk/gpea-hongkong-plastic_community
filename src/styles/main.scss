@@ -1,9 +1,7 @@
-@import "nprogress/nprogress";
-//
-@import "../../node_modules/react-grid-layout/css/styles.css";
+@charset "utf-8";
+// @import "../../node_modules/react-grid-layout/css/styles.css";
 @import "../../node_modules/react-resizable/css/styles.css";
 //
-@import "./bulma";
-@import "./bulma-extensions";
+@import "../../node_modules/bulma/bulma.sass";
 //
 @import "./global";
