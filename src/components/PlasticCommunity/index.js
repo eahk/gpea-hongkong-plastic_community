@@ -9,7 +9,10 @@ export default props => {
         <article className="media">
           <figure className="media-left">
             <p className="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" />
+              <img
+                alt="."
+                src="https://bulma.io/images/placeholders/128x128.png"
+              />
             </p>
           </figure>
           <div className="media-content">
@@ -23,7 +26,7 @@ export default props => {
                 tempus turpis.
                 <br />
                 <small>
-                  <a>Like</a> · <a>Reply</a> · 3 hrs
+                  <a href="/#">Like</a> · <a href="/#">Reply</a> · 3 hrs
                 </small>
               </p>
             </div>
@@ -31,7 +34,10 @@ export default props => {
             <article className="media">
               <figure className="media-left">
                 <p className="image is-48x48">
-                  <img src="https://bulma.io/images/placeholders/96x96.png" />
+                  <img
+                    alt="."
+                    src="https://bulma.io/images/placeholders/96x96.png"
+                  />
                 </p>
               </figure>
               <div className="media-content">
@@ -45,7 +51,7 @@ export default props => {
                     nulla sagittis, a lobortis leo feugiat.
                     <br />
                     <small>
-                      <a>Like</a> · <a>Reply</a> · 2 hrs
+                      <a href="/#">Like</a> · <a href="/#">Reply</a> · 2 hrs
                     </small>
                   </p>
                 </div>
@@ -66,7 +72,10 @@ export default props => {
             <article className="media">
               <figure className="media-left">
                 <p className="image is-48x48">
-                  <img src="https://bulma.io/images/placeholders/96x96.png" />
+                  <img
+                    alt="."
+                    src="https://bulma.io/images/placeholders/96x96.png"
+                  />
                 </p>
               </figure>
               <div className="media-content">
@@ -81,7 +90,7 @@ export default props => {
                     Phasellus lacinia non nisl id feugiat.
                     <br />
                     <small>
-                      <a>Like</a> · <a>Reply</a> · 2 hrs
+                      <a href="/#">Like</a> · <a href="/#">Reply</a> · 2 hrs
                     </small>
                   </p>
                 </div>
@@ -92,7 +101,10 @@ export default props => {
         <article className="media">
           <figure className="media-left">
             <p className="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" />
+              <img
+                alt="."
+                src="https://bulma.io/images/placeholders/128x128.png"
+              />
             </p>
           </figure>
           <div className="media-content">

@@ -3,7 +3,7 @@ import React from "react";
 export default props => {
   return (
     <div className="container">
-      <section class="section">
+      <section className="section">
         <h1 className="title">Intro Section</h1>
 
         <p>
