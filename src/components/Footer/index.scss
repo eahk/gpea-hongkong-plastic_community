@@ -1,0 +1,36 @@
+.footer {
+  p {
+    font-size: 14px;
+  }
+  hr {
+    background: none;
+    position: relative;
+    margin: 16px 0;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-25%);
+      width: 32px;
+      height: 16px;
+      background-color: whitesmoke;
+    }
+  }
+}
+
+.footer {
+  &__note {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .columns {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .column {
+    width: 100%;
+  }
+}

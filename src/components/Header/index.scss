@@ -1,0 +1,24 @@
+.header {
+  margin: 4px 0;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.header__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo {
+  flex: 1;
+  img {
+    padding: 4px;
+    width: 100%;
+    max-width: 156px;
+  }
+}
+.navbar__button {
+  .button {
+    border-radius: 25px;
+  }
+}

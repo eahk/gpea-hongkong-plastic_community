@@ -1,27 +1,29 @@
 import React from "react";
+//
+import "sanitize.css";
 import "bulma/css/bulma.css";
 import "./App.css";
-
-import BillBoard from "./components/BillBoard";
-import EnForm from "./components/EnForm";
-import Footer from "./components/Footer";
+//
 import Header from "./components/Header";
+import EnForm from "./components/EnForm";
 import Intro from "./components/Intro";
-import PlasticCommunity from "./components/PlasticCommunity";
+import Hero from "./components/Hero";
+// import PlasticCommunity from './components/PlasticCommunity'
+// import BillBoard from './components/BillBoard'
 import Testimonial from "./components/Testimonial";
-
+import Footer from "./components/Footer";
+//
 function App() {
   return (
     <div className="App">
       <Header />
-
       <EnForm />
-
+      <Hero />
       <Intro />
-
-      <PlasticCommunity />
-      <BillBoard />
-
+      {/*
+			<PlasticCommunity />
+			<BillBoard />
+			*/}
       <Testimonial />
       <Footer />
     </div>

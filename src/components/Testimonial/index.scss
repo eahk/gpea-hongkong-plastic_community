@@ -1,0 +1,29 @@
+section {
+  margin-bottom: 30px;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card {
+  max-width: 300px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.card-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.testimonial-text {
+  text-align: center;
+  color: #ccc;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
