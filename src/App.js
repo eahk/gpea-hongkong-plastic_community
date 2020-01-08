@@ -4,6 +4,7 @@ import 'sanitize.css'
 import 'bulma/css/bulma.css'
 import 'swiper/css/swiper.css'
 import './App.css'
+import './main.scss'
 //
 import Header from './components/Header'
 import EnForm from './components/EnForm'
