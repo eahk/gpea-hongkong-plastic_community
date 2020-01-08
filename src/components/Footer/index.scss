@@ -1,27 +1,43 @@
 .footer {
-  p {
-    font-size: 14px;
-  }
+  font-size: 14px;
   hr {
     background: none;
     position: relative;
     margin: 16px 0;
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 0;
       transform: translateY(-25%);
-      width: 32px;
-      height: 16px;
+      width: 8px;
+      height: 4px;
       background-color: whitesmoke;
     }
   }
 }
 
 .footer {
+  &__logo {
+    margin-bottom: 30px;
+    img {
+      width: 100%;
+      max-width: 156px;
+    }
+  }
   &__note {
     max-width: 480px;
+  }
+  &__link {
+    .links {
+      display: flex;
+      flex-flow: column;
+      margin: 0;
+    }
+    .link {
+      margin-bottom: 8px;
+      color: rgba(0, 0, 0, 0.75);
+    }
   }
 }
 

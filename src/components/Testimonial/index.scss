@@ -3,17 +3,59 @@ section {
 }
 
 .testimonial-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  padding: 20px;
+}
+
+/* swiper */
+.swiper-container {
+  position: relative;
+  &:before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #fff;
+    mask-image: linear-gradient(to right, #fff 0%, transparent 100%);
+  }
+  &:after {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #fff;
+    mask-image: linear-gradient(to left, #fff 0%, transparent 100%);
+  }
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #6c0;
+}
+
+.swiper-pagination {
+  opacity: 0.8;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #6c0;
 }
 
 .card {
-  max-width: 300px;
+  margin: 4px auto;
+  border-radius: 8px;
+  max-width: 320px;
   display: flex;
   flex-flow: column;
   align-items: center;
 }
+
+/* end of swiper */
+
 .card-image {
   display: flex;
   justify-content: center;
