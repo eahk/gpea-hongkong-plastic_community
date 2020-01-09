@@ -77,16 +77,14 @@ function TestimonialCard(props) {
 export default props => {
   return (
     <section className='section'>
-      <div className='container'>
-        <div className='testimonial-wrapper'>
-          <Swiper {...swiperParams}>
-            {supporterData.map((supporter, key) => (
-              <div className='swiper-slide' key={key}>
-                <TestimonialCard {...supporter} />
-              </div>
-            ))}
-          </Swiper>
-        </div>
+      <div className='testimonial-wrapper'>
+        <Swiper {...swiperParams}>
+          {supporterData.map((supporter, key) => (
+            <div className='swiper-slide' key={key}>
+              <TestimonialCard {...supporter} />
+            </div>
+          ))}
+        </Swiper>
       </div>
     </section>
   )

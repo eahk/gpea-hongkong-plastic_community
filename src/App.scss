@@ -1,6 +1,3 @@
-// @import 'jeet/scss/index';
-// @import 'sassline/assets/sass/_sassline-base.scss';
-
 body {
   margin: 0;
   padding: 0;
@@ -9,6 +6,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.columns {
+  width: 100%;
 }
 
 // Extra small devices (portrait phones, less than 576px)

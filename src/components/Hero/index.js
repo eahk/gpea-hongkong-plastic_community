@@ -16,14 +16,10 @@ export default props => {
         }}
       ></div>
       <div className='hero-body'>
-        <div className='container'>
-          <header class='bd-index-header'>
-            <h1 className='title is-3'>2020年，讓走塑社區遍地開花！</h1>
-            <h2 className='subtitle is-4'>
-              2020年我們迫切需要展開更多行動：讓走塑社區遍地開花，推動全港1,000間店鋪加入走塑行列，以及令大埔成為下一個走塑模範社區。
-            </h2>
-          </header>
-        </div>
+        <h1 className='title is-3'>2020年，讓走塑社區遍地開花！</h1>
+        <h2 className='subtitle is-4'>
+          2020年我們迫切需要展開更多行動：讓走塑社區遍地開花，推動全港1,000間店鋪加入走塑行列，以及令大埔成為下一個走塑模範社區。
+        </h2>
       </div>
       {/*
 			<div className="hero-foot">

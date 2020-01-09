@@ -1,8 +1,10 @@
 import React from 'react'
-//
+// vendor
 import 'sanitize.css'
 import 'bulma/css/bulma.css'
+import 'flexboxgrid/css/flexboxgrid.min.css'
 import 'swiper/css/swiper.css'
+// custom
 import './App.css'
 import './App.scss'
 //
@@ -16,7 +18,8 @@ import Testimonial from './components/Testimonial'
 import Footer from './components/Footer'
 //
 const stickyContainer = {
-  position: 'relative'
+  position: 'relative',
+  height: '100%'
 }
 const sticky = {
   position: 'sticky',
@@ -26,22 +29,26 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <div className='main__grid'>
-        <div className='main-grid__item content'>
+      <main className='main row'>
+        <section className='main-left col-lg-8'>
           <Hero />
           <Intro />
-          {/*
+        </section>
+        <section className='main-right col-lg-4'>
+          <aside className='aside' style={stickyContainer}>
+            <div style={sticky}>
+              <EnForm />
+            </div>
+          </aside>
+        </section>
+      </main>
+      <article>
+        {/*
 			<PlasticCommunity />
 			<BillBoard />
 			*/}
-          <Testimonial />
-        </div>
-        <div className='main-grid__item' style={stickyContainer}>
-          <div style={sticky}>
-            <EnForm />
-          </div>
-        </div>
-      </div>
+        <Testimonial />
+      </article>
       <Footer />
     </div>
   )
