@@ -4,7 +4,7 @@ import 'sanitize.css'
 import 'bulma/css/bulma.css'
 import 'swiper/css/swiper.css'
 import './App.css'
-import './main.scss'
+import './App.scss'
 //
 import Header from './components/Header'
 import EnForm from './components/EnForm'
@@ -15,18 +15,33 @@ import Hero from './components/Hero'
 import Testimonial from './components/Testimonial'
 import Footer from './components/Footer'
 //
+const stickyContainer = {
+  position: 'relative'
+}
+const sticky = {
+  position: 'sticky',
+  top: '20px'
+}
 function App() {
   return (
     <div className='App'>
       <Header />
-      <EnForm />
-      <Hero />
-      <Intro />
-      {/*
+      <div className='main__grid'>
+        <div className='main-grid__item content'>
+          <Hero />
+          <Intro />
+          {/*
 			<PlasticCommunity />
 			<BillBoard />
 			*/}
-      <Testimonial />
+          <Testimonial />
+        </div>
+        <div className='main-grid__item' style={stickyContainer}>
+          <div style={sticky}>
+            <EnForm />
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   )

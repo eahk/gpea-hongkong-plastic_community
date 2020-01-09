@@ -7,7 +7,6 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bulma": "^0.8.0",
-    "jeet": "^7.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-id-swiper": "^2.4.0",
@@ -54,7 +53,9 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not ie <= 11",
+      "not op_mini all",
+      "ie 10"
     ],
     "development": [
       "last 1 chrome version",

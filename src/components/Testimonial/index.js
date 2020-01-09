@@ -25,7 +25,7 @@ const supporterData = [
 const swiperParams = {
   slidesPerView: 3,
   // slidesPerView: 'auto',
-  centeredSlides: true,
+  // centeredSlides: true,
   grabCursor: true,
   spaceBetween: 40,
   pagination: {
@@ -76,7 +76,7 @@ function TestimonialCard(props) {
 }
 export default props => {
   return (
-    <section>
+    <section className='section'>
       <div className='container'>
         <div className='testimonial-wrapper'>
           <Swiper {...swiperParams}>
