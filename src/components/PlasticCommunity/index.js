@@ -1,22 +1,21 @@
-import React from "react";
+import React from 'react'
 
 export default props => {
   return (
-    <div className="container">
-      <section className="section">
-        <h2 className="title">Plastic Community Section</h2>
-
-        <article className="media">
-          <figure className="media-left">
-            <p className="image is-64x64">
+    <div className='container'>
+      <section className='section'>
+        <h2 className='title'>Plastic Community Section</h2>
+        <article className='media'>
+          <figure className='media-left'>
+            <p className='image is-64x64'>
               <img
-                alt="."
-                src="https://bulma.io/images/placeholders/128x128.png"
+                alt='.'
+                src='https://bulma.io/images/placeholders/128x128.png'
               />
             </p>
           </figure>
-          <div className="media-content">
-            <div className="content">
+          <div className='media-content'>
+            <div className='content'>
               <p>
                 <strong>Barbara Middleton</strong>
                 <br />
@@ -26,22 +25,22 @@ export default props => {
                 tempus turpis.
                 <br />
                 <small>
-                  <a href="/#">Like</a> · <a href="/#">Reply</a> · 3 hrs
+                  <a href='/#'>Like</a> · <a href='/#'>Reply</a> · 3 hrs
                 </small>
               </p>
             </div>
 
-            <article className="media">
-              <figure className="media-left">
-                <p className="image is-48x48">
+            <article className='media'>
+              <figure className='media-left'>
+                <p className='image is-48x48'>
                   <img
-                    alt="."
-                    src="https://bulma.io/images/placeholders/96x96.png"
+                    alt='.'
+                    src='https://bulma.io/images/placeholders/96x96.png'
                   />
                 </p>
               </figure>
-              <div className="media-content">
-                <div className="content">
+              <div className='media-content'>
+                <div className='content'>
                   <p>
                     <strong>Sean Brown</strong>
                     <br />
@@ -51,17 +50,17 @@ export default props => {
                     nulla sagittis, a lobortis leo feugiat.
                     <br />
                     <small>
-                      <a href="/#">Like</a> · <a href="/#">Reply</a> · 2 hrs
+                      <a href='/#'>Like</a> · <a href='/#'>Reply</a> · 2 hrs
                     </small>
                   </p>
                 </div>
 
-                <article className="media">
+                <article className='media'>
                   Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi
                   eu lorem cursus ullamcorper sit amet nec massa.
                 </article>
 
-                <article className="media">
+                <article className='media'>
                   Morbi vitae diam et purus tincidunt porttitor vel vitae augue.
                   Praesent malesuada metus sed pharetra euismod. Cras tellus
                   odio, tincidunt iaculis diam non, porta aliquet tortor.
@@ -69,17 +68,17 @@ export default props => {
               </div>
             </article>
 
-            <article className="media">
-              <figure className="media-left">
-                <p className="image is-48x48">
+            <article className='media'>
+              <figure className='media-left'>
+                <p className='image is-48x48'>
                   <img
-                    alt="."
-                    src="https://bulma.io/images/placeholders/96x96.png"
+                    alt='.'
+                    src='https://bulma.io/images/placeholders/96x96.png'
                   />
                 </p>
               </figure>
-              <div className="media-content">
-                <div className="content">
+              <div className='media-content'>
+                <div className='content'>
                   <p>
                     <strong>Kayli Eunice </strong>
                     <br />
@@ -90,7 +89,7 @@ export default props => {
                     Phasellus lacinia non nisl id feugiat.
                     <br />
                     <small>
-                      <a href="/#">Like</a> · <a href="/#">Reply</a> · 2 hrs
+                      <a href='/#'>Like</a> · <a href='/#'>Reply</a> · 2 hrs
                     </small>
                   </p>
                 </div>
@@ -98,32 +97,32 @@ export default props => {
             </article>
           </div>
         </article>
-        <article className="media">
-          <figure className="media-left">
-            <p className="image is-64x64">
+        <article className='media'>
+          <figure className='media-left'>
+            <p className='image is-64x64'>
               <img
-                alt="."
-                src="https://bulma.io/images/placeholders/128x128.png"
+                alt='.'
+                src='https://bulma.io/images/placeholders/128x128.png'
               />
             </p>
           </figure>
-          <div className="media-content">
-            <div className="field">
-              <p className="control">
+          <div className='media-content'>
+            <div className='field'>
+              <p className='control'>
                 <textarea
-                  className="textarea"
-                  placeholder="Add a comment..."
+                  className='textarea'
+                  placeholder='Add a comment...'
                 ></textarea>
               </p>
             </div>
-            <div className="field">
-              <p className="control">
-                <button className="button">Post comment</button>
+            <div className='field'>
+              <p className='control'>
+                <button className='button'>Post comment</button>
               </p>
             </div>
           </div>
         </article>
       </section>
     </div>
-  );
-};
+  )
+}
