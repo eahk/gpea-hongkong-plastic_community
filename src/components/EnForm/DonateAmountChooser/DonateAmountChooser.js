@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
 
@@ -51,7 +52,7 @@ export default props => {
         <div>Choose an amount to give</div>
       </div>
 
-      <div className="buttons has-addons">
+      <div className="buttons are-small has-addons">
         <button
           className={cx("button recurring", {
             "is-active": props.interval === "recurring"

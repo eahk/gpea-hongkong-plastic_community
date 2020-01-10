@@ -8,15 +8,15 @@ const supporterData = [
     img: "",
     name: "Brian & Korean kid",
     url:
-      "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/hahyun/",
+      "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/brian/",
     headline:
       "綠色和平揭露塑膠正威脅海洋生物及人類健康，深深印在我的腦海。感染身邊大小朋友是不限年齡、身份的，人人都可以推動營造更綠色的地球。"
   },
   {
-    img:
-      "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/sharon/",
+    img: "",
     name: "Sharon",
-    url: "",
+    url:
+      "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/sharon/",
     headline:
       "環保之事，人人有份，永不落空。希望透過支持綠色和平，讓組織集合眾人的聲音，向政府和企業施壓帶來改變"
   },
