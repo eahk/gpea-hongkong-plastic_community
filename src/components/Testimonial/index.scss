@@ -1,9 +1,10 @@
 /* swiper */
 .swiper-container {
   position: relative;
+  padding-bottom: 30px;
   &:before {
     z-index: 1;
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -14,7 +15,7 @@
   }
   &:after {
     z-index: 1;
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     top: 0;
@@ -37,16 +38,16 @@
   background-color: #6c0;
 }
 
+/* end of swiper */
+
 .card {
   margin: 4px auto;
-  border-radius: 8px;
-  max-width: 320px;
+  border-radius: 12px;
+  max-width: 300px;
   display: flex;
   flex-flow: column;
   align-items: center;
 }
-
-/* end of swiper */
 
 .card-image {
   display: flex;
@@ -55,9 +56,16 @@
 }
 
 .testimonial-text {
+  color: #666;
+  padding-bottom: 20px;
   text-align: center;
-  color: #ccc;
   display: flex;
   flex-flow: column;
   align-items: center;
+  .headline {
+    margin-bottom: 8px;
+  }
+  .name {
+    position: relative;
+  }
 }
