@@ -1,0 +1,28 @@
+.donate-amount-chooser {
+  .button.recurring,
+  .button.onetime {
+    height: auto;
+    width: 50%;
+  }
+
+  .available-amounts {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+
+    .check {
+      margin-right: 10px;
+    }
+
+    .currency {
+      margin-right: 5px;
+    }
+    .button {
+      flex: 1;
+    }
+  }
+
+  .other-amount-part {
+    margin-bottom: 1.5rem;
+  }
+}

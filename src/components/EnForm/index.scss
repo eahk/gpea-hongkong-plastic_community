@@ -1,5 +1,156 @@
 .react-en-form {
-  .title {
-    color: #6c0;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+
+  .button {
+    width: 100%;
+    border-radius: 200px;
+    min-height: 60px;
+    margin-top: 1rem;
+  }
+
+  .is-flex-horizontal {
+    display: flex;
+    flex-direction: row;
+
+    .field {
+      margin-right: 10px;
+    }
+  }
+
+  .button {
+    &.is-active {
+      background: #666666;
+      border: 1px solid #dadada;
+      color: white;
+      border-color: #666666;
+    }
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .en-form-slogan {
+    background-color: #eee;
+    text-align: center;
+    padding: 0 1rem;
+    // margin-bottom: 1rem;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .step-explain {
+    border-left: 2px solid #999999;
+    padding-left: 15px;
+    margin-bottom: 30px;
+  }
+
+  .step-2 {
+    hr {
+      margin: 1rem 0;
+      height: 1px;
+      background-color: #dadada;
+    }
+  }
+  .donate-amount-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #eee;
+    padding: 10px;
+    // margin-bottom: 1rem;
+    font-size: 14px;
+
+    .main-text {
+      flex: 1;
+    }
+    .go-back-step1 {
+      font-size: 12px;
+      color: #cccccc;
+      text-decoration-line: underline;
+      cursor: pointer;
+    }
+  }
+
+  .step-2 {
+    .is-flex-horizontal {
+      display: flex;
+      flex-direction: row;
+
+      .field {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .field {
+      .label {
+        font-size: 12px;
+        color: #666666;
+        font-weight: normal;
+        margin-bottom: 3px;
+      }
+
+      .control {
+      }
+
+      .help {
+      }
+    }
+
+    .credit-field {
+      margin-top: 30px;
+    }
+
+    .send-me-email-part {
+      display: flex;
+      flex-direction: row;
+      margin: 1rem 0;
+      color: #868686;
+
+      input {
+        margin-top: 3px;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .global-error {
+    margin-top: 2rem;
+  }
+
+  .donate-succ-slogan {
+    background-color: #eee;
+    text-align: left;
+    padding: 25px;
+    // margin-bottom: 1rem;
+    // height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .main-text {
+      margin-left: 1.5rem;
+    }
+    .fa-check-circle {
+      color: #6c0;
+      font-size: 2rem;
+    }
+  }
+
+  .step-3 {
+    p {
+      margin-bottom: 1rem;
+    }
   }
 }

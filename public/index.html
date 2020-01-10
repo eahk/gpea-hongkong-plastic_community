@@ -2,19 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -25,6 +25,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <script>var pageJson = {"clientId":1853,"redirectPresent":false,"pageCount":2,"pageName":"UP - Donation Test - HK - Plain iATS form plastic","giftProcess":false,"campaignPageId":54302,"pageNumber":1,"campaignId":167296,"locale":"zh-TW"};</script>
+    <!-- <script>var pageJson = {"clientId":1853,"redirectPresent":false,"donationLogId":17307208,"pageCount":2,"pageName":"UP - Donation Test - HK - Plain iATS form plastic","giftProcess":true,"campaignPageId":54302,"recurring":false,"supporterId":182333608,"pageNumber":1,"amount":200.0,"paymentType":"TEST: VISA","other1":"","receiptNumber":0,"campaignId":167296,"country":"HK","locale":"zh-TW","currency":"HKD","transactionType":"FCS"};</script> -->
+    <!-- <script>var pageJson = {"clientId":1853,"redirectPresent":false,"donationLogId":17307210,"pageCount":2,"pageName":"UP - Donation Test - HK - Plain iATS form plastic","giftProcess":true,"campaignPageId":54302,"recurring":false,"supporterId":182333617,"pageNumber":2,"amount":200.0,"paymentType":"TEST: VISA","other1":"","receiptNumber":0,"campaignId":167296,"country":"HK","locale":"zh-TW","currency":"HKD","transactionType":"FCS"};</script> -->
+
+
+
+    <script src='https://act.greenpeace.org/page/53812/campaigner/0/pagedata.js?locale=zh-TW'></script>
+    <script src='https://act.greenpeace.org/ea-demo/frontend/pbAssets/build/js/enPage.js?v=3.55.0'></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -34,13 +45,14 @@
     <div id="en-form">
       <form method="post" action="/page/53812/donate/2" class="en__component en__component--page">
           <input type="hidden" name="hidden" class="en__hiddenFields" value="">
-          <input type="hidden" name="sessionId" value="f9dedb1fd4ef4e029504d33f698d9aa0-server9796">
+          <input type="hidden" name="sessionId" value="a213d78c6d81465fa82d7bb65850afdc-server10008">
           <input type="hidden" name="gatewaykey" value="">
           <input type="hidden" name="gatewayaccountid" value="">
           <input type="hidden" name="gatewaymode" value="">
 
-          <ul class="en__errorList">
-          </ul>
+          <!--<ul class="en__errorList">
+            <li class="en__error">捐款過程發生錯誤，請核對您的信用卡資料，然後再作嘗試。</li>
+          </ul>-->
 
           <div class="en__component en__component--row en__component--row--1">
               <div class="en__component en__component en__component--column">
@@ -50,8 +62,8 @@
                           <label for="en__field_supporter_NOT_TAGGED_31" class="en__field__label" style="">recurring_payment_sf</label>
                           <div class="en__field__element en__field__element--select">
                               <select id="en__field_supporter_NOT_TAGGED_31" class="en__field__input en__field__input--select" name="supporter.NOT_TAGGED_31">
-                                  <option value="Y">Y</option>
-                                  <option value="N">N</option>
+                                  <option value="Y" selected>Y</option>
+                                  <option value="N" >N</option>
                               </select>
                           </div>
                       </div>
@@ -67,7 +79,7 @@
                       <div class="en__field en__field--text en__field--578546 en__field--donationAmt en__mandatory">
                           <label for="en__field_transaction_donationAmt" class="en__field__label" style="">gift amount</label>
                           <div class="en__field__element en__field__element--text">
-                              <input id="en__field_transaction_donationAmt" type="text" class="en__field__input en__field__input--text" name="transaction.donationAmt" value="" />
+                              <input id="en__field_transaction_donationAmt" type="text" class="en__field__input en__field__input--text" name="transaction.donationAmt" value="400" />
                           </div>
                       </div>
 
@@ -77,13 +89,13 @@
                       <div class="en__field en__field--text en__field--578526 en__field--firstName en__mandatory">
                           <label for="en__field_supporter_firstName" class="en__field__label" style="">First Name</label>
                           <div class="en__field__element en__field__element--text">
-                              <input id="en__field_supporter_firstName" type="text" class="en__field__input en__field__input--text" name="supporter.firstName" value="" />
+                              <input id="en__field_supporter_firstName" type="text" class="en__field__input en__field__input--text" name="supporter.firstName" value="FIRSTNAME" />
                           </div>
                       </div>
                       <div class="en__field en__field--text en__field--578525 en__field--lastName en__mandatory">
                           <label for="en__field_supporter_lastName" class="en__field__label" style="">last_name</label>
                           <div class="en__field__element en__field__element--text">
-                              <input id="en__field_supporter_lastName" type="text" class="en__field__input en__field__input--text" name="supporter.lastName" value="" />
+                              <input id="en__field_supporter_lastName" type="text" class="en__field__input en__field__input--text" name="supporter.lastName" value="LASTNAME" />
                           </div>
                       </div>
                       <div class="en__field en__field--text en__field--578527 en__field--emailAddress en__mandatory">
