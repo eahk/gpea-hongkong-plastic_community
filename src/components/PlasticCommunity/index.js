@@ -1,5 +1,39 @@
-import React from 'react'
-
+import React from "react";
+//
+import "./index.scss";
+//
+import { ReactComponent as CommunityMap } from "../../assets/images/plasticCommunity.svg";
+//
+const districts = [
+  { id: "Islands" },
+  { id: "Kwai Tsing" },
+  { id: "North" },
+  { id: "Sai Kung" },
+  { id: "Sha Tin" },
+  { id: "Tai Po" },
+  { id: "Tsuen Wan" },
+  { id: "Tuen Mun" },
+  { id: "Yuen Long" },
+  { id: "Kowloon City" },
+  { id: "Kwun Tong" },
+  { id: "Sham Shui Po" },
+  { id: "Wong Tai Sin" },
+  { id: "Yau Tsim Mong" },
+  { id: "Central & Western" },
+  { id: "Eastern" },
+  { id: "Southern" },
+  { id: "Wan Chai" }
+];
+//
+export default props => {
+  return (
+    <section className="section is-light">
+      <CommunityMap id="community-map" />
+    </section>
+  );
+};
+//
+/*
 export default props => {
   return (
     <div className='container'>
@@ -126,3 +160,4 @@ export default props => {
     </div>
   )
 }
+*/

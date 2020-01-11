@@ -2,29 +2,29 @@
   p + p {
     margin-top: 30px;
   }
-}
-
-.columns-wrapper {
-  margin-top: 60px;
+  .row {
+    margin-bottom: 60px;
+  }
 }
 
 @media (min-width: 768px) {
-  .columns-wrapper.text-right {
-    .column:last-child {
+  .text-right {
+    .col-xs:last-child {
       margin-left: 30px;
     }
   }
-  .columns-wrapper.text-left {
-    .column:first-child {
+  .text-left {
+    .col-xs:first-child {
       margin-right: 30px;
     }
   }
 }
 
 .column__img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  box-shadow: var(--shadow);
+  min-height: 250px;
+  img {
+    box-shadow: var(--shadow);
+  }
 }
 
 .sticker-wrapper {

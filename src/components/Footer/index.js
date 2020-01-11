@@ -1,56 +1,56 @@
-import React, { useState, useEffect } from 'react'
-import './index.scss'
+import React, { useState, useEffect } from "react";
+import "./index.scss";
 //
-import Logo from '../../assets/images/GP-logo-2019-TC-white-[web]-02.png'
+import Logo from "../../assets/images/GP-logo-2019-TC-white-[web]-02.png";
 
 const footerLinks = [
   {
-    name: '主頁',
-    url: 'http://www.greenpeace.org/hongkong/'
+    name: "主頁",
+    url: "http://www.greenpeace.org/hongkong/"
   },
   {
-    name: '私隱政策與個人資料收集聲明',
-    url: 'https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/'
+    name: "私隱政策與個人資料收集聲明",
+    url: "https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/"
   },
   {
-    name: '聯絡我們',
-    url: 'http://www.greenpeace.org/hk/about/contact/'
+    name: "聯絡我們",
+    url: "http://www.greenpeace.org/hk/about/contact/"
   },
   {
-    name: '關於綠色和平',
-    url: 'https://www.greenpeace.org/hongkong/about/overview/'
+    name: "關於綠色和平",
+    url: "https://www.greenpeace.org/hongkong/about/overview/"
   }
-]
+];
 
 export default props => {
-  const [year, setYear] = useState('2019')
+  const [year, setYear] = useState("2019");
   useEffect(() => {
-    setYear(new Date().getFullYear())
-  }, [])
+    setYear(new Date().getFullYear());
+  }, []);
   return (
-    <footer className='footer'>
-      <div className='container'>
-        <div className='content'>
-          <div className='columns-wrapper'>
-            <div className='columns'>
-              <div className='column'>
-                <div className='footer__logo'>
-                  <img src={Logo} alt='logo' />
+    <footer className="footer">
+      <div className="container">
+        <div className="content">
+          <div className="columns-wrapper">
+            <div className="row">
+              <div className="col-xs col-md-6">
+                <div className="footer__logo">
+                  <img src={Logo} alt="logo" />
                 </div>
-                <div className='footer__note'>
+                <div className="footer__note">
                   <p>
                     綠色和平是獨立的國際環保組織，通過科學研究、政策倡議及和平行動，揭露全球環境問題並提出相應解決方案。我們從不接受任何政府、企業或政治團體的資助，只接受個人的直接捐款，以維持公正獨立。
                   </p>
                   <p>獲豁免繳稅慈善機構編號︰ 91/5418</p>
                 </div>
-                <div className='footer__link'>
-                  <ul className='links'>
+                <div className="footer__link">
+                  <ul className="links">
                     {footerLinks.map((link, key) => (
                       <a
                         key={key}
-                        href='link.url'
-                        alt='link.name'
-                        className='link'
+                        href={link.url}
+                        alt={link.name}
+                        className="link"
                       >
                         {link.name}
                       </a>
@@ -58,9 +58,9 @@ export default props => {
                   </ul>
                 </div>
               </div>
-              <div className='column'>
-                <div className='footer_remarks'>
-                  <p className='subtitle'>注意事項</p>
+              <div className="col-xs col-md-6">
+                <div className="footer_remarks">
+                  <p className="subtitle">注意事項</p>
                   <p>
                     此捐款頁面採用了 SSL
                     保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。
@@ -73,17 +73,17 @@ export default props => {
                   <p>
                     收集所得的個人資料將絕對保密並只作和閣下聯絡用途！
                     <a
-                      href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/'
-                      rel='noopener noreferrer'
-                      target='_blank'
+                      href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/"
+                      rel="noopener noreferrer"
+                      target="_blank"
                     >
-                      按此
+                      按此了解
                     </a>
-                    了解我們的私隱保護政策。
+                    我們的私隱保護政策。
                   </p>
                   <p>
                     捐款港幣$100以上可申請扣稅。如需索取捐款收據，請聯絡
-                    <a href='mailto:donor.services.hk@greenpeace.org'>
+                    <a href="mailto:donor.services.hk@greenpeace.org">
                       donor.services.hk@greenpeace.org
                     </a>
                     或至電 (852) 2854 8318。
@@ -93,14 +93,14 @@ export default props => {
             </div>
           </div>
         </div>
-        <div className='content has-text-centered'>
+        <div className="content has-text-centered">
           <p>
-            <small className='credit'>
+            <small className="credit">
               © GREENPEACE <span>{year}</span>
             </small>
           </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};

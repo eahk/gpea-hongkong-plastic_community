@@ -1,7 +1,7 @@
 import React from "react";
 // vendor
 import "sanitize.css";
-import "bulma/css/bulma.css";
+// import "bulma/css/bulma.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
 import "swiper/css/swiper.css";
 // custom
@@ -12,8 +12,8 @@ import EnForm from "./components/EnForm";
 import Intro from "./components/Intro";
 import Hero from "./components/Hero";
 import DollarHandle from "./components/DollarHandle";
-// import PlasticCommunity from './components/PlasticCommunity'
-// import BillBoard from './components/BillBoard'
+import PlasticCommunity from "./components/PlasticCommunity";
+// import BillBoard from "./components/BillBoard";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
 //
@@ -27,10 +27,10 @@ const sticky = {
 };
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       <main className="main">
-        <div className="container">
+        <div className="container is-fluid">
           <div className="row">
             <section className="main-right col-xs-12 col-lg-4 ">
               <aside className="aside" style={stickyContainer}>
@@ -43,14 +43,14 @@ function App() {
               <Hero />
               <Intro />
               <DollarHandle />
+              <PlasticCommunity />
             </section>
           </div>
           <div className="row">
             <div className="col-xs-12">
               {/*
-			<PlasticCommunity />
-			<BillBoard />
-			*/}
+              <BillBoard />
+              */}
               <Testimonial />
             </div>
           </div>

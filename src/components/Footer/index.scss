@@ -34,21 +34,12 @@
     margin-top: 30px;
     .links {
       display: flex;
+      align-items: flex-start;
       flex-flow: column;
       margin: 0;
     }
     .link {
-      margin-bottom: 8px;
+      padding: 8px 0;
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .columns {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  .column {
-    width: 100%;
   }
 }
