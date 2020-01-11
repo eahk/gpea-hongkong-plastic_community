@@ -47,11 +47,6 @@ export default props => {
 
   return (
     <div className="donate-amount-chooser">
-      <div className="step-explain">
-        <div>請選擇捐款金額</div>
-        <div>Choose an amount to give</div>
-      </div>
-
       <div className="buttons are-small has-addons">
         <button
           className={cx("button recurring", {
@@ -75,6 +70,10 @@ export default props => {
         </button>
       </div>
 
+      <div className="step-explain">
+        <div>請選擇捐款金額</div>
+        <div>Choose an amount to give</div>
+      </div>
       <div className="buttons available-amounts">
         {props.predefinedAmounts[props.interval].map((amount, idx) => {
           let isActive = amount === props.amount && !isManuallyInputing;

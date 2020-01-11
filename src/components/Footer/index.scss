@@ -1,5 +1,5 @@
 .footer {
-  color: #666;
+  color: var(--sub-text);
   hr {
     background: none;
     position: relative;
@@ -10,9 +10,9 @@
       top: 50%;
       left: 0;
       transform: translateY(-25%);
-      width: 8px;
-      height: 4px;
-      background-color: whitesmoke;
+      width: 16px;
+      height: 1px;
+      background-color: var(--border);
     }
   }
 }
@@ -21,7 +21,7 @@
   &__logo {
     img {
       padding: 8px;
-      background-color: #666;
+      background-color: var(--border);
       width: 100%;
       max-width: 180px;
     }
@@ -39,7 +39,6 @@
     }
     .link {
       margin-bottom: 8px;
-      color: #666;
     }
   }
 }

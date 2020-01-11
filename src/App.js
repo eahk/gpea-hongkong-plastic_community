@@ -5,7 +5,6 @@ import "bulma/css/bulma.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
 import "swiper/css/swiper.css";
 // custom
-import "./App.css";
 import "./App.scss";
 //
 import Header from "./components/Header";
@@ -31,16 +30,16 @@ function App() {
     <div className="App">
       <Header />
       <main className="main">
-        <div className="container is-fluid">
+        <div className="container">
           <div className="row">
-            <section className="main-right col-lg-4 ">
+            <section className="main-right col-xs-12 col-lg-4 ">
               <aside className="aside" style={stickyContainer}>
                 <div style={sticky}>
                   <EnForm />
                 </div>
               </aside>
             </section>
-            <section className="main-left col-lg-8 first-lg">
+            <section className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
               <Intro />
               <DollarHandle />

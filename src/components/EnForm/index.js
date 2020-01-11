@@ -186,7 +186,6 @@ export default props => {
     <div className="react-en-form">
       {stepNo === 1 && (
         <div>
-          <FormSlogan />
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}

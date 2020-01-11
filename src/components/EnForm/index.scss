@@ -1,14 +1,7 @@
-$gp-green: #66cc00;
-// $gp-darken: #80c342;
-$gp-darken: darken($gp-green, 2%);
-$form-border: #ccc;
-$form-label: #999;
-$form-text: #333;
-
 .react-en-form {
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -18,20 +11,20 @@ $form-text: #333;
   }
 
   .button {
+    color: var(--form-label);
     &.is-active {
-      background: $gp-darken;
-      border: 1px solid #ddd;
+      background: var(--gp-green);
+      border: 1px solid var(--gp-green);
       color: white;
     }
   }
 
   .enform__buttion {
-    border: none;
     width: 100%;
-    background-color: $gp-darken;
+    background-color: var(--gp-green);
     color: #fff;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
   }
 
   .step {
@@ -41,8 +34,8 @@ $form-text: #333;
   }
 
   .en-form-slogan {
-    background-color: $form-border;
-    color: $form-text;
+    background-color: var(--border);
+    color: var(--form-text);
     text-align: center;
     padding: 8px;
     // margin-bottom: 1rem;
@@ -53,8 +46,8 @@ $form-text: #333;
   }
 
   .donate-succ-slogan {
-    color: $form-text;
-    border-bottom: 1px solid $gp-darken;
+    color: var(--form-text);
+    border-bottom: 1px solid var(--gp-green);
     text-align: left;
     padding: 25px;
     display: flex;
@@ -64,14 +57,14 @@ $form-text: #333;
       margin-left: 1.5rem;
     }
     .fa-check-circle {
-      color: $gp-darken;
+      color: var(--gp-green);
       font-size: 2rem;
     }
   }
 
   .step-explain {
-    border-left: 1px solid $form-border;
-    color: $form-label;
+    border-left: 1px solid var(--border);
+    color: var(--form-label);
     padding-left: 15px;
     margin-bottom: 30px;
   }
@@ -80,14 +73,14 @@ $form-text: #333;
     hr {
       margin: 1rem 0;
       height: 1px;
-      background-color: $form-border;
+      background-color: var(--border);
     }
   }
   .donate-amount-part {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid $form-border;
+    border: 1px solid var(--border);
     padding: 10px;
     // margin-bottom: 1rem;
     font-size: 14px;
@@ -98,8 +91,8 @@ $form-text: #333;
     .go-back-step1 {
       padding: 4px;
       font-size: 14px;
-      color: $form-text;
-      border-bottom: 1px solid $form-text;
+      color: var(--form-text);
+      border-bottom: 1px solid var(--form-text);
       cursor: pointer;
     }
   }
@@ -121,7 +114,7 @@ $form-text: #333;
     .field {
       .label {
         font-size: 12px;
-        color: $form-label;
+        color: var(--form-label);
         font-weight: normal;
         margin-bottom: 4px;
       }
@@ -135,7 +128,7 @@ $form-text: #333;
       display: flex;
       flex-direction: row;
       margin: 1rem 0;
-      color: $form-text;
+      color: var(--form-text);
       font-size: 12px;
       input {
         margin-top: 3px;

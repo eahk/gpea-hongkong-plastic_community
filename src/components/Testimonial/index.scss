@@ -2,7 +2,7 @@
 .swiper-container {
   max-width: 1170px;
   position: relative;
-  padding: 30px 15px;
+  padding: 40px 15px;
   margin: 0 auto;
   &:before {
     z-index: 1;
@@ -29,7 +29,20 @@
 }
 .swiper-button-prev,
 .swiper-button-next {
-  color: #6c0;
+  color: var(--gp-green);
+  width: 48px;
+  height: 48px;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: var(--shadow);
+  }
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px;
 }
 
 .swiper-pagination {
@@ -37,14 +50,14 @@
 }
 .swiper-pagination-bullet-active {
   opacity: 1;
-  background-color: #6c0;
+  background-color: var(--gp-green);
 }
 
 /* end of swiper */
 
 .card {
-  margin: 4px auto;
-  border-radius: 12px;
+  margin: 8px auto;
+  border-radius: 20px;
   max-width: 300px;
   display: flex;
   flex-flow: column;
@@ -54,20 +67,21 @@
 .card-image {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .testimonial-text {
-  color: #666;
-  padding-bottom: 20px;
+  color: var(--sub-text);
+  padding: 16px;
   text-align: center;
   display: flex;
   flex-flow: column;
   align-items: center;
   .headline {
-    margin-bottom: 8px;
+    font-size: 14px;
   }
   .name {
     position: relative;
+    margin-top: 20px;
   }
 }

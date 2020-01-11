@@ -15,7 +15,7 @@ export default props => {
           backgroundRepeat: "no-repeat"
         }}
       ></div>
-      <h1 className="title hero-title">2020年，讓走塑社區遍地開花</h1>
+      <h1 className="title hero-title">2020年 - 走塑社區遍地開花</h1>
     </section>
   );
 };
