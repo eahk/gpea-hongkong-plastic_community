@@ -4,6 +4,9 @@
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow);
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
