@@ -1,6 +1,6 @@
 .section-hero {
   position: relative;
-  min-height: 400px;
+  min-height: 480px;
   .hero-background {
     position: absolute;
     left: 0;
@@ -9,12 +9,20 @@
     height: 100%;
   }
   .hero-title {
-    position: absolute;
-    left: 8px;
-    bottom: 8px;
-    padding: 4px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #6c0;
+    padding: 8px;
+
+    h1 {
+      font-weight: bold;
+      color: #fff;
+      background-color: #6c0;
+    }
+  }
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    .hero-title {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+    }
   }
 }

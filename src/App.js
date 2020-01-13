@@ -30,7 +30,7 @@ function App() {
     <div className="app">
       <Header />
       <main className="main">
-        <div className="container is-fluid">
+        <div className="main-container">
           <div className="row">
             <section className="main-right col-xs-12 col-lg-4 ">
               <aside className="aside" style={stickyContainer}>
@@ -44,15 +44,11 @@ function App() {
               <Intro />
               <DollarHandle />
               <PlasticCommunity />
-            </section>
-          </div>
-          <div className="row">
-            <div className="col-xs-12">
               {/*
               <BillBoard />
               */}
               <Testimonial />
-            </div>
+            </section>
           </div>
         </div>
       </main>

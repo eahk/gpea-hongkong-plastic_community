@@ -3,19 +3,29 @@
     margin-top: 30px;
   }
   .row {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
+  @media (min-width: 768px) {
+    .row {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.text-left {
+  flex-direction: column-reverse;
 }
 
 @media (min-width: 768px) {
   .text-right {
     .col-xs:last-child {
-      margin-left: 30px;
+      margin-left: 20px;
     }
   }
   .text-left {
+    flex-direction: row;
     .col-xs:first-child {
-      margin-right: 30px;
+      margin-right: 20px;
     }
   }
 }
@@ -29,13 +39,23 @@
 
 .sticker-wrapper {
   display: flex;
+  margin: 20px auto;
+  .sticker + .sticker {
+    margin-left: 16px;
+  }
   .sticker {
+    padding: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: var(--shadow);
+    transition: all 0.1s ease-in;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow--xl);
+    }
     img {
       max-width: 90%;
-      filter: drop-shadow(var(--shadow));
     }
   }
 }
