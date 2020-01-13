@@ -4,25 +4,18 @@
     height: auto;
     width: 50%;
   }
-
   .available-amounts {
     display: flex;
     flex-direction: row;
     margin-bottom: 0;
-
     .check {
-      margin-right: 10px;
+      margin-right: 8px;
     }
-
     .currency {
-      margin-right: 5px;
+      margin-right: 8px;
     }
     .button {
       flex: 1;
     }
-  }
-
-  .other-amount-part {
-    margin-bottom: 1.5rem;
   }
 }

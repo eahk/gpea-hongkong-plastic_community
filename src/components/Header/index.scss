@@ -1,6 +1,6 @@
 .header {
-  margin: 8px 0;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
+  background-color: var(--gp-green);
 }
 
 .header__wrapper {
@@ -18,6 +18,8 @@
 }
 .navbar__button {
   .button {
-    border-radius: 25px;
+    border-color: var(--gp-orange);
+    background-color: var(--gp-orange);
+    color: #fff;
   }
 }

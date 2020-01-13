@@ -1,17 +1,18 @@
 .footer {
+  color: var(--sub-text);
   hr {
     background: none;
     position: relative;
     margin: 16px 0;
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 0;
       transform: translateY(-25%);
-      width: 8px;
-      height: 4px;
-      background-color: whitesmoke;
+      width: 16px;
+      height: 1px;
+      background-color: var(--border);
     }
   }
 }
@@ -20,7 +21,7 @@
   &__logo {
     img {
       padding: 8px;
-      background-color: #6c0;
+      background-color: var(--border);
       width: 100%;
       max-width: 180px;
     }
@@ -33,22 +34,12 @@
     margin-top: 30px;
     .links {
       display: flex;
+      align-items: flex-start;
       flex-flow: column;
       margin: 0;
     }
     .link {
-      margin-bottom: 8px;
-      color: rgba(0, 0, 0, 0.75);
+      padding: 8px 0;
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .columns {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  .column {
-    width: 100%;
   }
 }

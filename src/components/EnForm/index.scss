@@ -1,33 +1,36 @@
 .react-en-form {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  max-width: 400px;
-
-  .button {
-    width: 100%;
-    border-radius: 200px;
-    min-height: 60px;
-    margin-top: 1rem;
-  }
-
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow);
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
-
     .field {
-      margin-right: 10px;
+      margin-right: 8px;
     }
   }
 
   .button {
+    color: var(--form-label);
     &.is-active {
-      background: #666666;
-      border: 1px solid #dadada;
+      background: var(--gp-green);
+      border: 1px solid var(--gp-green);
       color: white;
-      border-color: #666666;
     }
+  }
+
+  .enform__buttion {
+    width: 100%;
+    background-color: var(--gp-green);
+    color: #fff;
+    box-shadow: var(--shadow);
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   .step {
@@ -37,9 +40,10 @@
   }
 
   .en-form-slogan {
-    background-color: #eee;
+    background-color: var(--border);
+    color: var(--form-text);
     text-align: center;
-    padding: 0 1rem;
+    padding: 8px;
     // margin-bottom: 1rem;
     height: 60px;
     display: flex;
@@ -47,8 +51,26 @@
     align-items: center;
   }
 
+  .donate-succ-slogan {
+    color: var(--form-text);
+    border-bottom: 1px solid var(--gp-green);
+    text-align: left;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .main-text {
+      margin-left: 1.5rem;
+    }
+    .fa-check-circle {
+      color: var(--gp-green);
+      font-size: 2rem;
+    }
+  }
+
   .step-explain {
-    border-left: 2px solid #999999;
+    border-left: 1px solid var(--border);
+    color: var(--form-label);
     padding-left: 15px;
     margin-bottom: 30px;
   }
@@ -57,14 +79,14 @@
     hr {
       margin: 1rem 0;
       height: 1px;
-      background-color: #dadada;
+      background-color: var(--border);
     }
   }
   .donate-amount-part {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid #eee;
+    border: 1px solid var(--border);
     padding: 10px;
     // margin-bottom: 1rem;
     font-size: 14px;
@@ -73,9 +95,10 @@
       flex: 1;
     }
     .go-back-step1 {
-      font-size: 12px;
-      color: #cccccc;
-      text-decoration-line: underline;
+      padding: 4px;
+      font-size: 14px;
+      color: var(--form-text);
+      border-bottom: 1px solid var(--form-text);
       cursor: pointer;
     }
   }
@@ -97,15 +120,9 @@
     .field {
       .label {
         font-size: 12px;
-        color: #666666;
+        color: var(--form-label);
         font-weight: normal;
-        margin-bottom: 3px;
-      }
-
-      .control {
-      }
-
-      .help {
+        margin-bottom: 4px;
       }
     }
 
@@ -117,40 +134,15 @@
       display: flex;
       flex-direction: row;
       margin: 1rem 0;
-      color: #868686;
-
+      color: var(--form-text);
+      font-size: 12px;
       input {
         margin-top: 3px;
         margin-right: 0.5rem;
       }
     }
   }
-
   .global-error {
     margin-top: 2rem;
-  }
-
-  .donate-succ-slogan {
-    background-color: #eee;
-    text-align: left;
-    padding: 25px;
-    // margin-bottom: 1rem;
-    // height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .main-text {
-      margin-left: 1.5rem;
-    }
-    .fa-check-circle {
-      color: #6c0;
-      font-size: 2rem;
-    }
-  }
-
-  .step-3 {
-    p {
-      margin-bottom: 1rem;
-    }
   }
 }
