@@ -39,23 +39,33 @@
 
 .sticker-wrapper {
   display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
   margin: 20px auto;
-  .sticker + .sticker {
-    margin-left: 16px;
-  }
   .sticker {
     padding: 4px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--shadow);
-    transition: all 0.1s ease-in;
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow--xl);
+    .sticker__name {
+      font-size: 20px;
+    }
+    ul {
+      color: var(--sub-text);
+      font-size: 14px;
+    }
+    figure {
+      margin: 16px auto;
     }
     img {
-      max-width: 90%;
+      width: 90%;
+      max-width: 250px;
+      margin: 0 auto;
+      transition: all 0.1s ease-in;
+      &:hover {
+        transform: translateY(-4px);
+      }
     }
   }
 }

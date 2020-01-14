@@ -5,12 +5,13 @@ import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
 import "swiper/css/swiper.css";
 // custom
-import "./App.scss";
+import "./styles/App.scss";
 //
 import Header from "./components/Header";
 import EnForm from "./components/EnForm";
 import Intro from "./components/Intro";
 import Hero from "./components/Hero";
+import Timeline from "./components/Timeline";
 import DollarHandle from "./components/DollarHandle";
 import PlasticCommunity from "./components/PlasticCommunity";
 // import BillBoard from "./components/BillBoard";
@@ -42,6 +43,7 @@ function App() {
             <section className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
               <Intro />
+              <Timeline />
               <DollarHandle />
               <PlasticCommunity />
               {/*

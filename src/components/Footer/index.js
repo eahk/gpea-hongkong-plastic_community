@@ -33,7 +33,7 @@ export default props => {
         <div className="content">
           <div className="columns-wrapper">
             <div className="row">
-              <div className="col-xs col-md-6">
+              <div className="col-xs-12 col-md-6">
                 <div className="footer__logo">
                   <img src={Logo} alt="logo" />
                 </div>
@@ -58,7 +58,7 @@ export default props => {
                   </ul>
                 </div>
               </div>
-              <div className="col-xs col-md-6">
+              <div className="col-xs-12 col-md-6">
                 <div className="footer_remarks">
                   <p className="subtitle">注意事項</p>
                   <p>
