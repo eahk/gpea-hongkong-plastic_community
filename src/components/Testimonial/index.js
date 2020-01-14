@@ -94,7 +94,7 @@ export default props => {
   return (
     <section className="section">
       <div className="section-header has-text-centered">
-        <p className="title">有很多香港人，和您一樣</p>
+        <p className="title">有很多香港人和您一樣</p>
         <p>
           有他們的支持，我們得以完成2018-2019年的目標，令全港600多間店鋪加入走塑行列。有您的支持，我們能成就全港更多走塑社區。
         </p>

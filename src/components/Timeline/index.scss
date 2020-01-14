@@ -1,16 +1,17 @@
 .timeline-wrapper {
   .timeline {
-    max-width: 580px;
+    max-width: 680px;
     margin: 20px auto;
-    padding-left: 16px;
   }
   .timeline-content {
+    width: 100%;
     p {
       margin-bottom: 8px;
+      letter-spacing: 2px;
     }
   }
 
   .timeline-content__image {
-    min-height: 200px;
+    min-height: 250px;
   }
 }

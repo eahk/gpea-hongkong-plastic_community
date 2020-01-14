@@ -5,26 +5,24 @@
   margin: 20px auto;
   padding: 20px 0 40px;
   &:before {
-    z-index: 1;
+    z-index: 2;
     content: "";
     position: absolute;
     left: 0;
-    top: 0;
+    top: -20px;
     width: 20px;
     height: 100%;
-    background-color: #fff;
-    mask-image: linear-gradient(to right, #fff 0%, transparent 100%);
+    background-image: linear-gradient(to right, #fff, transparent);
   }
   &:after {
-    z-index: 1;
+    z-index: 2;
     content: "";
     position: absolute;
-    right: 0;
+    right: -20px;
     top: 0;
     width: 20px;
     height: 100%;
-    background-color: #fff;
-    mask-image: linear-gradient(to left, #fff 0%, transparent 100%);
+    background-image: linear-gradient(to left, #fff, transparent);
   }
 }
 .swiper-button-prev,

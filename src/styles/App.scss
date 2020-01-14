@@ -6,6 +6,7 @@
   --gp-green: #66cc00;
   --gp-darken: darken(#66cc00, 2%);
   --gp-orange: #ff8100;
+  --gp-dark-blue: #292f47;
   --border: #ccc;
   --text: rgba(0, 0, 0, 0.75);
   --sub-text: rgba(0, 0, 0, 0.45);
@@ -26,6 +27,31 @@
 @import "./scss/base";
 @import "./scss/bulma";
 //
+
+.app {
+  font-family: "Noto Sans TC", "PingFang HK", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  transition: opacity 250ms ease, transform 250ms ease,
+    -webkit-transform 250ms ease;
+}
+//section
+.section {
+  padding: 40px 0px 20px;
+}
+
+.section-featured {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(238, 238, 238, 0) 0%,
+    #eee 100%
+  );
+}
+.section-updates {
+  background: #e6f5f5;
+}
+
+// container
 .container {
   padding-left: 20px;
   padding-right: 20px;
@@ -39,8 +65,22 @@
   margin: 0;
 }
 
-.section {
-  padding: 2rem 0;
+.col-xs,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
+  @media (max-width: 575.98px) {
+    padding: 0;
+  }
 }
 
 .section-header {
@@ -49,14 +89,54 @@
 }
 
 .title {
-  color: var(--gp-green);
+  color: var(--text);
   font-weight: bold;
 }
 .subtitel {
   color: var(--sub-text);
 }
 
-.mx-auto {
-  margin-left: auto !important;
-  margin-right: auto !important;
+.main {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 768px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.main-button {
+  display: flex;
+  @media (min-width: 768px) {
+    display: none;
+  }
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  padding: 4px;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #fff, transparent);
+  .button {
+    width: 100%;
+    background-color: var(--gp-orange);
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 4px;
+    line-height: 1.5;
+    text-align: center;
+  }
 }

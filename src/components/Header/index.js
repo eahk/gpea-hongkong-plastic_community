@@ -1,11 +1,12 @@
 import React from "react";
 import "./index.scss";
 //
-import gpLogo from "../../assets/images/GP-logo-2019-TC-white-[web]-01.png";
+// import gpLogo from "../../assets/images/GP-logo-2019-TC-white-[web]-01.png";
+import gpLogo from "../../assets/images/GP-logo-2019-TC-green-[web]-01.png";
 
 export default props => {
   return (
-    <header className="header">
+    <header className="header header--white">
       <div className="container">
         <div className="header__wrapper navbar-brand">
           <div className="navbar-item navbar__logo">

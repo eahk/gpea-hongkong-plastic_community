@@ -1,6 +1,17 @@
 .footer {
-  padding: 2rem 0;
-  color: var(--sub-text);
+  background: var(--gp-dark-blue);
+  color: var(--white);
+  .row {
+    flex-direction: row;
+  }
+  .col-xs-12 {
+    padding: 20px 0;
+  }
+  @media (max-width: 575.98px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+  }
   hr {
     background: none;
     position: relative;
@@ -16,26 +27,23 @@
       background-color: var(--border);
     }
   }
-  .col-xs-12 + .col-xs-12 {
-    margin-top: 30px;
-  }
 }
 
 .footer {
   &__logo {
+    margin-top: 20px;
     img {
-      padding: 8px;
-      background-color: var(--border);
+      padding: 4px;
       width: 100%;
       max-width: 180px;
     }
   }
   &__note {
-    margin-top: 30px;
+    margin-top: 20px;
     max-width: 480px;
   }
   &__link {
-    margin-top: 30px;
+    margin-top: 20px;
     .links {
       display: flex;
       align-items: flex-start;
@@ -43,7 +51,7 @@
       margin: 0;
     }
     .link {
-      padding: 8px 0;
+      padding: 4px 0;
     }
   }
 }

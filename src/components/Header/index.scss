@@ -1,6 +1,11 @@
 .header {
-  margin-bottom: 20px;
-  background-color: var(--gp-green);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+  &.header--white {
+    background-color: var(--white);
+  }
+  &.header--green {
+    background-color: var(--gp-green);
+  }
 }
 
 .header__wrapper {
@@ -21,5 +26,6 @@
     border-color: var(--gp-orange);
     background-color: var(--gp-orange);
     color: #fff;
+    display: none;
   }
 }

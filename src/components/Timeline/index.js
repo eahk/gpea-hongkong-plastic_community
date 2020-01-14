@@ -3,6 +3,9 @@ import "../../../node_modules/bulma-timeline/dist/css/bulma-timeline.min.css";
 //
 import "./index.scss";
 //
+import timeline2018 from "../../assets/images/13d9a742-whatsapp-image-2019-10-19-at-4.42.47-pm-1536x1152.jpeg";
+import timeline2019 from "../../assets/images/bcacd4ad-gp0stt8of_medium_res.jpg";
+//
 export default props => {
   return (
     <section className="section">
@@ -22,8 +25,20 @@ export default props => {
             <div className="timeline-content">
               <p className="heading">尋找走塑食堂</p>
               <p>
-                發起「尋找走塑食堂」計劃，動員超過150位義工加入行動至今已成功邀請。
+                發起<strong>「尋找走塑食堂」</strong>計劃
               </p>
+              <p>
+                至今已成功邀請超過<strong>150位</strong>義工加入
+              </p>
+              <div
+                className="timeline-content__image"
+                style={{
+                  backgroundImage: `url(${timeline2018})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat"
+                }}
+              ></div>
             </div>
           </div>
           <header className="timeline-header">
@@ -34,9 +49,18 @@ export default props => {
             <div className="timeline-content">
               <p className="heading">走塑社區</p>
               <p>
-                承接走塑食堂計劃，推出「走塑社區」項目：
-                游說對象擴展至街市等社區店舖，沙田近半店舖加入。
+                承接走塑食堂計劃，推出<strong>「走塑社區」</strong>
               </p>
+              <p>游說對象擴展至街市等社區店舖，沙田有近半店舖加入</p>
+              <div
+                className="timeline-content__image"
+                style={{
+                  backgroundImage: `url(${timeline2019})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat"
+                }}
+              ></div>
             </div>
           </div>
           <header className="timeline-header">
@@ -45,11 +69,9 @@ export default props => {
           <div className="timeline-item">
             <div className="timeline-marker"></div>
             <div className="timeline-content">
-              <p className="heading">4.22 - 地球日</p>
-              <p>50間店鋪加入</p>
-              <p>
-                地球日前，走塑義工與捐助者一起在地球日走塑嘉年華階段性慶祝活動
-              </p>
+              <p className="heading">4.22 - 世界地球日</p>
+              <p>目標：多50間店鋪加入</p>
+              <p>地球日走塑嘉年華</p>
               <div
                 className="timeline-content__image"
                 style={{
@@ -66,8 +88,18 @@ export default props => {
             <div className="timeline-marker"></div>
             <div className="timeline-content">
               <p className="heading">6.8 - 海洋日</p>
-              <p>150間店鋪加入</p>
-              <p>一起愛海洋，走塑分享會</p>
+              <p>目標：多150間店鋪加入</p>
+              <p>愛海洋．走塑分享會</p>
+              <div
+                className="timeline-content__image"
+                style={{
+                  backgroundImage:
+                    "url(http://fakeimg.pl/300x300?font=lobster)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat"
+                }}
+              ></div>
             </div>
           </div>
         </div>
