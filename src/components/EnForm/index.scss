@@ -1,11 +1,23 @@
 .react-en-form {
+  position: relative;
   margin: 20px auto;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow);
-  max-height: 95vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  height: 100%;
+  width: 95%;
+  max-height: 75vh;
+  &.scroll-container {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    > div {
+      scroll-snap-align: end;
+      .step-2 {
+        scroll-margin: 40px;
+      }
+    }
+  }
+
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;

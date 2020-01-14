@@ -88,8 +88,12 @@ export default props => {
             <div className="timeline-marker"></div>
             <div className="timeline-content">
               <p className="heading">6.8 - 海洋日</p>
-              <p>目標：多150間店鋪加入</p>
-              <p>愛海洋．走塑分享會</p>
+              <p>地球日前夕舉辦義工日，遊說50間店鋪加入走塑行列</p>
+              <p>
+                愛海洋．走塑分享會：
+                <br />
+                地球日當天舉辦工作坊及活動，嘉許義工成為「走塑大使」，並即場示範遊說店鋪走塑工作。
+              </p>
               <div
                 className="timeline-content__image"
                 style={{
