@@ -9,20 +9,34 @@ import pic2 from "./../../assets/images/GP0STTWGQ_Medium_res.jpg";
 export default props => {
   return (
     <section className="section section-intro">
+      <div className="section-header has-text-centered">
+        <p className="title">全城走塑貼紙</p>
+        <p>
+          經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
+        </p>
+      </div>
       <div className="row">
-        <div className="intro col-xs-12 col-md-6">
-          <p className="title">全城走塑貼紙及店鋪</p>
-          <p>
-            經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
-          </p>
-        </div>
-        <div className="col-xs-12 col-md-6">
+        <div className="col-xs-12">
           <div className="sticker-wrapper">
             <div className="sticker">
-              <img src={grade1} alt="一級走塑店鋪" />
+              <div className="sticker__name">一級走塑店鋪</div>
+              <figure className="image">
+                <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
+              </figure>
+              <ul>
+                <li>－ 完全淘汰即棄塑膠 或</li>
+                <li>－ 提供走塑優惠</li>
+              </ul>
             </div>
             <div className="sticker">
-              <img src={grade2} alt="二級走塑店鋪" />
+              <div className="sticker__name">二級走塑店鋪</div>
+              <figure className="image">
+                <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
+              </figure>
+              <ul>
+                <li>－ 不主動提供即棄塑膠 或</li>
+                <li>－ 歡迎自備餐具 / 器皿購物</li>
+              </ul>
             </div>
           </div>
         </div>

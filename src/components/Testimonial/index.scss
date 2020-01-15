@@ -2,28 +2,27 @@
 .swiper-container {
   max-width: 1200px;
   position: relative;
-  margin: 20px auto 40px;
+  margin: 20px auto;
+  padding: 20px 0 40px;
   &:before {
-    z-index: 1;
+    z-index: 2;
     content: "";
     position: absolute;
     left: 0;
-    top: 0;
+    top: -20px;
     width: 20px;
     height: 100%;
-    background-color: #fff;
-    mask-image: linear-gradient(to right, #fff 0%, transparent 100%);
+    background-image: linear-gradient(to right, #fff, transparent);
   }
   &:after {
-    z-index: 1;
+    z-index: 2;
     content: "";
     position: absolute;
-    right: 0;
+    right: -20px;
     top: 0;
     width: 20px;
     height: 100%;
-    background-color: #fff;
-    mask-image: linear-gradient(to left, #fff 0%, transparent 100%);
+    background-image: linear-gradient(to left, #fff, transparent);
   }
 }
 .swiper-button-prev,
@@ -45,6 +44,7 @@
 }
 
 .swiper-pagination {
+  margin-top: 20px;
   opacity: 0.8;
 }
 .swiper-pagination-bullet-active {
@@ -55,9 +55,9 @@
 /* end of swiper */
 
 .card {
-  margin: 8px auto;
-  border-radius: 20px;
-  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 8px;
+  max-width: 320px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -66,12 +66,13 @@
 .card-image {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  img {
+    border-radius: 8px 8px 0px 0px;
+  }
 }
 
 .testimonial-text {
   color: var(--sub-text);
-  padding: 16px;
   text-align: center;
   display: flex;
   flex-flow: column;

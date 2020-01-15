@@ -3,14 +3,25 @@
 }
 
 .react-en-form {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  border-radius: 4px;
+  position: relative;
+  margin: 20px auto;
+  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow);
-  max-height: 100vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  height: 100%;
+  width: 95%;
+  max-height: 75vh;
+  &.scroll-container {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    > div {
+      scroll-snap-align: end;
+      .step-2 {
+        scroll-margin: 40px;
+      }
+    }
+  }
+
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -33,8 +44,7 @@
     background-color: var(--gp-green);
     color: #fff;
     box-shadow: var(--shadow);
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 20px auto 40px;
   }
 
   .step {
@@ -75,8 +85,8 @@
   .step-explain {
     border-left: 1px solid var(--border);
     color: var(--form-label);
-    padding-left: 15px;
-    margin-bottom: 30px;
+    padding-left: 12px;
+    margin-bottom: 20px;
   }
 
   .step-2 {
@@ -138,7 +148,7 @@
       display: flex;
       flex-direction: row;
       margin: 1rem 0;
-      color: var(--form-text);
+      color: var(--form-label);
       font-size: 12px;
       input {
         margin-top: 3px;

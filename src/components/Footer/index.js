@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 //
-import Logo from "../../assets/images/GP-logo-2019-TC-white-[web]-02.png";
+import Logo from "../../assets/images/GP-logo-2019-TC-white-[web]-01.png";
 
 const footerLinks = [
   {
@@ -33,7 +33,7 @@ export default props => {
         <div className="content">
           <div className="columns-wrapper">
             <div className="row">
-              <div className="col-xs col-md-6">
+              <div className="col-xs-12 col-md-6">
                 <div className="footer__logo">
                   <img src={Logo} alt="logo" />
                 </div>
@@ -58,9 +58,9 @@ export default props => {
                   </ul>
                 </div>
               </div>
-              <div className="col-xs col-md-6">
+              <div className="col-xs-12 col-md-6">
                 <div className="footer_remarks">
-                  <p className="subtitle">注意事項</p>
+                  <p>注意事項</p>
                   <p>
                     此捐款頁面採用了 SSL
                     保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。
