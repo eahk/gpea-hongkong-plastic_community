@@ -1,0 +1,132 @@
+.community-info {
+  min-width: 400px;
+  max-width: 500px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+
+  .loading {
+    color: #eee;
+  }
+
+  .index-panel {
+    .list-part {
+      li {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        cursor: pointer;
+
+        &:last-child {
+          border: none;
+        }
+
+        .restaurant-name {
+          flex: 1;
+        }
+
+        .num-restaurants {
+          margin-right: 1rem;
+        }
+        .num-upvotes {
+        }
+      }
+    }
+  }
+
+  .district-panel {
+    .hero-part {
+      min-height: 150px;
+      position: relative;
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+        url("https://picsum.photos/500/294");
+      background-position: center top;
+
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      color: white;
+      padding: 10px;
+
+      .go-back {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+      }
+      .district-name {
+        flex: 1;
+        font-size: 2rem;
+      }
+      .num-restaurants {
+        margin-right: 1rem;
+      }
+      .num-upvotes {
+        // z-index: 1;
+      }
+    }
+
+    .restaurant-list {
+      max-height: 100vh;
+      overflow-y: auto;
+
+      .restaurant-row {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+
+        &:first-child {
+          margin-top: 0.5rem;
+          padding-top: 0.5rem;
+        }
+
+        .r-name {
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .r-address {
+          font-size: 12px;
+          color: #444;
+
+          a {
+            margin-left: 0.5rem;
+          }
+        }
+
+        .left-part {
+          flex: 1;
+        }
+
+        .right-part {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .badge {
+          border: 3px solid #324d17;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .v {
+            font-size: 12px;
+          }
+
+          &.for-here {
+            border-color: #def241;
+          }
+          &.for-togo {
+            border-color: #d7d99c;
+          }
+        }
+      }
+    }
+  }
+}

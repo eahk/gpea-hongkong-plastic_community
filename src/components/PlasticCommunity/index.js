@@ -1,163 +1,194 @@
-import React from "react";
-//
+import React, { useState, useEffect, useRef } from "react";
+import { districts as districtsDef, districtNameToId } from "./DistrictsDef";
+import CommunityMap from "./CommunityMap/CommunityMap.js";
+import CommunityInfo from "./CommunityInfo/CommunityInfo.js";
 import "./index.scss";
-//
-import { ReactComponent as CommunityMap } from "../../assets/images/plasticCommunity.svg";
-//
-const districts = [
-  { id: "Islands", name: "港島" },
-  { id: "Kwai Tsing", name: "葵青" },
-  { id: "North", name: "北" },
-  { id: "Sai Kung", name: "西貢" },
-  { id: "Sha Tin", name: "沙田" },
-  { id: "Tai Po", name: "大埔" },
-  { id: "Tsuen Wan", name: "荃灣" },
-  { id: "Tuen Mun", name: "屯門" },
-  { id: "Yuen Long", name: "元朗" },
-  { id: "Kowloon City", name: "九龍城" },
-  { id: "Kwun Tong", name: "觀塘" },
-  { id: "Sham Shui Po", name: "深水埗" },
-  { id: "Wong Tai Sin", name: "黃大仙" },
-  { id: "Yau Tsim Mong", name: "油尖旺" },
-  { id: "Central & Western", name: "中西" },
-  { id: "Eastern", name: "東" },
-  { id: "Southern", name: "南" },
-  { id: "Wan Chai", name: "灣仔" }
-];
-//
+
+// Region 區域
+// District 地區
+const API_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec"; // dev
+
+/** Conver the server restaurant table into object**/
+const parseRestaurantResponse = (districts, values) => {
+  // resolve the attr index
+  // the first row is title
+  let firstRow = values.shift();
+  let nameIdx = firstRow.indexOf("餐廳名稱"),
+    foodTypeIdx = firstRow.indexOf("餐廳類別"),
+    regionNameIdx = firstRow.indexOf("區域"),
+    districtNameIdx = firstRow.indexOf("地區"),
+    addressIdx = firstRow.indexOf("餐廳地址"),
+    herePlasticLevelIdx = firstRow.indexOf("堂食走塑等級"),
+    togoPlasticLevelIdx = firstRow.indexOf("外賣走塑等級");
+
+  // parse the table into objects
+  let data = [];
+  values.forEach((row, i) => {
+    let name = row[nameIdx],
+      foodType = row[foodTypeIdx],
+      regionName = row[regionNameIdx],
+      districtName = row[districtNameIdx],
+      address = row[addressIdx],
+      herePlasticLevel = row[herePlasticLevelIdx],
+      togoPlasticLevel = row[togoPlasticLevelIdx];
+
+    // convert plastic level to int
+    herePlasticLevel =
+      ["一", "二", "三"].indexOf(herePlasticLevel.charAt(0)) + 1;
+    togoPlasticLevel =
+      ["一", "二", "三"].indexOf(togoPlasticLevel.charAt(0)) + 1;
+
+    // add the district id
+    let districtId = districtNameToId(districtName);
+
+    // push into values array
+    data.push({
+      name,
+      foodType,
+      regionName,
+      districtName,
+      districtId,
+      address,
+      herePlasticLevel,
+      togoPlasticLevel
+    });
+  });
+
+  // calculate by aggregate values
+  data.forEach(row => {
+    if (row.districtId) {
+      districts[row.districtId].numRestaurants += 1;
+    }
+  });
+
+  // collect restaurants
+  data.forEach(row => {
+    if (row.districtId) {
+      districts[row.districtId].restaurants.push(row);
+    }
+  });
+  // sort restaurant based on the name
+  Object.keys(districts).forEach(k => {
+    districts[k].restaurants.sort((lhs, rhs) => {
+      let a = String(rhs.name).charCodeAt(0),
+        b = String(lhs.name).charCodeAt(0);
+
+      if (a > b) {
+        return -1;
+      }
+      if (b > a) {
+        return 1;
+      }
+      return 0;
+    });
+  });
+
+  return [districts, data];
+};
+
+const pasrseVotesResponse = (districts, votes) => {
+  votes.forEach(row => {
+    districts[row.districtId].numVotes = row.numVotes;
+  });
+
+  return [districts, votes];
+};
+
+/** POST the vote data to the server side **/
+const voteDistrict = ({ districtId, numVotes }) => {
+  // fetch th eip first
+  let ip = null;
+
+  if (!districtId) {
+    throw new Error("districtId is required");
+  }
+
+  return fetch("https://api.ipify.org?format=json")
+    .then(response => response.json())
+    .then(response => {
+      if (response.ip) {
+        ip = response.ip;
+      }
+
+      return fetch(API_ENDPOINT + "?action=votes", {
+        method: "POST",
+        body: JSON.stringify({
+          districtId: districtId,
+          ip: ip,
+          numVotes: numVotes || 1
+        })
+      }).then(response => response.json());
+    })
+    .catch(e => {
+      // if the ip API was blocked
+      console.log("fetch api failed", e);
+
+      return fetch(API_ENDPOINT + "?action=votes", {
+        method: "POST",
+        body: JSON.stringify({
+          districtId: districtId,
+          ip: "unknown",
+          numVotes: numVotes || 1
+        })
+      }).then(response => response.json());
+    });
+};
+
 export default props => {
+  const [chosenDistrictId, setChosenDistrictId] = useState(null);
+
+  // fetch restaurants from server side
+  const [restaurants, setRestaurants] = useState(null);
+  const [districts, setDistricts] = useState(districtsDef);
+  useEffect(() => {
+    fetch(API_ENDPOINT + "?action=restaurants", {})
+      .then(response => response.json())
+      .then(response => {
+        if (response.status == "OK") {
+          let [newDistricts, values] = parseRestaurantResponse(
+            districts,
+            response.values
+          );
+          setRestaurants(values);
+          setDistricts(Object.assign({}, newDistricts));
+        }
+      });
+  }, []);
+  // fetch votes from server side
+  useEffect(() => {
+    fetch(API_ENDPOINT + "?action=votes", {})
+      .then(response => response.json())
+      .then(response => {
+        console.log("resposne for votes", response);
+        if (response.status == "OK") {
+          let [newDistricts, votes] = pasrseVotesResponse(
+            districts,
+            response.votes
+          );
+          // setRestaurants(values)
+          setDistricts(Object.assign({}, newDistricts));
+        }
+      });
+  }, []);
+
   return (
-    <section className="section is-light">
-      <CommunityMap id="community-map" />
+    <section className="section is-light plastic-community">
+      <CommunityInfo
+        chosenDistrictId={chosenDistrictId}
+        districts={districts}
+        restaurants={restaurants}
+        voteDistrict={voteDistrict}
+        onChooseDistrictId={districtId => {
+          setChosenDistrictId(districtId);
+        }}
+      />
+      <CommunityMap
+        chosenDistrictId={chosenDistrictId}
+        onChooseDistrictId={districtId => {
+          setChosenDistrictId(districtId);
+        }}
+      />
     </section>
   );
 };
-//
-/*
-export default props => {
-  return (
-    <div className='container'>
-      <section className='section'>
-        <h2 className='title'>Plastic Community Section</h2>
-        <article className='media'>
-          <figure className='media-left'>
-            <p className='image is-64x64'>
-              <img
-                alt='.'
-                src='https://bulma.io/images/placeholders/128x128.png'
-              />
-            </p>
-          </figure>
-          <div className='media-content'>
-            <div className='content'>
-              <p>
-                <strong>Barbara Middleton</strong>
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                porta eros lacus, nec ultricies elit blandit non. Suspendisse
-                pellentesque mauris sit amet dolor blandit rutrum. Nunc in
-                tempus turpis.
-                <br />
-                <small>
-                  <a href='/#'>Like</a> · <a href='/#'>Reply</a> · 3 hrs
-                </small>
-              </p>
-            </div>
-
-            <article className='media'>
-              <figure className='media-left'>
-                <p className='image is-48x48'>
-                  <img
-                    alt='.'
-                    src='https://bulma.io/images/placeholders/96x96.png'
-                  />
-                </p>
-              </figure>
-              <div className='media-content'>
-                <div className='content'>
-                  <p>
-                    <strong>Sean Brown</strong>
-                    <br />
-                    Donec sollicitudin urna eget eros malesuada sagittis.
-                    Pellentesque habitant morbi tristique senectus et netus et
-                    malesuada fames ac turpis egestas. Aliquam blandit nisl a
-                    nulla sagittis, a lobortis leo feugiat.
-                    <br />
-                    <small>
-                      <a href='/#'>Like</a> · <a href='/#'>Reply</a> · 2 hrs
-                    </small>
-                  </p>
-                </div>
-
-                <article className='media'>
-                  Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi
-                  eu lorem cursus ullamcorper sit amet nec massa.
-                </article>
-
-                <article className='media'>
-                  Morbi vitae diam et purus tincidunt porttitor vel vitae augue.
-                  Praesent malesuada metus sed pharetra euismod. Cras tellus
-                  odio, tincidunt iaculis diam non, porta aliquet tortor.
-                </article>
-              </div>
-            </article>
-
-            <article className='media'>
-              <figure className='media-left'>
-                <p className='image is-48x48'>
-                  <img
-                    alt='.'
-                    src='https://bulma.io/images/placeholders/96x96.png'
-                  />
-                </p>
-              </figure>
-              <div className='media-content'>
-                <div className='content'>
-                  <p>
-                    <strong>Kayli Eunice </strong>
-                    <br />
-                    Sed convallis scelerisque mauris, non pulvinar nunc mattis
-                    vel. Maecenas varius felis sit amet magna vestibulum euismod
-                    malesuada cursus libero. Vestibulum ante ipsum primis in
-                    faucibus orci luctus et ultrices posuere cubilia Curae;
-                    Phasellus lacinia non nisl id feugiat.
-                    <br />
-                    <small>
-                      <a href='/#'>Like</a> · <a href='/#'>Reply</a> · 2 hrs
-                    </small>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </article>
-        <article className='media'>
-          <figure className='media-left'>
-            <p className='image is-64x64'>
-              <img
-                alt='.'
-                src='https://bulma.io/images/placeholders/128x128.png'
-              />
-            </p>
-          </figure>
-          <div className='media-content'>
-            <div className='field'>
-              <p className='control'>
-                <textarea
-                  className='textarea'
-                  placeholder='Add a comment...'
-                ></textarea>
-              </p>
-            </div>
-            <div className='field'>
-              <p className='control'>
-                <button className='button'>Post comment</button>
-              </p>
-            </div>
-          </div>
-        </article>
-      </section>
-    </div>
-  )
-}
-*/
