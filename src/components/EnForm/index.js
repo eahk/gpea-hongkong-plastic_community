@@ -63,6 +63,14 @@ export default props => {
     initialValues["recurring_payment_sf"] === "Y" ? "recurring" : "onetime"
   );
 
+  // receive global events to change amounts
+  useEffect(() => {
+    window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
+      setDonateAmount(amount);
+      setDonateIntrvl("recurring");
+    });
+  }, []);
+
   // read in form errors from DOM
   if (!hasRendered) {
     for (let el of document.querySelectorAll(".en__error")) {

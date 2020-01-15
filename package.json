@@ -1,8 +1,8 @@
 {
   "name": "react-app-try",
-  "homepage": "https://www.arpuli.com/gp/react-app-try/build/",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.arpuli.com/gp/react-app-try/build/",
   "homepage": "https://api.greenpeace.org.hk/2019/test/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -13,6 +13,7 @@
     "classnames": "^2.2.6",
     "flexboxgrid": "^6.3.1",
     "formik": "^2.1.1",
+    "mitt": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-id-swiper": "^2.4.0",

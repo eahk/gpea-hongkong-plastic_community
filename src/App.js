@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import mitt from "mitt";
 // vendor
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
@@ -16,6 +17,9 @@ import PlasticCommunity from "./components/PlasticCommunity";
 // import BillBoard from "./components/BillBoard";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
+
+window.ee = new mitt();
+
 //
 const stickyContainer = {
   position: "relative",
