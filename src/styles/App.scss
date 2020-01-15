@@ -9,7 +9,7 @@
   --gp-dark-blue: #292f47;
   --border: #ccc;
   --text: rgba(0, 0, 0, 0.75);
-  --sub-text: rgba(0, 0, 0, 0.45);
+  --sub-text: rgba(0, 0, 0, 0.55);
   --form-text: #333;
   --form-label: #999;
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -35,6 +35,7 @@
 }
 //section
 .section {
+  width: 100%;
   padding: 40px 0px 20px;
 }
 
@@ -87,7 +88,7 @@
 }
 
 .title {
-  color: var(--text);
+  color: var(--gp-dark-blue);
   font-weight: bold;
 }
 .subtitel {

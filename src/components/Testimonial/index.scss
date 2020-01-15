@@ -33,6 +33,10 @@
 
 /* end of swiper */
 
+.section-testimonial {
+  width: 100%;
+}
+
 .card {
   margin: 0 auto;
   border-radius: 8px;
@@ -52,7 +56,6 @@
 
 .testimonial-text {
   color: var(--sub-text);
-  text-align: center;
   display: flex;
   flex-flow: column;
   align-items: center;

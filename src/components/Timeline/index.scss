@@ -1,3 +1,6 @@
+.section-timeline {
+  width: 100%;
+}
 .timeline-wrapper {
   .timeline {
     max-width: 680px;
@@ -5,6 +8,10 @@
   }
   .timeline-content {
     width: 100%;
+    .heading {
+      color: var(--gp-green);
+      margin-bottom: 16px;
+    }
     p {
       margin-bottom: 8px;
       letter-spacing: 2px;
@@ -12,6 +19,8 @@
   }
 
   .timeline-content__image {
+    padding: 16px;
+    margin-top: 20px;
     min-height: 250px;
   }
 }

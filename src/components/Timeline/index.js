@@ -8,7 +8,7 @@ import timeline2019 from "../../assets/images/bcacd4ad-gp0stt8of_medium_res.jpg"
 //
 export default props => {
   return (
-    <section className="section">
+    <section className="section section-timeline">
       <div className="section-header has-text-centered">
         <p className="title">走塑行事曆</p>
         <p>

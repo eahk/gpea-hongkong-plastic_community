@@ -174,8 +174,11 @@ export default props => {
 
   return (
     <section className="section is-light plastic-community">
-      <div className="row">
-        <div className="col-xs-12">
+      <div className="section-header has-text-centered">
+        <p className="title">18區走塑藍圖</p>
+      </div>
+      <figure className="community-figure">
+        <div className="community-info">
           <CommunityInfo
             chosenDistrictId={chosenDistrictId}
             districts={districts}
@@ -186,7 +189,7 @@ export default props => {
             }}
           />
         </div>
-        <div className="col-xs-12">
+        <div className="community-map">
           <CommunityMap
             chosenDistrictId={chosenDistrictId}
             onChooseDistrictId={districtId => {
@@ -194,7 +197,7 @@ export default props => {
             }}
           />
         </div>
-      </div>
+      </figure>
     </section>
   );
 };
