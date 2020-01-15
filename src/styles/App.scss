@@ -32,8 +32,6 @@
   font-family: "Noto Sans TC", "PingFang HK", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
-  transition: opacity 250ms ease, transform 250ms ease,
-    -webkit-transform 250ms ease;
 }
 //section
 .section {
@@ -105,6 +103,7 @@
   flex-direction: column;
 }
 
+/*
 .main-container {
   padding-left: 16px;
   padding-right: 16px;
@@ -113,6 +112,7 @@
     padding-right: 20px;
   }
 }
+*/
 
 .main-button {
   display: flex;

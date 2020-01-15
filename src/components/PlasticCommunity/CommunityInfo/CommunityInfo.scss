@@ -1,13 +1,9 @@
 .community-info {
-  min-width: 400px;
-  max-width: 500px;
   border: 1px solid #eee;
   border-radius: 4px;
-
   .loading {
     color: #eee;
   }
-
   .index-panel {
     .list-part {
       li {
@@ -68,9 +64,9 @@
     }
 
     .restaurant-list {
-      max-height: 100vh;
+      max-height: 40vh;
       overflow-y: auto;
-
+      -webkit-overflow-scrolling: touch;
       .restaurant-row {
         display: flex;
         flex-direction: row;

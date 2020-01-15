@@ -11,8 +11,8 @@ import EnForm from "./components/EnForm";
 import Intro from "./components/Intro";
 import Hero from "./components/Hero";
 import Timeline from "./components/Timeline";
-import DollarHandle from "./components/DollarHandle";
 import PlasticCommunity from "./components/PlasticCommunity";
+// import DollarHandle from "./components/DollarHandle";
 // import BillBoard from "./components/BillBoard";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
@@ -57,9 +57,9 @@ function App() {
               <Hero />
               <Intro />
               <Timeline />
-              <DollarHandle />
               <PlasticCommunity />
               {/*
+              <DollarHandle />
               <BillBoard />
               */}
               <Testimonial />

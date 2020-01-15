@@ -174,21 +174,27 @@ export default props => {
 
   return (
     <section className="section is-light plastic-community">
-      <CommunityInfo
-        chosenDistrictId={chosenDistrictId}
-        districts={districts}
-        restaurants={restaurants}
-        voteDistrict={voteDistrict}
-        onChooseDistrictId={districtId => {
-          setChosenDistrictId(districtId);
-        }}
-      />
-      <CommunityMap
-        chosenDistrictId={chosenDistrictId}
-        onChooseDistrictId={districtId => {
-          setChosenDistrictId(districtId);
-        }}
-      />
+      <div className="row">
+        <div className="col-xs-12">
+          <CommunityInfo
+            chosenDistrictId={chosenDistrictId}
+            districts={districts}
+            restaurants={restaurants}
+            voteDistrict={voteDistrict}
+            onChooseDistrictId={districtId => {
+              setChosenDistrictId(districtId);
+            }}
+          />
+        </div>
+        <div className="col-xs-12">
+          <CommunityMap
+            chosenDistrictId={chosenDistrictId}
+            onChooseDistrictId={districtId => {
+              setChosenDistrictId(districtId);
+            }}
+          />
+        </div>
+      </div>
     </section>
   );
 };
