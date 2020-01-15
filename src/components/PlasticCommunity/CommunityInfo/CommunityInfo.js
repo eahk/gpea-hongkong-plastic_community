@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./CommunityInfo.scss";
+import { useVote } from "../hooks";
 
 const IndexPanel = props => {
   return (
@@ -18,13 +19,13 @@ const IndexPanel = props => {
                 <div className="restaurant-name">{props.districts[k].name}</div>
                 {props.districts[k].numRestaurants > 0 && (
                   <div className="num-restaurants">
-                    <i className="fas fa-utensils"></i>{" "}
+                    <i className="fas fa-utensils"></i>
                     {props.districts[k].numRestaurants}
                   </div>
                 )}
                 {props.districts[k].numVotes > 0 && (
                   <div className="num-upvotes">
-                    <i className="far fa-kiss-wink-heart"></i>{" "}
+                    <i className="far fa-kiss-wink-heart"></i>
                     {props.districts[k].numVotes.toLocaleString()}
                   </div>
                 )}
@@ -40,17 +41,24 @@ const IndexPanel = props => {
 const DistrictPanel = props => {
   let theDistrict = props.districts[props.chosenDistrictId];
 
-  const [isSendingVote, setIsSendingVote] = useState(false);
-  const [isSent, setIsSent] = useState(false);
+  const [hasVoted, doVote] = useVote();
+  const [voteStatus, setVoteStatue] = useState(
+    hasVoted ? "HAS_VOTED_BEFORE" : "NEW"
+  );
+
   const handleVote = () => {
-    setIsSendingVote(true);
-    props
-      .voteDistrict({ districtId: props.chosenDistrictId })
-      .then(response => {
+    setVoteStatue("IS_SENDING");
+
+    doVote(props.chosenDistrictId, {
+      onSucc: response => {
         console.log("handleVote return", response);
-        setIsSendingVote(false);
-        setIsSent(true);
-      });
+        setVoteStatue("VOTE_SUCC");
+      },
+      onError: error => {
+        console.log("handleVote error", error);
+        setVoteStatue("VOTE_FAILED");
+      }
+    });
   };
 
   return (
@@ -74,24 +82,32 @@ const DistrictPanel = props => {
           )}
           {theDistrict.numVotes > 0 && (
             <div className="num-upvotes">
-              <i className="far fa-kiss-wink-heart"></i>{" "}
+              <i className="far fa-kiss-wink-heart"></i>
               {theDistrict.numVotes.toLocaleString()}
             </div>
           )}
         </div>,
         <div className="upvote-part" key="upvote-part">
-          {!isSendingVote && !isSent && (
+          {voteStatus === "NEW" && (
             <div className="do-vote" onClick={handleVote}>
-              Vote for {theDistrict.name}!!
+              投票給{theDistrict.name}！！
+              <i className="far fa-kiss-wink-heart"></i>
+              <i className="far fa-kiss-wink-heart"></i>
+              <i className="far fa-kiss-wink-heart"></i>
             </div>
           )}
-          {!isSendingVote && isSent && <div>Vote Successfull ~ </div>}
-          {isSendingVote && (
-            <div className="loading">
-              {" "}
-              <i className="fas fa-spinner fa-spin"></i>{" "}
+          {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與~</div>}
+          {voteStatus === "IS_SENDING" && (
+            <div>
+              <i className="fas fa-spinner fa-spin"></i>
             </div>
-          )}{" "}
+          )}
+          {voteStatus === "VOTE_SUCC" && <div>加油完成，感謝你的支持~</div>}
+          {voteStatus === "VOTE_FAILED" && (
+            <div className="is-danger">
+              啊我們伺服器出了一些問題，請稍後再試一次
+            </div>
+          )}
         </div>,
         <div className="restaurant-list" key="restaurant-list">
           <ul>
@@ -107,6 +123,7 @@ const DistrictPanel = props => {
                       <a
                         href={`https://www.google.com.tw/maps/place/${r.address}`}
                         target="_blank"
+                        rel="noopener noreferrer"
                         alt={r.name}
                       >
                         <i className="fas fa-map-marked-alt"></i>

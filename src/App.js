@@ -26,20 +26,22 @@ const sticky = {
   top: "20px"
 };
 function App() {
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 576);
-  const handleWindowResize = () => {
-    if (isMobile && window.innerWidth > 576) {
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-    }
-  };
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
   useEffect(() => {
+    const handleWindowResize = () => {
+      if (isMobile && window.innerWidth > 576) {
+        setIsMobile(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, []);
+  }, [isMobile]);
+
   return (
     <div className="app">
       <Header />

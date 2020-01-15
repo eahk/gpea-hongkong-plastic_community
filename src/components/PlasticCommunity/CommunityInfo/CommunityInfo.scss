@@ -65,6 +65,11 @@
       .num-upvotes {
         // z-index: 1;
       }
+      .upvote-part {
+        .do-vote {
+          cursor: pointer;
+        }
+      }
     }
 
     .restaurant-list {
