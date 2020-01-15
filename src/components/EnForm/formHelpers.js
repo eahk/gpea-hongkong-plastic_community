@@ -47,8 +47,9 @@ export const resolveInitFormValues = () => {
 
   // accept url params: donate_amount=200&payment_sf=s|m
   // transaction_donationAmt
-  values.transaction_donationAmt = getInputValueByFormilKey(
-    "transaction_donationAmt"
+  values.transaction_donationAmt = parseInt(
+    getInputValueByFormilKey("transaction_donationAmt"),
+    10
   );
   if (pageStatus === "FRESH" && params.donate_amount) {
     // read from url if its fresh page
