@@ -9,7 +9,7 @@ import timeline2019 from "../../assets/images/bcacd4ad-gp0stt8of_medium_res.jpg"
 export default props => {
   return (
     <section className="section section-timeline">
-      <div className="section-header has-text-centered">
+      <div className="section-header">
         <p className="title">走塑行事曆</p>
         <p>
           與我們一起在2020年，和學校合辦走塑學堂與社區走塑體驗活動，一起遊說全港1,000間店鋪加入走塑行列！

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import YouTubePlayer from "react-player/lib/players/YouTube";
 import "./index.scss";
 //
 import grade1 from "../../assets/images/GP_PlasticFreeStickers_grade1.png";
@@ -7,9 +8,13 @@ import pic1 from "../../assets/images/GP0STREPE_Medium_res.jpg";
 import pic2 from "./../../assets/images/GP0STTWGQ_Medium_res.jpg";
 //
 export default props => {
+  const [showPlayer, setPlayer] = useState(false);
+  const showPlayerWrapper = () => {
+    setPlayer(true);
+  };
   return (
     <section className="section section-intro">
-      <div className="section-header has-text-centered">
+      <div className="section-header">
         <p className="title">全城走塑貼紙</p>
         <p>
           經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
@@ -17,28 +22,46 @@ export default props => {
       </div>
       <div className="row">
         <div className="col-xs-12">
-          <div className="sticker-wrapper">
-            <div className="sticker">
-              <figure className="image">
-                <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
-              </figure>
-              <div className="sticker__name">一級走塑店鋪</div>
-              <ul>
-                <li>－ 完全淘汰即棄塑膠 或</li>
-                <li>－ 提供走塑優惠</li>
-              </ul>
+          {!showPlayer && (
+            <div className="sticker-wrapper">
+              <div className="sticker">
+                <figure className="image">
+                  <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
+                </figure>
+                <div className="sticker__name">一級走塑店鋪</div>
+                <ul>
+                  <li>完全淘汰即棄塑膠 或</li>
+                  <li>提供走塑優惠</li>
+                </ul>
+                <button className="button" onClick={showPlayerWrapper}>
+                  觀看影片
+                </button>
+              </div>
+              <div className="sticker">
+                <figure className="image">
+                  <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
+                </figure>
+                <div className="sticker__name">二級走塑店鋪</div>
+                <ul>
+                  <li>不主動提供即棄塑膠 或</li>
+                  <li>歡迎自備餐具 / 器皿購物</li>
+                </ul>
+                <button className="button" onClick={showPlayerWrapper}>
+                  觀看影片
+                </button>
+              </div>
             </div>
-            <div className="sticker">
-              <figure className="image">
-                <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
-              </figure>
-              <div className="sticker__name">二級走塑店鋪</div>
-              <ul>
-                <li>－ 不主動提供即棄塑膠 或</li>
-                <li>－ 歡迎自備餐具 / 器皿購物</li>
-              </ul>
+          )}
+          {showPlayer && (
+            <div className="player-wrapper">
+              <YouTubePlayer
+                className="react-player"
+                url="https://www.youtube.com/watch?v=NC9qmrS-Cg4&"
+                width="100%"
+                height="100%"
+              />
             </div>
-          </div>
+          )}
         </div>
       </div>
       <div className="row text-right">

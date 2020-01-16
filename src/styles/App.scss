@@ -24,15 +24,9 @@
   --shadow--outer: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
 // import
-@import "./scss/base";
 @import "./scss/bulma";
-//
-
-.app {
-  font-family: "Noto Sans TC", "PingFang HK", "Helvetica Neue", "Helvetica",
-    "Arial", sans-serif, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-}
+@import "./scss/base";
+@import "./scss/typography";
 //section
 .section {
   width: 100%;
@@ -62,24 +56,6 @@
 
 .row {
   margin: 0;
-}
-
-.col-xs,
-.col-xs-1,
-.col-xs-10,
-.col-xs-11,
-.col-xs-12,
-.col-xs-2,
-.col-xs-3,
-.col-xs-4,
-.col-xs-5,
-.col-xs-6,
-.col-xs-7,
-.col-xs-8,
-.col-xs-9 {
-  @media (max-width: 575.98px) {
-    padding: 0;
-  }
 }
 
 .section-header {

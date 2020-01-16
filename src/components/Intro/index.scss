@@ -37,36 +37,57 @@
   }
 }
 
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .sticker-wrapper {
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
   margin: 20px auto;
   .sticker {
-    padding: 4px;
+    position: relative;
+    padding: 4px 4px 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .sticker__name {
-      font-size: 20px;
-      margin-bottom: 8px;
+    .button {
+      transform: translateY(-1rem);
+      transition: 0.2s ease-in;
+      opacity: 0;
+      position: absolute;
+      bottom: -2rem;
     }
-    ul {
-      color: var(--sub-text);
-      font-size: 14px;
+    &:hover {
+      .button {
+        transform: translateY(0rem);
+        opacity: 1;
+      }
+    }
+    .sticker__name {
+      margin-bottom: 8px;
+      text-align: center;
     }
     figure {
       margin: 16px auto;
     }
+    ul {
+      color: var(--sub-text);
+    }
+
     img {
       width: 90%;
-      max-width: 250px;
+      max-width: 280px;
       margin: 0 auto;
-      transition: all 0.1s ease-in;
-      &:hover {
-        transform: translateY(-4px);
-      }
     }
   }
 }

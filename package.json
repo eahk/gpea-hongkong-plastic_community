@@ -2,7 +2,7 @@
   "name": "react-app-try",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://api.greenpeace.org.hk/2019/test/",
+  "homepage": "https://api.greenpeace.org.hk/2020/react-app-try",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -16,6 +16,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-id-swiper": "^2.4.0",
+    "react-player": "^1.14.2",
     "react-scripts": "3.3.0",
     "sanitize.css": "^11.0.0",
     "swiper": "^5.2.1",
