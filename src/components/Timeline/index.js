@@ -8,7 +8,7 @@ import timeline2019 from "../../assets/images/bcacd4ad-gp0stt8of_medium_res.jpg"
 //
 export default props => {
   return (
-    <section className="section">
+    <section className="section section-timeline">
       <div className="section-header has-text-centered">
         <p className="title">走塑行事曆</p>
         <p>
@@ -70,40 +70,47 @@ export default props => {
             <div className="timeline-marker"></div>
             <div className="timeline-content">
               <p className="heading">4.22 - 世界地球日</p>
-              <p>目標：多50間店鋪加入</p>
-              <p>地球日走塑嘉年華</p>
-              <div
-                className="timeline-content__image"
-                style={{
-                  backgroundImage:
-                    "url(http://fakeimg.pl/300x300?font=lobster)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center center",
-                  backgroundRepeat: "no-repeat"
-                }}
-              ></div>
+              <p>
+                地球日前夕，舉辦義工日，<strong>遊說50間店鋪</strong>{" "}
+                加入走塑行列
+              </p>
+              <p>地球日當天舉辦工作坊及活動，嘉許義工成為「走塑大使」</p>
             </div>
           </div>
           <div className="timeline-item">
             <div className="timeline-marker"></div>
             <div className="timeline-content">
               <p className="heading">6.8 - 海洋日</p>
-              <p>地球日前夕舉辦義工日，遊說50間店鋪加入走塑行列</p>
               <p>
-                愛海洋．走塑分享會：
-                <br />
-                地球日當天舉辦工作坊及活動，嘉許義工成為「走塑大使」，並即場示範遊說店鋪走塑工作。
+                健康海洋＝健康地球 為海洋打打氣，在世界海洋日，
+                <strong>遊說150間店鋪加入走塑行列</strong>
               </p>
-              <div
-                className="timeline-content__image"
-                style={{
-                  backgroundImage:
-                    "url(http://fakeimg.pl/300x300?font=lobster)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center center",
-                  backgroundRepeat: "no-repeat"
-                }}
-              ></div>
+              <p>
+                透過工作坊及活動，教育及鼓勵更多市民關注海洋健康，支持走塑行動
+              </p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <p className="heading">7月 Plastic Free Month</p>
+              <p>
+                響應世界走塑月，達成<strong>遊說100間店鋪</strong>
+                加入走塑行列目標
+              </p>
+              <p>沙田和大埔成為走塑模範社區，向減少各區塑膠垃級繼續進發</p>
+            </div>
+          </div>
+          <div className="timeline-item">
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <p className="heading">12月</p>
+              <p>
+                完成<strong>1,000間店鋪</strong>目標
+              </p>
+              <p>
+                年尾點算「你最想走塑社區」投票結果，計劃來年重點社區，向香港成為走塑城市繼續進發！
+              </p>
             </div>
           </div>
         </div>

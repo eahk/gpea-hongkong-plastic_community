@@ -1,7 +1,5 @@
 #community-map {
-  background-color: #f8f8f8;
-  max-width: 300px;
-
+  border: 1px solid #f8f8f8;
   .st1,
   .st2,
   .st3,
@@ -25,11 +23,14 @@
   .st20,
   .st21 {
     fill: #e3e4e1;
+    cursor: pointer;
+    &:hover {
+      fill: #d8f0d8;
+    }
   }
-
   .chosen {
     path {
-      fill: #d8f0d8;
+      fill: var(--gp-green);
     }
   }
 }

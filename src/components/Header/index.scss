@@ -1,5 +1,4 @@
 .header {
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
   &.header--white {
     background-color: var(--white);
   }
@@ -18,7 +17,7 @@
   flex: 1;
   img {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
   }
 }
 .navbar__button {

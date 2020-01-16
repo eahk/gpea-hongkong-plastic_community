@@ -19,20 +19,20 @@ export default props => {
         <div className="col-xs-12">
           <div className="sticker-wrapper">
             <div className="sticker">
-              <div className="sticker__name">一級走塑店鋪</div>
               <figure className="image">
                 <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
               </figure>
+              <div className="sticker__name">一級走塑店鋪</div>
               <ul>
                 <li>－ 完全淘汰即棄塑膠 或</li>
                 <li>－ 提供走塑優惠</li>
               </ul>
             </div>
             <div className="sticker">
-              <div className="sticker__name">二級走塑店鋪</div>
               <figure className="image">
                 <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
               </figure>
+              <div className="sticker__name">二級走塑店鋪</div>
               <ul>
                 <li>－ 不主動提供即棄塑膠 或</li>
                 <li>－ 歡迎自備餐具 / 器皿購物</li>

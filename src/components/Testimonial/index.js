@@ -44,6 +44,7 @@ const supporterData = [
 ];
 
 const swiperParams = {
+  autoHeight: true,
   slidesPerView: "auto",
   grabCursor: true,
   spaceBetween: 20,
@@ -57,6 +58,10 @@ const swiperParams = {
     prevEl: ".swiper-button-prev"
   },
   breakpoints: {
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
     768: {
       slidesPerView: 3
     },
@@ -71,7 +76,7 @@ const swiperParams = {
   }
 };
 
-function TestimonialCard(props) {
+const TestimonialCard = props => {
   return (
     <div className="card">
       <div className="card-image">
@@ -89,10 +94,10 @@ function TestimonialCard(props) {
       </div>
     </div>
   );
-}
+};
 export default props => {
   return (
-    <section className="section">
+    <section className="section section-testimonial">
       <div className="section-header has-text-centered">
         <p className="title">有很多香港人和您一樣</p>
         <p>

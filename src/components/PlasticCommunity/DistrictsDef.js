@@ -1,7 +1,7 @@
 export const districts = {
   Islands: {
     svgId: "Island",
-    name: "港島",
+    name: "離島",
     numVotes: 0,
     numRestaurants: 0,
     restaurants: []
