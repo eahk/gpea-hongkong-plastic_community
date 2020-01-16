@@ -21,48 +21,46 @@ export default props => {
         </p>
       </div>
       <div className="row">
-        <div className="col-xs-12">
-          {!showPlayer && (
-            <div className="sticker-wrapper">
-              <div className="sticker">
-                <figure className="image">
-                  <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
-                </figure>
-                <div className="sticker__name">一級走塑店鋪</div>
-                <ul>
-                  <li>完全淘汰即棄塑膠 或</li>
-                  <li>提供走塑優惠</li>
-                </ul>
-                <button className="button" onClick={showPlayerWrapper}>
-                  觀看影片
-                </button>
-              </div>
-              <div className="sticker">
-                <figure className="image">
-                  <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
-                </figure>
-                <div className="sticker__name">二級走塑店鋪</div>
-                <ul>
-                  <li>不主動提供即棄塑膠 或</li>
-                  <li>歡迎自備餐具 / 器皿購物</li>
-                </ul>
-                <button className="button" onClick={showPlayerWrapper}>
-                  觀看影片
-                </button>
-              </div>
+        {!showPlayer && (
+          <div className="sticker-wrapper">
+            <div className="sticker">
+              <figure className="image">
+                <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
+              </figure>
+              <div className="sticker__name">一級走塑店鋪</div>
+              <ul>
+                <li>完全淘汰即棄塑膠 或</li>
+                <li>提供走塑優惠</li>
+              </ul>
+              <button className="button" onClick={showPlayerWrapper}>
+                觀看影片
+              </button>
             </div>
-          )}
-          {showPlayer && (
-            <div className="player-wrapper">
-              <YouTubePlayer
-                className="react-player"
-                url="https://www.youtube.com/watch?v=NC9qmrS-Cg4&"
-                width="100%"
-                height="100%"
-              />
+            <div className="sticker">
+              <figure className="image">
+                <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
+              </figure>
+              <div className="sticker__name">二級走塑店鋪</div>
+              <ul>
+                <li>不主動提供即棄塑膠 或</li>
+                <li>歡迎自備餐具 / 器皿購物</li>
+              </ul>
+              <button className="button" onClick={showPlayerWrapper}>
+                觀看影片
+              </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+        {showPlayer && (
+          <div className="player-wrapper">
+            <YouTubePlayer
+              className="react-player"
+              url="https://www.youtube.com/watch?v=NC9qmrS-Cg4&"
+              width="100%"
+              height="100%"
+            />
+          </div>
+        )}
       </div>
       <div className="row text-right">
         <div className="col-xs-12 col-md-6">
