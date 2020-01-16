@@ -71,8 +71,12 @@ function App() {
             </section>
           </div>
           <div className="row">
-            <PlasticCommunity />
-            <Testimonial />
+            <div className="col-xs-12">
+              <PlasticCommunity />
+            </div>
+            <div className="col-xs-12">
+              <Testimonial />
+            </div>
           </div>
         </div>
         <div className="main-button">

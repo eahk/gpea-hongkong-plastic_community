@@ -24,15 +24,9 @@
   --shadow--outer: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
 // import
-@import "./scss/base";
 @import "./scss/bulma";
-//
-
-.app {
-  font-family: "Noto Sans TC", "PingFang HK", "Helvetica Neue", "Helvetica",
-    "Arial", sans-serif, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-}
+@import "./scss/base";
+@import "./scss/typography";
 //section
 .section {
   width: 100%;

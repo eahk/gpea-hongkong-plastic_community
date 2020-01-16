@@ -60,5 +60,9 @@ export default props => {
     return () => {};
   }, [hasBindEvnts, svgRef, props]);
 
-  return <CommunitySVG id="community-map" ref={svgRef} />;
+  return (
+    <div className="community-map">
+      <CommunitySVG id="community-map" ref={svgRef} />
+    </div>
+  );
 };
