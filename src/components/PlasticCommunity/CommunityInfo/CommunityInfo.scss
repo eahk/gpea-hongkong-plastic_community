@@ -1,132 +1,144 @@
-.community-info {
-  min-width: 400px;
-  max-width: 500px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-
-  .loading {
-    color: #eee;
+.list-part {
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-auto-rows: auto;
+    grid-gap: 20px;
   }
-
-  .index-panel {
-    .list-part {
-      li {
-        display: flex;
-        flex-direction: row;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 0.5rem;
-        padding-bottom: 0.5rem;
-        cursor: pointer;
-
-        &:last-child {
-          border: none;
-        }
-
-        .restaurant-name {
-          flex: 1;
-        }
-
-        .num-restaurants {
-          margin-right: 1rem;
-        }
-        .num-upvotes {
+  li {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: var(--shadow);
+    transition: all 0.15s ease-in;
+    &:hover {
+      background-color: #d8f0d8;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow--md);
+    }
+    .district-name {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .num-flex {
+      align-self: stretch;
+      display: flex;
+      justify-content: space-around;
+      .num-restaurants,
+      .num-upvotes {
+        span {
+          font-size: 18px;
         }
       }
     }
   }
+}
 
-  .district-panel {
-    .hero-part {
-      min-height: 150px;
-      position: relative;
+.district-panel {
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  .hero-part {
+    padding: 16px;
+    min-height: 280px;
+    position: relative;
+    /*
       background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
         url("https://picsum.photos/500/294");
-      background-position: center top;
-
+        */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .go-back {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      cursor: pointer;
+    }
+    .district-name {
+      font-weight: bold;
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+    .num-flex {
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      color: white;
-      padding: 10px;
-
-      .go-back {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        cursor: pointer;
-      }
-      .district-name {
-        flex: 1;
+      justify-content: space-around;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+      .num-restaurants,
+      .num-upvotes {
         font-size: 2rem;
       }
-      .num-restaurants {
-        margin-right: 1rem;
-      }
-      .num-upvotes {
-        // z-index: 1;
-      }
     }
+    .do-vote {
+      margin-top: 24px;
+    }
+  }
 
-    .restaurant-list {
-      max-height: 100vh;
-      overflow-y: auto;
-
-      .restaurant-row {
+  .restaurant-list {
+    max-height: 50vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    .restaurant-row {
+      display: flex;
+      flex-direction: row;
+      padding: 8px 16px;
+      border-bottom: 1px solid #eee;
+      .r-name {
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .r-address {
+        font-size: 12px;
+        color: #444;
+        a {
+          margin-left: 0.5rem;
+        }
+      }
+      .left-part {
+        flex: 1;
+      }
+      .right-part {
+        flex: 1;
+        max-width: 120px;
         display: flex;
         flex-direction: row;
-        margin-bottom: 0.5rem;
-        padding: 0.5rem;
-        border-bottom: 1px solid #eee;
+        justify-content: space-around;
+      }
 
-        &:first-child {
-          margin-top: 0.5rem;
-          padding-top: 0.5rem;
-        }
-
-        .r-name {
-          font-size: 16px;
-          font-weight: bold;
-        }
-        .r-address {
+      .badge {
+        border: 3px solid #324d17;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .v {
           font-size: 12px;
-          color: #444;
-
-          a {
-            margin-left: 0.5rem;
-          }
         }
-
-        .left-part {
-          flex: 1;
+        &.for-here {
+          border-color: #def241;
         }
-
-        .right-part {
-          display: flex;
-          flex-direction: row;
-        }
-
-        .badge {
-          border: 3px solid #324d17;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          .v {
-            font-size: 12px;
-          }
-
-          &.for-here {
-            border-color: #def241;
-          }
-          &.for-togo {
-            border-color: #d7d99c;
-          }
+        &.for-togo {
+          border-color: #d7d99c;
         }
       }
     }
+  }
+}
+
+.community-info {
+  margin: 20px auto;
+  .loading {
+    color: #eee;
   }
 }

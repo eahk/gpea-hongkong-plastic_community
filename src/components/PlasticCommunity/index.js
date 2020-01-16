@@ -174,21 +174,30 @@ export default props => {
 
   return (
     <section className="section is-light plastic-community">
-      <CommunityInfo
-        chosenDistrictId={chosenDistrictId}
-        districts={districts}
-        restaurants={restaurants}
-        voteDistrict={voteDistrict}
-        onChooseDistrictId={districtId => {
-          setChosenDistrictId(districtId);
-        }}
-      />
-      <CommunityMap
-        chosenDistrictId={chosenDistrictId}
-        onChooseDistrictId={districtId => {
-          setChosenDistrictId(districtId);
-        }}
-      />
+      <div className="section-header has-text-centered">
+        <p className="title">18區走塑藍圖</p>
+      </div>
+      <figure className="community-figure">
+        <div className="community-info">
+          <CommunityInfo
+            chosenDistrictId={chosenDistrictId}
+            districts={districts}
+            restaurants={restaurants}
+            voteDistrict={voteDistrict}
+            onChooseDistrictId={districtId => {
+              setChosenDistrictId(districtId);
+            }}
+          />
+        </div>
+        <div className="community-map">
+          <CommunityMap
+            chosenDistrictId={chosenDistrictId}
+            onChooseDistrictId={districtId => {
+              setChosenDistrictId(districtId);
+            }}
+          />
+        </div>
+      </figure>
     </section>
   );
 };

@@ -4,22 +4,23 @@
 
 .react-en-form {
   position: relative;
-  margin: 20px auto;
+  margin: 0 auto;
+  padding: 20px 16px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow);
-  height: 100%;
-  width: 95%;
-  max-height: 75vh;
+  max-height: calc(100vh - 56px);
+  background-color: #fff;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    white 10px,
+    white 90%,
+    transparent
+  );
   &.scroll-container {
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    > div {
-      scroll-snap-align: end;
-      .step-2 {
-        scroll-margin: 40px;
-      }
-    }
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .is-flex-horizontal {

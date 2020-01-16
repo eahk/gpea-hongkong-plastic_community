@@ -4,30 +4,34 @@ import "./CommunityInfo.scss";
 const IndexPanel = props => {
   return (
     <div className="index-panel">
-      <h3 className="title">走塑地圖</h3>
       <div className="list-part">
         <ul>
           {Object.keys(props.districts).map(k => {
             return (
               <li
+                className="card-district"
                 key={k}
                 onClick={() => {
                   props.onChooseDistrictId(k);
                 }}
               >
-                <div className="restaurant-name">{props.districts[k].name}</div>
-                {props.districts[k].numRestaurants > 0 && (
-                  <div className="num-restaurants">
-                    <i className="fas fa-utensils"></i>{" "}
-                    {props.districts[k].numRestaurants}
-                  </div>
-                )}
-                {props.districts[k].numVotes > 0 && (
-                  <div className="num-upvotes">
-                    <i className="far fa-kiss-wink-heart"></i>{" "}
-                    {props.districts[k].numVotes.toLocaleString()}
-                  </div>
-                )}
+                <div className="district-name">{props.districts[k].name}區</div>
+                <div className="num-flex">
+                  {props.districts[k].numRestaurants > 0 && (
+                    <div className="num-restaurants">
+                      <i className="fas fa-utensils"></i>{" "}
+                      <span>{props.districts[k].numRestaurants}</span>
+                    </div>
+                  )}
+                  {props.districts[k].numVotes > 0 && (
+                    <div className="num-upvotes">
+                      <i className="far fa-kiss-wink-heart"></i>{" "}
+                      <span>
+                        {props.districts[k].numVotes.toLocaleString()}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </li>
             );
           })}
@@ -63,28 +67,30 @@ const DistrictPanel = props => {
               props.onChooseDistrictId(null);
             }}
           >
-            <i className="fas fa-chevron-left"></i> Back
+            <i className="fas fa-chevron-left"></i>返回
           </div>
-          <div className="district-name">{theDistrict.name}</div>
-
-          {theDistrict.numRestaurants > 0 && (
-            <div className="num-restaurants">
-              <i className="fas fa-utensils"></i> {theDistrict.numRestaurants}
-            </div>
-          )}
-          {theDistrict.numVotes > 0 && (
-            <div className="num-upvotes">
-              <i className="far fa-kiss-wink-heart"></i>{" "}
-              {theDistrict.numVotes.toLocaleString()}
+          <div className="district-name">{theDistrict.name}區</div>
+          <div className="num-flex">
+            {theDistrict.numRestaurants > 0 && (
+              <div className="num-restaurants">
+                <i className="fas fa-utensils"></i> {theDistrict.numRestaurants}
+              </div>
+            )}
+            {theDistrict.numVotes > 0 && (
+              <div className="num-upvotes">
+                <i className="far fa-kiss-wink-heart"></i>{" "}
+                {theDistrict.numVotes.toLocaleString()}
+              </div>
+            )}
+          </div>
+          {!isSendingVote && !isSent && (
+            <div className="button do-vote" onClick={handleVote}>
+              <i className="far fa-kiss-wink-heart"></i>為{theDistrict.name}
+              打氣<i className="far fa-kiss-wink-heart"></i>
             </div>
           )}
         </div>,
         <div className="upvote-part" key="upvote-part">
-          {!isSendingVote && !isSent && (
-            <div className="do-vote" onClick={handleVote}>
-              Vote for {theDistrict.name}!!
-            </div>
-          )}
           {!isSendingVote && isSent && <div>Vote Successfull ~ </div>}
           {isSendingVote && (
             <div className="loading">
@@ -105,7 +111,7 @@ const DistrictPanel = props => {
                     <div className="r-address">
                       {r.address}
                       <a
-                        href={`https://www.google.com.tw/maps/place/${r.address}`}
+                        href={`https://www.google.com.hk/maps/place/${r.address}`}
                         target="_blank"
                         alt={r.name}
                       >

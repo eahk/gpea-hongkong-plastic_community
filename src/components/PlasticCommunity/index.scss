@@ -1,8 +1,22 @@
-.plastic-community {
-  display: flex;
-  flex-direction: row;
-}
-
-#community-map {
-  flex: 1;
+.community-figure {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  .community-info {
+    float: left;
+    width: 90%;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .community-map {
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 300px);
+    height: 100%;
+  }
+  i {
+    margin: 4px;
+  }
 }
