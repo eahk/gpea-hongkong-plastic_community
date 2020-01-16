@@ -3,43 +3,21 @@ import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import {
+  resolveEnPageStatus,
+  resolveInitFormValues,
+  formatCreditCardNumber
+} from "./formHelpers";
 
 import "./index.scss";
 
 import DonateAmountChooser from "./DonateAmountChooser/DonateAmountChooser";
-
-const FORMIK_KEY_TO_EN_KEY = {
-  transaction_donationAmt: "transaction.donationAmt",
-  recurring_payment_sf: "supporter.NOT_TAGGED_31", // "Y" or "N"
-  supporter_firstName: "supporter.firstName",
-  supporter_lastName: "supporter.lastName",
-  supporter_emailAddress: "supporter.emailAddress",
-  supporter_phoneNumber: "supporter.phoneNumber",
-  supporter_dateOfBirth: "supporter.NOT_TAGGED_6",
-  supporter_address1: "supporter.address1",
-  transaction_ccnumber: "transaction.ccnumber",
-  transaction_ccexpire: "transaction.ccexpire",
-  transaction_ccvv: "transaction.ccvv",
-  send_me_email_hk: "supporter.questions.7275",
-  send_me_email_tw: "supporter.questions.7276"
-};
-const RECURRING_PRICES = [200, 400, 600];
-const onetime_PRICES = [500, 1000, 1500];
-const CURRENCY = "HKD";
-
-/*
- * format creadit card number into XXXX XXXX XXXX XXXX format
- *
- * @params v string
- * @return string
- */
-const formatCreditCardNumber = v => {
-  let raw = v
-    .replace(/\s+/g, "")
-    .replace(/[^\d]+/g, "")
-    .slice(0, 16);
-  return (raw.match(/.{1,4}/g) || []).join(" ");
-};
+import {
+  FORMIK_KEY_TO_EN_KEY,
+  RECURRING_PRICES,
+  ONETIME_PRICES,
+  CURRENCY
+} from "./config";
 
 const FormSlogan = () => {
   return (
@@ -51,57 +29,32 @@ const FormSlogan = () => {
   );
 };
 
-let initialValues = {};
+let initialValues,
+  extraInfo = {};
 let errors = [];
 
 export default props => {
   const [hasRendered, setHasRendered] = useState(false);
   useEffect(() => setHasRendered(true), [hasRendered]);
 
-  // resolve which page should goes to
-  let pageNo = 1;
-  if (window.pageJson.giftProcess) {
-    if (window.pageJson.pageNumber === 1) {
-      pageNo = 2; // error page
-    } else {
-      pageNo = 3; // succ page
-    }
-  } else {
-    pageNo = 1; // start page
+  // resolve the initial form values
+  if (!hasRendered) {
+    [initialValues, extraInfo] = resolveInitFormValues();
   }
 
-  // prepare form init values
-  const getInputValueByFormilKey = k => {
-    let found = document.querySelector(`[name="${FORMIK_KEY_TO_EN_KEY[k]}"]`);
-    return found ? found.value : "";
-  };
-  if (!hasRendered) {
-    initialValues = {
-      transaction_donationAmt: getInputValueByFormilKey(
-        "transaction_donationAmt"
-      )
-        ? parseInt(getInputValueByFormilKey("transaction_donationAmt"), 10)
-        : RECURRING_PRICES[1],
-      recurring_payment_sf:
-        getInputValueByFormilKey("recurring_payment_sf") || "Y", // "Y" or "N"
-      supporter_firstName: getInputValueByFormilKey("supporter_firstName"),
-      supporter_lastName: getInputValueByFormilKey("supporter_lastName"),
-      supporter_emailAddress: getInputValueByFormilKey(
-        "supporter_emailAddress"
-      ),
-      supporter_phoneNumber: getInputValueByFormilKey("supporter_phoneNumber"),
-      supporter_dateOfBirth: getInputValueByFormilKey("supporter_dateOfBirth"), // supporter_NOT_TAGGED_6
-      supporter_address1: getInputValueByFormilKey("supporter_address1"),
-      transaction_ccnumber: formatCreditCardNumber(
-        getInputValueByFormilKey("transaction_ccnumber") || "4222222222222220"
-      ),
-      transaction_ccexpire:
-        getInputValueByFormilKey("transaction_ccexpire") || "12/34",
-      transaction_ccvv: getInputValueByFormilKey("transaction_ccvv") || "123",
-      send_me_email_hk: getInputValueByFormilKey("send_me_email_hk") || true, // supporter.questions.7275
-      send_me_email_tw: getInputValueByFormilKey("send_me_email_tw") || true // supporter.questions.7276
-    };
+  // resolve which page should goes to
+  let pageStaus = resolveEnPageStatus();
+  let pageNo;
+  if (pageStaus === "SUCC") {
+    pageNo = 3;
+  } else if (pageStaus === "ERROR") {
+    pageNo = 2;
+  } else if (extraInfo.useUrlAmount && extraInfo.useUrlIntrvl) {
+    pageNo = 2;
+  } else {
+    pageNo = 1;
   }
+
   const [stepNo, setStepNo] = useState(pageNo);
   const [donateAmount, setDonateAmount] = useState(
     initialValues["transaction_donationAmt"]
@@ -109,6 +62,14 @@ export default props => {
   const [donateIntrvl, setDonateIntrvl] = useState(
     initialValues["recurring_payment_sf"] === "Y" ? "recurring" : "onetime"
   );
+
+  // receive global events to change amounts
+  useEffect(() => {
+    window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
+      setDonateAmount(amount);
+      setDonateIntrvl("recurring");
+    });
+  }, []);
 
   // read in form errors from DOM
   if (!hasRendered) {
@@ -144,9 +105,7 @@ export default props => {
         .matches(/\d{3,4}/, "格式錯誤")
         .required("必填欄位")
     }),
-    onSubmit: (values, { setSubmitting }) => {
-      setSubmitting(true);
-
+    onSubmit: values => {
       if (Object.keys(formik.errors).length > 0) {
         throw new Error("There are still errors in formik");
       }
@@ -167,8 +126,6 @@ export default props => {
           } else {
             el.value = formik.values[formikKey];
           }
-
-          // console.log('set', formikKey, 'to', el.value)
         } else {
           throw new Error(
             "Cannnot find the input element with name:" +
@@ -191,7 +148,7 @@ export default props => {
               currency={CURRENCY}
               predefinedAmounts={{
                 recurring: RECURRING_PRICES,
-                onetime: onetime_PRICES
+                onetime: ONETIME_PRICES
               }}
               amount={donateAmount}
               interval={donateIntrvl}

@@ -9,8 +9,7 @@ export default props => {
 
   const removeAllClass = className => {
     Object.keys(districts).forEach(k => {
-      let row = districts[k],
-        el = districts[k].el;
+      let el = districts[k].el;
       if (!el) {
         return;
       }
@@ -59,7 +58,7 @@ export default props => {
     });
 
     return () => {};
-  }, [svgRef.current]);
+  }, [hasBindEvnts, svgRef, props]);
 
   return <CommunitySVG id="community-map" ref={svgRef} />;
 };
