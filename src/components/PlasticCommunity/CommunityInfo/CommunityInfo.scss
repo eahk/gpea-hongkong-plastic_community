@@ -16,7 +16,7 @@
     box-shadow: var(--shadow);
     transition: all 0.15s ease-in;
     &:hover {
-      background-color: #d8f0d8;
+      background-color: var(--green-5);
       transform: translateY(-4px);
       box-shadow: var(--shadow--md);
     }
@@ -41,9 +41,8 @@
 .district-panel {
   background-color: #fff;
   box-shadow: var(--shadow);
-  padding: 16px;
   .hero-part {
-    padding: 16px;
+    padding: 8px;
     min-height: 280px;
     position: relative;
     /*
@@ -78,19 +77,22 @@
         font-size: 2rem;
       }
     }
+  }
+  .upvote-part {
     .do-vote {
-      margin-top: 24px;
+      width: 100%;
+      margin: 8px auto;
     }
   }
-
   .restaurant-list {
+    padding-top: 16px;
     max-height: 50vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     .restaurant-row {
       display: flex;
       flex-direction: row;
-      padding: 8px 16px;
+      padding: 4px 16px;
       border-bottom: 1px solid #eee;
       .r-name {
         font-weight: bold;
@@ -108,7 +110,7 @@
       }
       .right-part {
         flex: 1;
-        max-width: 120px;
+        max-width: 100px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;

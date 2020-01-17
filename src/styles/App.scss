@@ -1,15 +1,18 @@
 // root variables
 :root {
-  --noto-sans: "Noto Sans TC", sans-serif;
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
   --black: #000;
   --white: #fff;
   --gp-green: #66cc00;
-  --gp-darken: darken(#66cc00, 2%);
   --gp-orange: #ff8100;
   --gp-dark-blue: #292f47;
   --border: #ccc;
-  --text: rgba(0, 0, 0, 0.75);
-  --sub-text: rgba(0, 0, 0, 0.55);
+  --title: rgba(0, 0, 0, 0.85);
+  --text: rgba(0, 0, 0, 0.65);
+  --sub-text: rgba(0, 0, 0, 0.45);
   --form-text: #333;
   --form-label: #999;
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -22,6 +25,14 @@
   --shadow--2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow--inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   --shadow--outer: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+:root {
+  --green-1: #f6ffed;
+  --green-3: #b7eb8f;
+  --green-4: #95de64;
+  --green-5: #73d13d;
+  --green-7: #389e0d;
 }
 // import
 @import "./scss/bulma";
@@ -44,6 +55,25 @@
   background: #e6f5f5;
 }
 
+.section-header {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.row {
+  margin: 0;
+}
+
+.title {
+  color: var(--title);
+  color: var(--green-5);
+  font-weight: bold;
+}
+.subtitel {
+  color: var(--sub-text);
+}
+
 // container
 .container {
   padding-left: 20px;
@@ -52,23 +82,6 @@
 .container.is-fluid {
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.row {
-  margin: 0;
-}
-
-.section-header {
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-.title {
-  color: var(--gp-dark-blue);
-  font-weight: bold;
-}
-.subtitel {
-  color: var(--sub-text);
 }
 
 .main {
@@ -91,9 +104,16 @@
 }
 */
 
+.main-right {
+  display: none;
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
 .main-button {
   display: flex;
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: none;
   }
   z-index: 99;
@@ -103,7 +123,7 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  height: 56px;
+  height: 58px;
   padding: 4px;
   background-color: #fff;
   background-image: linear-gradient(to top, #fff, transparent);
@@ -112,8 +132,7 @@
     background-color: var(--gp-orange);
     color: #fff;
     font-size: 18px;
-    letter-spacing: 4px;
-    line-height: 1.5;
+    letter-spacing: 2px;
     text-align: center;
   }
 }

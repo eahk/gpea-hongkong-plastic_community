@@ -6,6 +6,12 @@
     max-width: 680px;
     margin: 40px auto;
   }
+  .timeline-header {
+    .tag {
+      color: var(--gp-green);
+      background: none;
+    }
+  }
   .timeline-content {
     width: 100%;
     .heading {
@@ -19,7 +25,7 @@
   }
 
   .timeline-content__image {
-    padding: 16px;
+    padding: 8px;
     margin-top: 20px;
     min-height: 250px;
   }

@@ -14,53 +14,85 @@ export default props => {
   };
   return (
     <section className="section section-intro">
-      <div className="section-header">
-        <p className="title">全城走塑貼紙</p>
-        <p>
-          經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
-        </p>
+      <div className="row">
+        <div className="col-xs-12 col-md-5 col-lg-4">
+          <p className="title title-main">
+            全城走塑
+            <br />
+            讓香港不一樣
+          </p>
+        </div>
+        <div className="col-xs-12 col-md-7 col-lg-8">
+          <p>
+            綠色和平正展開籌款活動，號召熱心市民捐助支持全城走塑計畫，與我們一起在2020年，與學校合辦走塑學堂、尋找走塑店鋪活動，遊說全港1,000間店鋪加入走塑行列，以及令大埔繼沙田之後，成為下一個走塑模範社區！
+          </p>
+        </div>
+        <div className="col-xs-12">
+          <div className="target-num">
+            <div>
+              <span>2020年</span>
+              <p>繼續走塑學堂、走塑店鋪</p>
+            </div>
+            <div>
+              <span>60位</span>
+              <p>捐款會員加入走塑計畫</p>
+            </div>
+            <div>
+              <span>1,000間</span>
+              <p>商鋪加入推動走塑模範社區</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="row">
-        {!showPlayer && (
-          <div className="sticker-wrapper">
-            <div className="sticker">
-              <figure className="image">
-                <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
-              </figure>
-              <div className="sticker__name">一級走塑店鋪</div>
-              <ul>
-                <li>完全淘汰即棄塑膠 或</li>
-                <li>提供走塑優惠</li>
-              </ul>
-              <button className="button" onClick={showPlayerWrapper}>
-                觀看影片
-              </button>
+        <div className="col-xs-12 col-md-5 col-lg-4">
+          <p className="title">全城走塑貼紙</p>
+          <p>
+            經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
+          </p>
+        </div>
+        <div className="col-xs-12 col-md-7 col-lg-8">
+          {!showPlayer && (
+            <div className="sticker-wrapper">
+              <div className="sticker">
+                <figure className="image">
+                  <img className="is-rounded" src={grade1} alt="一級走塑店鋪" />
+                </figure>
+                <div className="sticker__name">一級走塑店鋪</div>
+                <ul>
+                  <li>完全淘汰即棄塑膠 或</li>
+                  <li>提供走塑優惠</li>
+                </ul>
+                <button className="button" onClick={showPlayerWrapper}>
+                  觀看影片
+                </button>
+              </div>
+              <div className="sticker">
+                <figure className="image">
+                  <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
+                </figure>
+                <div className="sticker__name">二級走塑店鋪</div>
+                <ul>
+                  <li>不主動提供即棄塑膠 或</li>
+                  <li>歡迎自備餐具 / 器皿購物</li>
+                </ul>
+                <button className="button" onClick={showPlayerWrapper}>
+                  觀看影片
+                </button>
+              </div>
             </div>
-            <div className="sticker">
-              <figure className="image">
-                <img className="is-rounded" src={grade2} alt="二級走塑店鋪" />
-              </figure>
-              <div className="sticker__name">二級走塑店鋪</div>
-              <ul>
-                <li>不主動提供即棄塑膠 或</li>
-                <li>歡迎自備餐具 / 器皿購物</li>
-              </ul>
-              <button className="button" onClick={showPlayerWrapper}>
-                觀看影片
-              </button>
+          )}
+          {showPlayer && (
+            <div className="player-wrapper">
+              <YouTubePlayer
+                className="react-player"
+                url="https://www.youtube.com/watch?v=NC9qmrS-Cg4&"
+                width="100%"
+                height="100%"
+              />
             </div>
-          </div>
-        )}
-        {showPlayer && (
-          <div className="player-wrapper">
-            <YouTubePlayer
-              className="react-player"
-              url="https://www.youtube.com/watch?v=NC9qmrS-Cg4&"
-              width="100%"
-              height="100%"
-            />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <div className="row text-right">
         <div className="col-xs-12 col-md-6">

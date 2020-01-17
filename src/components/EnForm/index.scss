@@ -6,7 +6,7 @@
   position: relative;
   margin: 0 auto;
   padding: 20px 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   max-height: calc(100vh - 56px);
   background-color: #fff;
   mask-image: linear-gradient(
@@ -16,11 +16,8 @@
     white 90%,
     transparent
   );
-  &.scroll-container {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;

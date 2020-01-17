@@ -140,7 +140,7 @@ export default props => {
   });
 
   return (
-    <div className="react-en-form scroll-container">
+    <div className="react-en-form">
       {stepNo === 1 && (
         <div>
           <div className="step step-1">

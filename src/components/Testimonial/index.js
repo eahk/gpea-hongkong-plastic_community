@@ -59,11 +59,12 @@ const swiperParams = {
   },
   breakpoints: {
     1200: {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 30
     },
     768: {
-      slidesPerView: 3
+      slidesPerView: 3,
+      spaceBetween: 20
     },
     576: {
       slidesPerView: 2,
@@ -100,9 +101,7 @@ export default props => {
     <section className="section section-testimonial">
       <div className="section-header">
         <p className="title">有很多香港人和您一樣</p>
-        <p>
-          有他們的支持，我們得以完成2018-2019年的目標，令全港600多間店鋪加入走塑行列。有您的支持，我們能成就全港更多走塑社區。
-        </p>
+        <p>有您們的支持，我們才得以完成全城走塑的目標。</p>
       </div>
       <div className="testimonial-wrapper">
         <Swiper {...swiperParams}>

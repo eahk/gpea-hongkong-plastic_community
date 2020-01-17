@@ -7,6 +7,7 @@
 }
 .swiper-button-prev,
 .swiper-button-next {
+  display: none;
   color: var(--gp-green);
   width: 48px;
   height: 48px;

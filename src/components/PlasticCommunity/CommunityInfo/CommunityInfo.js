@@ -93,25 +93,31 @@ const DistrictPanel = props => {
           </div>
         </div>,
         <div className="upvote-part" key="upvote-part">
-          {voteStatus === "NEW" && (
-            <div className="button do-vote" onClick={handleVote}>
-              <i className="far fa-kiss-wink-heart"></i>為{theDistrict.name}
-              區打氣
-              <i className="far fa-kiss-wink-heart"></i>
-            </div>
-          )}
-          {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與~</div>}
-          {voteStatus === "IS_SENDING" && (
-            <div className="loading">
-              <i className="fas fa-spinner fa-spin"></i>
-            </div>
-          )}
-          {voteStatus === "VOTE_SUCC" && <div>加油完成，感謝你的支持~</div>}
-          {voteStatus === "VOTE_FAILED" && (
-            <div className="is-danger">
-              啊我們伺服器出了一些問題，請稍後再試一次
-            </div>
-          )}
+          <div className="button do-vote">
+            {voteStatus === "NEW" && (
+              <div onClick={handleVote}>
+                <i className="far fa-kiss-wink-heart"></i>為{theDistrict.name}
+                區打氣
+                <i className="far fa-kiss-wink-heart"></i>
+              </div>
+            )}
+            {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與~</div>}
+            {voteStatus === "IS_SENDING" && (
+              <div className="loading">
+                <i className="fas fa-spinner fa-spin"></i>
+              </div>
+            )}
+            {voteStatus === "VOTE_SUCC" && (
+              <div className="button do-vote">
+                <div>加油完成，感謝你的支持~</div>
+              </div>
+            )}
+            {voteStatus === "VOTE_FAILED" && (
+              <div className="is-danger">
+                啊我們伺服器出了一些問題，請稍後再試一次
+              </div>
+            )}
+          </div>
         </div>,
         <div className="restaurant-list" key="restaurant-list">
           <ul>

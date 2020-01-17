@@ -22,10 +22,10 @@
   .st19,
   .st20,
   .st21 {
-    fill: #e3e4e1;
+    fill: var(--border);
     cursor: pointer;
     &:hover {
-      fill: #d8f0d8;
+      fill: var(--green-4);
     }
   }
   .chosen {
