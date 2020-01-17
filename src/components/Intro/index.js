@@ -27,20 +27,18 @@ export default props => {
             綠色和平正展開籌款活動，號召熱心市民捐助支持全城走塑計畫，與我們一起在2020年，與學校合辦走塑學堂、尋找走塑店鋪活動，遊說全港1,000間店鋪加入走塑行列，以及令大埔繼沙田之後，成為下一個走塑模範社區！
           </p>
         </div>
-        <div className="col-xs-12">
-          <div className="target-num">
-            <div>
-              <span>2020年</span>
-              <p>繼續走塑學堂、走塑店鋪</p>
-            </div>
-            <div>
-              <span>60位</span>
-              <p>捐款會員加入走塑計畫</p>
-            </div>
-            <div>
-              <span>1,000間</span>
-              <p>商鋪加入推動走塑模範社區</p>
-            </div>
+        <div className="target-num">
+          <div>
+            <span>2020年</span>
+            <p>繼續走塑學堂、走塑店鋪</p>
+          </div>
+          <div>
+            <span>60位</span>
+            <p>捐款會員加入走塑計畫</p>
+          </div>
+          <div>
+            <span>1,000間</span>
+            <p>商鋪加入推動走塑模範社區</p>
           </div>
         </div>
       </div>

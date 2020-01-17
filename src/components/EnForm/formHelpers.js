@@ -111,7 +111,6 @@ export const resolveInitFormValues = () => {
     getInputValueByFormilKey("send_me_email_hk") || true; // supporter.questions.7275
   values.send_me_email_tw =
     getInputValueByFormilKey("send_me_email_tw") || true; // supporter.questions.7276
-
   return [values, extraInfos];
 };
 

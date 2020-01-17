@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import mitt from "mitt";
+import cx from "classnames";
 // vendor
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
@@ -26,37 +27,63 @@ const stickyContainer = {
 };
 const sticky = {
   position: "sticky",
-  top: "20px"
+  top: "8px",
+  width: "100%"
 };
 function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
+  // const [width, setWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
+  const [showFormModal, setShowFormModal] = useState(false);
   useEffect(() => {
     const handleWindowResize = () => {
-      if (isMobile && window.innerWidth > 576) {
+      if (window.innerWidth >= 1200) {
         setIsMobile(false);
-      } else {
+        if (showFormModal) {
+          setShowFormModal(false);
+        }
+      } else if (!isMobile && window.innerWidth < 1200) {
         setIsMobile(true);
       }
     };
-
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, [isMobile]);
+  }, []);
 
   return (
-    <div className="app">
+    <div className={cx("app", { "modal-open": showFormModal })}>
       <Header />
       <main className="main">
         <div className="main-container">
           <div className="row">
             <aside
-              className="main-right aside col-xs-12 col-lg-4 "
+              className={cx(
+                "main-right",
+                "aside",
+                "col-xs-12",
+                "col-lg-4",
+                {
+                  "is-hidden": isMobile
+                },
+                {
+                  showFormModal: showFormModal
+                }
+              )}
               style={stickyContainer}
             >
               <div style={sticky}>
-                <h2 className="title">環保成就全因有您</h2>
+                <div className="form-header">
+                  {showFormModal && (
+                    <i
+                      onClick={() => {
+                        setShowFormModal(false);
+                      }}
+                      className="return-arrow fa fa-arrow-left"
+                    ></i>
+                  )}
+                  <h2 className="title">環保成就全因有您</h2>
+                </div>
                 <EnForm />
               </div>
             </aside>
@@ -64,7 +91,6 @@ function App() {
               <Hero />
               <Intro />
               <Timeline />
-
               {/*
               <DollarHandle />
               <BillBoard />
@@ -80,8 +106,19 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="main-button">
-          <button className="button">支持我們</button>
+        <div
+          className={cx("main-button", {
+            "is-hidden": !isMobile || showFormModal
+          })}
+        >
+          <button
+            className="button"
+            onClick={() => {
+              setShowFormModal(true);
+            }}
+          >
+            支持我們
+          </button>
         </div>
       </main>
       <Footer />

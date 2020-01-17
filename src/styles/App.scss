@@ -28,11 +28,14 @@
 }
 
 :root {
-  --green-1: #f6ffed;
-  --green-3: #b7eb8f;
-  --green-4: #95de64;
-  --green-5: #73d13d;
-  --green-7: #389e0d;
+  --green-bg: #f0f2ff;
+  --green-1: #f7ffe6;
+  --green-2: #f7ffe6;
+  --green-3: #c0f274;
+  --green-4: #a2e649;
+  --green-5: #84d923;
+  --green-6: #66cc00;
+  --green-7: #4da600;
 }
 // import
 @import "./scss/bulma";
@@ -84,6 +87,11 @@
   padding-right: 20px;
 }
 
+.app {
+  &.modal-open {
+    overflow: hidden;
+  }
+}
 .main {
   position: relative;
   width: 100%;
@@ -104,18 +112,41 @@
 }
 */
 
+// Form Modal
 .main-right {
-  display: none;
-  @media (min-width: 1200px) {
-    display: block;
+  .form-header {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    .return-arrow {
+      margin-bottom: 16px;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--sub-text);
+    }
+    h2 {
+      margin: 0;
+      display: inline-block;
+    }
+  }
+  &.showFormModal {
+    margin: 0px;
+    padding: 0px;
+    z-index: 999;
+    display: block !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
   }
 }
-
+// mobile main button
 .main-button {
   display: flex;
-  @media (min-width: 1200px) {
-    display: none;
-  }
   z-index: 99;
   position: fixed;
   bottom: 0;

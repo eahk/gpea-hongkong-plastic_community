@@ -1,13 +1,21 @@
 #en-form {
+  width: 100%;
+  .en__component.en__component--formblock {
+    display: grid;
+    grid-template-columns: repeat(12, 100px);
+  }
+  input {
+    width: 100%;
+  }
   display: none;
 }
 
 .react-en-form {
   position: relative;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 20px 16px;
-  border: 1px solid var(--border);
-  max-height: calc(100vh - 56px);
+  padding: 20px 12px;
+  max-height: calc(100vh - 100px);
   background-color: #fff;
   mask-image: linear-gradient(
     to bottom,

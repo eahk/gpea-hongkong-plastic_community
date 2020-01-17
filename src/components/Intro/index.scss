@@ -1,5 +1,5 @@
 .section-intro {
-  .row {
+  .row:not:first-child {
     padding: 40px 0px 20px;
   }
   @media (min-width: 1200px) {
@@ -12,6 +12,7 @@
 }
 
 .target-num {
+  width: 100%;
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
@@ -23,11 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid var(--border);
     margin-right: 8px;
-    &:last-child {
-      border: none;
-    }
   }
   span {
     font-size: 1.6rem;
@@ -65,6 +62,7 @@
 
 .column__img {
   min-height: 250px;
+  margin-bottom: 20px;
   img {
     box-shadow: var(--shadow--md);
   }

@@ -22,8 +22,9 @@
   .st19,
   .st20,
   .st21 {
-    fill: var(--border);
+    fill: var(--green-bg);
     cursor: pointer;
+    transition: all 0.15s ease-in;
     &:hover {
       fill: var(--green-4);
     }
