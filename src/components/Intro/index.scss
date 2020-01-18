@@ -1,6 +1,7 @@
 .section-intro {
-  .row:not:first-child {
-    padding: 40px 0px 20px;
+  padding: 0 0 20px;
+  .row {
+    padding: 20px 0;
   }
   @media (min-width: 1200px) {
     .col-md-6 {
@@ -12,8 +13,8 @@
 }
 
 .target-num {
+  padding: 40px 0 20px;
   width: 100%;
-  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
   align-items: flex-start;
@@ -27,18 +28,23 @@
     margin-right: 8px;
   }
   span {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-bottom: 8px;
     @media (min-width: 768px) {
-      font-size: 3rem;
+      font-size: 2.4rem;
     }
-
+    @media (min-width: 1200px) {
+      font-size: 2.8rem;
+    }
     font-weight: bold;
   }
   p {
     text-align: center;
     width: 80%;
-    font-size: 14px;
+    font-size: 12px;
+    @media (min-width: 768px) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -61,13 +67,12 @@
 }
 
 .column__img {
-  min-height: 250px;
   margin-bottom: 20px;
   img {
     box-shadow: var(--shadow--md);
   }
 }
-
+// player
 .player-wrapper {
   position: relative;
   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
@@ -78,12 +83,12 @@
   top: 0;
   left: 0;
 }
-
+// sticker
 .sticker-wrapper {
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  margin: 20px auto;
+  padding: 20px 0;
   .sticker {
     position: relative;
     padding: 4px 4px 2rem;

@@ -1,5 +1,6 @@
 .section-timeline {
   width: 100%;
+  padding: 0 16px;
 }
 .timeline-wrapper {
   .timeline {
@@ -25,8 +26,7 @@
   }
 
   .timeline-content__image {
-    padding: 8px;
     margin-top: 20px;
-    min-height: 250px;
+    padding-bottom: 56.25%;
   }
 }

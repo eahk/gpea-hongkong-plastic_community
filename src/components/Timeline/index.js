@@ -93,7 +93,7 @@ export default props => {
           <div className="timeline-item">
             <div className="timeline-marker"></div>
             <div className="timeline-content">
-              <p className="heading">7月 Plastic Free Month</p>
+              <p className="heading">7月 - Plastic Free Month</p>
               <p>
                 響應世界走塑月，達成<strong>遊說100間店鋪</strong>
                 加入走塑行列目標

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mitt from "mitt";
 import cx from "classnames";
+import { motion } from "framer-motion";
 // vendor
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
@@ -18,20 +19,15 @@ import PlasticCommunity from "./components/PlasticCommunity";
 // import BillBoard from "./components/BillBoard";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
-
-window.ee = new mitt();
-
 //
-const stickyContainer = {
-  position: "relative"
+window.ee = new mitt();
+//
+const formModalAnimation = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "100%" }
 };
-const sticky = {
-  position: "sticky",
-  top: "8px",
-  width: "100%"
-};
+//
 function App() {
-  // const [width, setWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
   const [showFormModal, setShowFormModal] = useState(false);
   useEffect(() => {
@@ -49,7 +45,7 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, []);
+  });
 
   return (
     <div className={cx("app", { "modal-open": showFormModal })}>
@@ -70,21 +66,28 @@ function App() {
                   showFormModal: showFormModal
                 }
               )}
-              style={stickyContainer}
             >
-              <div style={sticky}>
-                <div className="form-header">
-                  {showFormModal && (
-                    <i
-                      onClick={() => {
-                        setShowFormModal(false);
-                      }}
-                      className="return-arrow fa fa-arrow-left"
-                    ></i>
-                  )}
-                  <h2 className="title">環保成就全因有您</h2>
-                </div>
-                <EnForm />
+              <div
+                className={cx("enForm-wrapper", {
+                  "is-sticky": !showFormModal
+                })}
+              >
+                <motion.div
+                  animate={showFormModal ? "open" : "closed"}
+                  variants={formModalAnimation}
+                >
+                  <div className="enForm-header">
+                    {showFormModal && (
+                      <i
+                        onClick={() => {
+                          setShowFormModal(false);
+                        }}
+                        className="return-arrow fa fa-arrow-left"
+                      ></i>
+                    )}
+                  </div>
+                  <EnForm />
+                </motion.div>
               </div>
             </aside>
             <section className="main-left col-xs-12 col-lg-8 first-lg">
@@ -114,7 +117,7 @@ function App() {
           <button
             className="button"
             onClick={() => {
-              setShowFormModal(true);
+              setShowFormModal(!showFormModal);
             }}
           >
             支持我們

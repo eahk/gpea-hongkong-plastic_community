@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
+import ExternalLink from "../ExternalLink";
 //
 import Logo from "../../assets/images/GP-logo-2019-TC-white-[web]-01.png";
 
@@ -45,14 +46,9 @@ export default props => {
               <div className="footer__link">
                 <ul className="links">
                   {footerLinks.map((link, key) => (
-                    <a
-                      key={key}
-                      href={link.url}
-                      alt={link.name}
-                      className="link"
-                    >
+                    <ExternalLink key={key} href={link.url} alt={link.name}>
                       {link.name}
-                    </a>
+                    </ExternalLink>
                   ))}
                 </ul>
               </div>
@@ -71,20 +67,22 @@ export default props => {
                 <hr />
                 <p>
                   收集所得的個人資料將絕對保密並只作和閣下聯絡用途！
-                  <a
+                  <ExternalLink
                     href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/"
-                    rel="noopener noreferrer"
-                    target="_blank"
+                    alt="私隱保護政策"
                   >
                     按此了解
-                  </a>
+                  </ExternalLink>
                   我們的私隱保護政策。
                 </p>
                 <p>
                   捐款港幣$100以上可申請扣稅。如需索取捐款收據，請聯絡
-                  <a href="mailto:donor.services.hk@greenpeace.org">
+                  <ExternalLink
+                    href="mailto:donor.services.hk@greenpeace.org"
+                    alt="donor.services.hk@greenpeace.org"
+                  >
                     donor.services.hk@greenpeace.org
-                  </a>
+                  </ExternalLink>
                   或至電 (852) 2854 8318。
                 </p>
               </div>

@@ -178,7 +178,10 @@ export default props => {
                 <div className="main-text">
                   {donateIntrvl === "recurring" ? "每月捐款" : "單次捐款"}{" "}
                   <br />
-                  {CURRENCY} {parseInt(donateAmount, 10).toLocaleString()}
+                  {CURRENCY}{" "}
+                  <span className="donate-amount">
+                    {parseInt(donateAmount, 10).toLocaleString()}
+                  </span>
                 </div>
                 <div
                   className="go-back-step1"
