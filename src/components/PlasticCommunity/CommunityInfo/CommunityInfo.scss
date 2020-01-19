@@ -11,23 +11,25 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    border-radius: 4px;
-    background-color: var(--green-border);
-    box-shadow: var(--shadow);
+    background-color: #fff;
     transition: all 0.15s ease-in;
     &:hover {
-      background-color: var(--green-4);
-      transform: translateY(-4px);
+      background-color: var(--green-6);
       box-shadow: var(--shadow--md);
+      transform: translateY(-4px);
+      color: #fff;
     }
     .district-name {
       font-size: 18px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .num-flex {
-      align-self: stretch;
-      display: flex;
-      justify-content: space-around;
+      display: none;
+      @media (min-width: 768px) {
+        align-self: stretch;
+        display: flex;
+        justify-content: space-around;
+      }
       .num-restaurants,
       .num-upvotes {
         span {
@@ -42,8 +44,7 @@
   background-color: #fff;
   box-shadow: var(--shadow);
   .hero-part {
-    padding: 8px;
-    min-height: 280px;
+    padding: 20px 0;
     position: relative;
     /*
       background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
@@ -81,19 +82,18 @@
   .upvote-part {
     .do-vote {
       width: 100%;
-      margin: 8px auto;
     }
   }
   .restaurant-list {
-    padding-top: 16px;
+    padding: 16px 8px;
     max-height: 50vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     .restaurant-row {
       display: flex;
       flex-direction: row;
-      padding: 4px 16px;
       border-bottom: 1px solid #eee;
+      padding: 4px;
       .r-name {
         font-weight: bold;
         margin-bottom: 4px;

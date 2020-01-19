@@ -9,6 +9,15 @@ import pic2 from "./../../assets/images/GP0STTWGQ_Medium_res.jpg";
 //
 export default props => {
   const [showPlayer, setPlayer] = useState(false);
+  //
+  const shade = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  };
+  const modalAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { delay: 0.15 } }
+  };
   const showPlayerWrapper = () => {
     setPlayer(true);
   };
@@ -44,10 +53,12 @@ export default props => {
       </div>
       <div className="row">
         <div className="col-xs-12 col-md-5 col-lg-4">
-          <p className="title">全城走塑貼紙</p>
-          <p>
-            經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
-          </p>
+          <div className="section-header">
+            <p className="title">全城走塑貼紙</p>
+            <p>
+              經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
+            </p>
+          </div>
         </div>
         <div className="col-xs-12 col-md-7 col-lg-8">
           {!showPlayer && (

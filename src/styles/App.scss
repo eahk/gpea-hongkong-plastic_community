@@ -28,7 +28,6 @@
 }
 
 :root {
-  --green-bg: #f0f2ff;
   --green-1: #f7ffe6;
   --green-2: #f7ffe6;
   --green-3: #c0f274;
@@ -41,50 +40,14 @@
 @import "./scss/bulma";
 @import "./scss/base";
 @import "./scss/typography";
-//section
-.section {
-  width: 100%;
-  padding: 40px 0px 20px;
-}
+@import "./scss/override";
 
-.section-featured {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(238, 238, 238, 0) 0%,
-    #eee 100%
-  );
-}
-.section-updates {
-  background: #e6f5f5;
-}
-
-.section-header {
-  max-width: 480px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.row {
+//
+body {
+  background: #fff;
+  background-repeat: no-repeat;
+  padding: 0;
   margin: 0;
-}
-
-.title {
-  color: var(--title);
-  color: var(--green-5);
-  font-weight: bold;
-}
-.subtitel {
-  color: var(--sub-text);
-}
-
-// container
-.container {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.container.is-fluid {
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .app {
@@ -99,24 +62,20 @@
   margin-right: auto;
   display: flex;
   flex-direction: column;
-}
-
-/*
-.main-container {
-  padding-left: 16px;
-  padding-right: 16px;
-  @media (min-width: 768px) {
-    padding-left: 20px;
-    padding-right: 20px;
+  .main-left,
+  .main-right {
+    position: relative;
+    margin: 0;
+    padding: 0;
   }
-}
-*/
-
-.main-left,
-.main-right {
-  position: relative;
-  margin: 0;
-  padding: 0;
+  .title {
+    color: var(--title);
+    color: var(--green-5);
+    font-weight: bold;
+  }
+  .subtitel {
+    color: var(--sub-text);
+  }
 }
 
 // Form Modal
@@ -165,6 +124,7 @@
   padding: 4px;
   background-color: #fff;
   background-image: linear-gradient(to top, #fff, transparent);
+  will-change: transform;
   .button {
     width: 100%;
     background-color: var(--gp-orange);

@@ -93,7 +93,7 @@ const DistrictPanel = props => {
           </div>
         </div>,
         <div className="upvote-part" key="upvote-part">
-          <div className="button do-vote">
+          <div className="do-vote">
             {voteStatus === "NEW" && (
               <div onClick={handleVote}>
                 <i className="far fa-kiss-wink-heart"></i>為{theDistrict.name}
@@ -108,7 +108,7 @@ const DistrictPanel = props => {
               </div>
             )}
             {voteStatus === "VOTE_SUCC" && (
-              <div className="button do-vote">
+              <div className="do-vote">
                 <div>加油完成，感謝你的支持~</div>
               </div>
             )}

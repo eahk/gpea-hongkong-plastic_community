@@ -1,8 +1,8 @@
-/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { motion } from "framer-motion";
 import {
   resolveEnPageStatus,
   resolveInitFormValues,
@@ -18,7 +18,21 @@ import {
   ONETIME_PRICES,
   CURRENCY
 } from "./config";
-
+//
+const stepTransition = {
+  show: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: "20%" }
+};
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5
+    }
+  }
+};
+//
 const FormSlogan = () => {
   return (
     <div className="en-form-slogan">
@@ -68,6 +82,9 @@ export default props => {
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
+    });
+    window.ee.on("GO_TO_PAGE", pageTargetToGo => {
+      pageNo = pageTargetToGo;
     });
   }, []);
 
@@ -142,7 +159,12 @@ export default props => {
   return (
     <div className="react-en-form">
       {stepNo === 1 && (
-        <div>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={stepTransition}
+        >
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}
@@ -167,11 +189,16 @@ export default props => {
               下一步 NEXT
             </button>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {stepNo === 2 && (
-        <div>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={stepTransition}
+        >
           <div className="step step-2">
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
@@ -451,11 +478,16 @@ export default props => {
               </button>
             </form>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {stepNo === 3 && (
-        <div>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={stepTransition}
+        >
           <div className="donate-succ-slogan">
             <span className="icon">
               <i className="far fa-check-circle"></i>
@@ -463,7 +495,7 @@ export default props => {
             <div className="main-text">
               感謝您，您的捐款已經成功！
               <br />
-              Thank you!  Your donation has been processed.
+              Thank you! Your donation has been processed.
             </div>
           </div>
 
@@ -481,11 +513,11 @@ export default props => {
             </p>
             <p>
               與您並肩，為環境「行動，帶來改變」！ <br />
-              “Positive Change through Action” – Together we can make a
+              "Positive Change through Action" – Together we can make a
               difference!
             </p>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
