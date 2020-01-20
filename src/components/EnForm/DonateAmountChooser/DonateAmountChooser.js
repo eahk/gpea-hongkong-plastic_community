@@ -111,6 +111,8 @@ export default props => {
           onChange={handleOtherAmountChange}
         />
       </div>
+      <br />
+      <small>* 捐款港幣$100以上可申請扣稅</small>
     </div>
   );
 };

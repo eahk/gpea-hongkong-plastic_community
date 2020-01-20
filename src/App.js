@@ -16,7 +16,7 @@ import Hero from "./components/Hero";
 import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
 // import DollarHandle from "./components/DollarHandle";
-// import BillBoard from "./components/BillBoard";
+import BillBoard from "./components/BillBoard";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
 //
@@ -36,7 +36,7 @@ const imageVariants = {
 };
 const formModalAnimation = {
   open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "50%" }
+  closed: { opacity: 0, x: "20%" }
 };
 const showActionAnimation = {
   show: { y: 0 },
@@ -46,19 +46,15 @@ const showActionAnimation = {
 function App() {
   const { scrollYProgress } = useViewportScroll();
   const [lastYPos, setLastYPos] = useState(0);
-  const [showAction, setShowAction] = useState(false);
+  const [showAction, setShowAction] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
   const [showFormModal, setShowFormModal] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const yPos = window.scrollY;
       setLastYPos(yPos);
-      if (window.scrollY > window.innerHeight) {
-        setShowAction(true);
-      } else {
-        const isScrollingUp = yPos < lastYPos;
-        setShowAction(isScrollingUp);
-      }
+      const isScrollingUp = yPos < lastYPos;
+      // setShowAction(isScrollingUp);
     };
     const handleWindowResize = () => {
       if (window.innerWidth >= 1200) {
@@ -117,6 +113,19 @@ function App() {
                         className="return-arrow fa fa-arrow-left"
                       ></i>
                     )}
+                    <div className="welcome-message">
+                      <p>支持我們於2020年遊說全港1,000間店鋪加入走塑行列</p>
+                      <div className="is-flex-horizontal">
+                        <div>
+                          <p>$30,000</p>
+                          <small>目標 $200,000</small>
+                        </div>
+                        <div>
+                          <p>14</p>
+                          <small>人支持</small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <EnForm />
                 </motion.div>
@@ -125,11 +134,9 @@ function App() {
             <section className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
               <Intro />
-
               <Timeline />
               {/*
               <DollarHandle />
-              <BillBoard />
               */}
             </section>
           </div>
@@ -140,11 +147,14 @@ function App() {
             <div className="col-xs-12">
               <Testimonial />
             </div>
+            <div className="col-xs-12">
+              <BillBoard />
+            </div>
           </div>
         </div>
         <motion.div
           className={cx("main-button", {
-            "is-hidden": !isMobile && showFormModal
+            "is-hidden": !isMobile || showFormModal
           })}
           animate={showAction ? "show" : "hidden"}
           variants={showActionAnimation}

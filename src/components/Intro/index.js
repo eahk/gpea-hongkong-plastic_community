@@ -25,11 +25,13 @@ export default props => {
     <section className="section section-intro">
       <div className="row">
         <div className="col-xs-12 col-md-5 col-lg-4">
-          <p className="title title-main">
-            全城走塑
-            <br />
-            讓香港不一樣
-          </p>
+          <div className="section-header has-text-left">
+            <p className="title title-main">
+              全城走塑
+              <br />
+              讓香港不一樣
+            </p>
+          </div>
         </div>
         <div className="col-xs-12 col-md-7 col-lg-8">
           <p>
@@ -53,7 +55,7 @@ export default props => {
       </div>
       <div className="row">
         <div className="col-xs-12 col-md-5 col-lg-4">
-          <div className="section-header">
+          <div className="section-header has-text-left">
             <p className="title">全城走塑貼紙</p>
             <p>
               經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
@@ -121,6 +123,9 @@ export default props => {
           <p className="title">全城走塑項目成果</p>
           <p>
             自2018年起，我們與家庭、學校、義工團隊，甚至藝人唐寧親身到社區，遊說店鋪走塑。在大家努力下，目前全港已有600間店鋪加入，沙田亦成為了第一個走塑模範社區。2020年，我們希望更多店鋪貼起「全城走塑」貼紙，讓消費者輕鬆走塑，環保消費！
+          </p>
+          <p>
+            除了社區工作，我們亦成功推動百佳公布裸裝蔬果試行計劃，成功減少3萬多件塑膠，旗下GREAT超市增設「裸買補充站」，讓顧客能自備容器購買產品！
           </p>
         </div>
         <div className="col-xs-12 col-md-6">

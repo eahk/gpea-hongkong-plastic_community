@@ -2,7 +2,7 @@
   "name": "react-app-try",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://api.greenpeace.org.hk/2020/react-app-try",
+  "homepage": "//api.greenpeace.org.hk/2020/react-app-try/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

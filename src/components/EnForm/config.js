@@ -13,6 +13,6 @@ export const FORMIK_KEY_TO_EN_KEY = {
   send_me_email_hk: "supporter.questions.7275",
   send_me_email_tw: "supporter.questions.7276"
 };
-export const RECURRING_PRICES = [200, 400, 600];
-export const ONETIME_PRICES = [500, 1000, 1500];
+export const RECURRING_PRICES = [200, 300, 500];
+export const ONETIME_PRICES = [500, 800, 1000];
 export const CURRENCY = "HKD";

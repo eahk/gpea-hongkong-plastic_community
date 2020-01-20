@@ -20,8 +20,8 @@ import {
 } from "./config";
 //
 const stepTransition = {
-  show: { opacity: 1, x: 0 },
-  hidden: { opacity: 0, x: "20%" }
+  show: { opacity: 1 },
+  hidden: { opacity: 0 }
 };
 const container = {
   hidden: { opacity: 0 },
@@ -451,7 +451,8 @@ export default props => {
                     type="checkbox"
                     id="send_me_email_hk"
                     {...formik.getFieldProps("send_me_email_hk")}
-                    checked={formik.values["send_me_email_hk"]}
+                    // this locks the checkbox
+                    // checked={formik.values["send_me_email_hk"]}
                   />
                   <label className="checkbox" htmlFor="send_me_email_hk">
                     我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。

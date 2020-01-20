@@ -7,10 +7,14 @@
     z-index: 1;
     position: relative;
     width: 100%;
-    max-width: 580px;
-    margin: 0 auto 40px;
+    margin: 20px auto;
     @media (min-width: 768px) {
       float: left;
+      min-height: 400px;
+      max-width: 580px;
+    }
+    @media (min-width: 1200px) {
+      min-height: 600px;
     }
   }
   .community-map {
