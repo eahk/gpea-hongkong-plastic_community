@@ -1,13 +1,5 @@
 #en-form {
   width: 100%;
-  .en__component.en__component--formblock {
-    display: grid;
-    grid-template-columns: repeat(12, 100px);
-  }
-  input {
-    width: 100%;
-  }
-  display: none;
 }
 
 .step-explain {
@@ -30,8 +22,7 @@
   position: relative;
   max-width: 680px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
-  // max-height: calc(100vh - 140px);
+  padding: 20px 16px 60px;
   background-color: #fff;
   mask-image: linear-gradient(
     to bottom,
@@ -43,7 +34,7 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   @media (min-width: 768px) {
-    max-width: calc(100% - 40px);
+    width: calc(100% - 40px);
   }
   .is-flex-horizontal {
     display: flex;
@@ -56,18 +47,23 @@
   .button {
     color: var(--form-label);
     &.is-active {
-      background: var(--gp-green);
-      border: 1px solid var(--gp-green);
+      border: orange;
+      background: orange;
       color: white;
     }
   }
 
-  .enform__buttion {
+  .enform__button {
     width: 100%;
-    background-color: var(--gp-green);
+    background-color: var(--orange);
     color: #fff;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow--base);
+    border: none;
     margin: 20px auto 40px;
+    &:hover {
+      transition: all 0.15s;
+      box-shadow: var(--shadow--md);
+    }
   }
 
   .step {
@@ -77,7 +73,7 @@
 
   .donate-succ-slogan {
     color: var(--form-text);
-    border-bottom: 1px solid var(--gp-green);
+    border-bottom: 1px solid var(--title);
     text-align: left;
     padding: 20px;
     display: flex;
@@ -87,7 +83,7 @@
       margin-left: 16px;
     }
     .fa-check-circle {
-      color: var(--gp-green);
+      color: var(--title);
       font-size: 2rem;
     }
   }
@@ -101,10 +97,6 @@
   }
   .donate-amount-part {
     z-index: 1;
-    /*
-    position: sticky;
-    top: -16px;
-    */
     padding: 8px 16px;
     font-size: 14px;
     background-color: #fff;
@@ -113,14 +105,12 @@
     align-items: center;
     border-radius: 4px;
     border: 1px solid var(--border);
-    .donate-amount {
-      margin-left: 4px;
-      font-size: 18px;
-      font-weight: bold;
-    }
     .main-text {
       flex: 1;
-      color: var(--gp-green);
+      .donate-amount {
+        font-size: 18px;
+        font-weight: bold;
+      }
     }
     .go-back-step1 {
       padding: 4px;

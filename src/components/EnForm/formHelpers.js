@@ -105,13 +105,13 @@ export const resolveInitFormValues = () => {
   );
   values.supporter_dateOfBirth = getInputValueByFormilKey(
     "supporter_dateOfBirth"
-  ); // supporter_NOT_TAGGED_6
-  values.supporter_address1 = getInputValueByFormilKey("supporter_address1");
+  );
+  // supporter_NOT_TAGGED_6
   values.send_me_email_hk =
     getInputValueByFormilKey("send_me_email_hk") || true;
   // supporter.questions.7275
-  values.send_me_email_tw =
-    getInputValueByFormilKey("send_me_email_tw") || true; // supporter.questions.7276
+  values.send_me_email_tw = "";
+  // supporter.questions.7276
   return [values, extraInfos];
 };
 

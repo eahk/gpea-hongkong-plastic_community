@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
-
+//
 import "./DonateAmountChooser.scss";
 
 /**
@@ -18,6 +18,7 @@ import "./DonateAmountChooser.scss";
 
 // note the values should be in INT format
 export default props => {
+  const [isSuggesting, setIsSuggesting] = useState(false);
   const [isManuallyInputing, setIsManuallyInputing] = useState(false);
 
   // preprocess the amount into string
@@ -38,7 +39,11 @@ export default props => {
     });
     setIsManuallyInputing(true);
   };
-
+  const handleOtherAmountBlur = e => {
+    props.amount < props.suggested_amount
+      ? setIsSuggesting(true)
+      : setIsSuggesting(false);
+  };
   // check current value is in predefined
   let isInPredefined = false;
   isInPredefined =
@@ -78,7 +83,7 @@ export default props => {
           let isActive = amount === props.amount && !isManuallyInputing;
           return (
             <button
-              className={cx("button ", { "is-active": isActive })}
+              className={cx("button", { "is-active": isActive })}
               onClick={() => {
                 handleChooseAmount(amount);
               }}
@@ -95,7 +100,6 @@ export default props => {
           );
         })}
       </div>
-
       <div className="other-amount-part">
         <input
           type="number"
@@ -109,7 +113,13 @@ export default props => {
           }
           placeholder="其他金額 Other Amount"
           onChange={handleOtherAmountChange}
+          onBlur={handleOtherAmountBlur}
         />
+        {isSuggesting && isManuallyInputing && (
+          <div className="help is-danger">
+            最低捐款金額為：HKD {props.suggested_amount}
+          </div>
+        )}
       </div>
       <br />
       <small>* 捐款港幣$100以上可申請扣稅</small>

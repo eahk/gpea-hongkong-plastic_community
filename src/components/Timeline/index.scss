@@ -9,14 +9,15 @@
   }
   .timeline-header {
     .tag {
-      color: var(--gp-green);
+      color: var(--title);
       background: none;
     }
   }
   .timeline-content {
     width: 100%;
     .heading {
-      color: var(--gp-green);
+      display: inline-block;
+      color: var(--title);
       margin-bottom: 16px;
     }
     p {

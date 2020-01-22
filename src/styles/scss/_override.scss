@@ -1,6 +1,9 @@
 .section {
   width: 100%;
   padding: 40px 0px 20px;
+  @media (min-width: 1200px) {
+    padding: 60px 0px 30px;
+  }
 }
 
 .section-featured {
@@ -18,6 +21,18 @@
   max-width: 480px;
   margin: 0 auto 20px;
   text-align: center;
+  h1 {
+    font-weight: bold;
+    font-size: 2.8rem;
+    color: var(--title);
+  }
+  @media (min-width: 1200px) {
+    max-width: 680px;
+    margin: 0 auto 40px;
+    h1 {
+      font-size: 3rem;
+    }
+  }
 }
 
 .row {

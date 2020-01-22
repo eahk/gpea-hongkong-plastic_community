@@ -16,23 +16,28 @@ import {
   FORMIK_KEY_TO_EN_KEY,
   RECURRING_PRICES,
   ONETIME_PRICES,
-  CURRENCY
+  CURRENCY,
+  SUGGESTED_AMOUNT
 } from "./config";
 //
 const stepTransition = {
-  show: { opacity: 1 },
-  hidden: { opacity: 0 }
-};
-const container = {
-  hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.5
+      type: "spring",
+      duration: 0.2
+    }
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      duration: 0.2
     }
   }
 };
 //
+
 const FormSlogan = () => {
   return (
     <div className="en-form-slogan">
@@ -68,7 +73,6 @@ export default props => {
   } else {
     pageNo = 1;
   }
-
   const [stepNo, setStepNo] = useState(pageNo);
   const [donateAmount, setDonateAmount] = useState(
     initialValues["transaction_donationAmt"]
@@ -76,15 +80,13 @@ export default props => {
   const [donateIntrvl, setDonateIntrvl] = useState(
     initialValues["recurring_payment_sf"] === "Y" ? "recurring" : "onetime"
   );
+  const [disableButton, setDisableButton] = useState(false);
 
   // receive global events to change amounts
   useEffect(() => {
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
-    });
-    window.ee.on("GO_TO_PAGE", pageTargetToGo => {
-      pageNo = pageTargetToGo;
     });
   }, []);
 
@@ -145,7 +147,7 @@ export default props => {
           }
         } else {
           throw new Error(
-            "Cannnot find the input element with name:" +
+            "Cannot find the input element with name:" +
               FORMIK_KEY_TO_EN_KEY[formikKey]
           );
         }
@@ -174,14 +176,19 @@ export default props => {
               }}
               amount={donateAmount}
               interval={donateIntrvl}
+              suggested_amount={SUGGESTED_AMOUNT}
               onChange={({ interval, amount }) => {
+                amount < SUGGESTED_AMOUNT
+                  ? setDisableButton(true)
+                  : setDisableButton(false);
                 setDonateIntrvl(interval);
                 setDonateAmount(amount);
               }}
             />
 
             <button
-              className="button enform__buttion"
+              className={cx("button", "enform__button")}
+              disabled={disableButton}
               onClick={() => {
                 setStepNo(2);
               }}
@@ -205,9 +212,8 @@ export default props => {
                 <div className="main-text">
                   {donateIntrvl === "recurring" ? "每月捐款" : "單次捐款"}{" "}
                   <br />
-                  {CURRENCY}{" "}
                   <span className="donate-amount">
-                    {parseInt(donateAmount, 10).toLocaleString()}
+                    {CURRENCY} {parseInt(donateAmount, 10).toLocaleString()}
                   </span>
                 </div>
                 <div
@@ -451,8 +457,7 @@ export default props => {
                     type="checkbox"
                     id="send_me_email_hk"
                     {...formik.getFieldProps("send_me_email_hk")}
-                    // this locks the checkbox
-                    // checked={formik.values["send_me_email_hk"]}
+                    checked={formik.values["send_me_email_hk"]}
                   />
                   <label className="checkbox" htmlFor="send_me_email_hk">
                     我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。
@@ -471,7 +476,7 @@ export default props => {
 
               <button
                 type="submit"
-                className={cx("button enform__buttion", {
+                className={cx("button enform__button", {
                   "is-loading": formik.isSubmitting
                 })}
               >

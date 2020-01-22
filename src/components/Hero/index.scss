@@ -1,42 +1,75 @@
 .section-hero {
+  min-height: 50vh;
+  padding: 0;
   position: relative;
-  min-height: 320px;
-  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    height: 56.25vh;
+  }
   .hero-background {
-    position: absolute;
-    left: 0;
-    top: 0;
+    display: block;
+    padding-bottom: 56.25vh;
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @media (min-width: 768px) {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
   .hero-title {
+    min-width: 150px;
+    padding: 8px 20px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+    background-color: #fff;
+    color: var(--title);
     display: flex;
-    flex-direction: column;
-    h1 {
-      font-weight: bold;
-      align-self: flex-start;
-      display: inline-block;
+    flex-direction: row;
+    h1,
+    h2 {
       margin: 0;
-      padding: 4px;
-      background-color: rgba(255, 255, 255, 0.95);
     }
-    h1:first-child {
-      font-weight: black;
-      font-size: 2.8rem;
-    }
-    h1:last-child {
-      font-size: 2.4rem;
-    }
-    h1 + h1 {
-      transform: translateX(1rem);
-    }
-  }
-  // Medium devices (tablets, 768px and up)
-  @media (min-width: 768px) {
-    .hero-title {
+    @media (min-width: 768px) {
+      background-color: var(--title);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: absolute;
-      left: 8px;
-      bottom: 8px;
+    }
+    .banner-year {
+      flex: 1;
+      align-self: flex-start;
+      margin-top: 8px;
+      h2 {
+        font-weight: bold;
+        width: 100%;
+        font-size: 2rem;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    .banner-headline {
+      flex: 1.5;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      h1 {
+        display: flex;
+        flex-direction: column;
+        font-size: 3rem;
+      }
+      h1:first-child {
+        font-weight: bold;
+      }
     }
   }
 }

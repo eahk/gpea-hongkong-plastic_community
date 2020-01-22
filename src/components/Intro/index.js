@@ -1,11 +1,44 @@
 import React, { useState } from "react";
+import Swiper from "react-id-swiper";
 import YouTubePlayer from "react-player/lib/players/YouTube";
+//
 import "./index.scss";
 //
+import calendar from "../../assets/images/icons/calendar.png";
+import participant from "../../assets/images/icons/participant.png";
+import store from "../../assets/images/icons/store.png";
 import grade1 from "../../assets/images/GP_PlasticFreeStickers_grade1.png";
 import grade2 from "../../assets/images/GP_PlasticFreeStickers_grade2.png";
-import pic1 from "../../assets/images/GP0STREPE_Medium_res.jpg";
+import pic1 from "../../assets/images/GP0STTJ1J_Medium_res.jpg";
 import pic2 from "./../../assets/images/GP0STTWGQ_Medium_res.jpg";
+//
+const ImageSlider = () => {
+  const imageList = [
+    pic2,
+    "https://storage.googleapis.com/planet4-hongkong-stateless/2019/06/c05bf80a-c05bf80a-dsc03216.jpg",
+    "https://media.greenpeace.org/GPIDoc/GPI/Media/TR1/3/2/f/9/GP0STTWGX.jpg?d63704397645",
+    "https://media.greenpeace.org/GPIDoc/GPI/Media/TR1/d/e/8/b/GP0STT8OT.jpg?d63691597170",
+    "https://storage.googleapis.com/planet4-hongkong-stateless/2019/04/e61296f9-a7304293.jpg"
+  ];
+  const params = {
+    slidesPerView: 1,
+    loop: true,
+    effect: "fade",
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: true
+    }
+  };
+  return (
+    <Swiper className="image-slider" {...params}>
+      {imageList.map((image, key) => (
+        <div className="column__img" key={key}>
+          <img src={image} alt="slider" />
+        </div>
+      ))}
+    </Swiper>
+  );
+};
 //
 export default props => {
   const [showPlayer, setPlayer] = useState(false);
@@ -23,34 +56,54 @@ export default props => {
   };
   return (
     <section className="section section-intro">
-      <div className="row">
-        <div className="col-xs-12 col-md-5 col-lg-4">
-          <div className="section-header has-text-left">
-            <p className="title title-main">
-              全城走塑
+      <div className="middle-md row">
+        <div className="col-xs-12 col-md-6 col-lg-5">
+          <div className="intro-headline">
+            <div className="headline-year">
+              <span>20</span>
+              <span>20</span>
+            </div>
+            <h1>
+              走塑社區
               <br />
-              讓香港不一樣
-            </p>
+              遍地開花
+            </h1>
           </div>
         </div>
-        <div className="col-xs-12 col-md-7 col-lg-8">
-          <p>
-            綠色和平正展開籌款活動，號召熱心市民捐助支持全城走塑計畫，與我們一起在2020年，與學校合辦走塑學堂、尋找走塑店鋪活動，遊說全港1,000間店鋪加入走塑行列，以及令大埔繼沙田之後，成為下一個走塑模範社區！
-          </p>
+        <div className="col-xs-12 col-md-6 col-lg-7">
+          <div className="row">
+            <div className="col-xs-12 col-xl-6">
+              <p>
+                綠色和平現正號召熱心市民，捐助支持全城走塑計畫！讓我們在2020年有足夠資源和學校合辦走塑學堂、延續尋找走塑店鋪活動：
+                達成全港1,000間店鋪貼上走塑貼紙目標、大埔繼沙田成為新一個走塑模範社區，讓消費者能輕鬆走塑，環保消費！
+              </p>
+            </div>
+            <div className="col-xs-12 col-xl-6">
+              <p>
+                第一季目標:
+                <br />
+                我們期望每月招募到60位支持者，以支持義工團隊的工作，達成在大埔區50間店鋪貼上走塑貼紙的目標。
+                綠色和平承諾善用您的一分一毫，達成2020年全城走塑計畫的目標，讓走塑社區遍地開花！
+              </p>
+            </div>
+          </div>
         </div>
         <div className="target-num">
-          <div>
+          <figure>
+            <img className="target-icon" src={calendar} alt="calendar" />
             <span>2020年</span>
             <p>繼續走塑學堂、走塑店鋪</p>
-          </div>
-          <div>
-            <span>60位</span>
-            <p>捐款會員加入走塑計畫</p>
-          </div>
-          <div>
+          </figure>
+          <figure>
+            <img className="target-icon" src={participant} alt="participant" />
+            <span>180位</span>
+            <p>每月60位捐款會員加入走塑計畫</p>
+          </figure>
+          <figure>
+            <img className="target-icon" src={store} alt="store" />
             <span>1,000間</span>
             <p>商鋪加入推動走塑模範社區</p>
-          </div>
+          </figure>
         </div>
       </div>
       <div className="row">
@@ -58,7 +111,11 @@ export default props => {
           <div className="section-header has-text-left">
             <p className="title">全城走塑貼紙</p>
             <p>
-              經我們成功遊說的店鋪，會貼上全城走塑貼紙，方便大家識別一級和二級走塑店鋪！
+              經我們成功遊說的店鋪，會貼上全城走塑貼紙，每個貼上走塑貼紙的店鋪，代表店鋪願意加入走塑的承諾。
+            </p>
+            <p>
+              您的支持，讓我們能順利搜尋活動地點、準備物資、構思遊說策略
+              、組織義工團，跟進和更新走塑店鋪地圖等等。
             </p>
           </div>
         </div>
@@ -114,7 +171,10 @@ export default props => {
         <div className="col-xs-12 col-md-6">
           <p className="title">我們的目標</p>
           <p>
-            我們期望在第一季招募60位的每月支持者，長期支持走塑計畫，我們將善用您的一分一毫，與義工團隊到達大埔區，遊說50間店鋪加入走塑，並與學校、區議員合力擴大走塑社區板圖。您的點滴支持，是支持我們全年長期工作的力量，讓我們合力達成2020年目標，共創走塑社區！
+            我們期望在第一季每月招募到60位支持者支持走塑計畫。我們將善用您的一分一毫，與義工團隊到達大埔區，遊說50間店鋪加入走塑，並與學校、區議員合力擴大走塑社區板圖。
+          </p>
+          <p>
+            您的點滴支持，是支持我們全年長期工作的力量，讓我們合力達成2020年目標，共創走塑社區！
           </p>
         </div>
       </div>
@@ -129,9 +189,7 @@ export default props => {
           </p>
         </div>
         <div className="col-xs-12 col-md-6">
-          <div className="column__img">
-            <img src={pic2} alt="pic2" />
-          </div>
+          <ImageSlider />
         </div>
       </div>
     </section>

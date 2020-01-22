@@ -8,13 +8,25 @@
   --white: #fff;
   --gp-green: #66cc00;
   --gp-orange: #ff8100;
+  --orange: orange;
   --gp-dark-blue: #292f47;
-  --border: #ccc;
-  --title: rgba(0, 0, 0, 0.85);
+  //
+  --title: rgba(80, 210, 255, 0.85);
   --text: rgba(0, 0, 0, 0.65);
   --sub-text: rgba(0, 0, 0, 0.45);
-  --form-text: #333;
-  --form-label: #999;
+  //
+  --form-text: rgba(0, 0, 0, 0.65);
+  --form-label: rgba(0, 0, 0, 0.45);
+  --disable: rgba(0, 0, 0, 0.25);
+  //
+  --success: #52c41a;
+  --warning: #faad14;
+  --error: #f5222d;
+  //
+  --border: #d9d9d9;
+  --border-radius-base: 4px;
+  //
+  --shadow--base: 0 2px 8px rgba(0, 0, 0, 0.15);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow--md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -70,8 +82,6 @@ body {
   }
   .title {
     color: var(--title);
-    color: var(--green-5);
-    font-weight: bold;
   }
   .subtitel {
     color: var(--sub-text);
@@ -80,8 +90,8 @@ body {
 
 .welcome-message {
   margin: 8px auto;
+  max-width: 680px;
   .is-flex-horizontal {
-    padding: 6px 2px 0px;
     border-left: 4px solid var(--border);
     padding-left: 16px;
     display: flex;
@@ -96,12 +106,8 @@ body {
       justify-content: flex-start;
       p {
         font-size: 1.8rem;
-        line-height: 0.5;
+        margin-bottom: 4px;
         font-weight: bold;
-        color: var(--text);
-      }
-      small {
-        color: var(--sub-text);
       }
     }
   }
@@ -109,6 +115,7 @@ body {
 
 // Form Modal
 .main-right {
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
   .enForm-wrapper {
     height: auto;
     width: 100%;
@@ -159,7 +166,7 @@ body {
   will-change: transform;
   .button {
     width: 100%;
-    background-color: var(--gp-orange);
+    background-color: var(--orange);
     color: #fff;
     font-size: 18px;
     letter-spacing: 2px;
