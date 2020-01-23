@@ -5,7 +5,7 @@
 .timeline-wrapper {
   .timeline {
     max-width: 680px;
-    margin: 40px auto;
+    margin: 0 auto;
   }
   .timeline-header {
     .tag {
@@ -27,8 +27,11 @@
   }
 
   .timeline-content__image {
-    border-radius: 20px;
+    border-radius: 12px;
     margin-top: 20px;
     padding-bottom: 56.25%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }

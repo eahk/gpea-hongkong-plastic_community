@@ -119,17 +119,15 @@ function App() {
               */}
             </section>
           </div>
-          <div className="row">
-            <div className="col-xs-12">
-              <PlasticCommunity />
-            </div>
-            <div className="col-xs-12">
-              <Testimonial />
-            </div>
-            <div className="col-xs-12">
-              <BillBoard />
-            </div>
-          </div>
+          <section className="section">
+            <PlasticCommunity />
+          </section>
+          <section className="section">
+            <BillBoard />
+          </section>
+          <section className="section">
+            <Testimonial />
+          </section>
         </div>
         <div
           className={cx("main-button", {

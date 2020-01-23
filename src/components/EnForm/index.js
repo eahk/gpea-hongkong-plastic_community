@@ -142,6 +142,11 @@ export default props => {
             el.value = donateIntrvl === "recurring" ? "Y" : "N";
           } else if (formikKey === "transaction_ccnumber") {
             el.value = formik.values[formikKey].replace(/\s+/g, "");
+          } else if (
+            formikKey === "send_me_email_hk" ||
+            formikKey === "send_me_email_tw"
+          ) {
+            el.checked = formik.values[formikKey];
           } else {
             el.value = formik.values[formikKey];
           }
@@ -152,9 +157,8 @@ export default props => {
           );
         }
       }
-
       // trigger the form submit
-      document.querySelector("form.en__component").submit();
+      // document.querySelector("form.en__component").submit();
     }
   });
 
@@ -462,7 +466,7 @@ export default props => {
                     type="checkbox"
                     id="send_me_email_hk"
                     {...formik.getFieldProps("send_me_email_hk")}
-                    // checked={formik.values["send_me_email_hk"]}
+                    checked={formik.values["send_me_email_hk"]}
                   />
                   <label className="checkbox" htmlFor="send_me_email_hk">
                     我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。

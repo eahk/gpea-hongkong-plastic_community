@@ -35,6 +35,10 @@ const getInputValueByFormilKey = k => {
   let found = document.querySelector(`[name="${FORMIK_KEY_TO_EN_KEY[k]}"]`);
   return found ? found.value : "";
 };
+const getCheckboxValueByFormilKey = k => {
+  let found = document.querySelector(`[name="${FORMIK_KEY_TO_EN_KEY[k]}"]`);
+  return found ? found.checked : "";
+};
 /**
  * Resolve the initial values for formik
  * @return {object}
@@ -107,10 +111,9 @@ export const resolveInitFormValues = () => {
     "supporter_dateOfBirth"
   );
   // supporter_NOT_TAGGED_6
-  values.send_me_email_hk =
-    getInputValueByFormilKey("send_me_email_hk") || true;
+  values.send_me_email_hk = getCheckboxValueByFormilKey("send_me_email_hk");
   // supporter.questions.7275
-  values.send_me_email_tw = "";
+  values.send_me_email_tw = false; // getCheckboxValueByFormilKey("send_me_email_tw");
   // supporter.questions.7276
   return [values, extraInfos];
 };

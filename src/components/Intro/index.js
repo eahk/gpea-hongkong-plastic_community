@@ -73,31 +73,34 @@ export default props => {
         <div className="col-xs-12 col-md-6 col-lg-7">
           <div className="row">
             <div className="col-xs-12 col-xl-6">
+              <p className="subtitle">全城走塑計畫正招募熱心市民捐助支持</p>
               <p>
-                綠色和平現正號召熱心市民，捐助支持全城走塑計畫！讓我們在2020年，有足夠資源和學校合辦走塑學堂、延續尋找走塑店鋪活動：
-                達成全港1,000間店鋪貼上走塑貼紙目標、大埔繼沙田成為新一個走塑模範社區，讓消費者能輕鬆走塑，環保消費！
+                讓我們在2020年，有足夠資源與學校合辦走塑學堂、延續尋找走塑店鋪活動，
+                達成<strong>全港1,000間店鋪</strong>
+                貼上走塑貼紙目標、大埔繼沙田成為新一個走塑模範社區，讓消費者能輕鬆走塑，環保消費！
               </p>
             </div>
             <div className="col-xs-12 col-xl-6">
               <p>
-                <strong>第一季目標：</strong>
-                我們期望每月招募到60位支持者，以支持義工團隊的工作，達成在大埔區50間店鋪貼上走塑貼紙的目標。
+                第一季目標：我們期望每月招募到60位支持者，第一季共
+                <strong>180位支持者</strong>
+                支持義工團隊的工作，達成在大埔區50間店鋪貼上走塑貼紙的目標。
               </p>
             </div>
           </div>
         </div>
-        <div className="target-num">
-          <figure>
-            <img className="target-icon" src={calendar} alt="calendar" />
+        <div className="level target-num">
+          <figure className="level-item">
+            <img className=" target-icon" src={calendar} alt="calendar" />
             <span>2020年</span>
             <p>繼續走塑學堂、走塑店鋪</p>
           </figure>
-          <figure>
-            <img className="target-icon" src={participant} alt="participant" />
+          <figure className="level-item">
+            <img className=" target-icon" src={participant} alt="participant" />
             <span>180位</span>
             <p>每月60位捐款會員加入走塑計畫</p>
           </figure>
-          <figure>
+          <figure className="level-item">
             <img className="target-icon" src={store} alt="store" />
             <span>1,000間</span>
             <p>商鋪加入推動走塑模範社區</p>
@@ -124,13 +127,17 @@ export default props => {
       */}
       <div className="row text-left">
         <div className="col-xs-12 col-md-6">
-          <p className="title">全城走塑項目成果</p>
-          <p>
-            自2018年起，我們與家庭、學校、義工團隊，甚至藝人唐寧親身到社區，遊說店鋪走塑。在大家努力下，目前全港已有600間店鋪加入，沙田亦成為了第一個走塑模範社區。2020年，我們希望更多店鋪貼起「全城走塑」貼紙，讓消費者輕鬆走塑，環保消費！
-          </p>
-          <p>
-            除了社區工作，我們亦成功推動百佳公布裸裝蔬果試行計劃，成功減少3萬多件塑膠，旗下GREAT超市增設「裸買補充站」，讓顧客能自備容器購買產品！
-          </p>
+          <p className="title">全城走塑過往項目成果</p>
+          <div className="content">
+            <ul>
+              <li>與藝人唐寧親身到社區，遊說店鋪走塑</li>
+              <li>為家庭、學校提供走塑店鋪體驗活動</li>
+              <li>全港600間店鋪貼上走塑貼紙，沙田成為第一個走塑模範社區</li>
+              <li>
+                成功推動百佳公布裸裝蔬果試行計劃，旗下GREAT超市增設「裸買補充站」，顧客能自備容器購買產品
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="col-xs-12 col-md-6">
           <ImageSlider />
@@ -141,7 +148,9 @@ export default props => {
           <div className="section-header has-text-left">
             <p className="title">全城走塑貼紙</p>
             <p>
-              經我們成功遊說的店鋪，會貼上全城走塑貼紙，每個貼上走塑貼紙的店鋪，代表店鋪願意加入走塑的承諾。
+              「走塑友善店鋪，貼紙等級話您知」
+              <br />
+              走塑貼紙分為兩個等級，顯示店鋪有提供不同程度的走塑措施
             </p>
             <p>
               得到您的支持，我們才有資源推動更多店鋪加入走塑行列，貼上走塑貼紙！

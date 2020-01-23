@@ -86,6 +86,11 @@
 
 .text-left {
   flex-direction: column-reverse;
+  ul {
+    li {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 @media (min-width: 768px) {
@@ -144,6 +149,9 @@
       }
     }
     .sticker__name {
+      color: var(--title);
+      font-weight: bold;
+      font-size: 18px;
       margin-top: 16px;
       margin-bottom: 8px;
     }
@@ -152,6 +160,7 @@
     }
     ul {
       color: var(--sub-text);
+      font-size: 14px;
     }
     img {
       width: 90%;
