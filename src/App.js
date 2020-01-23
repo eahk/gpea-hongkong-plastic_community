@@ -43,8 +43,8 @@ function App() {
         setIsMobile(false);
       } else if (!isMobile && window.innerWidth < 1200) {
         setIsMobile(true);
+        setShowFormModal(false);
       }
-      setShowFormModal(false);
     };
     //
     window.addEventListener("resize", handleWindowResize);

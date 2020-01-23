@@ -7,10 +7,10 @@
     .headline-year {
       pointer-events: none;
       position: absolute;
-      top: -5rem;
-      right: -5rem;
+      top: -4rem;
+      right: -4rem;
       font-weight: 900;
-      font-size: 15rem;
+      font-size: 12rem;
       color: rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
@@ -18,9 +18,15 @@
     }
     h1 {
       font-size: 4rem;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       font-weight: 900;
       color: rgba(80, 210, 255, 1);
+      @media (min-width: 1200px) {
+        font-size: 5rem;
+      }
+      @media (min-width: 1600px) {
+        font-size: 6rem;
+      }
     }
   }
   .row {
@@ -97,7 +103,6 @@
 }
 
 .column__img {
-  margin-bottom: 40px;
   img {
     border-radius: 20px;
     box-shadow: var(--shadow--md);

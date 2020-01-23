@@ -213,7 +213,10 @@ export default props => {
                   {donateIntrvl === "recurring" ? "每月捐款" : "單次捐款"}{" "}
                   <br />
                   <span className="donate-amount">
-                    {CURRENCY} {parseInt(donateAmount, 10).toLocaleString()}
+                    {CURRENCY}
+                    <span className="amount">
+                      {parseInt(donateAmount, 10).toLocaleString()}
+                    </span>
                   </span>
                 </div>
                 <div
@@ -234,13 +237,15 @@ export default props => {
               </div>
 
               <div className="form-part">
-                <div className="global-error help is-danger">
-                  <ul>
-                    {errors.map((s, idx) => {
-                      return <li key={idx}>{s}</li>;
-                    })}
-                  </ul>
-                </div>
+                {errors.length > 0 && (
+                  <div className="global-error help is-danger">
+                    <ul>
+                      {errors.map((s, idx) => {
+                        return <li key={idx}>{s}</li>;
+                      })}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="is-flex-horizontal">
                   <div className="field">
@@ -457,7 +462,7 @@ export default props => {
                     type="checkbox"
                     id="send_me_email_hk"
                     {...formik.getFieldProps("send_me_email_hk")}
-                    checked={formik.values["send_me_email_hk"]}
+                    // checked={formik.values["send_me_email_hk"]}
                   />
                   <label className="checkbox" htmlFor="send_me_email_hk">
                     我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。
@@ -465,14 +470,15 @@ export default props => {
                   </label>
                 </div>
               </div>
-
-              <div className="global-error help is-danger">
-                <ul>
-                  {errors.map((s, idx) => {
-                    return <li key={idx}>{s}</li>;
-                  })}
-                </ul>
-              </div>
+              {errors.length > 0 && (
+                <div className="global-error help is-danger">
+                  <ul>
+                    {errors.map((s, idx) => {
+                      return <li key={idx}>{s}</li>;
+                    })}
+                  </ul>
+                </div>
+              )}
 
               <button
                 type="submit"
