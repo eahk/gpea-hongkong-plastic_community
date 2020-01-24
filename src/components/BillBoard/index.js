@@ -5,8 +5,7 @@ export default props => {
   return (
     <section className="section">
       <div className="section-header">
-        <p className="title">持續更新</p>
-        <p className="subtitle">走塑社區活動</p>
+        <p className="title">持續更新走塑社區活動</p>
         <p>
           成為綠色和平會員後，我們將定期經電郵或短訊，為您提供活動最新資訊。請您務必保持聯繫！
         </p>

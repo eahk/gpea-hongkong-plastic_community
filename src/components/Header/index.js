@@ -6,10 +6,10 @@ import gpLogo from "../../assets/images/GP-logo-2019-TC-green-[web]-01.png";
 
 export default props => {
   return (
-    <header className="header header--white">
+    <header className="header">
       <div className="header__wrapper navbar-brand">
         <div className="navbar-item navbar__logo">
-          <img src={gpLogo} alt="gp logo" />
+          <img src={gpLogo} alt="greenpeace logo" />
         </div>
         {/*
         <div className="navbar-item navbar__button">

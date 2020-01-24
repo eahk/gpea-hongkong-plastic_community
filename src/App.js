@@ -9,6 +9,7 @@ import "swiper/css/swiper.css";
 // custom
 import "./styles/App.scss";
 //
+import ExternalLink from "./components/ExternalLink";
 import Header from "./components/Header";
 import EnForm from "./components/EnForm";
 import Intro from "./components/Intro";
@@ -93,7 +94,7 @@ function App() {
                       ></i>
                     )}
                     <div className="welcome-message">
-                      <p>與綠色和平一起，於2020年全港1,000間店鋪加入走塑行列</p>
+                      <p>您的捐助，將讓走塑社區在香港遍地開花</p>
                       <div className="is-flex-horizontal">
                         <div>
                           <p>$30,000</p>
@@ -108,26 +109,54 @@ function App() {
                   </div>
                   <EnForm />
                 </motion.div>
+                <div className="enForm-footer">
+                  <div className="footer_remarks">
+                    <p>注意事項</p>
+                    <p>
+                      此捐款頁面採用了 SSL
+                      保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。
+                    </p>
+                    <hr />
+                    <p>
+                      我們會即時進行首次過賬，隨後的每月捐款則會在每月13號過賬，若未能成功過賬，我們會在月底再次嘗試。信用卡到期後，每月捐款仍會自動延續。如有意取消或更改授權，必須於最少10個工作天之前，以書面或電話通知本會。
+                    </p>
+                    <hr />
+                    <p>
+                      收集所得的個人資料將絕對保密並只作和閣下聯絡用途！
+                      <ExternalLink
+                        href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/"
+                        alt="私隱保護政策"
+                      >
+                        按此了解
+                      </ExternalLink>
+                      我們的私隱保護政策。
+                    </p>
+                    <p>
+                      捐款港幣$100以上可申請扣稅。如需索取捐款收據，請聯絡
+                      <ExternalLink
+                        href="mailto:donor.services.hk@greenpeace.org"
+                        alt="donor.services.hk@greenpeace.org"
+                      >
+                        donor.services.hk@greenpeace.org
+                      </ExternalLink>
+                      或至電 (852) 2854 8318。
+                    </p>
+                  </div>
+                </div>
               </div>
             </aside>
-            <section className="main-left col-xs-12 col-lg-8 first-lg">
+            <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
               <Intro />
+              <Testimonial />
               <Timeline />
               {/*
               <DollarHandle />
               */}
-            </section>
+            </div>
           </div>
-          <section className="section">
-            <PlasticCommunity />
-          </section>
-          <section className="section">
-            <BillBoard />
-          </section>
-          <section className="section">
-            <Testimonial />
-          </section>
+          <PlasticCommunity />
+          <BillBoard />
         </div>
         <div
           className={cx("main-button", {
@@ -140,7 +169,7 @@ function App() {
               setShowFormModal(!showFormModal);
             }}
           >
-            支持我們
+            捐助支持
           </button>
         </div>
       </main>

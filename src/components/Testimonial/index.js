@@ -27,16 +27,7 @@ const supporterData = [
       "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/sharon/",
     headline:
       "「環保之事，人人有份，永不落空。希望透過支持綠色和平，讓組織集合眾人的聲音，向政府和企業施壓帶來改變。」",
-    intro: "綠色和平8年會員"
-  },
-  {
-    img: chris,
-    name: "Chris",
-    url:
-      "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/chris/",
-    headline:
-      "「一直有關注綠色和平的塑膠項目，現在更了解到即棄塑膠對環境有百害而無一利，危害動物甚至人類健康。」",
-    intro: "綠色和平5年會員"
+    intro: "自2015年開始捐助綠色和平"
   },
   {
     img: raymond,
@@ -44,7 +35,17 @@ const supporterData = [
     url: "",
     headline:
       "「對抗塑膠污染，自己出力，更與大眾共勉，一起秉承綠色和平的信念，以行動影響身邊的人，使香港不要變臭港，而是永遠的香港。」",
-    intro: "獨木舟環島籌款"
+    intro: "獨木舟環島為綠色和平籌款"
+  },
+
+  {
+    img: chris,
+    name: "Chris",
+    url:
+      "https://change.greenpeace.org.hk/general/annual/2018/peoplepower/chris/",
+    headline:
+      "「一直有關注綠色和平的塑膠項目，現在更了解到即棄塑膠對環境有百害而無一利，危害動物甚至人類健康。」",
+    intro: "自2012年開始捐助綠色和平"
   }
 ];
 
@@ -101,7 +102,7 @@ export default props => {
     <section className="section section-testimonial">
       <div className="section-header">
         <p className="title">有很多香港人和您一樣</p>
-        <p>有您們的支持，我們才得以完成全城走塑的目標。</p>
+        <p>聽聽綠色和平「全城走塑」計劃捐助者的心聲</p>
       </div>
       <div className="testimonial-wrapper">
         <Swiper {...swiperParams}>

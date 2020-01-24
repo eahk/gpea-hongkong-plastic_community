@@ -14,33 +14,6 @@ export default props => {
           backgroundImage: `url(${heroBanner})`
         }}
       ></div>
-      {/*
-      <div className="hero-title title">
-        <div className="banner-year">
-          <h2>
-            <span>2</span>
-            <span>0</span>
-            <span>2</span>
-            <span>0</span>
-            <span>年</span>
-          </h2>
-        </div>
-        <div className="banner-headline">
-          <h1>
-            <span>走</span>
-            <span>塑</span>
-            <span>社</span>
-            <span>區</span>
-          </h1>
-          <h1>
-            <span>遍</span>
-            <span>地</span>
-            <span>開</span>
-            <span>花</span>
-          </h1>
-        </div>
-      </div>
-      */}
     </section>
   );
 };

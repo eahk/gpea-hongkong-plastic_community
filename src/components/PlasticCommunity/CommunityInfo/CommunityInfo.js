@@ -93,15 +93,15 @@ const DistrictPanel = props => {
           </div>
         </div>,
         <div className="upvote-part" key="upvote-part">
-          <div className="do-vote">
+          <span>「走塑友善」餐廳與商鋪</span>
+          <div className="do-vote button ">
             {voteStatus === "NEW" && (
               <div onClick={handleVote}>
-                <i className="far fa-kiss-wink-heart"></i>為{theDistrict.name}
+                為{theDistrict.name}
                 區打氣
-                <i className="far fa-kiss-wink-heart"></i>
               </div>
             )}
-            {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與~</div>}
+            {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與～</div>}
             {voteStatus === "IS_SENDING" && (
               <div className="loading">
                 <i className="fas fa-spinner fa-spin"></i>
@@ -109,12 +109,12 @@ const DistrictPanel = props => {
             )}
             {voteStatus === "VOTE_SUCC" && (
               <div className="do-vote">
-                <div>加油完成，感謝你的支持~</div>
+                <div>感謝你的支持，我們會努力推動更多店鋪加入走塑行列～</div>
               </div>
             )}
             {voteStatus === "VOTE_FAILED" && (
               <div className="is-danger">
-                啊我們伺服器出了一些問題，請稍後再試一次
+                啊我們伺服器出了一些問題，請稍後再試一次～
               </div>
             )}
           </div>
@@ -143,12 +143,12 @@ const DistrictPanel = props => {
                   <div className="right-part">
                     {r.herePlasticLevel > 0 && (
                       <div className="badge for-here" title="堂食走塑等級">
-                        <span className="v">{r.herePlasticLevel}</span>
+                        <span className="v">{r.herePlasticLevel}級</span>
                       </div>
                     )}
                     {r.togoPlasticLevel > 0 && (
                       <div className="badge for-togo" title="外賣走塑等級">
-                        <span className="v">{r.togoPlasticLevel}</span>
+                        <span className="v">{r.togoPlasticLevel}級</span>
                       </div>
                     )}
                   </div>

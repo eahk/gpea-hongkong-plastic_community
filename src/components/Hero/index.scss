@@ -1,75 +1,27 @@
 .section-hero {
-  min-height: 50vh;
+  min-height: 40vh;
   padding: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  @media (min-width: 768px) {
-    height: 56.25vh;
-  }
   .hero-background {
     display: block;
-    padding-bottom: 56.25vh;
+    padding-bottom: 40vh;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    @media (min-width: 768px) {
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-  }
-  .hero-title {
-    min-width: 150px;
-    padding: 8px 20px;
-    top: 0;
+    position: absolute;
     left: 0;
-    height: 100%;
-    z-index: 1;
-    background-color: #fff;
-    color: var(--title);
-    display: flex;
-    flex-direction: row;
-    h1,
-    h2 {
-      margin: 0;
-    }
-    @media (min-width: 768px) {
-      background-color: var(--title);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-    }
-    .banner-year {
-      flex: 1;
-      align-self: flex-start;
-      margin-top: 8px;
-      h2 {
-        font-weight: bold;
-        width: 100%;
-        font-size: 2rem;
-        display: flex;
-        justify-content: space-around;
-      }
-    }
-    .banner-headline {
-      flex: 1.5;
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      h1 {
-        display: flex;
-        flex-direction: column;
-        font-size: 3rem;
-      }
-      h1:first-child {
-        font-weight: bold;
-      }
+    top: 0;
+  }
+}
+@media (min-width: 768px) {
+  .section-hero {
+    min-height: 56.25vh;
+    .hero-background {
+      padding-bottom: 56.25vh;
     }
   }
 }

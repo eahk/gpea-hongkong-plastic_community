@@ -29,7 +29,8 @@ const Explainer = props => {
 export default props => {
   return (
     <section className="section">
-      <div className="section-header has-text-centered">
+      <div className="section-header">
+        <p className="title">走塑行事曆</p>
         <p>您的支持，讓我們持續進下以下工作</p>
       </div>
       <div className="progress-wrapper">

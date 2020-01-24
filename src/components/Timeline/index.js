@@ -11,64 +11,10 @@ export default props => {
     <section className="section section-timeline">
       <div className="section-header">
         <p className="title">走塑行事曆</p>
-        <p>
-          與我們一起在2020年，和學校合辦走塑學堂與社區走塑體驗活動，一起遊說全港1,000間店鋪加入走塑行列！
-        </p>
+        <p>您的捐助讓我們能夠舉辦更多體驗活動，共同邁向全城走塑的目標</p>
       </div>
       <div className="timeline-wrapper">
         <div className="timeline">
-          <header className="timeline-header">
-            <span className="tag is-medium is-primary">2018</span>
-          </header>
-          <div className="timeline-item">
-            <div className="timeline-marker"></div>
-            <div className="timeline-content">
-              <p className="heading">尋找走塑食堂</p>
-              <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <p>
-                    發起<strong>「尋找走塑食堂」</strong>計劃
-                  </p>
-                  <p>
-                    至今已成功邀請超過<strong>150位</strong>義工加入
-                  </p>
-                </div>
-                <div className="col-xs-12 col-md-6">
-                  <div
-                    className="timeline-content__image"
-                    style={{
-                      backgroundImage: `url(${timeline2018})`
-                    }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <header className="timeline-header">
-            <span className="tag is-medium is-primary">2019</span>
-          </header>
-          <div className="timeline-item">
-            <div className="timeline-marker"></div>
-            <div className="timeline-content">
-              <p className="heading">走塑社區</p>
-              <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <p>
-                    承接走塑食堂計劃，推出<strong>「走塑社區」</strong>
-                  </p>
-                  <p>游說對象擴展至街市等社區店舖，沙田有近半店舖加入</p>
-                </div>
-                <div className="col-xs-12 col-md-6">
-                  <div
-                    className="timeline-content__image"
-                    style={{
-                      backgroundImage: `url(${timeline2019})`
-                    }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
           <header className="timeline-header">
             <span className="tag is-medium is-primary">2020</span>
           </header>
@@ -117,6 +63,58 @@ export default props => {
               <p>
                 點算「你最想走塑社區」投票結果，計劃來年重點社區，向香港全城走塑，成為走塑城市繼續進發
               </p>
+            </div>
+          </div>
+          <header className="timeline-header">
+            <span className="tag is-medium is-primary">2019</span>
+          </header>
+          <div className="timeline-item">
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <p className="heading">走塑社區</p>
+              <div className="row">
+                <div className="col-xs-12 col-md-6">
+                  <p>
+                    承接走塑食堂計劃，推出<strong>「走塑社區」</strong>
+                  </p>
+                  <p>游說對象擴展至街市等社區店舖，沙田有近半店舖加入</p>
+                </div>
+                <div className="col-xs-12 col-md-6">
+                  <div
+                    className="timeline-content__image"
+                    style={{
+                      backgroundImage: `url(${timeline2019})`
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <header className="timeline-header">
+            <span className="tag is-medium is-primary">2018</span>
+          </header>
+          <div className="timeline-item">
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <p className="heading">尋找走塑食堂</p>
+              <div className="row">
+                <div className="col-xs-12 col-md-6">
+                  <p>
+                    發起<strong>「尋找走塑食堂」</strong>計劃
+                  </p>
+                  <p>
+                    至今已成功邀請超過<strong>150位</strong>義工加入
+                  </p>
+                </div>
+                <div className="col-xs-12 col-md-6">
+                  <div
+                    className="timeline-content__image"
+                    style={{
+                      backgroundImage: `url(${timeline2018})`
+                    }}
+                  ></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,10 +1,9 @@
 #en-form {
   display: none;
-  width: 100%;
 }
 
 .step-explain {
-  color: var(--form-label);
+  color: var(--text);
   margin-bottom: 20px;
 }
 
@@ -45,9 +44,14 @@
     }
   }
 
+  small {
+    color: var(--sub-text);
+  }
+
   .button {
-    color: var(--form-label);
+    color: var(--sub-text);
     &.is-active {
+      font-weight: bold;
       border: orange;
       background: orange;
       color: white;

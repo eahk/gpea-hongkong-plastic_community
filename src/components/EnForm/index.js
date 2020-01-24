@@ -158,7 +158,7 @@ export default props => {
         }
       }
       // trigger the form submit
-      // document.querySelector("form.en__component").submit();
+      document.querySelector("form.en__component").submit();
     }
   });
 
@@ -233,14 +233,12 @@ export default props => {
                 </div>
               </div>
 
-              <hr />
-
-              <div className="step-explain">
-                <div>捐款詳情</div>
-                <div>Donation Details</div>
-              </div>
-
               <div className="form-part">
+                <hr />
+                <div className="step-explain">
+                  <div>捐款人資料 Donor Details</div>
+                </div>
+
                 {errors.length > 0 && (
                   <div className="global-error help is-danger">
                     <ul>
@@ -253,7 +251,7 @@ export default props => {
 
                 <div className="is-flex-horizontal">
                   <div className="field">
-                    <label className="label">姓氏 Last name</label>
+                    <label className="label">姓氏 Last Name</label>
                     <div className="control">
                       <input
                         id="supporter_lastName"
@@ -264,7 +262,7 @@ export default props => {
                             formik.touched["supporter_lastName"]
                         })}
                         type="text"
-                        placeholder="姓氏 Last name"
+                        placeholder="姓氏 Last Name"
                         {...formik.getFieldProps("supporter_lastName")}
                         value={formik.values["supporter_lastName"]}
                       />
@@ -278,7 +276,7 @@ export default props => {
                   </div>
 
                   <div className="field">
-                    <label className="label">名字 First name</label>
+                    <label className="label">名字 First Name</label>
                     <div className="control">
                       <input
                         name="supporter_firstName"
@@ -288,7 +286,7 @@ export default props => {
                             formik.touched["supporter_firstName"]
                         })}
                         type="text"
-                        placeholder="名字 First name"
+                        placeholder="名字 First Name"
                         {...formik.getFieldProps("supporter_firstName")}
                       />
                     </div>
@@ -302,7 +300,7 @@ export default props => {
                 </div>
 
                 <div className="field">
-                  <label className="label">電郵地址 Email address</label>
+                  <label className="label">電郵地址 Email Address</label>
                   <div className="control">
                     <input
                       name="supporter_emailAddress"
@@ -312,7 +310,7 @@ export default props => {
                           formik.touched["supporter_emailAddress"]
                       })}
                       type="email"
-                      placeholder="電郵地址 Email address"
+                      placeholder="電郵地址 Email Address"
                       {...formik.getFieldProps("supporter_emailAddress")}
                     />
                   </div>
@@ -370,8 +368,12 @@ export default props => {
                     )}
                 </div>
 
+                <div className="step-explain">
+                  <div>信用卡資料 Credit Card Details</div>
+                </div>
+
                 <div className="field credit-field">
-                  <label className="label">信用卡號碼 Card Number</label>
+                  <label className="label">信用卡號碼 Credit Card Number</label>
                   <div className="control">
                     <input
                       name="transaction_ccnumber"
@@ -409,7 +411,7 @@ export default props => {
                             formik.touched["transaction_ccexpire"]
                         })}
                         type="text"
-                        placeholder="mm/yy"
+                        placeholder="MM/YY"
                         {...formik.getFieldProps("transaction_ccexpire")}
                         onChange={e => {
                           let raw = e.target.value
@@ -470,7 +472,8 @@ export default props => {
                   />
                   <label className="checkbox" htmlFor="send_me_email_hk">
                     我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。
-                    <br /> Plase send me important updates from Greenpeace.
+                    <br />
+                    Please send me important updates from Greenpeace.
                   </label>
                 </div>
               </div>
