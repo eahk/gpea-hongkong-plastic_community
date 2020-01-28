@@ -50,6 +50,28 @@
 @import "./scss/typography";
 @import "./scss/override";
 //
+body {
+  width: 100%;
+  height: 100%;
+}
+.loading--overlay {
+  z-index: 999;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+    max-width: 200px;
+  }
+}
 .app {
   &.modal-open {
     overflow: hidden;
@@ -74,65 +96,11 @@
     color: var(--sub-text);
   }
 }
-
-.enForm-header {
-  padding: 20px 20px 0;
-  max-width: 680px;
-  .welcome-message {
-    color: var(--sub-text);
-    margin-top: 20px;
-    .is-flex-horizontal {
-      display: flex;
-      flex-direction: row;
-      p {
-        font-size: 14px;
-      }
-      > div {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        p {
-          font-size: 1.8rem;
-          margin-bottom: 4px;
-          font-weight: bold;
-        }
-      }
-    }
-  }
-}
-
-.enForm-footer {
-  color: var(--sub-text);
-  background-color: rgba(128, 128, 128, 0.1);
-  align-self: flex-end;
-  margin-top: 80px;
-  padding: 40px 20px;
-  max-width: 680px;
-}
-
 // Form Modal
 .main-right {
   z-index: 1;
   background-color: #fff;
   box-shadow: var(--shadow);
-  .enForm-wrapper {
-    height: auto;
-    width: 100%;
-    max-height: 100vh;
-    overflow-y: auto;
-    &.is-sticky {
-      position: sticky;
-      top: 8px;
-    }
-  }
-  .enForm-header {
-    .return-arrow {
-      font-size: 18px;
-      cursor: pointer;
-      color: var(--sub-text);
-    }
-  }
   &.showFormModal {
     margin: 0px;
     padding: 0px;
@@ -148,6 +116,67 @@
     background-color: #fff;
   }
 }
+
+// enform
+.enform-wrapper {
+  height: 100vh;
+  position: relative;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.enform-header {
+  color: var(--sub-text);
+  padding: 20px 20px 4px;
+  .welcome-message {
+    .header-text {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .return-arrow {
+        cursor: pointer;
+        margin-right: 16px;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+    .is-flex-horizontal {
+      display: flex;
+      flex-direction: row;
+      > div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        p {
+          font-size: 1.6rem;
+          margin-bottom: 8px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+.enform-body {
+  position: sticky;
+  top: 0;
+  min-height: 75vh;
+}
+
+.enform-footer {
+  font-size: 14px;
+  background: #fafafa;
+  align-self: flex-end;
+  padding: 40px 20px;
+  max-width: 680px;
+  border: 2px solid var(--orange);
+  border-left: none;
+  border-right: none;
+}
+
 // mobile main button
 .main-button {
   display: flex;
@@ -160,9 +189,24 @@
   align-items: center;
   height: 58px;
   padding: 4px;
+  box-shadow: var(--shadow--base);
   background-color: #fff;
   background-image: linear-gradient(to top, #fff, transparent);
   will-change: transform;
+  .scroll-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    .progress-bar {
+      background-color: blue;
+      height: 3px;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+  }
   .button {
     width: 100%;
     background-color: var(--orange);

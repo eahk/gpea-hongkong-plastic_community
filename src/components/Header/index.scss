@@ -4,15 +4,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 56px;
   box-shadow: var(--shadow);
-  background-color: var(--white);
 }
 
 .header__wrapper {
+  height: 56px;
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: var(--white);
 }
 
 .navbar__logo {

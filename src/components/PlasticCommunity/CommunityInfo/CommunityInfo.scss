@@ -71,11 +71,11 @@
       display: flex;
       justify-content: space-around;
       width: 100%;
-      max-width: 200px;
+      max-width: 280px;
       margin: 0 auto;
       .num-restaurants,
       .num-upvotes {
-        font-size: 2rem;
+        font-size: 16px;
       }
     }
   }
@@ -95,22 +95,37 @@
     }
   }
   .restaurant-list {
-    padding: 16px 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 20px;
     max-height: 50vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    position: relative;
     .restaurant-row {
       display: flex;
       flex-direction: row;
+      align-items: center;
       border-bottom: 1px solid #eee;
       padding: 4px;
+      &.first-row {
+        padding: 8px;
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        border-bottom: 1px solid var(--border);
+      }
       .r-name {
+        span {
+          color: var(--sub-text);
+          margin-right: 4px;
+          font-weight: normal;
+        }
         font-weight: bold;
-        margin-bottom: 4px;
       }
       .r-address {
         font-size: 12px;
-        color: #444;
+        color: var(--sub-text);
         a {
           margin-left: 0.5rem;
         }
@@ -120,9 +135,10 @@
       }
       .right-part {
         flex: 1;
-        max-width: 100px;
+        max-width: 120px;
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-around;
       }
 
@@ -134,16 +150,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgba(0, 0, 0, 0.45);
         .v {
-          font-size: 14px;
-          font-weight: bold;
-        }
-        &.for-here {
-          border-color: var(--title);
-          background-color: #fff;
-        }
-        &.for-togo {
+          font-size: 12px;
           border-color: var(--title);
         }
       }

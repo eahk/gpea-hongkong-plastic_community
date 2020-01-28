@@ -3,7 +3,8 @@
 }
 
 .step-explain {
-  color: var(--text);
+  font-weight: bold;
+  color: var(--orange);
   margin-bottom: 20px;
 }
 
@@ -19,6 +20,7 @@
 }
 
 .react-en-form {
+  color: var(--text);
   position: relative;
   max-width: 680px;
   margin: 0 auto;
@@ -42,10 +44,6 @@
     .field {
       margin-right: 8px;
     }
-  }
-
-  small {
-    color: var(--sub-text);
   }
 
   .button {
@@ -97,41 +95,38 @@
   }
 
   .step-2 {
-    hr {
-      margin: 1rem 0;
-      height: 1px;
-      background-color: var(--border);
-    }
-  }
-  .donate-amount-part {
-    z-index: 1;
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-    .main-text {
-      flex: 1;
-      .donate-amount {
-        color: var(--sub-text);
-        font-weight: bold;
-        .amount {
-          margin-left: 8px;
-          font-weight: 900;
-          font-size: 20px;
-          color: var(--orange);
+    .donate-amount-part {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      padding: 8px 16px;
+      font-size: 14px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      .main-text {
+        flex: 1;
+        .donate-amount {
+          color: var(--sub-text);
+          font-weight: bold;
+          .amount {
+            margin-left: 8px;
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--orange);
+          }
         }
       }
-    }
-    .go-back-step1 {
-      padding: 4px;
-      font-size: 14px;
-      color: var(--sub-text);
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
+      .go-back-step1 {
+        padding: 4px;
+        font-size: 14px;
+        color: var(--sub-text);
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+      }
     }
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { motion } from "framer-motion";
+import { useSpring, animated } from "react-spring";
 import {
   resolveEnPageStatus,
   resolveInitFormValues,
@@ -20,24 +20,10 @@ import {
   SUGGESTED_AMOUNT
 } from "./config";
 //
-const stepTransition = {
-  show: {
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 0.2
-    }
-  },
-  hidden: {
-    opacity: 0,
-    transition: {
-      type: "spring",
-      duration: 0.2
-    }
-  }
-};
+let initialValues,
+  extraInfo = {};
+let errors = [];
 //
-
 const FormSlogan = () => {
   return (
     <div className="en-form-slogan">
@@ -47,12 +33,8 @@ const FormSlogan = () => {
     </div>
   );
 };
-
-let initialValues,
-  extraInfo = {};
-let errors = [];
-
 export default props => {
+  const stepSpring = useSpring({ opacity: 1, from: { opacity: 0 } });
   const [hasRendered, setHasRendered] = useState(false);
   useEffect(() => setHasRendered(true), [hasRendered]);
 
@@ -81,7 +63,6 @@ export default props => {
     initialValues["recurring_payment_sf"] === "Y" ? "recurring" : "onetime"
   );
   const [disableButton, setDisableButton] = useState(false);
-
   // receive global events to change amounts
   useEffect(() => {
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
@@ -165,12 +146,7 @@ export default props => {
   return (
     <div className="react-en-form">
       {stepNo === 1 && (
-        <motion.div
-          initial="hidden"
-          animate="show"
-          exist="hidden"
-          variants={stepTransition}
-        >
+        <animated.div style={stepSpring}>
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}
@@ -200,16 +176,11 @@ export default props => {
               下一步 NEXT
             </button>
           </div>
-        </motion.div>
+        </animated.div>
       )}
 
       {stepNo === 2 && (
-        <motion.div
-          initial="hidden"
-          animate="show"
-          exist="hidden"
-          variants={stepTransition}
-        >
+        <animated.div style={stepSpring}>
           <div className="step step-2">
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
@@ -497,16 +468,11 @@ export default props => {
               </button>
             </form>
           </div>
-        </motion.div>
+        </animated.div>
       )}
 
       {stepNo === 3 && (
-        <motion.div
-          initial="hidden"
-          animate="show"
-          exist="hidden"
-          variants={stepTransition}
-        >
+        <animated.div style={stepSpring}>
           <div className="donate-succ-slogan">
             <span className="icon">
               <i className="far fa-check-circle"></i>
@@ -536,7 +502,7 @@ export default props => {
               difference!
             </p>
           </div>
-        </motion.div>
+        </animated.div>
       )}
     </div>
   );

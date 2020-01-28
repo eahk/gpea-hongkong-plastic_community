@@ -1,7 +1,14 @@
 .billboard-wrapper {
-  max-width: 680px;
-  margin: 20px auto;
-  p {
-    margin-bottom: 30px;
+  .card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid var(--title);
+    box-shadow: var(--shadow);
+    p {
+      margin: 0;
+    }
   }
 }

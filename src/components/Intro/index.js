@@ -43,14 +43,6 @@ const ImageSlider = () => {
 export default props => {
   const [showPlayer, setPlayer] = useState(false);
   //
-  const shade = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  };
-  const modalAnimation = {
-    hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0, transition: { delay: 0.15 } }
-  };
   const showPlayerWrapper = () => {
     setPlayer(true);
   };
@@ -114,12 +106,8 @@ export default props => {
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
-          <p className="title">我們的目標</p>
-          <p>
-            我們期望在第一季每月招募到60位支持者支持走塑計畫。我們將善用您的一分一毫，與義工團隊到達大埔區，遊說50間店鋪加入走塑，並與學校、區議員合力擴大走塑社區板圖。
-          </p>
-          <p>
-            您的點滴支持，是支持我們全年長期工作的力量，讓我們合力達成2020年目標，共創走塑社區！
+          <p className="title">title</p>
+          <p>paragraph
           </p>
         </div>
       </div>
@@ -145,7 +133,7 @@ export default props => {
           <ImageSlider />
         </div>
       </div>
-      <div className="row">
+      <div className="row row-sticker">
         <div className="col-xs-12 col-md-5 col-lg-4">
           <div className="section-header has-text-left">
             <p className="title">「全城走塑」貼紙</p>

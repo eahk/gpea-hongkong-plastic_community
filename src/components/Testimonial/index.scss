@@ -28,28 +28,22 @@
 .section-testimonial {
   .swiper-slide {
     width: 280px;
-    padding-bottom: 20px;
+    .card {
+      margin: 8px;
+      box-shadow: var(--shadow--md);
+    }
   }
   .swiper-button-prev,
   .swiper-button-next {
-    display: none;
     color: var(--sub-text);
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     transition: all 0.2s;
     &:hover {
       background-color: #fff;
       border-radius: 100%;
       box-shadow: var(--shadow--md);
     }
-  }
-  .swiper-button-prev:after,
-  .swiper-button-next:after {
-    font-size: 20px;
-  }
-
-  .swiper-pagination-bullet {
-    visibility: hidden;
   }
   .swiper-pagination-bullet-active {
     opacity: 1;

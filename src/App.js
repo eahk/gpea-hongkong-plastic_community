@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import mitt from "mitt";
 import cx from "classnames";
-import { motion } from "framer-motion";
-// vendor
+import { useSpring, animated } from "react-spring";
+// css
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
 import "swiper/css/swiper.css";
-// custom
 import "./styles/App.scss";
-//
+// components
+import gpLogo from "./assets/images/GP-logo-2019-TC-green-[web]-01.png";
 import ExternalLink from "./components/ExternalLink";
 import Header from "./components/Header";
 import EnForm from "./components/EnForm";
@@ -23,33 +23,46 @@ import Footer from "./components/Footer";
 //
 window.ee = new mitt();
 //
-const formModalAnimation = {
-  open: {
-    opacity: 1,
-    x: 0
-  },
-  closed: {
-    opacity: 0,
-    x: "100%"
-  }
-};
-//
 function App() {
   let checkMobile = window.innerWidth < 1200;
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [pageResizing, setPageResizing] = useState(false);
+  const [lastYPos, setLastYPos] = useState(0);
+  const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(checkMobile);
   const [showFormModal, setShowFormModal] = useState(false);
+  //
+  const formModal = useSpring({
+    opacity: showFormModal || !isMobile ? 1 : 0
+  });
+  const mainButton = useSpring({
+    transform: showActions ? "translateY(0)" : "translateY(100%)"
+  });
+  //
   useEffect(() => {
+    const handleScroll = () => {
+      const yPos = window.scrollY;
+      // const isScrollingUp = yPos < lastYPos;
+      setLastYPos(yPos);
+      // window.ee.emit("SCROLL_DEPTH", yPos);
+      setShowActions(yPos > 58); // scroll over header
+    };
     const handleWindowResize = () => {
+      setPageResizing(true);
       if (window.innerWidth >= 1200) {
         setIsMobile(false);
       } else if (!isMobile && window.innerWidth < 1200) {
         setIsMobile(true);
         setShowFormModal(false);
       }
+      setPageResizing(false);
     };
-    //
+    // window listener
+    window.addEventListener("load", setPageLoaded(true));
+    window.addEventListener("scroll", handleScroll, false);
     window.addEventListener("resize", handleWindowResize);
     return () => {
+      window.removeEventListener("scroll", handleScroll, false);
       window.removeEventListener("resize", handleWindowResize);
     };
   });
@@ -57,6 +70,11 @@ function App() {
   return (
     <div className={cx("app", { "modal-open": showFormModal })}>
       <Header />
+      {(!pageLoaded || pageResizing) && (
+        <div className="loading--overlay">
+          <img src={gpLogo} alt="greenpeace logo" />
+        </div>
+      )}
       <main className="main">
         <div className="main-container">
           <div className="row">
@@ -75,26 +93,25 @@ function App() {
               )}
             >
               <div
-                className={cx("enForm-wrapper", {
+                className={cx("enform-wrapper", {
                   "is-sticky": !showFormModal
                 })}
                 style={{ overflowX: "hidden" }}
               >
-                <motion.div
-                  animate={showFormModal || !isMobile ? "open" : "closed"}
-                  variants={formModalAnimation}
-                >
-                  <div className="enForm-header">
-                    {showFormModal && (
-                      <i
-                        onClick={() => {
-                          setShowFormModal(false);
-                        }}
-                        className="return-arrow fa fa-arrow-left"
-                      ></i>
-                    )}
+                <animated.div style={formModal}>
+                  <div className="enform-header">
                     <div className="welcome-message">
-                      <p>您的捐助，將讓走塑社區在香港遍地開花</p>
+                      <div className="header-text">
+                        {showFormModal && (
+                          <i
+                            onClick={() => {
+                              setShowFormModal(false);
+                            }}
+                            className="return-arrow fa fa-arrow-left"
+                          ></i>
+                        )}
+                        <p>您的捐助，將讓走塑社區在香港遍地開花</p>
+                      </div>
                       <div className="is-flex-horizontal">
                         <div>
                           <p>$30,000</p>
@@ -107,9 +124,11 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <EnForm />
-                </motion.div>
-                <div className="enForm-footer">
+                  <div className="enform-body">
+                    <EnForm />
+                  </div>
+                </animated.div>
+                <div className="enform-footer">
                   <div className="footer_remarks">
                     <p>注意事項</p>
                     <p>
@@ -149,6 +168,7 @@ function App() {
               <Hero />
               <Intro />
               <Testimonial />
+              <hr />
               <Timeline />
               {/*
               <DollarHandle />
@@ -156,12 +176,14 @@ function App() {
             </div>
           </div>
           <PlasticCommunity />
+          <hr />
           <BillBoard />
         </div>
-        <div
-          className={cx("main-button", {
+        <animated.div
+          className={cx("main-button", "is-flex", {
             "is-hidden": !isMobile
           })}
+          style={mainButton}
         >
           <button
             className="button"
@@ -171,7 +193,7 @@ function App() {
           >
             捐助支持
           </button>
-        </div>
+        </animated.div>
       </main>
       <Footer />
     </div>

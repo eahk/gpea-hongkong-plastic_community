@@ -1,6 +1,5 @@
 import React from "react";
 import "../../../node_modules/bulma-timeline/dist/css/bulma-timeline.min.css";
-//
 import "./index.scss";
 //
 import timeline2018 from "../../assets/images/13d9a742-whatsapp-image-2019-10-19-at-4.42.47-pm-1536x1152.jpeg";
