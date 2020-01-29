@@ -44,11 +44,11 @@ export default props => {
   }
 
   // resolve which page should goes to
-  let pageStaus = resolveEnPageStatus();
+  let pageStatus = resolveEnPageStatus();
   let pageNo;
-  if (pageStaus === "SUCC") {
+  if (pageStatus === "SUCC") {
     pageNo = 3;
-  } else if (pageStaus === "ERROR") {
+  } else if (pageStatus === "ERROR") {
     pageNo = 2;
   } else if (extraInfo.useUrlAmount && extraInfo.useUrlIntrvl) {
     pageNo = 2;
@@ -65,6 +65,8 @@ export default props => {
   const [disableButton, setDisableButton] = useState(false);
   // receive global events to change amounts
   useEffect(() => {
+    window.ee.emit("PAGE_STATUS", pageStatus);
+    //
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
@@ -115,7 +117,6 @@ export default props => {
         let el = document.querySelector(
           `[name="${FORMIK_KEY_TO_EN_KEY[formikKey]}"]`
         );
-
         if (el) {
           if (formikKey === "transaction_donationAmt") {
             el.value = donateAmount;
@@ -173,7 +174,7 @@ export default props => {
                 setStepNo(2);
               }}
             >
-              下一步 NEXT
+              {props.isMobile ? "下一步 NEXT" : "立即捐助 DONATE NOW"}
             </button>
           </div>
         </animated.div>
@@ -473,34 +474,43 @@ export default props => {
 
       {stepNo === 3 && (
         <animated.div style={stepSpring}>
-          <div className="donate-succ-slogan">
-            <span className="icon">
-              <i className="far fa-check-circle"></i>
-            </span>
-            <div className="main-text">
-              感謝您，您的捐款已經成功！
-              <br />
-              Thank you! Your donation has been processed.
-            </div>
-          </div>
-
           <div className="step step-3">
-            <p>
-              您的{window.thankyouPageIsRecurring === "Y" ? "每月" : "單次"}{" "}
-              {window.pageJson.currency} $
-              {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
-              捐款已成功處理！感謝您支持綠色和平的環保理念與工作。我們已發送電子郵件提供進一步資料。如果您有任何查詢，請於辦公時間致電會員服務熱線
-              (852) 2854 8318 或電郵至{" "}
-              <a href="emailto:donor.services.hk@greenpeace.org">
-                donor.services.hk@greenpeace.org
-              </a>
-              。
-            </p>
-            <p>
-              與您並肩，為環境「行動，帶來改變」！ <br />
-              "Positive Change through Action" – Together we can make a
-              difference!
-            </p>
+            <div className="main-text">
+              <p>
+                <strong>
+                  您的{" "}
+                  {window.thankyouPageIsRecurring === "Y" ? "每月" : "單次"}{" "}
+                  {window.pageJson.currency}
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
+                  捐款已成功處理！
+                  <br />
+                  Your{" "}
+                  {window.thankyouPageIsRecurring === "Y"
+                    ? "Monthly"
+                    : "One time"}{" "}
+                  {window.pageJson.currency}
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
+                  donation has been processed.
+                </strong>
+              </p>
+              <p>
+                感謝您支持綠色和平的環保理念與工作。我們已發送電子郵件提供進一步資料。
+              </p>
+              <p>
+                如果您有任何查詢，請於辦公時間致電會員服務熱線 (852) 2854 8318
+                或電郵至{" "}
+                <a href="emailto:donor.services.hk@greenpeace.org">
+                  donor.services.hk@greenpeace.org
+                </a>
+                。
+              </p>
+              <hr />
+              <blockquote>與您並肩，為環境「行動，帶來改變」！</blockquote>
+              <blockquote>
+                "Positive Change through Action" – Together we can make a
+                difference!
+              </blockquote>
+            </div>
           </div>
         </animated.div>
       )}

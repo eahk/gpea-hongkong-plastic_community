@@ -12,11 +12,11 @@ import gpLogo from "./assets/images/GP-logo-2019-TC-green-[web]-01.png";
 import ExternalLink from "./components/ExternalLink";
 import Header from "./components/Header";
 import EnForm from "./components/EnForm";
-import Intro from "./components/Intro";
 import Hero from "./components/Hero";
+import Intro from "./components/Intro";
+import Explainer from "./components/Explainer";
 import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
-// import DollarHandle from "./components/DollarHandle";
 import BillBoard from "./components/BillBoard";
 import Testimonial from "./components/Testimonial";
 import Footer from "./components/Footer";
@@ -31,6 +31,7 @@ function App() {
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(checkMobile);
   const [showFormModal, setShowFormModal] = useState(false);
+  const [enFormSubmitted, setEnFormSubmitted] = useState(false);
   //
   const formModal = useSpring({
     opacity: showFormModal || !isMobile ? 1 : 0
@@ -45,7 +46,7 @@ function App() {
       // const isScrollingUp = yPos < lastYPos;
       setLastYPos(yPos);
       // window.ee.emit("SCROLL_DEPTH", yPos);
-      setShowActions(yPos > 58); // scroll over header
+      setShowActions(yPos > 50); // scroll over header
     };
     const handleWindowResize = () => {
       setPageResizing(true);
@@ -57,6 +58,13 @@ function App() {
       }
       setPageResizing(false);
     };
+    // page status
+    window.ee.on("PAGE_STATUS", pageStatus => {
+      if (pageStatus === "SUCC") {
+        console.log(pageStatus);
+        setEnFormSubmitted(true);
+      }
+    });
     // window listener
     window.addEventListener("load", setPageLoaded(true));
     window.addEventListener("scroll", handleScroll, false);
@@ -112,20 +120,22 @@ function App() {
                         )}
                         <p>您的捐助，將讓走塑社區在香港遍地開花</p>
                       </div>
-                      <div className="is-flex-horizontal">
-                        <div>
-                          <p>$30,000</p>
-                          <small>目標 $200,000</small>
+                      {!enFormSubmitted && (
+                        <div className="is-flex-horizontal">
+                          <div>
+                            <p>$30,000</p>
+                            <small>目標 $200,000</small>
+                          </div>
+                          <div>
+                            <p>14</p>
+                            <small>人支持</small>
+                          </div>
                         </div>
-                        <div>
-                          <p>14</p>
-                          <small>人支持</small>
-                        </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                   <div className="enform-body">
-                    <EnForm />
+                    <EnForm isMobile={isMobile} />
                   </div>
                 </animated.div>
                 <div className="enform-footer">
@@ -167,12 +177,10 @@ function App() {
             <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
               <Intro />
+              <Explainer />
               <Testimonial />
               <hr />
               <Timeline />
-              {/*
-              <DollarHandle />
-              */}
             </div>
           </div>
           <PlasticCommunity />
@@ -191,7 +199,7 @@ function App() {
               setShowFormModal(!showFormModal);
             }}
           >
-            捐助支持
+            {enFormSubmitted ? "多謝您的支持" : "捐助支持"}
           </button>
         </animated.div>
       </main>

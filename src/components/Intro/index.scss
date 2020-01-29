@@ -12,34 +12,35 @@
   }
 }
 
-.subtitle.is-orange {
-  display: inline-block;
-  font-weight: bold;
-  background-color: orange;
-  color: #fff;
-  padding: 4px;
-}
-
 .intro-headline {
-  z-index: 1;
+  padding: 40px 0;
+  .subtitle.is-orange {
+    display: inline-block;
+    font-weight: bold;
+    background-color: orange;
+    color: #fff;
+    padding: 4px;
+  }
+}
+.headline-text {
   position: relative;
   color: var(--title);
   .headline-year {
     pointer-events: none;
     position: absolute;
-    top: -8rem;
+    top: -6rem;
     right: -4rem;
     font-weight: 900;
-    font-size: 12rem;
-    color: rgba(0, 0, 0, 0.05);
+    font-size: 8rem;
+    color: var(--border);
     display: flex;
-    flex-direction: column;
     line-height: 1;
+    opacity: 0.15;
   }
   h1 {
     font-size: 4rem;
     font-weight: 900;
-    color: rgba(80, 210, 255, 1);
+    color: var(--title);
     @media (min-width: 1200px) {
       font-size: 5rem;
     }
@@ -50,7 +51,7 @@
 }
 
 .target-num {
-  padding: 40px 8px;
+  padding: 60px 8px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
@@ -68,7 +69,7 @@
   }
   .target-icon {
     width: 100%;
-    max-width: 80px;
+    max-width: 60px;
     margin: 0 auto;
   }
   span {
@@ -76,16 +77,15 @@
     font-weight: bold;
     z-index: 1;
     font-size: 1.6rem;
-    padding: 2px;
     margin-bottom: 8px;
     @media (min-width: 768px) {
-      font-size: 2.4rem;
+      font-size: 2rem;
     }
     @media (min-width: 1200px) {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
     }
     @media (min-width: 1600px) {
-      font-size: 3.2rem;
+      font-size: 2.8rem;
     }
   }
   p {
@@ -147,7 +147,7 @@
     justify-content: center;
     .button {
       transform: translateY(-1rem);
-      transition: 0.2s ease-in;
+      transition: 0.15s ease-in;
       opacity: 0;
       position: absolute;
       bottom: -1rem;

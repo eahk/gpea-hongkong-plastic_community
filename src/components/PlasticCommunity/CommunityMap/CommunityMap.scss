@@ -25,12 +25,12 @@
     cursor: pointer;
     transition: all 0.15s ease-in;
     &:hover {
-      fill: var(--title);
+      fill: #999;
     }
   }
   .chosen {
     path {
-      fill: var(--title);
+      fill: var(--title) !important;
     }
   }
 }

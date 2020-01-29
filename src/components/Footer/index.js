@@ -52,6 +52,11 @@ export default props => {
                   ))}
                 </ul>
               </div>
+              <p>
+                <small className="credit">
+                  © GREENPEACE <span>{year}</span>
+                </small>
+              </p>
             </div>
             <div className="col-xs-12 col-md-6">
               <div className="footer_remarks">
@@ -89,13 +94,6 @@ export default props => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="content has-text-centered">
-        <p>
-          <small className="credit">
-            © GREENPEACE <span>{year}</span>
-          </small>
-        </p>
       </div>
     </footer>
   );
