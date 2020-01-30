@@ -1,8 +1,8 @@
-/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useSpring, animated } from "react-spring";
 import {
   resolveEnPageStatus,
   resolveInitFormValues,
@@ -16,9 +16,14 @@ import {
   FORMIK_KEY_TO_EN_KEY,
   RECURRING_PRICES,
   ONETIME_PRICES,
-  CURRENCY
+  CURRENCY,
+  SUGGESTED_AMOUNT
 } from "./config";
-
+//
+let initialValues,
+  extraInfo = {};
+let errors = [];
+//
 const FormSlogan = () => {
   return (
     <div className="en-form-slogan">
@@ -28,12 +33,8 @@ const FormSlogan = () => {
     </div>
   );
 };
-
-let initialValues,
-  extraInfo = {};
-let errors = [];
-
 export default props => {
+  const stepSpring = useSpring({ opacity: 1, from: { opacity: 0 } });
   const [hasRendered, setHasRendered] = useState(false);
   useEffect(() => setHasRendered(true), [hasRendered]);
 
@@ -43,18 +44,17 @@ export default props => {
   }
 
   // resolve which page should goes to
-  let pageStaus = resolveEnPageStatus();
+  let pageStatus = resolveEnPageStatus();
   let pageNo;
-  if (pageStaus === "SUCC") {
+  if (pageStatus === "SUCC") {
     pageNo = 3;
-  } else if (pageStaus === "ERROR") {
+  } else if (pageStatus === "ERROR") {
     pageNo = 2;
   } else if (extraInfo.useUrlAmount && extraInfo.useUrlIntrvl) {
     pageNo = 2;
   } else {
     pageNo = 1;
   }
-
   const [stepNo, setStepNo] = useState(pageNo);
   const [donateAmount, setDonateAmount] = useState(
     initialValues["transaction_donationAmt"]
@@ -62,9 +62,11 @@ export default props => {
   const [donateIntrvl, setDonateIntrvl] = useState(
     initialValues["recurring_payment_sf"] === "Y" ? "recurring" : "onetime"
   );
-
+  const [disableButton, setDisableButton] = useState(false);
   // receive global events to change amounts
   useEffect(() => {
+    window.ee.emit("PAGE_STATUS", pageStatus);
+    //
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
@@ -115,7 +117,6 @@ export default props => {
         let el = document.querySelector(
           `[name="${FORMIK_KEY_TO_EN_KEY[formikKey]}"]`
         );
-
         if (el) {
           if (formikKey === "transaction_donationAmt") {
             el.value = donateAmount;
@@ -123,26 +124,30 @@ export default props => {
             el.value = donateIntrvl === "recurring" ? "Y" : "N";
           } else if (formikKey === "transaction_ccnumber") {
             el.value = formik.values[formikKey].replace(/\s+/g, "");
+          } else if (
+            formikKey === "send_me_email_hk" ||
+            formikKey === "send_me_email_tw"
+          ) {
+            el.checked = formik.values[formikKey];
           } else {
             el.value = formik.values[formikKey];
           }
         } else {
           throw new Error(
-            "Cannnot find the input element with name:" +
+            "Cannot find the input element with name:" +
               FORMIK_KEY_TO_EN_KEY[formikKey]
           );
         }
       }
-
       // trigger the form submit
       document.querySelector("form.en__component").submit();
     }
   });
 
   return (
-    <div className="react-en-form scroll-container">
+    <div className="react-en-form">
       {stepNo === 1 && (
-        <div>
+        <animated.div style={stepSpring}>
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}
@@ -152,33 +157,43 @@ export default props => {
               }}
               amount={donateAmount}
               interval={donateIntrvl}
+              suggested_amount={SUGGESTED_AMOUNT}
               onChange={({ interval, amount }) => {
+                amount < SUGGESTED_AMOUNT
+                  ? setDisableButton(true)
+                  : setDisableButton(false);
                 setDonateIntrvl(interval);
                 setDonateAmount(amount);
               }}
             />
 
             <button
-              className="button enform__buttion"
+              className={cx("button", "enform__button")}
+              disabled={disableButton}
               onClick={() => {
                 setStepNo(2);
               }}
             >
-              下一步 NEXT
+              {props.isMobile ? "下一步 NEXT" : "立即捐助 DONATE NOW"}
             </button>
           </div>
-        </div>
+        </animated.div>
       )}
 
       {stepNo === 2 && (
-        <div>
+        <animated.div style={stepSpring}>
           <div className="step step-2">
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
                 <div className="main-text">
                   {donateIntrvl === "recurring" ? "每月捐款" : "單次捐款"}{" "}
                   <br />
-                  {CURRENCY} {parseInt(donateAmount, 10).toLocaleString()}
+                  <span className="donate-amount">
+                    {CURRENCY}
+                    <span className="amount">
+                      {parseInt(donateAmount, 10).toLocaleString()}
+                    </span>
+                  </span>
                 </div>
                 <div
                   className="go-back-step1"
@@ -190,25 +205,25 @@ export default props => {
                 </div>
               </div>
 
-              <hr />
-
-              <div className="step-explain">
-                <div>捐款詳情</div>
-                <div>Donation Details</div>
-              </div>
-
               <div className="form-part">
-                <div className="global-error help is-danger">
-                  <ul>
-                    {errors.map((s, idx) => {
-                      return <li key={idx}>{s}</li>;
-                    })}
-                  </ul>
+                <hr />
+                <div className="step-explain">
+                  <div>捐款人資料 Donor Details</div>
                 </div>
+
+                {errors.length > 0 && (
+                  <div className="global-error help is-danger">
+                    <ul>
+                      {errors.map((s, idx) => {
+                        return <li key={idx}>{s}</li>;
+                      })}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="is-flex-horizontal">
                   <div className="field">
-                    <label className="label">姓氏 Last name</label>
+                    <label className="label">姓氏 Last Name</label>
                     <div className="control">
                       <input
                         id="supporter_lastName"
@@ -219,7 +234,7 @@ export default props => {
                             formik.touched["supporter_lastName"]
                         })}
                         type="text"
-                        placeholder="姓氏 Last name"
+                        placeholder="姓氏 Last Name"
                         {...formik.getFieldProps("supporter_lastName")}
                         value={formik.values["supporter_lastName"]}
                       />
@@ -233,7 +248,7 @@ export default props => {
                   </div>
 
                   <div className="field">
-                    <label className="label">名字 First name</label>
+                    <label className="label">名字 First Name</label>
                     <div className="control">
                       <input
                         name="supporter_firstName"
@@ -243,7 +258,7 @@ export default props => {
                             formik.touched["supporter_firstName"]
                         })}
                         type="text"
-                        placeholder="名字 First name"
+                        placeholder="名字 First Name"
                         {...formik.getFieldProps("supporter_firstName")}
                       />
                     </div>
@@ -257,7 +272,7 @@ export default props => {
                 </div>
 
                 <div className="field">
-                  <label className="label">電郵地址 Email address</label>
+                  <label className="label">電郵地址 Email Address</label>
                   <div className="control">
                     <input
                       name="supporter_emailAddress"
@@ -267,7 +282,7 @@ export default props => {
                           formik.touched["supporter_emailAddress"]
                       })}
                       type="email"
-                      placeholder="電郵地址 Email address"
+                      placeholder="電郵地址 Email Address"
                       {...formik.getFieldProps("supporter_emailAddress")}
                     />
                   </div>
@@ -325,8 +340,12 @@ export default props => {
                     )}
                 </div>
 
+                <div className="step-explain">
+                  <div>信用卡資料 Credit Card Details</div>
+                </div>
+
                 <div className="field credit-field">
-                  <label className="label">信用卡號碼 Card Number</label>
+                  <label className="label">信用卡號碼 Credit Card Number</label>
                   <div className="control">
                     <input
                       name="transaction_ccnumber"
@@ -364,7 +383,7 @@ export default props => {
                             formik.touched["transaction_ccexpire"]
                         })}
                         type="text"
-                        placeholder="mm/yy"
+                        placeholder="MM/YY"
                         {...formik.getFieldProps("transaction_ccexpire")}
                         onChange={e => {
                           let raw = e.target.value
@@ -425,22 +444,24 @@ export default props => {
                   />
                   <label className="checkbox" htmlFor="send_me_email_hk">
                     我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。
-                    <br /> Plase send me important updates from Greenpeace.
+                    <br />
+                    Please send me important updates from Greenpeace.
                   </label>
                 </div>
               </div>
-
-              <div className="global-error help is-danger">
-                <ul>
-                  {errors.map((s, idx) => {
-                    return <li key={idx}>{s}</li>;
-                  })}
-                </ul>
-              </div>
+              {errors.length > 0 && (
+                <div className="global-error help is-danger">
+                  <ul>
+                    {errors.map((s, idx) => {
+                      return <li key={idx}>{s}</li>;
+                    })}
+                  </ul>
+                </div>
+              )}
 
               <button
                 type="submit"
-                className={cx("button enform__buttion", {
+                className={cx("button enform__button", {
                   "is-loading": formik.isSubmitting
                 })}
               >
@@ -448,41 +469,50 @@ export default props => {
               </button>
             </form>
           </div>
-        </div>
+        </animated.div>
       )}
 
       {stepNo === 3 && (
-        <div>
-          <div className="donate-succ-slogan">
-            <span className="icon">
-              <i className="far fa-check-circle"></i>
-            </span>
+        <animated.div style={stepSpring}>
+          <div className="step step-3">
             <div className="main-text">
-              感謝您，您的捐款已經成功！
-              <br />
-              Thank you!  Your donation has been processed.
+              <p>
+                <strong>
+                  您的{" "}
+                  {window.thankyouPageIsRecurring === "Y" ? "每月" : "單次"}{" "}
+                  {window.pageJson.currency}
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
+                  捐款已成功處理！
+                  <br />
+                  Your{" "}
+                  {window.thankyouPageIsRecurring === "Y"
+                    ? "Monthly"
+                    : "One time"}{" "}
+                  {window.pageJson.currency}
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
+                  donation has been processed.
+                </strong>
+              </p>
+              <p>
+                感謝您支持綠色和平的環保理念與工作。我們已發送電子郵件提供進一步資料。
+              </p>
+              <p>
+                如果您有任何查詢，請於辦公時間致電會員服務熱線 (852) 2854 8318
+                或電郵至{" "}
+                <a href="emailto:donor.services.hk@greenpeace.org">
+                  donor.services.hk@greenpeace.org
+                </a>
+                。
+              </p>
+              <hr />
+              <blockquote>與您並肩，為環境「行動，帶來改變」！</blockquote>
+              <blockquote>
+                "Positive Change through Action" – Together we can make a
+                difference!
+              </blockquote>
             </div>
           </div>
-
-          <div className="step step-3">
-            <p>
-              您的{window.thankyouPageIsRecurring === "Y" ? "每月" : "單次"}{" "}
-              {window.pageJson.currency} $
-              {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
-              捐款已成功處理！感謝您支持綠色和平的環保理念與工作。我們已發送電子郵件提供進一步資料。如果您有任何查詢，請於辦公時間致電會員服務熱線
-              (852) 2854 8318 或電郵至{" "}
-              <a href="emailto:donor.services.hk@greenpeace.org">
-                donor.services.hk@greenpeace.org
-              </a>
-              。
-            </p>
-            <p>
-              與您並肩，為環境「行動，帶來改變」！ <br />
-              “Positive Change through Action” – Together we can make a
-              difference!
-            </p>
-          </div>
-        </div>
+        </animated.div>
       )}
     </div>
   );

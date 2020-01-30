@@ -1,5 +1,4 @@
 #community-map {
-  border-bottom: 1px solid #f8f8f8;
   .st1,
   .st2,
   .st3,
@@ -22,15 +21,16 @@
   .st19,
   .st20,
   .st21 {
-    fill: #e3e4e1;
+    fill: var(--border);
     cursor: pointer;
+    transition: all 0.15s ease-in;
     &:hover {
-      fill: #d8f0d8;
+      fill: #999;
     }
   }
   .chosen {
     path {
-      fill: var(--gp-green);
+      fill: var(--title) !important;
     }
   }
 }

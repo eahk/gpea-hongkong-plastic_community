@@ -2,7 +2,7 @@
   "name": "react-app-try",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://api.greenpeace.org.hk/2020/react-app-try",
+  "homepage": "https://api.greenpeace.org.hk/2020/react-app-try/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -18,7 +18,9 @@
     "react-id-swiper": "^2.4.0",
     "react-player": "^1.14.2",
     "react-scripts": "3.3.0",
+    "react-spring": "^8.0.27",
     "sanitize.css": "^11.0.0",
+    "styled-components": "^5.0.0",
     "swiper": "^5.2.1",
     "yup": "^0.28.0"
   },
@@ -32,15 +34,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:en": "PUBLIC_URL=https://api.greenpeace.org.hk/2020/react-app-try react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "minifyHtml": {
-      "collapseWhitespace": false,
-      "removeComments": false
-    }
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

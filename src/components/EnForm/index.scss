@@ -2,12 +2,29 @@
   display: none;
 }
 
+.step-explain {
+  font-weight: bold;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.en-form-slogan {
+  background-color: var(--border);
+  color: var(--form-text);
+  text-align: center;
+  padding: 8px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .react-en-form {
+  color: var(--text);
   position: relative;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 20px 16px;
-  border: 1px solid #ccc;
-  max-height: calc(100vh - 56px);
+  padding: 20px 16px 60px;
   background-color: #fff;
   mask-image: linear-gradient(
     to bottom,
@@ -16,11 +33,11 @@
     white 90%,
     transparent
   );
-  &.scroll-container {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  @media (min-width: 768px) {
+    width: calc(100% - 40px);
   }
-
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -30,20 +47,28 @@
   }
 
   .button {
-    color: var(--form-label);
+    color: var(--sub-text);
     &.is-active {
-      background: var(--gp-green);
-      border: 1px solid var(--gp-green);
+      font-weight: bold;
+      background: orange;
       color: white;
+      border-color: var(--orange);
     }
   }
 
-  .enform__buttion {
+  .enform__button {
     width: 100%;
-    background-color: var(--gp-green);
-    color: #fff;
+    background-color: var(--orange);
     box-shadow: var(--shadow);
+    color: #fff;
+    font-weight: bold;
     margin: 20px auto 40px;
+    &:hover {
+      transform: translateY(-4px);
+      background-color: lighten(orange, 10%);
+      transition: all 0.2s ease-in;
+      box-shadow: var(--shadow--md);
+    }
   }
 
   .step {
@@ -51,20 +76,9 @@
     flex-direction: column;
   }
 
-  .en-form-slogan {
-    background-color: var(--border);
-    color: var(--form-text);
-    text-align: center;
-    padding: 8px;
-    height: 58px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .donate-succ-slogan {
     color: var(--form-text);
-    border-bottom: 1px solid var(--gp-green);
+    border-bottom: 1px solid var(--title);
     text-align: left;
     padding: 20px;
     display: flex;
@@ -74,43 +88,44 @@
       margin-left: 16px;
     }
     .fa-check-circle {
-      color: var(--gp-green);
+      color: var(--title);
       font-size: 2rem;
     }
   }
 
-  .step-explain {
-    border-left: 1px solid var(--border);
-    color: var(--form-label);
-    padding-left: 12px;
-    margin-bottom: 20px;
-  }
-
   .step-2 {
-    hr {
-      margin: 1rem 0;
-      height: 1px;
-      background-color: var(--border);
-    }
-  }
-  .donate-amount-part {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid var(--border);
-    padding: 8px;
-    // margin-bottom: 1rem;
-    font-size: 14px;
-
-    .main-text {
-      flex: 1;
-    }
-    .go-back-step1 {
-      padding: 4px;
+    .donate-amount-part {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      padding: 8px 16px;
       font-size: 14px;
-      color: var(--form-text);
-      border-bottom: 1px solid var(--form-text);
-      cursor: pointer;
+      background-color: #fff;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      .main-text {
+        flex: 1;
+        .donate-amount {
+          color: var(--sub-text);
+          font-weight: bold;
+          .amount {
+            margin-left: 8px;
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--orange);
+          }
+        }
+      }
+      .go-back-step1 {
+        padding: 4px;
+        font-size: 14px;
+        color: var(--sub-text);
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+      }
     }
   }
 
@@ -129,6 +144,7 @@
     }
 
     .field {
+      margin-bottom: 20px;
       .label {
         font-size: 12px;
         color: var(--form-label);
@@ -154,6 +170,18 @@
     }
   }
   .global-error {
-    margin-top: 2rem;
+    margin: 20px 0;
+  }
+
+  .step-3 {
+    .main-text {
+      .icon {
+        flex: 0;
+        margin-right: 16px;
+      }
+      blockquote {
+        color: var(--sub-text);
+      }
+    }
   }
 }

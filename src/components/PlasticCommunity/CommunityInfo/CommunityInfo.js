@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CommunityInfo.scss";
 import { useVote } from "../hooks";
-
+//
 const IndexPanel = props => {
   return (
     <div className="index-panel">
@@ -25,7 +25,7 @@ const IndexPanel = props => {
                     </div>
                   )}
                   {props.districts[k].numVotes > 0 && (
-                    <div className="num-upvotes">
+                    <div className="num-upvotes is-hidden">
                       <i className="far fa-kiss-wink-heart"></i>{" "}
                       <span>
                         {props.districts[k].numVotes.toLocaleString()}
@@ -81,46 +81,64 @@ const DistrictPanel = props => {
           <div className="num-flex">
             {theDistrict.numRestaurants > 0 && (
               <div className="num-restaurants">
-                <i className="fas fa-utensils"></i> {theDistrict.numRestaurants}
+                <i className="fas fa-utensils"></i>
+                {theDistrict.numRestaurants}
+                間店鋪加入
               </div>
             )}
             {theDistrict.numVotes > 0 && (
-              <div className="num-upvotes">
+              <div className="num-upvotes is-hidden">
                 <i className="far fa-kiss-wink-heart"></i>{" "}
                 {theDistrict.numVotes.toLocaleString()}
               </div>
             )}
           </div>
         </div>,
-        <div className="upvote-part" key="upvote-part">
-          {voteStatus === "NEW" && (
-            <div className="button do-vote" onClick={handleVote}>
-              <i className="far fa-kiss-wink-heart"></i>為{theDistrict.name}
-              區打氣
-              <i className="far fa-kiss-wink-heart"></i>
-            </div>
-          )}
-          {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與~</div>}
-          {voteStatus === "IS_SENDING" && (
-            <div className="loading">
-              <i className="fas fa-spinner fa-spin"></i>
-            </div>
-          )}
-          {voteStatus === "VOTE_SUCC" && <div>加油完成，感謝你的支持~</div>}
-          {voteStatus === "VOTE_FAILED" && (
-            <div className="is-danger">
-              啊我們伺服器出了一些問題，請稍後再試一次
-            </div>
-          )}
+        <div className="upvote-part is-hidden" key="upvote-part">
+          <span>「走塑友善」餐廳與商鋪</span>
+          <div className="do-vote button ">
+            {voteStatus === "NEW" && (
+              <div onClick={handleVote}>
+                為{theDistrict.name}
+                區打氣
+              </div>
+            )}
+            {voteStatus === "HAS_VOTED_BEFORE" && <div>感謝你的參與～</div>}
+            {voteStatus === "IS_SENDING" && (
+              <div className="loading">
+                <i className="fas fa-spinner fa-spin"></i>
+              </div>
+            )}
+            {voteStatus === "VOTE_SUCC" && (
+              <div className="do-vote">
+                <div>感謝你的支持，我們會努力推動更多店鋪加入走塑行列～</div>
+              </div>
+            )}
+            {voteStatus === "VOTE_FAILED" && (
+              <div className="is-danger">
+                啊我們伺服器出了一些問題，請稍後再試一次～
+              </div>
+            )}
+          </div>
         </div>,
         <div className="restaurant-list" key="restaurant-list">
           <ul>
+            <li className="restaurant-row first-row">
+              <div className="left-part">
+                <div className="r-name">走塑等級</div>
+              </div>
+              <div className="right-part">
+                <div className="badege-level">堂食</div>
+                <div className="badge-level">外賣</div>
+              </div>
+            </li>
             {theDistrict.restaurants.map((r, i) => {
               return (
                 <li className="restaurant-row" key={i}>
                   <div className="left-part">
                     <div className="r-name">
-                      {i + 1}. {r.name}
+                      <span>{i + 1}.</span>
+                      {r.name}
                     </div>
                     <div className="r-address">
                       {r.address}
@@ -135,16 +153,16 @@ const DistrictPanel = props => {
                     </div>
                   </div>
                   <div className="right-part">
-                    {r.herePlasticLevel > 0 && (
-                      <div className="badge for-here" title="堂食走塑等級">
-                        <span className="v">{r.herePlasticLevel}</span>
-                      </div>
-                    )}
-                    {r.togoPlasticLevel > 0 && (
-                      <div className="badge for-togo" title="外賣走塑等級">
-                        <span className="v">{r.togoPlasticLevel}</span>
-                      </div>
-                    )}
+                    <div className="badge for-here" title="堂食走塑等級">
+                      {(r.herePlasticLevel > 0 && (
+                        <span className="v">{r.herePlasticLevel}級</span>
+                      )) || <span>-</span>}
+                    </div>
+                    <div className="badge for-togo" title="外賣走塑等級">
+                      {(r.togoPlasticLevel > 0 && (
+                        <span className="v">{r.togoPlasticLevel}級</span>
+                      )) || <span>-</span>}
+                    </div>
                   </div>
                 </li>
               );

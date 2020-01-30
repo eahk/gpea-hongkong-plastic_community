@@ -1,69 +1,78 @@
-/* swiper */
-.swiper-container {
-  max-width: 1200px;
-  position: relative;
-  margin: 0 auto;
-  padding: 20px 0 40px;
+.next,
+.prev {
+  top: calc(50% - 20px);
+  position: absolute;
+  background: white;
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 2;
 }
-.swiper-button-prev,
-.swiper-button-next {
-  color: var(--gp-green);
-  width: 48px;
-  height: 48px;
-  transition: all 0.2s;
-  &:hover {
-    background-color: #fff;
-    border-radius: 100%;
-    box-shadow: var(--shadow);
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+  transform: scale(-1);
+}
+
+.section-testimonial {
+  .swiper-slide {
+    width: 280px;
+    .card {
+      margin: 8px;
+      box-shadow: var(--shadow--md);
+    }
   }
-}
-
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-size: 20px;
-}
-
-.swiper-pagination {
-  opacity: 0.8;
-}
-.swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color: var(--gp-green);
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--sub-text);
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s;
+    &:hover {
+      background-color: #fff;
+      border-radius: 100%;
+      box-shadow: var(--shadow--md);
+    }
+  }
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: var(--title);
+  }
 }
 
 /* end of swiper */
-
-.section-testimonial {
-  width: 100%;
-}
-
 .card {
   margin: 0 auto;
-  border-radius: 8px;
-  max-width: 320px;
+  border-radius: 12px;
   display: flex;
   flex-flow: column;
   align-items: center;
-}
-
-.card-image {
-  display: flex;
-  justify-content: center;
-  img {
-    border-radius: 8px 8px 0px 0px;
-  }
+  overflow: hidden;
 }
 
 .testimonial-text {
+  min-height: 180px;
   color: var(--sub-text);
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
   align-items: center;
   .headline {
     font-size: 14px;
   }
   .name {
     position: relative;
-    margin-top: 20px;
+    margin: 0;
   }
 }

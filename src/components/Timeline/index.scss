@@ -1,26 +1,39 @@
 .section-timeline {
   width: 100%;
-}
-.timeline-wrapper {
-  .timeline {
-    max-width: 680px;
-    margin: 40px auto;
-  }
-  .timeline-content {
-    width: 100%;
-    .heading {
-      color: var(--gp-green);
-      margin-bottom: 16px;
+  .timeline-wrapper {
+    .timeline {
+      margin: 0 auto;
     }
-    p {
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+    .timeline-item {
+      padding-bottom: 0;
     }
-  }
+    .timeline-header {
+      .tag {
+        color: var(--title);
+        background: none;
+      }
+    }
+    .timeline-content {
+      width: 100%;
+      padding: 12px 16px 20px 30px;
+      .heading {
+        display: inline-block;
+        color: var(--title);
+        margin-bottom: 16px;
+      }
+      p {
+        margin-bottom: 8px;
+        letter-spacing: 2px;
+      }
+    }
 
-  .timeline-content__image {
-    padding: 16px;
-    margin-top: 20px;
-    min-height: 250px;
+    .timeline-content__image {
+      border-radius: 12px;
+      margin-top: 20px;
+      padding-bottom: 56.25%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
 }

@@ -1,26 +1,35 @@
 .header {
-  &.header--white {
-    background-color: var(--white);
-  }
-  &.header--green {
-    background-color: var(--gp-green);
-  }
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: var(--shadow);
 }
 
 .header__wrapper {
+  height: 56px;
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: var(--white);
 }
 
 .navbar__logo {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+
   img {
     width: 100%;
-    max-width: 180px;
+    max-width: 200px;
   }
 }
 .navbar__button {
+  display: none;
   .button {
     border-color: var(--gp-orange);
     background-color: var(--gp-orange);

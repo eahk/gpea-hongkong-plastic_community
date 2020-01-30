@@ -1,0 +1,41 @@
+.explainer-wrapper {
+  .swiper-slide {
+    width: 90%;
+  }
+}
+.article-step {
+  margin: 20px 0;
+  .flex-wrapper {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--sub-text);
+    .step {
+      font-weight: bold;
+      color: var(--title);
+      font-size: 14px;
+    }
+    .title {
+      position: relative;
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 4px;
+        bottom: -20px;
+        width: 20px;
+        height: 4px;
+        background-color: var(--title);
+      }
+    }
+    .description {
+      max-width: 480px;
+      margin: 20px 20px 20px 0;
+    }
+  }
+}

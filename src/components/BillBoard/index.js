@@ -1,40 +1,51 @@
 import React from "react";
-//
-const events = [
-  {
-    name: "4.22 地球日",
-    time: "4月22日",
-    description:
-      "地球日前50間店鋪加入，走塑義工與捐助者一起在地球日走塑嘉年華階段性慶祝活動"
-  },
-  {
-    name: "4.22 地球日",
-    time: "4月22日",
-    description: ""
-  },
-  {
-    name: "Plastic Free Month",
-    time: "4月22日",
-    description: ""
-  },
-  {
-    name: "年終感謝",
-    time: "12月",
-    description: "完成1,000間目標，大埔成為走塑社區"
-  }
-];
+import "./index.scss";
 //
 export default props => {
   return (
-    <div className="row">
-      <div className="col-xs">
-        <div className="has-text-centered">
-          <p className="title">號召更多有心人</p>
-          <p>
-            與我們一起堅持日常走塑，和學校合辦走塑學堂與社區走塑體驗活動、並與區議員合作，和學生、義工一起遊說全港1,000間店鋪加入走塑行列，以及令大埔成為下一個走塑模範社區，讓香港向走塑城市的目標邁進！
-          </p>
+    <section className="section">
+      <div className="row">
+        <div className="col-xs-12 col-md-6 col-lg-5">
+          <div className="section-header">
+            <p className="title">持續更新走塑社區活動</p>
+            <p>
+              成為綠色和平會員後，我們將定期經電郵或短訊，為您提供活動最新資訊。請您務必保持聯繫！
+            </p>
+          </div>
+        </div>
+        <div className="col-xs-12 col-md-6 col-lg-7">
+          <div className="billboard-wrapper has-text-centered">
+            <div className="card">
+              <p>
+                18, Jan - 大埔 - 大元村鉻恩小學
+                <br />
+                <small>走塑團年飯</small>
+              </p>
+            </div>
+            <div className="card">
+              <p>
+                22, Feb - 大埔 - 路德會賽馬會富善綜合服務中心
+                <br />
+                <small>走塑社區推廣及 舊衣變環保袋Workshop</small>
+              </p>
+            </div>
+            <div className="card">
+              <p>
+                March - 沙田 - St. Rose of Lima's College
+                <br />
+                <small>走塑社區推廣及 舊衣變環保袋Workshop</small>
+              </p>
+            </div>
+            <div className="card">
+              <p>
+                20, Aug - 沙田 - 基督教協基會社會服務部 - 沙田家長資源中心
+                <br />
+                <small>走塑社區推廣及 舊衣變環保袋Workshop</small>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
