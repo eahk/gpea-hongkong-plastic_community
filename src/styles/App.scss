@@ -11,6 +11,7 @@
   --orange: orange;
   --gp-dark-blue: #292f47;
   // Generic Color palette based on #50D2FF --blue
+  --light-gray: #fafafa;
   --blue: #50d2ff;
   --light-blue: #00e2f5;
   --blue-mint: #2cefda;
@@ -89,18 +90,18 @@ body {
   .main-right {
     padding: 0;
   }
-  .title {
-    color: var(--title);
-  }
-  .subtitel {
-    color: var(--sub-text);
-  }
+}
+.main-left {
+  overflow-x: hidden;
 }
 // Form Modal
 .main-right {
   z-index: 1;
+  height: auto;
   background-color: #fff;
   box-shadow: var(--shadow);
+
+  position: relative;
   &.showFormModal {
     margin: 0px;
     padding: 0px;
@@ -120,7 +121,6 @@ body {
 // enform
 .enform-wrapper {
   height: 100vh;
-  position: relative;
   position: sticky;
   top: 0;
   background-color: #fff;
@@ -128,13 +128,11 @@ body {
 }
 
 .enform-header {
-  color: var(--sub-text);
-  padding: 20px 20px 4px;
+  margin-bottom: 20px;
   .welcome-message {
     .header-text {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
       .return-arrow {
         cursor: pointer;
         margin-right: 16px;
@@ -166,12 +164,29 @@ body {
   min-height: 75vh;
 }
 
+.enform-note {
+  small {
+    color: var(--sub-text);
+    font-size: 12px;
+    &.star {
+      position: relative;
+      &:before {
+        content: "*";
+        font-weight: bold;
+        font-size: 16px;
+        position: absolute;
+        left: -12px;
+        top: 0px;
+      }
+    }
+  }
+}
+
 .enform-footer {
   font-size: 14px;
-  background: #fafafa;
+  background: var(--light-gray);
   align-self: flex-end;
   padding: 40px 20px;
-  max-width: 680px;
   border: 2px solid var(--orange);
   border-left: none;
   border-right: none;

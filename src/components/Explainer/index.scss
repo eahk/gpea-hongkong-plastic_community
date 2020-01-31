@@ -10,7 +10,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: flex-start;
     color: var(--sub-text);
     .step {
@@ -20,9 +20,9 @@
     }
     .title {
       position: relative;
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: bold;
-      margin-bottom: 40px;
+      margin-bottom: 2rem;
       &:before {
         content: "";
         position: absolute;

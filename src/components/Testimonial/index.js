@@ -6,7 +6,7 @@ import ExternalLink from "../ExternalLink";
 import Swiper from "react-id-swiper";
 //
 import chris from "../../assets/images/testimonials/section3-blog-chris.jpg";
-import brian from "../../assets/images/testimonials/section3-blog-brian6.jpg";
+import brian from "../../assets/images/testimonials/ORG_7R308815.jpg";
 import sharon from "../../assets/images/testimonials/section3-sharon.jpg";
 import raymond from "../../assets/images/testimonials/4ff3c5ed-4ff3c5ed-img_2150.jpg";
 //

@@ -1,12 +1,19 @@
 .section {
   width: 100%;
-  padding: 3rem 20px;
+  padding: 40px 20px;
   overflow: hidden;
 }
 
 .row {
   margin: 0;
   padding: 0;
+}
+
+.title {
+  color: var(--title);
+}
+.subtitel {
+  color: var(--sub-text);
 }
 
 .section-header {

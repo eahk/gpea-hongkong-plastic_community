@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDistrictRestaurans } from "./hooks";
 import CommunityMap from "./CommunityMap/CommunityMap.js";
 import CommunityInfo from "./CommunityInfo/CommunityInfo.js";
@@ -7,7 +7,6 @@ import "./index.scss";
 export default props => {
   const [chosenDistrictId, setChosenDistrictId] = useState(null);
   const [districts, restaurants] = useDistrictRestaurans();
-
   return (
     <section className="section section-community is-light plastic-community">
       <div className="section-header">

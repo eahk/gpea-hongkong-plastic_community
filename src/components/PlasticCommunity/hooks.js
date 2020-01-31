@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { districts as districtsDef, districtNameToId } from "./DistrictsDef";
+//
 
 // Region 區域
 // District 地區
@@ -211,6 +212,18 @@ export const useDistrictRestaurans = () => {
         districts,
         restaurantsResponse.values
       );
+      /*
+      let sortedDistricts = {};
+      Object.keys(newDistricts).forEach(key => {
+        if (newDistricts[key].region === "Hong Kong Island") {
+          sortedDistricts[key] = newDistricts[key];
+        } else if (newDistricts[key].region === "Kowloon") {
+          sortedDistricts[key] = newDistricts[key];
+        } else if (newDistricts[key].region === "New Territories") {
+          sortedDistricts[key] = newDistricts[key];
+        }
+      });
+      */
       setDistricts({ ...newDistricts });
       setRestaurants(newRestaurants);
     }

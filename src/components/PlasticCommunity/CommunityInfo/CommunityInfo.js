@@ -1,42 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CommunityInfo.scss";
 import { useVote } from "../hooks";
 //
 const IndexPanel = props => {
+  let districtList = [];
+
+  Object.keys(props.districts).forEach(i => {
+    districtList.push({ keyValue: i, ...props.districts[i] });
+  });
+  districtList.sort((a, b) => {
+    if (a.region === b.region) {
+      return a.numRestaurants > b.numRestaurants ? -1 : 1;
+    }
+    return a.region > b.region ? 1 : -1; // Hong Kong Island > Kowloon > NT
+  });
+  // Sort disticts by regions and number of restaurants
   return (
     <div className="index-panel">
-      <div className="list-part">
-        <ul>
-          {Object.keys(props.districts).map(k => {
+      <div className="district-wrapper">
+        {districtList.map((district, key) => {
+          if (district.numRestaurants > 0) {
             return (
-              <li
-                className="card-district"
-                key={k}
+              <div
+                className="district"
+                key={key}
+                region={district.region}
                 onClick={() => {
-                  props.onChooseDistrictId(k);
+                  props.onChooseDistrictId(district.keyValue);
                 }}
               >
-                <div className="district-name">{props.districts[k].name}區</div>
+                <div className="district-name">{district.name}區</div>
                 <div className="num-flex">
-                  {props.districts[k].numRestaurants > 0 && (
-                    <div className="num-restaurants">
-                      <i className="fas fa-utensils"></i>{" "}
-                      <span>{props.districts[k].numRestaurants}</span>
-                    </div>
-                  )}
-                  {props.districts[k].numVotes > 0 && (
-                    <div className="num-upvotes is-hidden">
-                      <i className="far fa-kiss-wink-heart"></i>{" "}
-                      <span>
-                        {props.districts[k].numVotes.toLocaleString()}
-                      </span>
-                    </div>
-                  )}
+                  <div className="num-restaurants">
+                    <span>{district.numRestaurants}間</span>
+                  </div>
+                  <div className="num-upvotes is-hidden">
+                    <span>{district.numVotes.toLocaleString()}</span>
+                  </div>
                 </div>
-              </li>
+              </div>
             );
-          })}
-        </ul>
+          } else {
+            return (
+              <div
+                className="district district--empty"
+                key={key}
+                region={district.region}
+                onClick={() => {
+                  props.onChooseDistrictId(district.keyValue);
+                }}
+              >
+                <div className="district-name">{district.name}區</div>
+              </div>
+            );
+          }
+        })}
       </div>
     </div>
   );
@@ -44,7 +62,6 @@ const IndexPanel = props => {
 
 const DistrictPanel = props => {
   let theDistrict = props.districts[props.chosenDistrictId];
-
   const [hasVoted, doVote] = useVote();
   const [voteStatus, setVoteStatue] = useState(
     hasVoted ? "HAS_VOTED_BEFORE" : "NEW"
@@ -81,17 +98,16 @@ const DistrictPanel = props => {
           <div className="num-flex">
             {theDistrict.numRestaurants > 0 && (
               <div className="num-restaurants">
-                <i className="fas fa-utensils"></i>
-                {theDistrict.numRestaurants}
-                間店鋪加入
+                {theDistrict.numRestaurants}間店鋪加入計劃
               </div>
             )}
-            {theDistrict.numVotes > 0 && (
-              <div className="num-upvotes is-hidden">
+            {/*
+            theDistrict.numVotes > 0 && (
+              <div className="num-upvotes">
                 <i className="far fa-kiss-wink-heart"></i>{" "}
                 {theDistrict.numVotes.toLocaleString()}
               </div>
-            )}
+            )*/}
           </div>
         </div>,
         <div className="upvote-part is-hidden" key="upvote-part">
