@@ -2,9 +2,6 @@ import React from "react";
 import "../../../node_modules/bulma-timeline/dist/css/bulma-timeline.min.css";
 import "./index.scss";
 //
-import timeline2018 from "../../assets/images/13d9a742-whatsapp-image-2019-10-19-at-4.42.47-pm-1536x1152.jpeg";
-import timeline2019 from "../../assets/images/bcacd4ad-gp0stt8of_medium_res.jpg";
-//
 export default props => {
   return (
     <section className="section section-timeline">
@@ -71,22 +68,10 @@ export default props => {
             <div className="timeline-marker"></div>
             <div className="timeline-content">
               <p className="heading">走塑社區</p>
-              <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <p>
-                    承接走塑食堂計劃，推出<strong>「走塑社區」</strong>
-                  </p>
-                  <p>游說對象擴展至街市等社區店舖，沙田有近半店舖加入</p>
-                </div>
-                <div className="col-xs-12 col-md-6">
-                  <div
-                    className="timeline-content__image"
-                    style={{
-                      backgroundImage: `url(${timeline2019})`
-                    }}
-                  ></div>
-                </div>
-              </div>
+              <p>
+                承接走塑食堂計劃，推出<strong>「走塑社區」</strong>
+              </p>
+              <p>游說對象擴展至街市等社區店舖，沙田有近半店舖加入</p>
             </div>
           </div>
           <header className="timeline-header">
@@ -96,24 +81,18 @@ export default props => {
             <div className="timeline-marker"></div>
             <div className="timeline-content">
               <p className="heading">尋找走塑食堂</p>
-              <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <p>
-                    發起<strong>「尋找走塑食堂」</strong>計劃
-                  </p>
-                  <p>
-                    至今已成功邀請超過<strong>150位</strong>義工加入
-                  </p>
-                </div>
-                <div className="col-xs-12 col-md-6">
-                  <div
-                    className="timeline-content__image"
-                    style={{
-                      backgroundImage: `url(${timeline2018})`
-                    }}
-                  ></div>
-                </div>
-              </div>
+              <p>
+                發起<strong>「尋找走塑食堂」</strong>計劃
+              </p>
+              <p>
+                至今已成功邀請超過<strong>150位</strong>義工加入
+              </p>
+              <div
+                className="timeline-content__image"
+                style={{
+                  backgroundImage: `url(${timeline2018})`
+                }}
+              ></div>
             </div>
           </div>
         </div>
