@@ -16,10 +16,10 @@ import Hero from "./components/Hero";
 import Intro from "./components/Intro";
 // import DollarHandle from "./components/DollarHandle";
 import Explainer from "./components/Explainer";
+import Testimonial from "./components/Testimonial";
 import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
-import BillBoard from "./components/BillBoard";
-import Testimonial from "./components/Testimonial";
+// import BillBoard from "./components/BillBoard";
 import Footer from "./components/Footer";
 //
 window.ee = new mitt();
@@ -213,8 +213,6 @@ function App() {
             </div>
           </div>
           <PlasticCommunity />
-          <hr />
-          <BillBoard />
         </div>
         <animated.div
           className={cx("main-button", "is-flex", {
