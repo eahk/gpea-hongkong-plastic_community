@@ -87,12 +87,6 @@ export default props => {
               <p>
                 至今已成功邀請超過<strong>150位</strong>義工加入
               </p>
-              <div
-                className="timeline-content__image"
-                style={{
-                  backgroundImage: `url(${timeline2018})`
-                }}
-              ></div>
             </div>
           </div>
         </div>
