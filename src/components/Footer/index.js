@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+//
 import "./index.scss";
 import ExternalLink from "../ExternalLink";
+import Social from "../Social";
 //
 import Logo from "../../assets/images/GP-logo-2019-TC-white-[web]-01.png";
 
@@ -22,6 +25,7 @@ const footerLinks = [
     url: "https://www.greenpeace.org/hongkong/about/overview/"
   }
 ];
+//
 
 export default props => {
   const [year, setYear] = useState("2019");
@@ -41,7 +45,6 @@ export default props => {
                 <p>
                   綠色和平是獨立的國際環保組織，通過科學研究、政策倡議及和平行動，揭露全球環境問題並提出相應解決方案。我們從不接受任何政府、企業或政治團體的資助，只接受個人的直接捐款，以維持公正獨立。
                 </p>
-                <p>獲豁免繳稅慈善機構編號︰ 91/5418</p>
               </div>
               <div className="footer__link">
                 <ul className="links">
@@ -52,6 +55,7 @@ export default props => {
                   ))}
                 </ul>
               </div>
+              <Social />
               <p>
                 <small className="credit">
                   © GREENPEACE <span>{year}</span>
@@ -90,6 +94,8 @@ export default props => {
                   </ExternalLink>
                   或至電 (852) 2854 8318。
                 </p>
+                <hr />
+                <p>獲豁免繳稅慈善機構編號︰ 91/5418</p>
               </div>
             </div>
           </div>

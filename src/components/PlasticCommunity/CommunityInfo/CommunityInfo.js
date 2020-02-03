@@ -3,39 +3,27 @@ import "./CommunityInfo.scss";
 import { useVote } from "../hooks";
 //
 const IndexPanel = props => {
-  let districtList = [];
-
-  Object.keys(props.districts).forEach(i => {
-    districtList.push({ keyValue: i, ...props.districts[i] });
-  });
-  districtList.sort((a, b) => {
-    if (a.region === b.region) {
-      return a.numRestaurants > b.numRestaurants ? -1 : 1;
-    }
-    return a.region > b.region ? 1 : -1; // Hong Kong Island > Kowloon > NT
-  });
-  // Sort disticts by regions and number of restaurants
   return (
     <div className="index-panel">
       <div className="district-wrapper">
-        {districtList.map((district, key) => {
-          if (district.numRestaurants > 0) {
+        {Object.keys(props.districts).map(k => {
+          if (props.districts[k].numRestaurants > 0) {
             return (
               <div
                 className="district"
-                key={key}
-                region={district.region}
+                key={k}
+                region={props.districts[k].region}
                 onClick={() => {
-                  props.onChooseDistrictId(district.keyValue);
+                  props.onChooseDistrictId(k);
                 }}
               >
-                <div className="district-name">{district.name}區</div>
+                <div className="district-name">{props.districts[k].name}區</div>
                 <div className="num-flex">
                   <div className="num-restaurants">
-                    <span>{district.numRestaurants}間</span>
+                    <span>{props.districts[k].numRestaurants}間</span>
                   </div>
                   <div className="num-upvotes is-hidden">
-                    <span>{district.numVotes.toLocaleString()}</span>
+                    <span>{props.districts[k].numVotes.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -44,13 +32,13 @@ const IndexPanel = props => {
             return (
               <div
                 className="district district--empty"
-                key={key}
-                region={district.region}
+                key={k}
+                region={props.districts[k].region}
                 onClick={() => {
-                  props.onChooseDistrictId(district.keyValue);
+                  props.onChooseDistrictId(props.districts[k].keyValue);
                 }}
               >
-                <div className="district-name">{district.name}區</div>
+                <div className="district-name">{props.districts[k].name}區</div>
               </div>
             );
           }
@@ -85,7 +73,7 @@ const DistrictPanel = props => {
   return (
     <div className="district-panel">
       {theDistrict && [
-        <div className="hero-part" key="hero-part">
+        <div className="hero-part" key="hero-part" region={theDistrict.region}>
           <div
             className="go-back"
             onClick={() => {

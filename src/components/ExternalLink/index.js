@@ -1,8 +1,14 @@
 import React from "react";
+import styled from "styled-components";
+//
+const StyledLink = styled.a`
+  margin: 0 2px;
+  text-decoration: none;
+`;
 //
 export default props => {
   return (
-    <a
+    <StyledLink
       className="link"
       target="_blank"
       rel="noopener noreferrer"
@@ -10,6 +16,6 @@ export default props => {
       alt={props.alt}
     >
       {props.children}
-    </a>
+    </StyledLink>
   );
 };

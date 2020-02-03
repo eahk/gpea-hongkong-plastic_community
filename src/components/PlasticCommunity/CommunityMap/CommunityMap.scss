@@ -29,6 +29,7 @@
     }
   }
   .chosen {
+    transition-delay: 0.2s;
     path {
       fill: var(--title) !important;
     }

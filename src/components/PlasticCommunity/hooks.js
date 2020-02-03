@@ -138,7 +138,6 @@ const parseRestaurantResponse = (districts, values) => {
     districts[k].restaurants.sort((lhs, rhs) => {
       let a = String(rhs.name).charCodeAt(0),
         b = String(lhs.name).charCodeAt(0);
-
       if (a > b) {
         return -1;
       }
@@ -148,8 +147,18 @@ const parseRestaurantResponse = (districts, values) => {
       return 0;
     });
   });
-
-  return [districts, data];
+  // sort districts based on regions and number of restaurants
+  const sortedDistricts = Object.entries(districts)
+    .sort(([, v1], [, v2]) => +v2 - +v1)
+    .sort((a, b) => {
+      if (a[1].region === b[1].region) {
+        return a[1].numRestaurants > b[1].numRestaurants ? -1 : 1;
+      }
+      return a[1].region > b[1].region ? 1 : -1;
+    })
+    .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+  // return [districts, data];
+  return [sortedDistricts, data];
 };
 
 const pasrseVotesResponse = (districts, votes) => {
@@ -212,18 +221,6 @@ export const useDistrictRestaurans = () => {
         districts,
         restaurantsResponse.values
       );
-      /*
-      let sortedDistricts = {};
-      Object.keys(newDistricts).forEach(key => {
-        if (newDistricts[key].region === "Hong Kong Island") {
-          sortedDistricts[key] = newDistricts[key];
-        } else if (newDistricts[key].region === "Kowloon") {
-          sortedDistricts[key] = newDistricts[key];
-        } else if (newDistricts[key].region === "New Territories") {
-          sortedDistricts[key] = newDistricts[key];
-        }
-      });
-      */
       setDistricts({ ...newDistricts });
       setRestaurants(newRestaurants);
     }

@@ -17,30 +17,30 @@ export default props => {
           <div className="billboard-wrapper has-text-centered">
             <div className="card">
               <p>
-                18, Jan - 大埔 - 大元村鉻恩小學
+                18, Jan - 大埔 - 走塑團年飯
                 <br />
-                <small>走塑團年飯</small>
+                <small>大元村鉻恩小學</small>
               </p>
             </div>
             <div className="card">
               <p>
-                22, Feb - 大埔 - 路德會賽馬會富善綜合服務中心
+                22, Feb - 大埔 - 走塑社區推廣及 舊衣變環保袋Workshop
                 <br />
-                <small>走塑社區推廣及 舊衣變環保袋Workshop</small>
+                <small>路德會賽馬會富善綜合服務中心</small>
               </p>
             </div>
             <div className="card">
               <p>
-                March - 沙田 - St. Rose of Lima's College
+                March - 沙田 - 走塑社區推廣及 舊衣變環保袋Workshop
                 <br />
-                <small>走塑社區推廣及 舊衣變環保袋Workshop</small>
+                <small>St. Rose of Lima's College</small>
               </p>
             </div>
             <div className="card">
               <p>
-                20, Aug - 沙田 - 基督教協基會社會服務部 - 沙田家長資源中心
+                20, Aug - 沙田 - 走塑社區推廣及舊衣變環保袋Workshop
                 <br />
-                <small>走塑社區推廣及 舊衣變環保袋Workshop</small>
+                <small>基督教協基會社會服務部 - 沙田家長資源中心</small>
               </p>
             </div>
           </div>

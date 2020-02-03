@@ -13,7 +13,6 @@ import ExternalLink from "./components/ExternalLink";
 import Header from "./components/Header";
 import EnForm from "./components/EnForm";
 import Hero from "./components/Hero";
-import Headline from "./components/Headline";
 import Intro from "./components/Intro";
 // import DollarHandle from "./components/DollarHandle";
 import Explainer from "./components/Explainer";
@@ -206,7 +205,6 @@ function App() {
             </aside>
             <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
-              <Headline />
               <Intro />
               <Explainer />
               <Testimonial />

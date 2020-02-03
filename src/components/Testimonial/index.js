@@ -93,7 +93,7 @@ export default props => {
     <section className="section section-testimonial">
       <div className="section-header">
         <p className="title">有很多香港人和您一樣</p>
-        <p>聽聽綠色和平「全城走塑」計劃捐助者的心聲</p>
+        <p>聽聽綠色和平「走塑計劃」捐助者的心聲</p>
       </div>
       <div className="testimonial-wrapper">
         <Swiper {...swiperParams}>

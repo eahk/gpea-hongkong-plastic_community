@@ -4,6 +4,21 @@ import CommunityMap from "./CommunityMap/CommunityMap.js";
 import CommunityInfo from "./CommunityInfo/CommunityInfo.js";
 import "./index.scss";
 
+/*
+let districtList = [];
+
+  Object.keys(props.districts).forEach(i => {
+    districtList.push({ keyValue: i, ...props.districts[i] });
+  });
+  districtList.sort((a, b) => {
+    if (a.region === b.region) {
+      return a.numRestaurants > b.numRestaurants ? -1 : 1;
+    }
+    return a.region > b.region ? 1 : -1; // Hong Kong Island > Kowloon > NT
+  });
+  */
+// Sort disticts by regions and number of restaurants
+
 export default props => {
   const [chosenDistrictId, setChosenDistrictId] = useState(null);
   const [districts, restaurants] = useDistrictRestaurans();
