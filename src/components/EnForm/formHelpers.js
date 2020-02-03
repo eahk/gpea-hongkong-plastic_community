@@ -11,7 +11,7 @@ export const resolveEnPageStatus = () => {
   if (window.pageJson.giftProcess) {
     if (window.pageJson.pageNumber === 1) {
       status = "ERROR"; // error page
-    } else {
+    } else if (window.pageJson.pageNumber === 2) {
       status = "SUCC"; // succ page
     }
   } else {

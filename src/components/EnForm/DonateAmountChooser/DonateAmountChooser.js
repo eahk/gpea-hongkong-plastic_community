@@ -60,7 +60,9 @@ export default props => {
             handleSwitchDonateInterval("recurring");
           }}
         >
-          每月捐款 <br /> Monthly
+          每月捐款
+          <br />
+          Monthly
         </button>
         <button
           className={cx("button onetime", {
@@ -70,7 +72,9 @@ export default props => {
             handleSwitchDonateInterval("onetime");
           }}
         >
-          單次捐款 <br /> Onetime
+          單次捐款
+          <br />
+          One time
         </button>
       </div>
 
@@ -121,8 +125,6 @@ export default props => {
           </div>
         )}
       </div>
-      <br />
-      <small>* 捐款港幣$100以上可申請扣稅</small>
     </div>
   );
 };

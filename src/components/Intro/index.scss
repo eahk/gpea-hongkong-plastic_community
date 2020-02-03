@@ -1,5 +1,4 @@
 .section-intro {
-  overflow: hidden;
   .row {
     padding: 20px 0;
     @media (min-width: 1200px) {
@@ -7,46 +6,7 @@
     }
   }
   .row-sticker {
-    padding: 40px 0 20px;
-    background-color: #fafafa;
-  }
-}
-
-.intro-headline {
-  padding: 40px 0;
-  .subtitle.is-orange {
-    display: inline-block;
-    font-weight: bold;
-    background-color: orange;
-    color: #fff;
-    padding: 4px;
-  }
-}
-.headline-text {
-  position: relative;
-  color: var(--title);
-  .headline-year {
-    pointer-events: none;
-    position: absolute;
-    top: -6rem;
-    right: -4rem;
-    font-weight: 900;
-    font-size: 8rem;
-    color: var(--border);
-    display: flex;
-    line-height: 1;
-    opacity: 0.15;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--title);
-    @media (min-width: 1200px) {
-      font-size: 5rem;
-    }
-    @media (min-width: 1600px) {
-      font-size: 6rem;
-    }
+    background-color: var(--light-gray);
   }
 }
 
@@ -58,7 +18,7 @@
   grid-gap: 8px;
   align-items: flex-start;
   justify-content: flex-start;
-  color: #fff;
+  color: var(--title);
   background-color: var(--title);
   figure {
     position: relative;
@@ -73,6 +33,7 @@
     margin: 0 auto;
   }
   span {
+    color: var(--white);
     position: relative;
     font-weight: bold;
     z-index: 1;
@@ -89,6 +50,7 @@
     }
   }
   p {
+    color: var(--white);
     text-align: center;
     width: 90%;
     font-size: 12px;
@@ -136,6 +98,7 @@
 }
 // sticker
 .sticker-wrapper {
+  padding: 40px 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;

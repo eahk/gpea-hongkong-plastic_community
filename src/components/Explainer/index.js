@@ -4,14 +4,41 @@ import Swiper from "react-id-swiper";
 //
 import "./index.scss";
 //
-import picture1 from "../../assets/images/13d9a742-whatsapp-image-2019-10-19-at-4.42.47-pm-1536x1152.jpeg";
+import step1 from "../../assets/images/13d9a742-whatsapp-image-2019-10-19-at-4.42.47-pm-1536x1152.jpeg";
+import step2 from "../../assets/images/13_4_hunt_selected.jpeg";
+import step3 from "../../assets/images/A7304367.jpg";
+import step4 from "../../assets/images/A7304285.jpg";
 //
 const StyledImgContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 240px;
+  &:before,
+  :after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  &:before {
+    z-index: 1;
+    left: -8px;
+    top: -8px;
+    border-width: 40px 40px 0 0;
+    border-color: var(--title) transparent transparent transparent;
+  }
+  &:after {
+    right: -8px;
+    bottom: -8px;
+    border-width: 0 0 40px 40px;
+    border-color: transparent transparent var(--title) transparent;
+  }
   img {
-    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -20,24 +47,24 @@ const StyledImgContainer = styled.div`
 //
 const stepData = [
   {
-    image: picture1,
-    title: "籌備活動",
-    description: "招募義工、準備物資，搜集資料選定店鋪地點"
+    image: step1,
+    title: "招募義工",
+    description: "定期舉辦義工招募活動，維持團隊人數"
   },
   {
-    image: picture1,
+    image: step2,
+    title: "籌備工作",
+    description: "準備物資，搜集資料選定店鋪地點"
+  },
+  {
+    image: step3,
     title: "走進社區",
-    description: "帶領義工團隊到商鋪進行遊說工作"
+    description: "帶領義工團隊，走進店鋪進行遊說工作"
   },
   {
-    image: picture1,
-    title: "走塑貼紙",
+    image: step4,
+    title: "走塑貼紙以茲識別",
     description: "願意加入走塑的店鋪，將按其承諾貼上相應等級貼紙"
-  },
-  {
-    image: picture1,
-    title: "網頁持續更新",
-    description: "持續更新走塑地圖、公佈最新活動資訊"
   }
 ];
 

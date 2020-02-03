@@ -7,15 +7,10 @@
   --black: #000;
   --white: #fff;
   --gp-green: #66cc00;
-  --gp-orange: #ff8100;
   --orange: orange;
   --gp-dark-blue: #292f47;
   // Generic Color palette based on #50D2FF --blue
-  --blue: #50d2ff;
-  --light-blue: #00e2f5;
-  --blue-mint: #2cefda;
-  --mint: #76f7b5;
-  --yellow: #f9f871;
+  --light-gray: #fafafa;
   // Text colors
   --title: rgba(80, 210, 255, 0.85);
   --text: rgba(0, 0, 0, 0.65);
@@ -50,10 +45,6 @@
 @import "./scss/typography";
 @import "./scss/override";
 //
-body {
-  width: 100%;
-  height: 100%;
-}
 .loading--overlay {
   z-index: 999;
   position: fixed !important;
@@ -78,29 +69,22 @@ body {
   }
 }
 .main {
-  color: var(--text);
-  position: relative;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
   .main-left,
   .main-right {
     padding: 0;
   }
-  .title {
-    color: var(--title);
-  }
-  .subtitel {
-    color: var(--sub-text);
-  }
+}
+.main-left {
+  overflow-x: hidden;
 }
 // Form Modal
 .main-right {
   z-index: 1;
+  height: auto;
   background-color: #fff;
   box-shadow: var(--shadow);
+
+  position: relative;
   &.showFormModal {
     margin: 0px;
     padding: 0px;
@@ -120,7 +104,6 @@ body {
 // enform
 .enform-wrapper {
   height: 100vh;
-  position: relative;
   position: sticky;
   top: 0;
   background-color: #fff;
@@ -128,13 +111,11 @@ body {
 }
 
 .enform-header {
-  color: var(--sub-text);
-  padding: 20px 20px 4px;
+  margin-bottom: 20px;
   .welcome-message {
     .header-text {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
       .return-arrow {
         cursor: pointer;
         margin-right: 16px;
@@ -166,12 +147,29 @@ body {
   min-height: 75vh;
 }
 
+.enform-note {
+  small {
+    color: var(--sub-text);
+    font-size: 12px;
+    &.star {
+      position: relative;
+      &:before {
+        content: "*";
+        font-weight: bold;
+        font-size: 16px;
+        position: absolute;
+        left: -12px;
+        top: 0px;
+      }
+    }
+  }
+}
+
 .enform-footer {
   font-size: 14px;
-  background: #fafafa;
+  background: var(--light-gray);
   align-self: flex-end;
   padding: 40px 20px;
-  max-width: 680px;
   border: 2px solid var(--orange);
   border-left: none;
   border-right: none;

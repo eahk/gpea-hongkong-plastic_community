@@ -14,17 +14,19 @@ import Header from "./components/Header";
 import EnForm from "./components/EnForm";
 import Hero from "./components/Hero";
 import Intro from "./components/Intro";
+// import DollarHandle from "./components/DollarHandle";
 import Explainer from "./components/Explainer";
+import Testimonial from "./components/Testimonial";
 import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
-import BillBoard from "./components/BillBoard";
-import Testimonial from "./components/Testimonial";
+// import BillBoard from "./components/BillBoard";
 import Footer from "./components/Footer";
 //
 window.ee = new mitt();
 //
 function App() {
   let checkMobile = window.innerWidth < 1200;
+  const [summary, setSummary] = useState(null);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [pageResizing, setPageResizing] = useState(false);
   const [lastYPos, setLastYPos] = useState(0);
@@ -41,6 +43,21 @@ function App() {
   });
   //
   useEffect(() => {
+    /*
+    const summaryEndPoint =
+    "http://e-activist.com/ea-dataservice/data.service?service=EaDataCapture&token=7a06c0fc-32fe-43f1-8a1b-713b3ea496e1&campaignId=168645&contentType=json&resultType=summary";
+    fetch(summaryEndPoint)
+      .then(response => {
+        response.json();
+      })
+      .then(response => {
+        console.log(response);
+        setSummary(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      */
     const handleScroll = () => {
       const yPos = window.scrollY;
       // const isScrollingUp = yPos < lastYPos;
@@ -61,7 +78,6 @@ function App() {
     // page status
     window.ee.on("PAGE_STATUS", pageStatus => {
       if (pageStatus === "SUCC") {
-        console.log(pageStatus);
         setEnFormSubmitted(true);
       }
     });
@@ -106,7 +122,7 @@ function App() {
                 })}
                 style={{ overflowX: "hidden" }}
               >
-                <animated.div style={formModal}>
+                <animated.div className="react-en-form" style={formModal}>
                   <div className="enform-header">
                     <div className="welcome-message">
                       <div className="header-text">
@@ -120,6 +136,7 @@ function App() {
                         )}
                         <p>您的捐助，將讓走塑社區在香港遍地開花</p>
                       </div>
+                      {/*
                       {!enFormSubmitted && (
                         <div className="is-flex-horizontal">
                           <div>
@@ -132,10 +149,22 @@ function App() {
                           </div>
                         </div>
                       )}
+                      */}
                     </div>
                   </div>
                   <div className="enform-body">
                     <EnForm isMobile={isMobile} />
+                  </div>
+                  <div className="enform-note">
+                    <br />
+                    <small className="star">
+                      <u>捐款港幣$100以上可申請扣稅</u>
+                    </small>
+                    <br />
+                    <small>
+                      為維持公正獨立，綠色和平100%倚賴熱心市民捐助支持，20年來與您共創環境里程碑。
+                    </small>
+                    <br />
                   </div>
                 </animated.div>
                 <div className="enform-footer">
@@ -184,8 +213,6 @@ function App() {
             </div>
           </div>
           <PlasticCommunity />
-          <hr />
-          <BillBoard />
         </div>
         <animated.div
           className={cx("main-button", "is-flex", {

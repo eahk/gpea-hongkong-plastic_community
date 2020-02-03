@@ -65,13 +65,15 @@ export default props => {
   const [disableButton, setDisableButton] = useState(false);
   // receive global events to change amounts
   useEffect(() => {
-    window.ee.emit("PAGE_STATUS", pageStatus);
-    //
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
     });
   }, []);
+
+  if (hasRendered) {
+    window.ee.emit("PAGE_STATUS", pageStatus);
+  }
 
   // read in form errors from DOM
   if (!hasRendered) {
@@ -145,7 +147,7 @@ export default props => {
   });
 
   return (
-    <div className="react-en-form">
+    <>
       {stepNo === 1 && (
         <animated.div style={stepSpring}>
           <div className="step step-1">
@@ -166,7 +168,6 @@ export default props => {
                 setDonateAmount(amount);
               }}
             />
-
             <button
               className={cx("button", "enform__button")}
               disabled={disableButton}
@@ -514,6 +515,6 @@ export default props => {
           </div>
         </animated.div>
       )}
-    </div>
+    </>
   );
 };

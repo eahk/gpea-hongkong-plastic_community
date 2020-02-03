@@ -27,10 +27,11 @@
 
 .section-testimonial {
   .swiper-slide {
-    width: 280px;
+    width: 80%;
+    max-width: 300px;
+    padding: 0px 8px 20px;
     .card {
-      margin: 8px;
-      box-shadow: var(--shadow--md);
+      box-shadow: var(--shadow--lg);
     }
   }
   .swiper-button-prev,
