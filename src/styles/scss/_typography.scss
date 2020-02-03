@@ -1,16 +1,16 @@
 // Import a Google Font
 // @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&subset=chinese-traditional");
 // https://type-scale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=Noto%20Sans%20HK&bodyfontweight=400&lineheight=1.5&backgroundcolor=&fontcolor=%23333&preview=false
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+HK:400,700,900&Noto+Sans+TC");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+HK:400,700,900");
 //
 html {
   font-size: 100%;
 } /*16px*/
 
 body {
-  font-family: "Noto Sans HK", "Noto Sans TC", 微軟正黑體, Microsoft JhengHei,
-    STHeiti, 华文黑体, SimHei, 黑体, 新細明體, PMingLiU, 細明體, MingLiU,
-    sans-serif;
+  font-family: "Noto Sans HK", Microsoft JhengHei, "PingFang HK",
+    "Helvetica Neue", "Helvetica", "Arial", sans-serif, "Segoe UI",
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   line-height: 1.5;
   color: var(--text);

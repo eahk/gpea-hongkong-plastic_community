@@ -44,11 +44,9 @@ export default props => {
     Object.keys(districts).forEach(k => {
       let row = districts[k],
         el = svg.getElementById(row.svgId);
-
       if (el) {
         districts[k].el = el;
       }
-
       el.addEventListener("click", () => {
         props.onChooseDistrictId(k);
       });
