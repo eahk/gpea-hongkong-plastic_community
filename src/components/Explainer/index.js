@@ -49,7 +49,7 @@ const stepData = [
   {
     image: step1,
     title: "招募義工",
-    description: "定期舉辦義工招募活動，維持團隊人數"
+    description: "定期舉辦義工招募活動，與校園合作帶領學生、市民參與行動"
   },
   {
     image: step2,
@@ -59,7 +59,7 @@ const stepData = [
   {
     image: step3,
     title: "走進社區",
-    description: "帶領義工團隊，走進店鋪進行遊說工作"
+    description: "帶領市民、學生義工團隊走進店鋪進行遊說工作"
   },
   {
     image: step4,
@@ -77,7 +77,7 @@ export default props => {
   return (
     <section className="section section-explainer">
       <div className="section-header">
-        <p>您的支持，讓我們持續進下以下工作</p>
+        <p>您的捐助，讓我們能持續進行走塑社區工作</p>
       </div>
       <div className="explainer-wrapper">
         <Swiper {...swiperParams}>

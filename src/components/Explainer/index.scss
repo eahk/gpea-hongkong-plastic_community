@@ -23,7 +23,6 @@
       position: relative;
       font-size: 2.8rem;
       font-weight: bold;
-      margin-bottom: 2rem;
       &:before {
         content: "";
         position: absolute;
@@ -35,8 +34,7 @@
       }
     }
     .description {
-      max-width: 480px;
-      margin: 20px 20px 20px 0;
+      margin-top: 30px;
     }
   }
 }

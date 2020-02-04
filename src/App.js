@@ -26,10 +26,7 @@ window.ee = new mitt();
 //
 function App() {
   let checkMobile = window.innerWidth < 1200;
-  const [summary, setSummary] = useState(null);
-  const [pageLoaded, setPageLoaded] = useState(false);
   const [pageResizing, setPageResizing] = useState(false);
-  const [lastYPos, setLastYPos] = useState(0);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(checkMobile);
   const [showFormModal, setShowFormModal] = useState(false);
@@ -60,8 +57,6 @@ function App() {
       */
     const handleScroll = () => {
       const yPos = window.scrollY;
-      // const isScrollingUp = yPos < lastYPos;
-      setLastYPos(yPos);
       // window.ee.emit("SCROLL_DEPTH", yPos);
       setShowActions(yPos > 50); // scroll over header
     };
@@ -77,12 +72,14 @@ function App() {
     };
     // page status
     window.ee.on("PAGE_STATUS", pageStatus => {
+      if (pageStatus === "ERROR" && isMobile) {
+        setShowFormModal(true);
+      }
       if (pageStatus === "SUCC") {
         setEnFormSubmitted(true);
       }
     });
     // window listener
-    window.addEventListener("load", setPageLoaded(true));
     window.addEventListener("scroll", handleScroll, false);
     window.addEventListener("resize", handleWindowResize);
     return () => {
@@ -94,7 +91,7 @@ function App() {
   return (
     <div className={cx("app", { "modal-open": showFormModal })}>
       <Header />
-      {(!pageLoaded || pageResizing) && (
+      {pageResizing && (
         <div className="loading--overlay">
           <img src={gpLogo} alt="greenpeace logo" />
         </div>

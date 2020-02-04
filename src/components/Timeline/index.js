@@ -6,7 +6,7 @@ export default props => {
   return (
     <section className="section section-timeline">
       <div className="section-header">
-        <p className="title">走塑行事曆</p>
+        <p className="title">我們的走塑行事曆</p>
         <p>您的捐助讓我們能夠舉辦更多體驗活動，共同邁向全城走塑的目標</p>
       </div>
       <div className="timeline-wrapper">
@@ -22,7 +22,7 @@ export default props => {
                 地球日前夕舉辦義工日，
                 <strong>遊說50間店鋪</strong>加入走塑行列
               </p>
-              <p>舉辦地球日工作坊及活動，嘉許義工成為「走塑大使」</p>
+              <p>舉辦地球日工作坊及活動，嘉許義工及捐助者成為「走塑大使」</p>
             </div>
           </div>
           <div className="timeline-item">
@@ -57,7 +57,7 @@ export default props => {
                 完成2020年<strong>1,000間</strong>店鋪目標
               </p>
               <p>
-                點算「你最想走塑社區」投票結果，計劃來年重點社區，向香港全城走塑，成為走塑城市繼續進發
+                我們計畫今年內發起「你最想走塑社區」投票，計劃來年重點社區，向香港全城走塑繼續邁進，共創宜居城市
               </p>
             </div>
           </div>
@@ -72,6 +72,9 @@ export default props => {
                 承接走塑食堂計劃，推出<strong>「走塑社區」</strong>
               </p>
               <p>游說對象擴展至街市等社區店舖，沙田有近半店舖加入</p>
+              <p>
+                成功推動百佳試行裸裝蔬果計劃，旗下GREAT超市增設「裸買補充站」，顧客能自備容器購買產品
+              </p>
             </div>
           </div>
           <header className="timeline-header">

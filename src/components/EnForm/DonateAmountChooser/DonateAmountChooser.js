@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 //
 import "./DonateAmountChooser.scss";
@@ -115,7 +115,7 @@ export default props => {
                 : ""
               : props.amount || ""
           }
-          placeholder="其他金額 Other Amount"
+          placeholder="其他金額 Other amount"
           onChange={handleOtherAmountChange}
           onBlur={handleOtherAmountBlur}
         />

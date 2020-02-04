@@ -51,7 +51,6 @@ const supporterData = [
 
 const swiperParams = {
   slidesPerView: "auto",
-  spaceBetween: 20,
   grabCursor: true
 };
 
@@ -77,12 +76,12 @@ const TestimonialCard = props => {
       <div className="card-content">
         <div className="testimonial-text">
           <p className="headline">{props.headline}</p>
-          <p className="name">
-            <span>{props.name}</span>
-          </p>
-          <ExternalLink href={props.url} alt={props.headline}>
-            <small>{props.intro}</small>
-          </ExternalLink>
+          <div className="name">
+            <p>{props.name}</p>
+            <ExternalLink href={props.url} alt={props.headline}>
+              <small>{props.intro}</small>
+            </ExternalLink>
+          </div>
         </div>
       </div>
     </div>

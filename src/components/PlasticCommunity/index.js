@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDistrictRestaurans } from "./hooks";
 import CommunityMap from "./CommunityMap/CommunityMap.js";
 import CommunityInfo from "./CommunityInfo/CommunityInfo.js";

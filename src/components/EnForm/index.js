@@ -12,6 +12,7 @@ import {
 import "./index.scss";
 
 import DonateAmountChooser from "./DonateAmountChooser/DonateAmountChooser";
+import ExternalLink from "../ExternalLink";
 import {
   FORMIK_KEY_TO_EN_KEY,
   RECURRING_PRICES,
@@ -24,6 +25,7 @@ let initialValues,
   extraInfo = {};
 let errors = [];
 //
+/*
 const FormSlogan = () => {
   return (
     <div className="en-form-slogan">
@@ -33,8 +35,47 @@ const FormSlogan = () => {
     </div>
   );
 };
+*/
+const mainShare = event => {
+  event.preventDefault();
+  //
+  const fbShare = () => {
+    var baseURL = "https://www.facebook.com/sharer/sharer.php";
+    var u =
+      "https://act.greenpeace.org/page/54795/donate/1?utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
+    var t = (window.innerHeight - 436) / 2;
+    var l = (window.innerWidth - 626) / 2;
+    window.open(
+      baseURL + "?u=" + encodeURIComponent(u),
+      "_blank",
+      "width=626,height=436,top=" + t + ",left=" + l
+    );
+  };
+  // WEB SHARE API
+  if (navigator.share) {
+    // we can use web share!
+    navigator
+      .share({
+        title: "",
+        text:
+          "綠色和平正展開籌款活動： 號召熱心市民捐助支持全城走塑計畫，與我們一起在2020年，與學校合辦走塑學堂、尋找走塑店鋪活動，遊說全港1,000間店鋪加入走塑行列 👉 ",
+        url: "https://act.gp/37WRx8v"
+      })
+      .then(() => console.log("Successfully shared"))
+      .catch(error => console.log("Error sharing:", error));
+  } else {
+    // provide a fallback here
+    fbShare();
+  }
+};
+
 export default props => {
-  const stepSpring = useSpring({ opacity: 1, from: { opacity: 0 } });
+  const stepAnimation = useSpring({
+    from: {
+      opacity: 0
+    },
+    opacity: 1
+  });
   const [hasRendered, setHasRendered] = useState(false);
   useEffect(() => setHasRendered(true), [hasRendered]);
 
@@ -44,6 +85,7 @@ export default props => {
   }
 
   // resolve which page should goes to
+  // let pageStatus = "SUCC"; // preview of SUCC page
   let pageStatus = resolveEnPageStatus();
   let pageNo;
   if (pageStatus === "SUCC") {
@@ -149,7 +191,7 @@ export default props => {
   return (
     <>
       {stepNo === 1 && (
-        <animated.div style={stepSpring}>
+        <animated.div style={stepAnimation}>
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}
@@ -182,7 +224,7 @@ export default props => {
       )}
 
       {stepNo === 2 && (
-        <animated.div style={stepSpring}>
+        <animated.div style={stepAnimation}>
           <div className="step step-2">
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
@@ -209,7 +251,7 @@ export default props => {
               <div className="form-part">
                 <hr />
                 <div className="step-explain">
-                  <div>捐款人資料 Donor Details</div>
+                  <div>捐款人資料 Donor details</div>
                 </div>
 
                 {errors.length > 0 && (
@@ -224,7 +266,7 @@ export default props => {
 
                 <div className="is-flex-horizontal">
                   <div className="field">
-                    <label className="label">姓氏 Last Name</label>
+                    <label className="label">姓氏 Last name</label>
                     <div className="control">
                       <input
                         id="supporter_lastName"
@@ -235,7 +277,7 @@ export default props => {
                             formik.touched["supporter_lastName"]
                         })}
                         type="text"
-                        placeholder="姓氏 Last Name"
+                        placeholder="姓氏 Last name"
                         {...formik.getFieldProps("supporter_lastName")}
                         value={formik.values["supporter_lastName"]}
                       />
@@ -249,7 +291,7 @@ export default props => {
                   </div>
 
                   <div className="field">
-                    <label className="label">名字 First Name</label>
+                    <label className="label">名字 First name</label>
                     <div className="control">
                       <input
                         name="supporter_firstName"
@@ -259,7 +301,7 @@ export default props => {
                             formik.touched["supporter_firstName"]
                         })}
                         type="text"
-                        placeholder="名字 First Name"
+                        placeholder="名字 First name"
                         {...formik.getFieldProps("supporter_firstName")}
                       />
                     </div>
@@ -273,7 +315,7 @@ export default props => {
                 </div>
 
                 <div className="field">
-                  <label className="label">電郵地址 Email Address</label>
+                  <label className="label">電郵地址 Email address</label>
                   <div className="control">
                     <input
                       name="supporter_emailAddress"
@@ -283,7 +325,7 @@ export default props => {
                           formik.touched["supporter_emailAddress"]
                       })}
                       type="email"
-                      placeholder="電郵地址 Email Address"
+                      placeholder="電郵地址 Email address"
                       {...formik.getFieldProps("supporter_emailAddress")}
                     />
                   </div>
@@ -296,7 +338,7 @@ export default props => {
                 </div>
 
                 <div className="field">
-                  <label className="label">聯絡電話 Mobile Number</label>
+                  <label className="label">聯絡電話 Mobile number</label>
                   <div className="control">
                     <input
                       name="supporter_phoneNumber"
@@ -306,7 +348,7 @@ export default props => {
                           formik.touched["supporter_phoneNumber"]
                       })}
                       type="telephone"
-                      placeholder="聯絡電話 Mobile Number"
+                      placeholder="聯絡電話 Mobile number"
                       {...formik.getFieldProps("supporter_phoneNumber")}
                     />
                   </div>
@@ -342,11 +384,11 @@ export default props => {
                 </div>
 
                 <div className="step-explain">
-                  <div>信用卡資料 Credit Card Details</div>
+                  <div>信用卡資料 Credit card details</div>
                 </div>
 
                 <div className="field credit-field">
-                  <label className="label">信用卡號碼 Credit Card Number</label>
+                  <label className="label">信用卡號碼 Credit card number</label>
                   <div className="control">
                     <input
                       name="transaction_ccnumber"
@@ -356,7 +398,7 @@ export default props => {
                           formik.touched["transaction_ccnumber"]
                       })}
                       type="text"
-                      placeholder="XXXX XXXX XXXX XXXX"
+                      placeholder="5555 5555 5555 4444"
                       {...formik.getFieldProps("transaction_ccnumber")}
                       onChange={e => {
                         let raw = formatCreditCardNumber(e.target.value);
@@ -374,7 +416,7 @@ export default props => {
 
                 <div className="is-flex-horizontal">
                   <div className="field">
-                    <label className="label">有效期限 Expiry Date</label>
+                    <label className="label">有效期限 Expiry date</label>
                     <div className="control">
                       <input
                         name="transaction_ccexpire"
@@ -384,7 +426,7 @@ export default props => {
                             formik.touched["transaction_ccexpire"]
                         })}
                         type="text"
-                        placeholder="MM/YY"
+                        placeholder="mm/yy"
                         {...formik.getFieldProps("transaction_ccexpire")}
                         onChange={e => {
                           let raw = e.target.value
@@ -407,7 +449,7 @@ export default props => {
                   </div>
 
                   <div className="field">
-                    <label className="label">驗證碼 CVV</label>
+                    <label className="label">驗證碼 cvv</label>
                     <div className="control">
                       <input
                         name="transaction_ccvv"
@@ -474,40 +516,61 @@ export default props => {
       )}
 
       {stepNo === 3 && (
-        <animated.div style={stepSpring}>
+        <animated.div style={stepAnimation}>
           <div className="step step-3">
             <div className="main-text">
               <p>
+                您的{" "}
                 <strong>
-                  您的{" "}
                   {window.thankyouPageIsRecurring === "Y" ? "每月" : "單次"}{" "}
                   {window.pageJson.currency}
-                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
-                  捐款已成功處理！
-                  <br />
-                  Your{" "}
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}
+                </strong>{" "}
+                捐款已成功處理！我們已發送電子郵件提供進一步資料。 Your{" "}
+                <strong>
                   {window.thankyouPageIsRecurring === "Y"
                     ? "Monthly"
                     : "One time"}{" "}
                   {window.pageJson.currency}
-                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
-                  donation has been processed.
-                </strong>
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}
+                </strong>{" "}
+                donation has been processed.
               </p>
               <p>
-                感謝您支持綠色和平的環保理念與工作。我們已發送電子郵件提供進一步資料。
+                我們承諾謹慎善用一分一毫，確保將您的心意，轉化為改變環境的最大力量。群眾力量是促成改變的關鍵，請幫助分享此網頁給您的親友好友，讓我們在第一季得到180位每月支持者，合力共創走塑社區！
               </p>
+              <button
+                className="button button--share is-fullwidth"
+                onClick={mainShare}
+              >
+                幫忙分享
+              </button>
+              <p>
+                誠邀您加入Whatsapp群組與一眾熱心支持者，交流日常走塑tips、保護環境心得！
+              </p>
+              <ExternalLink
+                href="https://chat.whatsapp.com/3M10Zp2ymdfH0D22DVU7EV"
+                alt="加入 Whatsapp 群組"
+              >
+                <button className="button button--join is-fullwidth">
+                  加入 Whatsapp 群組
+                </button>
+              </ExternalLink>
               <p>
                 如果您有任何查詢，請於辦公時間致電會員服務熱線 (852) 2854 8318
-                或電郵至{" "}
-                <a href="emailto:donor.services.hk@greenpeace.org">
+                或電郵至
+                <ExternalLink
+                  href="emailto:donor.services.hk@greenpeace.org"
+                  alt="donor.services.hk@greenpeace.org"
+                >
                   donor.services.hk@greenpeace.org
-                </a>
+                </ExternalLink>
                 。
               </p>
               <hr />
-              <blockquote>與您並肩，為環境「行動，帶來改變」！</blockquote>
               <blockquote>
+                與您並肩，為環境「行動，帶來改變」！
+                <br />
                 "Positive Change through Action" – Together we can make a
                 difference!
               </blockquote>

@@ -68,12 +68,13 @@
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  align-items: center;
   .headline {
     font-size: 14px;
   }
   .name {
     position: relative;
-    margin: 0;
+    p {
+      margin-bottom: 4px;
+    }
   }
 }
