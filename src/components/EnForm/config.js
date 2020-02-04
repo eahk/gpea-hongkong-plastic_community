@@ -8,6 +8,7 @@ export const FORMIK_KEY_TO_EN_KEY = {
   supporter_dateOfBirth: "supporter.NOT_TAGGED_6",
   supporter_address1: "supporter.address1",
   transaction_ccnumber: "transaction.ccnumber",
+  transaction_paymenttype: "transaction.paymenttype",
   transaction_ccexpire: "transaction.ccexpire",
   transaction_ccvv: "transaction.ccvv",
   send_me_email_hk: "supporter.questions.7275",
