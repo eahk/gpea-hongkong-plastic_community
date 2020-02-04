@@ -72,10 +72,6 @@ export default props => {
     });
   }, []);
 
-  if (hasRendered) {
-    window.ee.emit("PAGE_STATUS", pageStatus);
-  }
-
   // read in form errors from DOM
   if (!hasRendered) {
     for (let el of document.querySelectorAll(".en__error")) {
