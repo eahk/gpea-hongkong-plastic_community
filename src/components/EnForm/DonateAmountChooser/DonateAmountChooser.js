@@ -79,8 +79,7 @@ export default props => {
       </div>
 
       <div className="step-explain">
-        <div>請選擇捐款金額</div>
-        <div>Choose an amount to give</div>
+        <div>請選擇捐款金額 Choose an amount to give</div>
       </div>
       <div className="buttons available-amounts">
         {props.predefinedAmounts[props.interval].map((amount, idx) => {

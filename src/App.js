@@ -138,7 +138,9 @@ function App() {
                             className="return-arrow fa fa-arrow-left"
                           ></i>
                         )}
-                        <p>您的捐助，將讓走塑社區在香港遍地開花</p>
+                        <p>
+                          <strong>您的捐助，將讓走塑社區在香港遍地開花</strong>
+                        </p>
                       </div>
                       {/*
                       {!enFormSubmitted && (
