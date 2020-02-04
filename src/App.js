@@ -97,7 +97,7 @@ function App() {
       setEnFormSubmitted(true);
     }
 
-    if (enPageStatus === "ERROR") {
+    if (enPageStatus === "ERROR" && isMobile) {
       setShowFormModal(true);
     }
   }, []);
