@@ -6,7 +6,7 @@ export default props => {
   return (
     <section className="section section-timeline">
       <div className="section-header">
-        <p className="title">我們的走塑行事曆</p>
+        <p className="title">社區走塑行事曆</p>
         <p>您的捐助讓我們能夠舉辦更多體驗活動，共同邁向全城走塑的目標</p>
       </div>
       <div className="timeline-wrapper">

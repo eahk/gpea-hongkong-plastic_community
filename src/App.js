@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mitt from "mitt";
 import cx from "classnames";
-import { useSpring, animated } from "react-spring";
+import { motion } from "framer-motion";
 // css
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
@@ -36,14 +36,30 @@ function App() {
   const [isMobile, setIsMobile] = useState(checkMobile);
   const [showFormModal, setShowFormModal] = useState(false);
   const [enFormSubmitted, setEnFormSubmitted] = useState(false);
-  //
-  const formModal = useSpring({
-    opacity: showFormModal || !isMobile ? 1 : 0
-  });
-  const mainButton = useSpring({
-    transform: showActions ? "translateY(0)" : "translateY(100%)"
-  });
-  //
+  const springConfig = {
+    type: "spring",
+    stiffness: 200, // Stiffness of the spring. Higher values will create more sudden movement. Set to 100 by default.
+    damping: 20, // Strength of opposing force. If set to 0, spring will oscillate indefinitely. Set to 10 by default.
+    duration: 0.15
+  };
+  const motionFormModal = {
+    show: {
+      opacity: 1,
+      x: 0
+    },
+    hidden: {
+      opacity: 0,
+      x: "100%"
+    }
+  };
+  const motionMainButton = {
+    show: {
+      y: 0
+    },
+    hidden: {
+      y: "100%"
+    }
+  };
   useEffect(() => {
     /*
     const summaryEndPoint =
@@ -86,10 +102,12 @@ function App() {
 
   // show the correct value based on the current en pages
   useEffect(() => {
-    if (enPageStatus === "SUCC") {
+    if (enPageStatus === "SUCC" && isMobile) {
+      setEnFormSubmitted(true);
+      setShowFormModal(true);
+    } else if (enPageStatus === "SUCC") {
       setEnFormSubmitted(true);
     }
-
     if (enPageStatus === "ERROR" && isMobile) {
       setShowFormModal(true);
     }
@@ -126,7 +144,13 @@ function App() {
                 })}
                 style={{ overflowX: "hidden" }}
               >
-                <animated.div className="react-en-form" style={formModal}>
+                <motion.div
+                  className="react-en-form"
+                  initial={"hidden"}
+                  animate={showFormModal || !isMobile ? "show" : "hidden"}
+                  variants={motionFormModal}
+                  transition={springConfig}
+                >
                   <div className="enform-header">
                     <div className="welcome-message">
                       <div className="header-text">
@@ -172,7 +196,7 @@ function App() {
                     </small>
                     <br />
                   </div>
-                </animated.div>
+                </motion.div>
                 <div className="enform-footer">
                   <div className="footer_remarks">
                     <p>注意事項</p>
@@ -220,11 +244,13 @@ function App() {
           </div>
           <PlasticCommunity />
         </div>
-        <animated.div
+        <motion.div
           className={cx("main-button", "is-flex", {
             "is-hidden": !isMobile
           })}
-          style={mainButton}
+          animate={showActions ? "show" : "hidden"}
+          variants={motionMainButton}
+          transition={springConfig}
         >
           <button
             className="button"
@@ -234,7 +260,7 @@ function App() {
           >
             {enFormSubmitted ? "多謝您的支持" : "捐助支持"}
           </button>
-        </animated.div>
+        </motion.div>
       </main>
       <Footer />
     </div>

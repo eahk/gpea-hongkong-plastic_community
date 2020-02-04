@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useSpring, animated } from "react-spring";
+import { motion } from "framer-motion";
 import * as ccvalidate from "cc-validate";
 import {
   resolveEnPageStatus,
@@ -71,20 +71,27 @@ const mainShare = event => {
 };
 
 export default props => {
-  const stepAnimation = useSpring({
-    from: {
-      opacity: 0
-    },
-    opacity: 1
-  });
   const [hasRendered, setHasRendered] = useState(false);
   useEffect(() => setHasRendered(true), [hasRendered]);
-
   // resolve the initial form values
   if (!hasRendered) {
     [initialValues, extraInfo] = resolveInitFormValues();
   }
-
+  const springConfig = {
+    type: "spring",
+    stiffness: 200,
+    damping: 13
+  };
+  const motionStep = {
+    show: {
+      opacity: 1,
+      x: 0
+    },
+    hidden: {
+      opacity: 0,
+      x: "100%"
+    }
+  };
   // resolve which page should goes to
   // let pageStatus = "SUCC"; // preview of SUCC page
   let pageStatus = resolveEnPageStatus();
@@ -198,11 +205,16 @@ export default props => {
       document.querySelector("form.en__component").submit();
     }
   });
-
   return (
     <>
       {stepNo === 1 && (
-        <animated.div style={stepAnimation}>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={motionStep}
+          transition={springConfig}
+        >
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}
@@ -222,7 +234,7 @@ export default props => {
               }}
             />
             <button
-              className={cx("button", "enform__button")}
+              className="button enform__button"
               disabled={disableButton}
               onClick={() => {
                 setStepNo(2);
@@ -231,12 +243,22 @@ export default props => {
               {props.isMobile ? "下一步 NEXT" : "立即捐助 DONATE NOW"}
             </button>
           </div>
-        </animated.div>
+        </motion.div>
       )}
 
       {stepNo === 2 && (
-        <animated.div style={stepAnimation}>
-          <div className="step step-2">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={motionStep}
+          transition={springConfig}
+        >
+          <div
+            className={cx("step", "step-2", {
+              "overlay--loading": formik.isSubmitting
+            })}
+          >
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
                 <div className="main-text">
@@ -524,7 +546,7 @@ export default props => {
 
               <button
                 type="submit"
-                className={cx("button enform__button", {
+                className={cx("button", "enform__button", {
                   "is-loading": formik.isSubmitting
                 })}
               >
@@ -532,11 +554,17 @@ export default props => {
               </button>
             </form>
           </div>
-        </animated.div>
+        </motion.div>
       )}
 
       {stepNo === 3 && (
-        <animated.div style={stepAnimation}>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={motionStep}
+          transition={springConfig}
+        >
           <div className="step step-3">
             <div className="main-text">
               <p>
@@ -546,7 +574,9 @@ export default props => {
                   {window.pageJson.currency}
                   {parseInt(window.pageJson.amount, 10).toLocaleString()}
                 </strong>{" "}
-                捐款已成功處理！我們已發送電子郵件提供進一步資料。 Your{" "}
+                捐款已成功處理！我們已發送電子郵件提供進一步資料。
+                <br />
+                Your{" "}
                 <strong>
                   {window.thankyouPageIsRecurring === "Y"
                     ? "Monthly"
@@ -556,6 +586,7 @@ export default props => {
                 </strong>{" "}
                 donation has been processed.
               </p>
+              <hr />
               <p>
                 我們承諾謹慎善用一分一毫，確保將您的心意，轉化為改變環境的最大力量。群眾力量是促成改變的關鍵，請幫助分享此網頁給您的親友好友，讓我們在第一季得到180位每月支持者，合力共創走塑社區！
               </p>
@@ -596,7 +627,7 @@ export default props => {
               </blockquote>
             </div>
           </div>
-        </animated.div>
+        </motion.div>
       )}
     </>
   );

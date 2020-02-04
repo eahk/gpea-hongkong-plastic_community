@@ -29,6 +29,9 @@
   border-radius: 4px;
   background-color: #fff;
   box-shadow: var(--shadow);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /*
   mask-image: linear-gradient(
     to bottom,
     transparent,
@@ -36,8 +39,7 @@
     white 90%,
     transparent
   );
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  */
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -94,9 +96,10 @@
   }
 
   .step-2 {
+    &.overlay--loading {
+      pointer-events: none;
+    }
     .donate-amount-part {
-      position: sticky;
-      top: 0;
       z-index: 1;
       padding: 8px 16px;
       font-size: 14px;
@@ -180,11 +183,15 @@
         margin-right: 16px;
       }
       blockquote {
-        color: var(--sub-text);
+        border-radius: 4px;
+        padding: 16px;
+        background-color: #6c0;
+        color: #fff;
+        margin-bottom: 30px;
       }
     }
     .button {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: #fff;
     }
     .button--share {
