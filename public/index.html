@@ -486,25 +486,11 @@
               </div>
             </div>
             <div class="en__component en__component--formblock" style="">
-              <div
-                class="en__field en__field--select en__field--593118 en__field--paymenttype en__mandatory"
-              >
-                <label
-                  for="en__field_transaction_paymenttype"
-                  class="en__field__label"
-                  style=""
-                  >payment_type</label
-                >
-                <div class="en__field__element en__field__element--select">
-                  <select
-                    id="en__field_transaction_paymenttype"
-                    class="en__field__input en__field__input--select"
-                    name="transaction.paymenttype"
-                  >
-                    <option value="visa">VISA</option>
-                    <option value="mastercard">Master Card</option>
-                  </select>
-                </div>
+              <div class="en__field en__field--text en__field--593118 en__field--paymenttype">
+                  <label for="en__field_transaction_paymenttype" class="en__field__label" style="">payment_type</label>
+                  <div class="en__field__element en__field__element--text">
+                      <input id="en__field_transaction_paymenttype" type="text" class="en__field__input en__field__input--text" name="transaction.paymenttype" value="" />
+                  </div>
               </div>
               <div
                 class="en__field en__field--text en__field--593120 en__field--ccnumber en__mandatory"

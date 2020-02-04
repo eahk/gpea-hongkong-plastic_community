@@ -3,6 +3,7 @@ import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSpring, animated } from "react-spring";
+import * as ccvalidate from "cc-validate";
 import {
   resolveEnPageStatus,
   resolveInitFormValues,
@@ -113,10 +114,6 @@ export default props => {
     });
   }, []);
 
-  if (hasRendered) {
-    window.ee.emit("PAGE_STATUS", pageStatus);
-  }
-
   // read in form errors from DOM
   if (!hasRendered) {
     for (let el of document.querySelectorAll(".en__error")) {
@@ -124,7 +121,7 @@ export default props => {
     }
   }
   const [globalErrors, setGlobalErrors] = useState(errors);
-
+  const [cctype, setCctype] = useState("Visa");
   // prepare form validations
   const formik = useFormik({
     initialValues: initialValues,
@@ -142,7 +139,17 @@ export default props => {
         .matches(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/, "格式錯誤")
         .required("必填欄位"),
       transaction_ccnumber: Yup.string()
-        .matches(/\d{4} \d{4} \d{4} \d{4}/, "格式錯誤")
+        .test("ccnumber", "格式錯誤", v => {
+          let r = ccvalidate.isValid(v);
+          return r.isValid;
+        })
+        .test("ccnumber", "僅支援 Visa, MasterCard 或 American Express", v => {
+          let r = ccvalidate.isValid(v);
+          setCctype(r.cardType);
+          return (
+            ["Visa", "MasterCard", "American Express"].indexOf(r.cardType) >= 0
+          );
+        })
         .required("必填欄位"),
       transaction_ccexpire: Yup.string()
         .matches(/\d{2}\/\d{2}/, "格式錯誤 dd/yy")
@@ -155,6 +162,10 @@ export default props => {
       if (Object.keys(formik.errors).length > 0) {
         throw new Error("There are still errors in formik");
       }
+
+      // update the credit card type
+      let r = ccvalidate.isValid(formik.values["transaction_ccnumber"]);
+      formik.values["transaction_paymenttype"] = r.cardType;
 
       // update all the collect values into legacy form
       for (let formikKey in FORMIK_KEY_TO_EN_KEY) {
@@ -389,7 +400,7 @@ export default props => {
 
                 <div className="field credit-field">
                   <label className="label">信用卡號碼 Credit card number</label>
-                  <div className="control">
+                  <div className="control has-icons-right">
                     <input
                       name="transaction_ccnumber"
                       className={cx("input", {
@@ -405,6 +416,15 @@ export default props => {
                         formik.setFieldValue("transaction_ccnumber", raw);
                       }}
                     />
+                    <span className="icon is-small is-right">
+                      {cctype === "Visa" && <i className="fab fa-cc-visa"></i>}
+                      {cctype === "MasterCard" && (
+                        <i className="fab fa-cc-mastercard"></i>
+                      )}
+                      {cctype === "American Express" && (
+                        <i className="fab fa-cc-amex"></i>
+                      )}
+                    </span>
                   </div>
                   {formik.errors["transaction_ccnumber"] &&
                     formik.touched["transaction_ccnumber"] && (

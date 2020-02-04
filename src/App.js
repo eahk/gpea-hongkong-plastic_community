@@ -21,9 +21,14 @@ import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
 // import BillBoard from "./components/BillBoard";
 import Footer from "./components/Footer";
+
+// hack to retrieve the current enform status
+import { resolveEnPageStatus } from "./components/EnForm/formHelpers";
+let enPageStatus = resolveEnPageStatus();
+
 //
 window.ee = new mitt();
-//
+
 function App() {
   let checkMobile = window.innerWidth < 1200;
   const [pageResizing, setPageResizing] = useState(false);
@@ -70,15 +75,6 @@ function App() {
       }
       setPageResizing(false);
     };
-    // page status
-    window.ee.on("PAGE_STATUS", pageStatus => {
-      if (pageStatus === "ERROR" && isMobile) {
-        setShowFormModal(true);
-      }
-      if (pageStatus === "SUCC") {
-        setEnFormSubmitted(true);
-      }
-    });
     // window listener
     window.addEventListener("scroll", handleScroll, false);
     window.addEventListener("resize", handleWindowResize);
@@ -87,6 +83,17 @@ function App() {
       window.removeEventListener("resize", handleWindowResize);
     };
   });
+
+  // show the correct value based on the current en pages
+  useEffect(() => {
+    if (enPageStatus === "SUCC") {
+      setEnFormSubmitted(true);
+    }
+
+    if (enPageStatus === "ERROR" && isMobile) {
+      setShowFormModal(true);
+    }
+  }, []);
 
   return (
     <div className={cx("app", { "modal-open": showFormModal })}>
