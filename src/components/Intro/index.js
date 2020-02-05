@@ -80,7 +80,7 @@ export default props => {
       */}
       <div className="row text-left">
         <div className="col-xs-12 col-md-6">
-          <p className="title">「全城走塑」過往項目成果</p>
+          <p className="title">「全城走塑」項目成果</p>
           <div className="content">
             <ul>
               <li>組織義工團隊，在全港600間店鋪貼上「走塑貼紙」</li>
@@ -99,6 +99,7 @@ export default props => {
           <ImageSlider />
         </div>
       </div>
+      <hr />
       <div className="row row-sticker">
         <div className="col-xs-12 col-md-6 col-lg-5">
           <div className="section-header has-text-left">

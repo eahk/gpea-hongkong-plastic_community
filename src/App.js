@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import mitt from "mitt";
 import cx from "classnames";
 import { motion } from "framer-motion";
@@ -14,7 +14,7 @@ import Header from "./components/Header";
 import EnForm from "./components/EnForm";
 import Hero from "./components/Hero";
 import Intro from "./components/Intro";
-// import DollarHandle from "./components/DollarHandle";
+import DollarHandle from "./components/DollarHandle";
 import Explainer from "./components/Explainer";
 import Testimonial from "./components/Testimonial";
 import Timeline from "./components/Timeline";
@@ -31,6 +31,7 @@ window.ee = new mitt();
 
 function App() {
   let checkMobile = window.innerWidth < 1200;
+
   const [pageResizing, setPageResizing] = useState(false);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(checkMobile);
@@ -38,8 +39,8 @@ function App() {
   const [enFormSubmitted, setEnFormSubmitted] = useState(false);
   const springConfig = {
     type: "spring",
-    stiffness: 200, // Stiffness of the spring. Higher values will create more sudden movement. Set to 100 by default.
-    damping: 20, // Strength of opposing force. If set to 0, spring will oscillate indefinitely. Set to 10 by default.
+    stiffness: 300, // Stiffness of the spring. Higher values will create more sudden movement. Set to 100 by default.
+    damping: 200, // Strength of opposing force. If set to 0, spring will oscillate indefinitely. Set to 10 by default.
     duration: 0.15
   };
   const motionFormModal = {
@@ -60,25 +61,10 @@ function App() {
       y: "100%"
     }
   };
+  const mainButton = useRef(null);
   useEffect(() => {
-    /*
-    const summaryEndPoint =
-    "http://e-activist.com/ea-dataservice/data.service?service=EaDataCapture&token=7a06c0fc-32fe-43f1-8a1b-713b3ea496e1&campaignId=168645&contentType=json&resultType=summary";
-    fetch(summaryEndPoint)
-      .then(response => {
-        response.json();
-      })
-      .then(response => {
-        console.log(response);
-        setSummary(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-      */
     const handleScroll = () => {
       const yPos = window.scrollY;
-      // window.ee.emit("SCROLL_DEPTH", yPos);
       setShowActions(yPos > 50); // scroll over header
     };
     const handleWindowResize = () => {
@@ -91,7 +77,6 @@ function App() {
       }
       setPageResizing(false);
     };
-    // window listener
     window.addEventListener("scroll", handleScroll, false);
     window.addEventListener("resize", handleWindowResize);
     return () => {
@@ -111,6 +96,11 @@ function App() {
     if (enPageStatus === "ERROR" && isMobile) {
       setShowFormModal(true);
     }
+    window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
+      if (!showFormModal && isMobile) {
+        setShowFormModal(true);
+      }
+    });
   }, []);
 
   return (
@@ -166,35 +156,18 @@ function App() {
                           <strong>您的捐助，將讓走塑社區在香港遍地開花</strong>
                         </p>
                       </div>
-                      {/*
-                      {!enFormSubmitted && (
-                        <div className="is-flex-horizontal">
-                          <div>
-                            <p>$30,000</p>
-                            <small>目標 $200,000</small>
-                          </div>
-                          <div>
-                            <p>14</p>
-                            <small>人支持</small>
-                          </div>
-                        </div>
-                      )}
-                      */}
                     </div>
                   </div>
                   <div className="enform-body">
                     <EnForm isMobile={isMobile} />
                   </div>
                   <div className="enform-note">
-                    <br />
-                    <small className="star">
-                      <u>捐款港幣$100以上可申請扣稅</u>
+                    <small className="has-star">
+                      捐款港幣$100以上可申請扣稅
                     </small>
-                    <br />
-                    <small>
+                    <small className="has-star">
                       為維持公正獨立，綠色和平100%倚賴熱心市民捐助支持，20年來與您共創環境里程碑。
                     </small>
-                    <br />
                   </div>
                 </motion.div>
                 <div className="enform-footer">
@@ -235,19 +208,30 @@ function App() {
             </aside>
             <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
+              <DollarHandle />
+              <hr />
               <Intro />
+              <hr />
               <Explainer />
+              <hr />
               <Testimonial />
               <hr />
               <Timeline />
+              <hr />
             </div>
           </div>
           <PlasticCommunity />
         </div>
         <motion.div
-          className={cx("main-button", "is-flex", {
-            "is-hidden": !isMobile
-          })}
+          className={cx(
+            "main-button",
+            "is-flex",
+            {
+              "is-hidden": !isMobile
+            },
+            { "main-button--fixed": showActions }
+          )}
+          ref={mainButton}
           animate={showActions ? "show" : "hidden"}
           variants={motionMainButton}
           transition={springConfig}

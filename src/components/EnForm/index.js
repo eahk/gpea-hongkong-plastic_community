@@ -79,8 +79,9 @@ export default props => {
   }
   const springConfig = {
     type: "spring",
-    stiffness: 200,
-    damping: 13
+    stiffness: 300,
+    damping: 200,
+    duration: 0.2
   };
   const motionStep = {
     show: {
@@ -114,10 +115,12 @@ export default props => {
   );
   const [disableButton, setDisableButton] = useState(false);
   // receive global events to change amounts
+
   useEffect(() => {
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
+      setStepNo(2);
     });
   }, []);
 
@@ -130,40 +133,45 @@ export default props => {
   const [globalErrors, setGlobalErrors] = useState(errors);
   const [cctype, setCctype] = useState("Visa");
   // prepare form validations
+  const errorMessages = {
+    required: "必填欄位 This is required",
+    invalid: "格式錯誤 Invalid Format",
+    cardType: "僅支援 Visa, MasterCard 或 American Express"
+  };
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: Yup.object({
-      transaction_donationAmt: Yup.string().required("必填欄位"),
-      supporter_firstName: Yup.string().required("必填欄位"),
-      supporter_lastName: Yup.string().required("必填欄位"),
+      transaction_donationAmt: Yup.string().required(errorMessages.required),
+      supporter_firstName: Yup.string().required(errorMessages.required),
+      supporter_lastName: Yup.string().required(errorMessages.required),
       supporter_emailAddress: Yup.string()
-        .email("格式錯誤")
-        .required("必填欄位"),
+        .email(errorMessages.invalid)
+        .required(errorMessages.required),
       supporter_phoneNumber: Yup.string()
-        .matches(/[\d -()]{8,}/, "格式錯誤")
-        .required("必填欄位"),
+        .matches(/[\d -()]{8,}/, errorMessages.invalid)
+        .required(errorMessages.required),
       supporter_dateOfBirth: Yup.string()
-        .matches(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/, "格式錯誤")
-        .required("必填欄位"),
+        .matches(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/, errorMessages.invalid)
+        .required(errorMessages.required),
       transaction_ccnumber: Yup.string()
-        .test("ccnumber", "格式錯誤", v => {
+        .test("ccnumber", errorMessages.invalid, v => {
           let r = ccvalidate.isValid(v);
           return r.isValid;
         })
-        .test("ccnumber", "僅支援 Visa, MasterCard 或 American Express", v => {
+        .test("ccnumber", errorMessages.cardType, v => {
           let r = ccvalidate.isValid(v);
           setCctype(r.cardType);
           return (
             ["Visa", "MasterCard", "American Express"].indexOf(r.cardType) >= 0
           );
         })
-        .required("必填欄位"),
+        .required(errorMessages.required),
       transaction_ccexpire: Yup.string()
-        .matches(/\d{2}\/\d{2}/, "格式錯誤 dd/yy")
-        .required("必填欄位"),
+        .matches(/\d{2}\/\d{2}/, `{errorMessages.invalid} mm/yy`)
+        .required(errorMessages.invalid),
       transaction_ccvv: Yup.string()
-        .matches(/\d{3,4}/, "格式錯誤")
-        .required("必填欄位")
+        .matches(/\d{3,4}/, errorMessages.invalid)
+        .required(errorMessages.required)
     }),
     onSubmit: values => {
       if (Object.keys(formik.errors).length > 0) {
@@ -262,7 +270,9 @@ export default props => {
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
                 <div className="main-text">
-                  {donateIntrvl === "recurring" ? "每月捐款" : "單次捐款"}{" "}
+                  {donateIntrvl === "recurring"
+                    ? "每月捐款 Monthly"
+                    : "單次捐款 One-time"}{" "}
                   <br />
                   <span className="donate-amount">
                     {CURRENCY}
@@ -277,7 +287,7 @@ export default props => {
                     setStepNo(1);
                   }}
                 >
-                  更改金額
+                  更改金額 Edit
                 </div>
               </div>
 
@@ -550,7 +560,7 @@ export default props => {
                   "is-loading": formik.isSubmitting
                 })}
               >
-                立即捐助
+                立即捐助 DONATE NOW
               </button>
             </form>
           </div>

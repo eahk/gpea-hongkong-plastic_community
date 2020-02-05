@@ -1,7 +1,13 @@
 .section {
   width: 100%;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  @media (min-width: 1200px) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 .row {

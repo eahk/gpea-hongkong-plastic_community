@@ -1,6 +1,6 @@
 .section-intro {
   .row {
-    padding: 40px 0;
+    padding: 2rem 0;
   }
   .watch {
     cursor: pointer;
@@ -8,7 +8,7 @@
 }
 
 .target-num {
-  padding: 60px 8px;
+  padding: 3rem 16px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
@@ -81,6 +81,7 @@
 }
 // player
 .player-wrapper {
+  margin-top: 30px;
   position: relative;
   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
 }
@@ -92,7 +93,6 @@
 }
 // sticker
 .sticker-wrapper {
-  padding: 40px 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;

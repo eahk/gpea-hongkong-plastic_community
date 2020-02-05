@@ -26,13 +26,13 @@ const StyledImgContainer = styled.div`
     z-index: 1;
     left: -8px;
     top: -8px;
-    border-width: 40px 40px 0 0;
+    border-width: 30px 30px 0 0;
     border-color: var(--title) transparent transparent transparent;
   }
   &:after {
     right: -8px;
     bottom: -8px;
-    border-width: 0 0 40px 40px;
+    border-width: 0 0 30px 30px;
     border-color: transparent transparent var(--title) transparent;
   }
   img {
@@ -77,6 +77,7 @@ export default props => {
   return (
     <section className="section section-explainer">
       <div className="section-header">
+        <p className="title">「走塑社區」歷程</p>
         <p>您的捐助，讓我們能持續進行走塑社區工作</p>
       </div>
       <div className="explainer-wrapper">
@@ -85,12 +86,12 @@ export default props => {
             <div className="swiper-slide" key={i}>
               <article className="article-step">
                 <div className="row">
-                  <div className="col-xs-12 col-md-6">
+                  <div className="col-xs-12 col-md-7 col-lg-8">
                     <StyledImgContainer>
                       <img src={step.image} alt={step.title} />
                     </StyledImgContainer>
                   </div>
-                  <div className="col-xs-12 col-md-6">
+                  <div className="col-xs-12 col-md-5 col-lg-4">
                     <div className="flex-wrapper">
                       <div>
                         <span className="step">0{i + 1}</span>
