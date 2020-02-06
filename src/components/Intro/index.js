@@ -47,21 +47,29 @@ export default props => {
   };
   return (
     <section className="section-intro">
-      <div className="level target-num is-hidden">
-        <figure className="level-item">
+      <div className="target-num">
+        <figure>
           <span>2020年</span>
           <p>擴大走塑學堂、走塑店鋪</p>
-          <img className=" target-icon" src={calendar} alt="calendar" />
+          <img
+            className=" target-icon"
+            src={calendar}
+            alt="擴大走塑學堂、走塑店鋪"
+          />
         </figure>
-        <figure className="level-item">
+        <figure>
           <span>720位</span>
           <p>每月60位熱心市民捐助支持走塑計畫</p>
-          <img className=" target-icon" src={participant} alt="participant" />
+          <img
+            className=" target-icon"
+            src={participant}
+            alt="每月60位熱心市民捐助支持走塑計畫"
+          />
         </figure>
-        <figure className="level-item">
+        <figure>
           <span>1,000間</span>
           <p>商鋪提供走塑友善措施</p>
-          <img className="target-icon" src={store} alt="store" />
+          <img className="target-icon" src={store} alt="商鋪提供走塑友善措施" />
         </figure>
       </div>
       {/*
@@ -80,7 +88,7 @@ export default props => {
       */}
       <div className="row text-left">
         <div className="col-xs-12 col-md-6">
-          <p className="title">「全城走塑」項目成果</p>
+          <p className="title is-hidden-mobile">「全城走塑」項目成果</p>
           <div className="content">
             <ul>
               <li>組織義工團隊，在全港600間店鋪貼上「走塑貼紙」</li>

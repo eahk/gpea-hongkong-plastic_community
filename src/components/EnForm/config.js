@@ -1,6 +1,7 @@
 export const FORMIK_KEY_TO_EN_KEY = {
   transaction_donationAmt: "transaction.donationAmt",
   recurring_payment_sf: "supporter.NOT_TAGGED_31", // "Y" or "N"
+  fr_rg_frequency: "supporter.NOT_TAGGED_17", // "12" or "0"
   supporter_firstName: "supporter.firstName",
   supporter_lastName: "supporter.lastName",
   supporter_emailAddress: "supporter.emailAddress",

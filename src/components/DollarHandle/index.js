@@ -10,22 +10,21 @@ import handle3 from "../../assets/images/GP0STRETY_Medium_res.jpg";
 const Handles = styled.div`
   padding: 20px;
   display: flex;
+  align-items: center;
   flex-flow: row nowrap;
-  overflow-y: auto;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
-  white-space: nowrap;
 `;
 const WhiteSpace = styled.div`
   padding: 20px;
-  height: 100%;
   background: transparent;
 `;
 const Handle = styled.div`
   cursor: pointer;
-  margin: 20px;
-  min-width: 280px;
-  height: 280px;
+  margin-right: 30px;
+  min-width: 250px;
+  height: 300px;
   flex: 1;
   position: relative;
   background-color: #fff;
@@ -45,9 +44,11 @@ const Handle = styled.div`
       color: var(--orange);
       font-weight: 900;
       font-size: 1.8rem;
+      margin-bottom: 4px;
     }
     .description {
       font-size: 0.8rem;
+      text-decoration: underline;
     }
   }
 `;
@@ -102,7 +103,7 @@ export default props => {
         </HandleImageContainer>
         <span>
           <span className="amount">HKD 300</span>
-          <span className="description">遊說200間店鋪，香港多一個走塑社區</span>
+          <span className="description">遊說200間店鋪</span>
         </span>
       </Handle>
       <Handle
@@ -115,7 +116,7 @@ export default props => {
         </HandleImageContainer>
         <span>
           <span className="amount">HKD 500</span>
-          <span className="description">遊說400間店鋪和更多團體加入走塑</span>
+          <span className="description">遊說400間店鋪</span>
         </span>
       </Handle>
       <WhiteSpace />

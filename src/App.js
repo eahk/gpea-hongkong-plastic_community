@@ -213,7 +213,6 @@ function App() {
               <Intro />
               <hr />
               <Explainer />
-              <hr />
               <Testimonial />
               <hr />
               <Timeline />

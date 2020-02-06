@@ -86,12 +86,12 @@ export default props => {
             <div className="swiper-slide" key={i}>
               <article className="article-step">
                 <div className="row">
-                  <div className="col-xs-12 col-md-7 col-lg-8">
+                  <div className="col-xs-12 col-md-6 col-lg-7">
                     <StyledImgContainer>
                       <img src={step.image} alt={step.title} />
                     </StyledImgContainer>
                   </div>
-                  <div className="col-xs-12 col-md-5 col-lg-4">
+                  <div className="col-xs-12 col-md-6 col-lg-5">
                     <div className="flex-wrapper">
                       <div>
                         <span className="step">0{i + 1}</span>

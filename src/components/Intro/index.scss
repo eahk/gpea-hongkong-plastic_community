@@ -8,13 +8,12 @@
 }
 
 .target-num {
-  padding: 3rem 16px;
+  padding: 2rem 16px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
   grid-gap: 8px;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: flex-end;
   figure {
     position: relative;
     display: flex;

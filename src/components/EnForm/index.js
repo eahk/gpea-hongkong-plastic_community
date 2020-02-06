@@ -192,7 +192,13 @@ export default props => {
             el.value = donateAmount;
           } else if (formikKey === "recurring_payment_sf") {
             el.value = donateIntrvl === "recurring" ? "Y" : "N";
-          } else if (formikKey === "transaction_ccnumber") {
+          }
+          //
+          else if (formikKey === "fr_rg_frequency") {
+            el.value = donateIntrvl === "recurring" ? "12" : "0";
+          }
+          //
+          else if (formikKey === "transaction_ccnumber") {
             el.value = formik.values[formikKey].replace(/\s+/g, "");
           } else if (
             formikKey === "send_me_email_hk" ||
@@ -598,13 +604,13 @@ export default props => {
               </p>
               <hr />
               <p>
-                我們承諾謹慎善用一分一毫，確保將您的心意，轉化為改變環境的最大力量。群眾力量是促成改變的關鍵，請幫助分享此網頁給您的親友好友，讓我們在第一季得到180位每月支持者，合力共創走塑社區！
+                我們承諾謹慎善用一分一毫，確保將您的心意，轉化為改變環境的最大力量。群眾力量是促成改變的關鍵，請幫助分享此網頁給您的親友好友，讓我們在全年得到660位每月捐助者，合力共創走塑社區！
               </p>
               <button
                 className="button button--share is-fullwidth"
                 onClick={mainShare}
               >
-                幫忙分享
+                分享給朋友
               </button>
               <p>
                 誠邀您加入Whatsapp群組與一眾熱心支持者，交流日常走塑tips、保護環境心得！
@@ -628,13 +634,6 @@ export default props => {
                 </ExternalLink>
                 。
               </p>
-              <hr />
-              <blockquote>
-                與您並肩，為環境「行動，帶來改變」！
-                <br />
-                "Positive Change through Action" – Together we can make a
-                difference!
-              </blockquote>
             </div>
           </div>
         </motion.div>
