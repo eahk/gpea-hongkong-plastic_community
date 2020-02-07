@@ -10,7 +10,7 @@ const StyledGoalWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   max-width: 480px;
-  margin: 20px 0;
+  margin: 20px auto;
 `;
 const GoalRow = styled.div`
   display: flex;
@@ -78,13 +78,13 @@ const StyledProgress = styled.div`
 export default props => {
   const targetAmount = 133000;
   const targetParticipant = 700;
-  const [currentAmount, setCurrentAmount] = useState(1000);
-  const [currentParticipant, setCurrentParticipant] = useState(10);
+  const [currentAmount, setCurrentAmount] = useState(20000);
+  const [currentParticipant, setCurrentParticipant] = useState(200);
   const [progress, setProgress] = useState(10);
   useEffect(() => {
-    const enCount = document.querySelectorAll(".enWidget__fill__count");
     let hdlr = setInterval(function() {
-      if (enCount) {
+      if (document.querySelectorAll(".enWidget__fill__count").length === 2) {
+        const enCount = document.querySelectorAll(".enWidget__fill__count");
         setCurrentAmount(parseInt(enCount[0].innerText.substr(1), 10)); // return fr amount
         setCurrentParticipant(parseInt(enCount[1].innerText, 10)); // return number of uni particaipants
         clearInterval(hdlr);
@@ -93,7 +93,7 @@ export default props => {
     //
     let progressPercent = (currentAmount / targetAmount) * 100;
     setProgress(progressPercent < 1 ? 1 : progressPercent);
-  }, [currentAmount, currentParticipant]);
+  });
   return (
     <StyledGoalWrapper>
       <StyledProgress>
@@ -106,12 +106,12 @@ export default props => {
         ></motion.progress>
       </StyledProgress>
       <GoalRow>
-        <Current format="money">{currentAmount}</Current>
-        <Goal>全年目標：${targetAmount}</Goal>
+        <Current format="money">{currentAmount.toLocaleString()}</Current>
+        <Goal>全年目標：${targetAmount.toLocaleString()}</Goal>
       </GoalRow>
       <GoalRow>
-        <Current>{currentParticipant}人</Current>
-        <Goal>全年目標：{targetParticipant}人</Goal>
+        <Current>{currentParticipant.toLocaleString()}人</Current>
+        <Goal>全年目標：{targetParticipant.toLocaleString()}人</Goal>
       </GoalRow>
     </StyledGoalWrapper>
   );
