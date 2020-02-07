@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 //
 import styled from "styled-components";
 //
@@ -14,7 +15,7 @@ const StyledGoalWrapper = styled.div`
 const GoalRow = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 8px 0;
 `;
 const Current = styled.div`
   font-size: 1.6rem;
@@ -33,44 +34,85 @@ const Goal = styled.small`
   vertical-align: bottom;
   color: var(--sub-text);
 `;
-const StyledProgress = styled.progress`
+const StyledProgress = styled.div`
   grid-column: 1 / -1;
-  &::-webkit-progress-value {
-    background-color: var(--orange) !important;
+  position: relative;
+  margin-top: 20px;
+  padding-top: 3rem;
+  .progress-point {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--sub-text);
+  }
+  .start-point {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .target-point {
+    position: absolute;
+    left: 50%;
+    top: 0;
+  }
+  progress {
+    overflow: visible;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+    }
+    &::-webkit-progress-value {
+      background-color: var(--orange) !important;
+    }
   }
 `;
 //
 export default props => {
-  const { amount, people } = props;
-  const [summary, setSummary] = useState(null);
+  const targetAmount = 133000;
+  const targetParticipant = 700;
+  const [currentAmount, setCurrentAmount] = useState(1000);
+  const [currentParticipant, setCurrentParticipant] = useState(10);
+  const [progress, setProgress] = useState(10);
   useEffect(() => {
-    const summaryEndPoint =
-      "https://e-activist.com/ea-dataservice/data.service?service=EaDataCapture&token=7a06c0fc-32fe-43f1-8a1b-713b3ea496e1&campaignId=168645&contentType=json&resultType=summary";
-    fetch(summaryEndPoint)
-      .then(response => {
-        response.json();
-      })
-      .then(json => {
-        console.log(json);
-        setSummary(json);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+    const enCount = document.querySelectorAll(".enWidget__fill__count");
+    let hdlr = setInterval(function() {
+      if (enCount) {
+        setCurrentAmount(parseInt(enCount[0].innerText.substr(1), 10)); // return fr amount
+        setCurrentParticipant(parseInt(enCount[1].innerText, 10)); // return number of uni particaipants
+        clearInterval(hdlr);
+      }
+    }, 1000);
+    //
+    let progressPercent = (currentAmount / targetAmount) * 100;
+    setProgress(progressPercent < 1 ? 1 : progressPercent);
+  }, [currentAmount, currentParticipant]);
   return (
     <StyledGoalWrapper>
-      <GoalRow>
-        <Current format="money">{amount.current}</Current>
-        <Goal>{amount.goal}</Goal>
-      </GoalRow>
-      <GoalRow>
-        <Current>{people.current}人</Current>
-        <Goal>{people.goal}</Goal>
-      </GoalRow>
-      <StyledProgress className="progress is-small" value="30" max="100">
-        15%
+      <StyledProgress>
+        <span className="progress-point start-point">募資開始</span>
+        <span className="progress-point target-point">募資成功</span>
+        <motion.progress
+          className="progress is-small"
+          value={parseInt(progress, 10)}
+          max="100"
+        ></motion.progress>
       </StyledProgress>
+      <GoalRow>
+        <Current format="money">{currentAmount}</Current>
+        <Goal>全年目標：${targetAmount}</Goal>
+      </GoalRow>
+      <GoalRow>
+        <Current>{currentParticipant}人</Current>
+        <Goal>全年目標：{targetParticipant}人</Goal>
+      </GoalRow>
     </StyledGoalWrapper>
   );
 };

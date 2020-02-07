@@ -3,12 +3,12 @@ import styled from "styled-components";
 //
 import "./index.scss";
 //
-import handle1 from "../../assets/images/GP0STTIZL_Medium_res.jpg";
-import handle2 from "../../assets/images/GP0STREPE_Medium_res.jpg";
-import handle3 from "../../assets/images/GP0STRETY_Medium_res.jpg";
+import handle1 from "../../assets/images/7R306760.jpg";
+import handle2 from "../../assets/images/7R306786.jpg";
+import handle3 from "../../assets/images/7R306795.jpg";
 //
 const Handles = styled.div`
-  padding: 20px;
+  padding: 10px;
   display: flex;
   align-items: center;
   flex-flow: row nowrap;
@@ -22,8 +22,8 @@ const WhiteSpace = styled.div`
 `;
 const Handle = styled.div`
   cursor: pointer;
-  margin-right: 30px;
-  min-width: 250px;
+  margin-right: 20px;
+  min-width: 260px;
   height: 300px;
   flex: 1;
   position: relative;
@@ -42,7 +42,7 @@ const Handle = styled.div`
     text-align: center;
     .amount {
       color: var(--orange);
-      font-weight: 900;
+      font-weight: bold;
       font-size: 1.8rem;
       margin-bottom: 4px;
     }
@@ -62,7 +62,7 @@ const HandleImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
     transition: transform 0.38s ease-out;
     will-change: transform;
   }

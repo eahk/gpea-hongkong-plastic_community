@@ -136,7 +136,8 @@ function App() {
               >
                 <motion.div
                   className="react-en-form"
-                  initial={"hidden"}
+                  initial="hidden"
+                  exist="hidden"
                   animate={showFormModal || !isMobile ? "show" : "hidden"}
                   variants={motionFormModal}
                   transition={springConfig}
@@ -231,6 +232,8 @@ function App() {
             { "main-button--fixed": showActions }
           )}
           ref={mainButton}
+          initial="hidden"
+          exist="hidden"
           animate={showActions ? "show" : "hidden"}
           variants={motionMainButton}
           transition={springConfig}

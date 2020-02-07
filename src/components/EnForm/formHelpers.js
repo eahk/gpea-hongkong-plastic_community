@@ -113,7 +113,7 @@ export const resolveInitFormValues = () => {
   // supporter_NOT_TAGGED_6
   values.send_me_email_hk = getCheckboxValueByFormilKey("send_me_email_hk");
   // supporter.questions.7275
-  values.send_me_email_tw = false; // getCheckboxValueByFormilKey("send_me_email_tw");
+  values.send_me_email_tw = getCheckboxValueByFormilKey("send_me_email_tw");
   // supporter.questions.7276
   return [values, extraInfos];
 };

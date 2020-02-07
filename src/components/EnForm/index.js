@@ -43,7 +43,7 @@ const mainShare = event => {
   const fbShare = () => {
     var baseURL = "https://www.facebook.com/sharer/sharer.php";
     var u =
-      "https://act.greenpeace.org/page/54795/donate/1?utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
+      "https://act.greenpeace.org/page/55748/donate/1?utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
     var t = (window.innerHeight - 436) / 2;
     var l = (window.innerWidth - 626) / 2;
     window.open(
@@ -60,7 +60,7 @@ const mainShare = event => {
         title: "",
         text:
           "綠色和平正展開籌款活動： 號召熱心市民捐助支持全城走塑計畫，與我們一起在2020年，與學校合辦走塑學堂、尋找走塑店鋪活動，遊說全港1,000間店鋪加入走塑行列 👉 ",
-        url: "https://act.gp/37WRx8v"
+        url: "https://act.gp/2S2TtH9"
       })
       .then(() => console.log("Successfully shared"))
       .catch(error => console.log("Error sharing:", error));
@@ -167,7 +167,7 @@ export default props => {
         })
         .required(errorMessages.required),
       transaction_ccexpire: Yup.string()
-        .matches(/\d{2}\/\d{2}/, `{errorMessages.invalid} mm/yy`)
+        .matches(/\d{2}\/\d{2}/, `${errorMessages.invalid} mm/yy`)
         .required(errorMessages.invalid),
       transaction_ccvv: Yup.string()
         .matches(/\d{3,4}/, errorMessages.invalid)
@@ -200,11 +200,10 @@ export default props => {
           //
           else if (formikKey === "transaction_ccnumber") {
             el.value = formik.values[formikKey].replace(/\s+/g, "");
-          } else if (
-            formikKey === "send_me_email_hk" ||
-            formikKey === "send_me_email_tw"
-          ) {
+          } else if (formikKey === "send_me_email_hk") {
             el.checked = formik.values[formikKey];
+          } else if (formikKey === "send_me_email_tw") {
+            el.checked = false;
           } else {
             el.value = formik.values[formikKey];
           }
@@ -300,7 +299,7 @@ export default props => {
               <div className="form-part">
                 <hr />
                 <div className="step-explain">
-                  <div>捐款人資料 Donor details</div>
+                  <div>捐款人資料 Donor Details</div>
                 </div>
 
                 {errors.length > 0 && (
@@ -315,7 +314,7 @@ export default props => {
 
                 <div className="is-flex-horizontal">
                   <div className="field">
-                    <label className="label">姓氏 Last name</label>
+                    <label className="label">姓氏 Last Name</label>
                     <div className="control">
                       <input
                         id="supporter_lastName"
@@ -326,7 +325,7 @@ export default props => {
                             formik.touched["supporter_lastName"]
                         })}
                         type="text"
-                        placeholder="姓氏 Last name"
+                        placeholder="姓氏 Last Name"
                         {...formik.getFieldProps("supporter_lastName")}
                         value={formik.values["supporter_lastName"]}
                       />
@@ -340,7 +339,7 @@ export default props => {
                   </div>
 
                   <div className="field">
-                    <label className="label">名字 First name</label>
+                    <label className="label">名字 First Name</label>
                     <div className="control">
                       <input
                         name="supporter_firstName"
@@ -350,7 +349,7 @@ export default props => {
                             formik.touched["supporter_firstName"]
                         })}
                         type="text"
-                        placeholder="名字 First name"
+                        placeholder="名字 First Name"
                         {...formik.getFieldProps("supporter_firstName")}
                       />
                     </div>
@@ -364,7 +363,7 @@ export default props => {
                 </div>
 
                 <div className="field">
-                  <label className="label">電郵地址 Email address</label>
+                  <label className="label">電郵地址 Email Address</label>
                   <div className="control">
                     <input
                       name="supporter_emailAddress"
@@ -374,7 +373,7 @@ export default props => {
                           formik.touched["supporter_emailAddress"]
                       })}
                       type="email"
-                      placeholder="電郵地址 Email address"
+                      placeholder="電郵地址 Email Address"
                       {...formik.getFieldProps("supporter_emailAddress")}
                     />
                   </div>
@@ -387,7 +386,7 @@ export default props => {
                 </div>
 
                 <div className="field">
-                  <label className="label">聯絡電話 Mobile number</label>
+                  <label className="label">聯絡電話 Mobile Number</label>
                   <div className="control">
                     <input
                       name="supporter_phoneNumber"
@@ -397,7 +396,7 @@ export default props => {
                           formik.touched["supporter_phoneNumber"]
                       })}
                       type="telephone"
-                      placeholder="聯絡電話 Mobile number"
+                      placeholder="聯絡電話 Mobile Number"
                       {...formik.getFieldProps("supporter_phoneNumber")}
                     />
                   </div>
@@ -433,11 +432,11 @@ export default props => {
                 </div>
 
                 <div className="step-explain">
-                  <div>信用卡資料 Credit card details</div>
+                  <div>信用卡資料 Credit Card Details</div>
                 </div>
 
                 <div className="field credit-field">
-                  <label className="label">信用卡號碼 Credit card number</label>
+                  <label className="label">信用卡號碼 Credit Card Number</label>
                   <div className="control has-icons-right">
                     <input
                       name="transaction_ccnumber"
@@ -474,7 +473,7 @@ export default props => {
 
                 <div className="is-flex-horizontal">
                   <div className="field">
-                    <label className="label">有效期限 Expiry date</label>
+                    <label className="label">有效期限 Expiry Date</label>
                     <div className="control">
                       <input
                         name="transaction_ccexpire"
@@ -484,7 +483,7 @@ export default props => {
                             formik.touched["transaction_ccexpire"]
                         })}
                         type="text"
-                        placeholder="mm/yy"
+                        placeholder="MM/YY"
                         {...formik.getFieldProps("transaction_ccexpire")}
                         onChange={e => {
                           let raw = e.target.value
@@ -507,7 +506,7 @@ export default props => {
                   </div>
 
                   <div className="field">
-                    <label className="label">驗證碼 cvv</label>
+                    <label className="label">驗證碼 CVV</label>
                     <div className="control">
                       <input
                         name="transaction_ccvv"
@@ -517,7 +516,7 @@ export default props => {
                             formik.touched["transaction_ccvv"]
                         })}
                         type="number"
-                        placeholder="XXX"
+                        placeholder="123"
                         {...formik.getFieldProps("transaction_ccvv")}
                         onChange={e => {
                           formik.setFieldValue(
