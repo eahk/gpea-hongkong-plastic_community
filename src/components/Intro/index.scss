@@ -1,25 +1,19 @@
 .section-intro {
   .row {
-    padding: 20px 0;
-    @media (min-width: 1200px) {
-      padding: 40px 0;
-    }
+    padding: 2rem 0;
   }
-  .row-sticker {
-    background-color: var(--light-gray);
+  .watch {
+    cursor: pointer;
   }
 }
 
 .target-num {
-  padding: 60px 8px;
+  padding: 3rem 8px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
   grid-gap: 8px;
   align-items: flex-start;
-  justify-content: flex-start;
-  color: var(--title);
-  background-color: var(--title);
   figure {
     position: relative;
     display: flex;
@@ -33,12 +27,11 @@
     margin: 0 auto;
   }
   span {
-    color: var(--white);
     position: relative;
     font-weight: bold;
     z-index: 1;
     font-size: 1.6rem;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     @media (min-width: 768px) {
       font-size: 2rem;
     }
@@ -50,10 +43,10 @@
     }
   }
   p {
-    color: var(--white);
     text-align: center;
     width: 90%;
     font-size: 12px;
+    margin-bottom: 30px;
     @media (min-width: 768px) {
       font-size: 14px;
     }
@@ -87,6 +80,7 @@
 }
 // player
 .player-wrapper {
+  margin-top: 30px;
   position: relative;
   padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
 }
@@ -98,7 +92,6 @@
 }
 // sticker
 .sticker-wrapper {
-  padding: 40px 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;

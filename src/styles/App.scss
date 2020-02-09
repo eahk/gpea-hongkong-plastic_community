@@ -7,24 +7,24 @@
   --black: #000;
   --white: #fff;
   --gp-green: #66cc00;
-  --orange: orange;
+  --orange: #ff9500;
   --gp-dark-blue: #292f47;
-  // Generic Color palette based on #50D2FF --blue
-  --light-gray: #fafafa;
+  --gray: #d9d9d9;
+  --light-gray: #f5f5f5;
   // Text colors
-  --title: rgba(80, 210, 255, 0.85);
+  --title: #5ac8fad8;
   --text: rgba(0, 0, 0, 0.65);
   --sub-text: rgba(0, 0, 0, 0.45);
   // Form colors
   --form-text: rgba(0, 0, 0, 0.65);
   --form-label: rgba(0, 0, 0, 0.45);
-  --disable: rgba(0, 0, 0, 0.25);
+  --disable: #999;
   //
   --success: #52c41a;
   --warning: #faad14;
   --error: #f5222d;
   //
-  --border: #d9d9d9;
+  --border: #c6c6c8;
   --border-radius-base: 4px;
   //
   --shadow--base: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -68,23 +68,16 @@
     overflow: hidden;
   }
 }
-.main {
-  .main-left,
-  .main-right {
-    padding: 0;
-  }
-}
 .main-left {
   overflow-x: hidden;
+  padding: 0;
 }
 // Form Modal
 .main-right {
-  z-index: 1;
-  height: auto;
-  background-color: #fff;
-  box-shadow: var(--shadow);
-
+  background-color: #f5f5f5;
   position: relative;
+  z-index: 1;
+  padding: 20px 16px;
   &.showFormModal {
     margin: 0px;
     padding: 0px;
@@ -97,7 +90,6 @@
     bottom: 0;
     height: 100%;
     width: 100%;
-    background-color: #fff;
   }
 }
 
@@ -124,52 +116,38 @@
         margin-bottom: 0;
       }
     }
-    .is-flex-horizontal {
-      display: flex;
-      flex-direction: row;
-      > div {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        p {
-          font-size: 1.6rem;
-          margin-bottom: 8px;
-          font-weight: bold;
-        }
-      }
-    }
   }
 }
 .enform-body {
   position: sticky;
   top: 0;
-  min-height: 75vh;
+  min-height: 70vh;
 }
 
 .enform-note {
+  margin-top: 20px;
+  margin-bottom: 20px;
   small {
+    font-size: 0.8rem;
+    display: block;
     color: var(--sub-text);
-    font-size: 12px;
-    &.star {
+    margin-bottom: 8px;
+    &.has-star {
       position: relative;
       &:before {
         content: "*";
-        font-weight: bold;
-        font-size: 16px;
-        position: absolute;
-        left: -12px;
-        top: 0px;
+        font-size: 1rem;
+        margin-right: 4px;
       }
     }
   }
 }
 
 .enform-footer {
-  font-size: 14px;
-  background: var(--light-gray);
-  align-self: flex-end;
   padding: 40px 20px;
+  font-size: 0.8rem;
+  background: #f5f5f5;
+  align-self: flex-end;
   border: 2px solid var(--orange);
   border-left: none;
   border-right: none;
@@ -178,19 +156,20 @@
 // mobile main button
 .main-button {
   display: flex;
-  z-index: 99;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   justify-content: center;
   align-items: center;
   height: 58px;
-  padding: 4px;
-  box-shadow: var(--shadow--base);
+  padding: 6px 20px;
+  box-shadow: var(--shadow);
   background-color: #fff;
-  background-image: linear-gradient(to top, #fff, transparent);
   will-change: transform;
+  &.main-button--fixed {
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
   .scroll-indicator {
     position: absolute;
     top: 0;
@@ -206,10 +185,12 @@
     }
   }
   .button {
+    height: 48px;
     width: 100%;
     background-color: var(--orange);
     color: #fff;
     font-size: 18px;
+    font-weight: bold;
     letter-spacing: 2px;
     text-align: center;
   }

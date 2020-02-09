@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import cx from "classnames";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useSpring, animated } from "react-spring";
+import { motion } from "framer-motion";
 import * as ccvalidate from "cc-validate";
 import {
   resolveEnPageStatus,
@@ -13,6 +13,7 @@ import {
 import "./index.scss";
 
 import DonateAmountChooser from "./DonateAmountChooser/DonateAmountChooser";
+import ExternalLink from "../ExternalLink";
 import {
   FORMIK_KEY_TO_EN_KEY,
   RECURRING_PRICES,
@@ -25,6 +26,7 @@ let initialValues,
   extraInfo = {};
 let errors = [];
 //
+/*
 const FormSlogan = () => {
   return (
     <div className="en-form-slogan">
@@ -34,17 +36,65 @@ const FormSlogan = () => {
     </div>
   );
 };
+*/
+const mainShare = event => {
+  event.preventDefault();
+  //
+  const fbShare = () => {
+    var baseURL = "https://www.facebook.com/sharer/sharer.php";
+    var u =
+      "https://act.greenpeace.org/page/55748/donate/1?utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
+    var t = (window.innerHeight - 436) / 2;
+    var l = (window.innerWidth - 626) / 2;
+    window.open(
+      baseURL + "?u=" + encodeURIComponent(u),
+      "_blank",
+      "width=626,height=436,top=" + t + ",left=" + l
+    );
+  };
+  // WEB SHARE API
+  if (navigator.share) {
+    // we can use web share!
+    navigator
+      .share({
+        title: "",
+        text:
+          "綠色和平正展開籌款活動： 號召熱心市民捐助支持全城走塑計畫，與我們一起在2020年，與學校合辦走塑學堂、尋找走塑店鋪活動，遊說全港1,000間店鋪加入走塑行列 👉 ",
+        url: "https://act.gp/2S2TtH9"
+      })
+      .then(() => console.log("Successfully shared"))
+      .catch(error => console.log("Error sharing:", error));
+  } else {
+    // provide a fallback here
+    fbShare();
+  }
+};
+
 export default props => {
-  const stepSpring = useSpring({ opacity: 1, from: { opacity: 0 } });
   const [hasRendered, setHasRendered] = useState(false);
   useEffect(() => setHasRendered(true), [hasRendered]);
-
   // resolve the initial form values
   if (!hasRendered) {
     [initialValues, extraInfo] = resolveInitFormValues();
   }
-
+  const springConfig = {
+    type: "spring",
+    stiffness: 300,
+    damping: 200,
+    duration: 0.2
+  };
+  const motionStep = {
+    show: {
+      opacity: 1,
+      x: 0
+    },
+    hidden: {
+      opacity: 0,
+      x: "100%"
+    }
+  };
   // resolve which page should goes to
+  // let pageStatus = "SUCC"; // preview of SUCC page
   let pageStatus = resolveEnPageStatus();
   let pageNo;
   if (pageStatus === "SUCC") {
@@ -65,10 +115,12 @@ export default props => {
   );
   const [disableButton, setDisableButton] = useState(false);
   // receive global events to change amounts
+
   useEffect(() => {
     window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
       setDonateAmount(amount);
       setDonateIntrvl("recurring");
+      setStepNo(2);
     });
   }, []);
 
@@ -81,40 +133,45 @@ export default props => {
   const [globalErrors, setGlobalErrors] = useState(errors);
   const [cctype, setCctype] = useState("Visa");
   // prepare form validations
+  const errorMessages = {
+    required: "必填欄位 This is required",
+    invalid: "格式錯誤 Invalid Format",
+    cardType: "僅支援 Visa, MasterCard 或 American Express"
+  };
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: Yup.object({
-      transaction_donationAmt: Yup.string().required("必填欄位"),
-      supporter_firstName: Yup.string().required("必填欄位"),
-      supporter_lastName: Yup.string().required("必填欄位"),
+      transaction_donationAmt: Yup.string().required(errorMessages.required),
+      supporter_firstName: Yup.string().required(errorMessages.required),
+      supporter_lastName: Yup.string().required(errorMessages.required),
       supporter_emailAddress: Yup.string()
-        .email("格式錯誤")
-        .required("必填欄位"),
+        .email(errorMessages.invalid)
+        .required(errorMessages.required),
       supporter_phoneNumber: Yup.string()
-        .matches(/[\d -()]{8,}/, "格式錯誤")
-        .required("必填欄位"),
+        .matches(/[\d -()]{8,}/, errorMessages.invalid)
+        .required(errorMessages.required),
       supporter_dateOfBirth: Yup.string()
-        .matches(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/, "格式錯誤")
-        .required("必填欄位"),
+        .matches(/\d{4}[/-]\d{1,2}[/-]\d{1,2}/, errorMessages.invalid)
+        .required(errorMessages.required),
       transaction_ccnumber: Yup.string()
-        .test("ccnumber", "格式錯誤", v => {
+        .test("ccnumber", errorMessages.invalid, v => {
           let r = ccvalidate.isValid(v);
           return r.isValid;
         })
-        .test("ccnumber", "僅支援 Visa, MasterCard 或 American Express", v => {
+        .test("ccnumber", errorMessages.cardType, v => {
           let r = ccvalidate.isValid(v);
           setCctype(r.cardType);
           return (
             ["Visa", "MasterCard", "American Express"].indexOf(r.cardType) >= 0
           );
         })
-        .required("必填欄位"),
+        .required(errorMessages.required),
       transaction_ccexpire: Yup.string()
-        .matches(/\d{2}\/\d{2}/, "格式錯誤 dd/yy")
-        .required("必填欄位"),
+        .matches(/\d{2}\/\d{2}/, `${errorMessages.invalid} mm/yy`)
+        .required(errorMessages.invalid),
       transaction_ccvv: Yup.string()
-        .matches(/\d{3,4}/, "格式錯誤")
-        .required("必填欄位")
+        .matches(/\d{3,4}/, errorMessages.invalid)
+        .required(errorMessages.required)
     }),
     onSubmit: values => {
       if (Object.keys(formik.errors).length > 0) {
@@ -135,13 +192,18 @@ export default props => {
             el.value = donateAmount;
           } else if (formikKey === "recurring_payment_sf") {
             el.value = donateIntrvl === "recurring" ? "Y" : "N";
-          } else if (formikKey === "transaction_ccnumber") {
+          }
+          //
+          else if (formikKey === "fr_rg_frequency") {
+            el.value = donateIntrvl === "recurring" ? "12" : "0";
+          }
+          //
+          else if (formikKey === "transaction_ccnumber") {
             el.value = formik.values[formikKey].replace(/\s+/g, "");
-          } else if (
-            formikKey === "send_me_email_hk" ||
-            formikKey === "send_me_email_tw"
-          ) {
+          } else if (formikKey === "send_me_email_hk") {
             el.checked = formik.values[formikKey];
+          } else if (formikKey === "send_me_email_tw") {
+            el.checked = false;
           } else {
             el.value = formik.values[formikKey];
           }
@@ -156,11 +218,16 @@ export default props => {
       document.querySelector("form.en__component").submit();
     }
   });
-
   return (
     <>
       {stepNo === 1 && (
-        <animated.div style={stepSpring}>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={motionStep}
+          transition={springConfig}
+        >
           <div className="step step-1">
             <DonateAmountChooser
               currency={CURRENCY}
@@ -180,7 +247,7 @@ export default props => {
               }}
             />
             <button
-              className={cx("button", "enform__button")}
+              className="button enform__button"
               disabled={disableButton}
               onClick={() => {
                 setStepNo(2);
@@ -189,16 +256,28 @@ export default props => {
               {props.isMobile ? "下一步 NEXT" : "立即捐助 DONATE NOW"}
             </button>
           </div>
-        </animated.div>
+        </motion.div>
       )}
 
       {stepNo === 2 && (
-        <animated.div style={stepSpring}>
-          <div className="step step-2">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={motionStep}
+          transition={springConfig}
+        >
+          <div
+            className={cx("step", "step-2", {
+              "overlay--loading": formik.isSubmitting
+            })}
+          >
             <form onSubmit={formik.handleSubmit}>
               <div className="donate-amount-part">
                 <div className="main-text">
-                  {donateIntrvl === "recurring" ? "每月捐款" : "單次捐款"}{" "}
+                  {donateIntrvl === "recurring"
+                    ? "每月捐款 Monthly"
+                    : "單次捐款 One-time"}{" "}
                   <br />
                   <span className="donate-amount">
                     {CURRENCY}
@@ -213,7 +292,7 @@ export default props => {
                     setStepNo(1);
                   }}
                 >
-                  更改金額
+                  更改金額 Edit
                 </div>
               </div>
 
@@ -367,7 +446,7 @@ export default props => {
                           formik.touched["transaction_ccnumber"]
                       })}
                       type="text"
-                      placeholder="XXXX XXXX XXXX XXXX"
+                      placeholder="5555 5555 5555 4444"
                       {...formik.getFieldProps("transaction_ccnumber")}
                       onChange={e => {
                         let raw = formatCreditCardNumber(e.target.value);
@@ -437,7 +516,7 @@ export default props => {
                             formik.touched["transaction_ccvv"]
                         })}
                         type="number"
-                        placeholder="XXX"
+                        placeholder="123"
                         {...formik.getFieldProps("transaction_ccvv")}
                         onChange={e => {
                           formik.setFieldValue(
@@ -482,58 +561,81 @@ export default props => {
 
               <button
                 type="submit"
-                className={cx("button enform__button", {
+                className={cx("button", "enform__button", {
                   "is-loading": formik.isSubmitting
                 })}
               >
-                立即捐助
+                立即捐助 DONATE NOW
               </button>
             </form>
           </div>
-        </animated.div>
+        </motion.div>
       )}
 
       {stepNo === 3 && (
-        <animated.div style={stepSpring}>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          exist="hidden"
+          variants={motionStep}
+          transition={springConfig}
+        >
           <div className="step step-3">
             <div className="main-text">
               <p>
+                您的{" "}
                 <strong>
-                  您的{" "}
                   {window.thankyouPageIsRecurring === "Y" ? "每月" : "單次"}{" "}
                   {window.pageJson.currency}
-                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
-                  捐款已成功處理！
-                  <br />
-                  Your{" "}
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}
+                </strong>{" "}
+                捐款已成功處理！我們已發送電子郵件提供進一步資料。
+                <br />
+                Your{" "}
+                <strong>
                   {window.thankyouPageIsRecurring === "Y"
                     ? "Monthly"
                     : "One time"}{" "}
                   {window.pageJson.currency}
-                  {parseInt(window.pageJson.amount, 10).toLocaleString()}{" "}
-                  donation has been processed.
-                </strong>
-              </p>
-              <p>
-                感謝您支持綠色和平的環保理念與工作。我們已發送電子郵件提供進一步資料。
-              </p>
-              <p>
-                如果您有任何查詢，請於辦公時間致電會員服務熱線 (852) 2854 8318
-                或電郵至{" "}
-                <a href="emailto:donor.services.hk@greenpeace.org">
-                  donor.services.hk@greenpeace.org
-                </a>
-                。
+                  {parseInt(window.pageJson.amount, 10).toLocaleString()}
+                </strong>{" "}
+                donation has been processed.
               </p>
               <hr />
-              <blockquote>與您並肩，為環境「行動，帶來改變」！</blockquote>
-              <blockquote>
-                "Positive Change through Action" – Together we can make a
-                difference!
-              </blockquote>
+              <p>
+                我們承諾謹慎善用一分一毫，確保將您的心意，轉化為改變環境的最大力量。群眾力量是促成改變的關鍵，請幫助分享此網頁給您的親友好友，讓我們在全年得到660位每月捐助者，合力共創走塑社區！
+              </p>
+              <button
+                className="button button--share is-fullwidth"
+                onClick={mainShare}
+              >
+                分享給朋友
+              </button>
+              <p>
+                誠邀您加入Whatsapp群組與一眾熱心支持者，交流日常走塑tips、保護環境心得！
+              </p>
+              <ExternalLink
+                href="https://chat.whatsapp.com/3M10Zp2ymdfH0D22DVU7EV"
+                alt="加入 Whatsapp 群組"
+              >
+                <button className="button button--join is-fullwidth">
+                  加入 Whatsapp 群組
+                </button>
+              </ExternalLink>
+              <p>
+                如果您有任何查詢，請於辦公時間致電會員服務熱線 (852) 2854 8318
+                或電郵至
+                <ExternalLink
+                  href="emailto:donor.services.hk@greenpeace.org"
+                  alt="donor.services.hk@greenpeace.org"
+                >
+                  donor.services.hk@greenpeace.org
+                </ExternalLink>
+                。
+              </p>
             </div>
           </div>
-        </animated.div>
+        </motion.div>
       )}
     </>
   );

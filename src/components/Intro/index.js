@@ -9,7 +9,6 @@ import participant from "../../assets/images/icons/participant.png";
 import store from "../../assets/images/icons/store.png";
 import grade1 from "../../assets/images/GP_PlasticFreeStickers_grade1.png";
 import grade2 from "../../assets/images/GP_PlasticFreeStickers_grade2.png";
-import pic1 from "../../assets/images/GP0STTJ1J_Medium_res.jpg";
 import pic2 from "./../../assets/images/GP0STTWGQ_Medium_res.jpg";
 //
 const ImageSlider = () => {
@@ -48,21 +47,29 @@ export default props => {
   };
   return (
     <section className="section-intro">
-      <div className="level target-num">
-        <figure className="level-item">
-          <img className=" target-icon" src={calendar} alt="calendar" />
+      <div className="target-num is-hidden">
+        <figure>
           <span>2020年</span>
           <p>擴大走塑學堂、走塑店鋪</p>
+          <img
+            className=" target-icon"
+            src={calendar}
+            alt="擴大走塑學堂、走塑店鋪"
+          />
         </figure>
-        <figure className="level-item">
-          <img className=" target-icon" src={participant} alt="participant" />
-          <span>720位</span>
+        <figure>
+          <span>660位</span>
           <p>每月60位熱心市民捐助支持走塑計畫</p>
+          <img
+            className=" target-icon"
+            src={participant}
+            alt="每月60位熱心市民捐助支持走塑計畫"
+          />
         </figure>
-        <figure className="level-item">
-          <img className="target-icon" src={store} alt="store" />
+        <figure>
           <span>1,000間</span>
           <p>商鋪提供走塑友善措施</p>
+          <img className="target-icon" src={store} alt="商鋪提供走塑友善措施" />
         </figure>
       </div>
       {/*
@@ -81,7 +88,7 @@ export default props => {
       */}
       <div className="row text-left">
         <div className="col-xs-12 col-md-6">
-          <p className="title">「全城走塑」過往項目成果</p>
+          <p className="title">「全城走塑」項目成果</p>
           <div className="content">
             <ul>
               <li>組織義工團隊，在全港600間店鋪貼上「走塑貼紙」</li>
@@ -100,6 +107,7 @@ export default props => {
           <ImageSlider />
         </div>
       </div>
+      <hr />
       <div className="row row-sticker">
         <div className="col-xs-12 col-md-6 col-lg-5">
           <div className="section-header has-text-left">
@@ -108,6 +116,9 @@ export default props => {
             <p>
               走塑貼紙分為兩個等級，顯示店鋪有提供不同程度的走塑措施。得到您的支持，我們才有資源推動更多店鋪加入走塑行列，貼上走塑貼紙！
             </p>
+            <span className="watch link" onClick={showPlayerWrapper}>
+              觀看影片 <i className="fas fa-chevron-right"></i>
+            </span>
           </div>
         </div>
         <div className="col-xs-12 col-md-6 col-lg-7">

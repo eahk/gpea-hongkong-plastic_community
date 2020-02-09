@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 //
 import "./DonateAmountChooser.scss";
@@ -79,8 +79,7 @@ export default props => {
       </div>
 
       <div className="step-explain">
-        <div>請選擇捐款金額</div>
-        <div>Choose an amount to give</div>
+        <div>請選擇捐款金額 Choose an amount to give</div>
       </div>
       <div className="buttons available-amounts">
         {props.predefinedAmounts[props.interval].map((amount, idx) => {
@@ -115,7 +114,7 @@ export default props => {
                 : ""
               : props.amount || ""
           }
-          placeholder="其他金額 Other Amount"
+          placeholder="其他金額 Other amount"
           onChange={handleOtherAmountChange}
           onBlur={handleOtherAmountBlur}
         />

@@ -9,8 +9,7 @@ html {
 
 body {
   font-family: "Noto Sans HK", Microsoft JhengHei, "PingFang HK",
-    "Helvetica Neue", "Helvetica", "Arial", sans-serif, "Segoe UI",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    "Helvetica Neue", "Heiti TC", "Microsoft JhengHei", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: var(--text);
@@ -22,8 +21,10 @@ body {
 }
 
 p {
+  letter-spacing: 1px;
   margin-bottom: 1.15rem;
   text-align: justify;
+  word-break: break-all;
 }
 
 h1,

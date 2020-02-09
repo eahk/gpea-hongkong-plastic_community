@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 //
 import "./index.scss";
 import ExternalLink from "../ExternalLink";

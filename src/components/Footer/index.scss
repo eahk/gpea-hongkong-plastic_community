@@ -1,4 +1,5 @@
 .footer {
+  font-size: 0.8rem;
   background: var(--gp-dark-blue);
   color: var(--white);
   .row {
@@ -47,7 +48,7 @@
       align-items: flex-start;
       flex-flow: column;
       a {
-        margin-bottom: 8px;
+        margin-bottom: 4px;
       }
     }
   }

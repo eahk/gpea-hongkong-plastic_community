@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import mitt from "mitt";
 import cx from "classnames";
-import { useSpring, animated } from "react-spring";
+import { motion } from "framer-motion";
 // css
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
@@ -14,7 +14,7 @@ import Header from "./components/Header";
 import EnForm from "./components/EnForm";
 import Hero from "./components/Hero";
 import Intro from "./components/Intro";
-// import DollarHandle from "./components/DollarHandle";
+import DollarHandle from "./components/DollarHandle";
 import Explainer from "./components/Explainer";
 import Testimonial from "./components/Testimonial";
 import Timeline from "./components/Timeline";
@@ -31,43 +31,40 @@ window.ee = new mitt();
 
 function App() {
   let checkMobile = window.innerWidth < 1200;
-  const [summary, setSummary] = useState(null);
-  const [pageLoaded, setPageLoaded] = useState(false);
+
   const [pageResizing, setPageResizing] = useState(false);
-  const [lastYPos, setLastYPos] = useState(0);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(checkMobile);
   const [showFormModal, setShowFormModal] = useState(false);
   const [enFormSubmitted, setEnFormSubmitted] = useState(false);
-  //
-  const formModal = useSpring({
-    opacity: showFormModal || !isMobile ? 1 : 0
-  });
-  const mainButton = useSpring({
-    transform: showActions ? "translateY(0)" : "translateY(100%)"
-  });
-  //
+  const springConfig = {
+    type: "spring",
+    stiffness: 300, // Stiffness of the spring. Higher values will create more sudden movement. Set to 100 by default.
+    damping: 200, // Strength of opposing force. If set to 0, spring will oscillate indefinitely. Set to 10 by default.
+    duration: 0.15
+  };
+  const motionFormModal = {
+    show: {
+      opacity: 1,
+      x: 0
+    },
+    hidden: {
+      opacity: 0,
+      x: "100%"
+    }
+  };
+  const motionMainButton = {
+    show: {
+      y: 0
+    },
+    hidden: {
+      y: "100%"
+    }
+  };
+  const mainButton = useRef(null);
   useEffect(() => {
-    /*
-    const summaryEndPoint =
-    "http://e-activist.com/ea-dataservice/data.service?service=EaDataCapture&token=7a06c0fc-32fe-43f1-8a1b-713b3ea496e1&campaignId=168645&contentType=json&resultType=summary";
-    fetch(summaryEndPoint)
-      .then(response => {
-        response.json();
-      })
-      .then(response => {
-        console.log(response);
-        setSummary(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-      */
     const handleScroll = () => {
       const yPos = window.scrollY;
-      // const isScrollingUp = yPos < lastYPos;
-      setLastYPos(yPos);
-      // window.ee.emit("SCROLL_DEPTH", yPos);
       setShowActions(yPos > 50); // scroll over header
     };
     const handleWindowResize = () => {
@@ -80,9 +77,6 @@ function App() {
       }
       setPageResizing(false);
     };
-
-    // window listener
-    window.addEventListener("load", setPageLoaded(true));
     window.addEventListener("scroll", handleScroll, false);
     window.addEventListener("resize", handleWindowResize);
     return () => {
@@ -93,19 +87,26 @@ function App() {
 
   // show the correct value based on the current en pages
   useEffect(() => {
-    if (enPageStatus === "SUCC") {
+    if (enPageStatus === "SUCC" && isMobile) {
+      setEnFormSubmitted(true);
+      setShowFormModal(true);
+    } else if (enPageStatus === "SUCC") {
       setEnFormSubmitted(true);
     }
-
     if (enPageStatus === "ERROR" && isMobile) {
       setShowFormModal(true);
     }
+    window.ee.on("SHOULD_CHOOSE_MONTHLY_AMOUNT", amount => {
+      if (!showFormModal && isMobile) {
+        setShowFormModal(true);
+      }
+    });
   }, []);
 
   return (
     <div className={cx("app", { "modal-open": showFormModal })}>
       <Header />
-      {(!pageLoaded || pageResizing) && (
+      {pageResizing && (
         <div className="loading--overlay">
           <img src={gpLogo} alt="greenpeace logo" />
         </div>
@@ -133,7 +134,14 @@ function App() {
                 })}
                 style={{ overflowX: "hidden" }}
               >
-                <animated.div className="react-en-form" style={formModal}>
+                <motion.div
+                  className="react-en-form"
+                  initial="hidden"
+                  exist="hidden"
+                  animate={showFormModal || !isMobile ? "show" : "hidden"}
+                  variants={motionFormModal}
+                  transition={springConfig}
+                >
                   <div className="enform-header">
                     <div className="welcome-message">
                       <div className="header-text">
@@ -145,39 +153,24 @@ function App() {
                             className="return-arrow fa fa-arrow-left"
                           ></i>
                         )}
-                        <p>您的捐助，將讓走塑社區在香港遍地開花</p>
+                        <p>
+                          <strong>您的捐助，將讓走塑社區在香港遍地開花</strong>
+                        </p>
                       </div>
-                      {/*
-                      {!enFormSubmitted && (
-                        <div className="is-flex-horizontal">
-                          <div>
-                            <p>$30,000</p>
-                            <small>目標 $200,000</small>
-                          </div>
-                          <div>
-                            <p>14</p>
-                            <small>人支持</small>
-                          </div>
-                        </div>
-                      )}
-                      */}
                     </div>
                   </div>
                   <div className="enform-body">
                     <EnForm isMobile={isMobile} />
                   </div>
                   <div className="enform-note">
-                    <br />
-                    <small className="star">
-                      <u>捐款港幣$100以上可申請扣稅</u>
+                    <small className="has-star">
+                      捐款港幣$100以上可申請扣稅
                     </small>
-                    <br />
-                    <small>
+                    <small className="has-star">
                       為維持公正獨立，綠色和平100%倚賴熱心市民捐助支持，20年來與您共創環境里程碑。
                     </small>
-                    <br />
                   </div>
-                </animated.div>
+                </motion.div>
                 <div className="enform-footer">
                   <div className="footer_remarks">
                     <p>注意事項</p>
@@ -216,20 +209,34 @@ function App() {
             </aside>
             <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
+              <DollarHandle />
+              <hr />
               <Intro />
+              <hr />
               <Explainer />
               <Testimonial />
               <hr />
               <Timeline />
+              <hr />
             </div>
           </div>
           <PlasticCommunity />
         </div>
-        <animated.div
-          className={cx("main-button", "is-flex", {
-            "is-hidden": !isMobile
-          })}
-          style={mainButton}
+        <motion.div
+          className={cx(
+            "main-button",
+            "is-flex",
+            {
+              "is-hidden": !isMobile
+            },
+            { "main-button--fixed": showActions }
+          )}
+          ref={mainButton}
+          initial="hidden"
+          exist="hidden"
+          animate={showActions ? "show" : "hidden"}
+          variants={motionMainButton}
+          transition={springConfig}
         >
           <button
             className="button"
@@ -239,7 +246,7 @@ function App() {
           >
             {enFormSubmitted ? "多謝您的支持" : "捐助支持"}
           </button>
-        </animated.div>
+        </motion.div>
       </main>
       <Footer />
     </div>

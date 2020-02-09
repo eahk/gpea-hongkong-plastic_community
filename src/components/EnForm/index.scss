@@ -22,10 +22,16 @@
 .react-en-form {
   color: var(--text);
   position: relative;
-  max-width: 680px;
+  width: 100%;
+  max-width: 580px;
   margin: 0 auto;
-  padding: 20px 16px 60px;
+  padding: 20px 20px 60px;
+  border-radius: 4px;
   background-color: #fff;
+  box-shadow: var(--shadow);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /*
   mask-image: linear-gradient(
     to bottom,
     transparent,
@@ -33,11 +39,7 @@
     white 90%,
     transparent
   );
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  @media (min-width: 768px) {
-    width: calc(100% - 40px);
-  }
+  */
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -94,9 +96,10 @@
   }
 
   .step-2 {
+    &.overlay--loading {
+      pointer-events: none;
+    }
     .donate-amount-part {
-      position: sticky;
-      top: 0;
       z-index: 1;
       padding: 8px 16px;
       font-size: 14px;
@@ -180,8 +183,22 @@
         margin-right: 16px;
       }
       blockquote {
-        color: var(--sub-text);
+        border-radius: 4px;
+        padding: 16px;
+        background-color: #6c0;
+        color: #fff;
+        margin-bottom: 30px;
       }
+    }
+    .button {
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .button--share {
+      background-color: var(--orange);
+    }
+    .button--join {
+      background-color: #25d366;
     }
   }
 }
