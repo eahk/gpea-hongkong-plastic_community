@@ -21,25 +21,14 @@ import {
   CURRENCY,
   SUGGESTED_AMOUNT
 } from "./config";
-//
+
 let initialValues,
   extraInfo = {};
 let errors = [];
-//
-/*
-const FormSlogan = () => {
-  return (
-    <div className="en-form-slogan">
-      <div className="main-text">
-        您就是帶來改變的力量 Help protect our planet
-      </div>
-    </div>
-  );
-};
-*/
+
 const mainShare = event => {
   event.preventDefault();
-  //
+
   const fbShare = () => {
     var baseURL = "https://www.facebook.com/sharer/sharer.php";
     var u =
@@ -174,6 +163,7 @@ export default props => {
         .required(errorMessages.required)
     }),
     onSubmit: values => {
+      // update final values into original en form
       if (Object.keys(formik.errors).length > 0) {
         throw new Error("There are still errors in formik");
       }
@@ -196,14 +186,23 @@ export default props => {
           //
           else if (formikKey === "fr_rg_frequency") {
             el.value = donateIntrvl === "recurring" ? "12" : "0";
-          }
-          //
-          else if (formikKey === "transaction_ccnumber") {
+          } else if (formikKey === "transaction_ccnumber") {
             el.value = formik.values[formikKey].replace(/\s+/g, "");
           } else if (formikKey === "send_me_email_hk") {
             el.checked = formik.values[formikKey];
           } else if (formikKey === "send_me_email_tw") {
             el.checked = false;
+          } else if (formikKey === "supporter_dateOfBirth") {
+            // change date from yyyy-mm-dd to mm/dd/yyyy
+            let tokens = formik.values[formikKey].split("-");
+            if (tokens.length === 3) {
+              let v = `${tokens[1]}/${tokens[2]}/${tokens[0]}`;
+              el.value = v;
+            } else {
+              console.error(
+                "Cannot convert to mm/dd/yyyy from date ${formik.values[formikKey]}"
+              );
+            }
           } else {
             el.value = formik.values[formikKey];
           }
