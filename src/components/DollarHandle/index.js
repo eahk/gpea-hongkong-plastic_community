@@ -103,7 +103,7 @@ export default props => {
         </HandleImageContainer>
         <span>
           <span className="amount">HKD 300</span>
-          <span className="description">遊說200間店鋪</span>
+          <span className="description">遊說200間店鋪加入</span>
         </span>
       </Handle>
       <Handle
@@ -116,7 +116,7 @@ export default props => {
         </HandleImageContainer>
         <span>
           <span className="amount">HKD 500</span>
-          <span className="description">遊說400間店鋪</span>
+          <span className="description">遊說400間店鋪加入</span>
         </span>
       </Handle>
       <WhiteSpace />

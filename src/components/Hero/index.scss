@@ -49,7 +49,7 @@
       position: absolute;
       top: -6rem;
       right: -4rem;
-      font-size: 8rem;
+      font-size: 10vw;
       letter-spacing: -8px;
       font-weight: 900;
       color: var(--border);
@@ -62,16 +62,13 @@
       position: relative;
       font-size: 4rem;
       color: var(--title);
-      font-weight: 400;
+      font-weight: calc(80vw / 10);
       strong {
         font-weight: 900;
         color: var(--title);
       }
       @media (min-width: 1200px) {
-        font-size: 5rem;
-      }
-      @media (min-width: 1600px) {
-        font-size: 6rem;
+        font-size: calc(50vw / 10);
       }
     }
   }

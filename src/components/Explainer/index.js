@@ -64,7 +64,7 @@ const stepData = [
   {
     image: step4,
     title: "走塑貼紙以茲識別",
-    description: "願意加入走塑的店鋪，將按其承諾貼上相應等級貼紙"
+    description: "願意加入走塑的店鋪將按貼上相應等級貼紙"
   }
 ];
 
