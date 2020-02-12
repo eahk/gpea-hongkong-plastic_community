@@ -91,7 +91,7 @@ export default props => {
                   >
                     donor.services.hk@greenpeace.org
                   </ExternalLink>
-                  或至電 (852) 2854 8318。
+                  或致電 (852) 2854 8318。
                 </p>
                 <hr />
                 <p>獲豁免繳稅慈善機構編號︰ 91/5418</p>

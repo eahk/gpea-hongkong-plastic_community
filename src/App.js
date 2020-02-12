@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import mitt from "mitt";
 import cx from "classnames";
 import { motion } from "framer-motion";
+import Fade from "react-reveal/Fade";
 // css
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
@@ -201,7 +202,7 @@ function App() {
                       >
                         donor.services.hk@greenpeace.org
                       </ExternalLink>
-                      或至電 (852) 2854 8318。
+                      或致電 (852) 2854 8318。
                     </p>
                   </div>
                 </div>
@@ -209,15 +210,25 @@ function App() {
             </aside>
             <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
-              <DollarHandle />
-              <hr />
-              <Intro />
-              <hr />
-              <Explainer />
-              <Testimonial />
-              <hr />
-              <Timeline />
-              <hr />
+              <Fade>
+                <DollarHandle />
+                <hr />
+              </Fade>
+              <Fade>
+                <Intro />
+                <hr />
+              </Fade>
+              <Fade>
+                <Explainer />
+              </Fade>
+              <Fade>
+                <Testimonial />
+                <hr />
+              </Fade>
+              <Fade>
+                <Timeline />
+                <hr />
+              </Fade>
             </div>
           </div>
           <PlasticCommunity />
