@@ -5,7 +5,7 @@ import { districts as districtsDef, districtNameToId } from "./DistrictsDef";
 // Region 區域
 // District 地區
 const API_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec"; // dev
+  "https://cors-anywhere.arpuli.com/script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec"; // dev
 
 /**
  * hook version api. Note it assume the response is in json format.
