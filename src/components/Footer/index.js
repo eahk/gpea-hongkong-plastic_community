@@ -27,10 +27,6 @@ const footerLinks = [
 //
 
 export default props => {
-  const [year, setYear] = useState("2019");
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
   return (
     <footer className="footer">
       <div className="content">
@@ -57,7 +53,7 @@ export default props => {
               <Social />
               <p>
                 <small className="credit">
-                  © GREENPEACE <span>{year}</span>
+                  © GREENPEACE {new Date().getFullYear()}
                 </small>
               </p>
             </div>

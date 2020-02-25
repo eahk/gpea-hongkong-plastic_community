@@ -8,7 +8,7 @@ import handle2 from "../../assets/images/7R306786.jpg";
 import handle3 from "../../assets/images/7R306795.jpg";
 //
 const Handles = styled.div`
-  padding: 10px;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   flex-flow: row nowrap;
@@ -17,12 +17,12 @@ const Handles = styled.div`
   scroll-snap-type: x proximity;
 `;
 const WhiteSpace = styled.div`
-  padding: 20px;
+  padding: 1rem;
   background: transparent;
 `;
 const Handle = styled.div`
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 1rem;
   min-width: 260px;
   height: 300px;
   flex: 1;
@@ -35,7 +35,7 @@ const Handle = styled.div`
   flex-direction: column;
   overflow: hidden;
   > span {
-    padding: 16px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,11 +43,11 @@ const Handle = styled.div`
     .amount {
       color: var(--orange);
       font-weight: bold;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       margin-bottom: 4px;
     }
     .description {
-      font-size: 0.8rem;
+      font-size: 0.5rem;
       text-decoration: underline;
     }
   }
