@@ -18,7 +18,6 @@ import Explainer from "./components/Explainer";
 import Testimonial from "./components/Testimonial";
 import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
-// import BillBoard from "./components/BillBoard";
 import Footer from "./components/Footer";
 // hack to retrieve the current enform status
 import { resolveEnPageStatus } from "./components/EnForm/formHelpers";
