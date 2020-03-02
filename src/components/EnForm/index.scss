@@ -5,7 +5,7 @@
 .step-explain {
   font-weight: bold;
   color: var(--orange);
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .en-form-slogan {
@@ -25,7 +25,7 @@
   width: 100%;
   max-width: 580px;
   margin: 0 auto;
-  padding: 20px 20px 60px;
+  padding: 1rem 1rem 4rem;
   border-radius: 4px;
   background-color: #fff;
   box-shadow: var(--shadow);
@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: row;
     .field {
-      margin-right: 8px;
+      margin-right: 0.5rem;
     }
   }
 
@@ -65,7 +65,7 @@
     color: #fff;
     font-weight: bold;
     height: 48px;
-    margin: 20px auto 40px;
+    margin: 1rem auto 2rem;
     &:hover {
       background-color: lighten(orange, 10%);
       transition: all 0.2s ease-in;
@@ -82,12 +82,12 @@
     color: var(--form-text);
     border-bottom: 1px solid var(--title);
     text-align: left;
-    padding: 20px;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     .main-text {
-      margin-left: 16px;
+      margin-left: 1rem;
     }
     .fa-check-circle {
       color: var(--title);
@@ -101,8 +101,8 @@
     }
     .donate-amount-part {
       z-index: 1;
-      padding: 8px 16px;
-      font-size: 14px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
       background-color: #fff;
       display: flex;
       flex-direction: row;
@@ -124,7 +124,7 @@
       }
       .go-back-step1 {
         padding: 4px;
-        font-size: 14px;
+        font-size: 1rem;
         color: var(--sub-text);
         border-bottom: 1px solid var(--border);
         cursor: pointer;
@@ -136,10 +136,8 @@
     .is-flex-horizontal {
       display: flex;
       flex-direction: row;
-
       .field {
-        margin-right: 10px;
-
+        margin-right: 0.5rem;
         &:last-child {
           margin-right: 0;
         }
@@ -147,7 +145,7 @@
     }
 
     .field {
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
       .label {
         font-size: 12px;
         color: var(--form-label);
@@ -157,7 +155,7 @@
     }
 
     .credit-field {
-      margin-top: 30px;
+      margin-top: 2rem;
     }
 
     .send-me-email-part {
@@ -167,31 +165,31 @@
       color: var(--form-label);
       font-size: 12px;
       input {
-        margin-top: 3px;
+        margin-top: 4px;
         margin-right: 0.5rem;
       }
     }
   }
   .global-error {
-    margin: 20px 0;
+    margin: 1rem 0;
   }
 
   .step-3 {
     .main-text {
       .icon {
         flex: 0;
-        margin-right: 16px;
+        margin-right: 1rem;
       }
       blockquote {
         border-radius: 4px;
-        padding: 16px;
+        padding: 1rem;
         background-color: #6c0;
         color: #fff;
-        margin-bottom: 30px;
+        margin-bottom: 2rem;
       }
     }
     .button {
-      margin-bottom: 30px;
+      margin-bottom: 2rem;
       color: #fff;
     }
     .button--share {

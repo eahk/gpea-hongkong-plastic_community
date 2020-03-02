@@ -6,20 +6,20 @@ import styled from "styled-components";
 const StyledGoalWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
+  grid-gap: 0.5rem;
   flex-direction: row;
   align-items: center;
   max-width: 480px;
-  margin: 20px auto;
+  margin: 1rem auto;
 `;
 const GoalRow = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
+  padding: 0.5rem 0;
 `;
 const Current = styled.div`
   font-size: 1.6rem;
-  margin-bottom: 4px;
+  margin-bottom: 0.5rem;
   font-weight: bold;
   color: var(--orange);
   &[format="money"] {
@@ -37,8 +37,8 @@ const Goal = styled.small`
 const StyledProgress = styled.div`
   grid-column: 1 / -1;
   position: relative;
-  margin-top: 20px;
-  padding-top: 3rem;
+  margin-top: 1rem;
+  padding-top: 2rem;
   .progress-point {
     font-size: 0.8rem;
     font-weight: bold;

@@ -13,14 +13,14 @@
   hr {
     background: none;
     position: relative;
-    margin: 16px 0;
+    margin: 1rem 0;
     &:after {
       content: "";
       position: absolute;
       top: 50%;
       left: 0;
       transform: translateY(-25%);
-      width: 16px;
+      width: 1rem;
       height: 1px;
       background-color: var(--border);
     }
@@ -29,7 +29,7 @@
 
 .footer {
   .footer__logo {
-    margin-top: 20px;
+    margin-top: 1rem;
     img {
       padding: 4px;
       width: 100%;
@@ -37,11 +37,11 @@
     }
   }
   .footer__note {
-    margin-top: 20px;
+    margin-top: 1rem;
     max-width: 480px;
   }
   .footer__link {
-    margin: 20px 0;
+    margin: 1rem 0;
     .links {
       margin-left: 0;
       display: flex;
@@ -51,7 +51,5 @@
         margin-bottom: 4px;
       }
     }
-  }
-  .footer__remarks {
   }
 }

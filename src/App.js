@@ -3,12 +3,10 @@ import mitt from "mitt";
 import cx from "classnames";
 import { motion } from "framer-motion";
 import Fade from "react-reveal/Fade";
-// css
 import "sanitize.css";
 import "flexboxgrid/css/flexboxgrid.min.css";
 import "swiper/css/swiper.css";
 import "./styles/App.scss";
-// components
 import gpLogo from "./assets/images/GP-logo-2019-TC-green-[web]-01.png";
 import ExternalLink from "./components/ExternalLink";
 import Header from "./components/Header";
@@ -22,17 +20,14 @@ import Timeline from "./components/Timeline";
 import PlasticCommunity from "./components/PlasticCommunity";
 // import BillBoard from "./components/BillBoard";
 import Footer from "./components/Footer";
-
 // hack to retrieve the current enform status
 import { resolveEnPageStatus } from "./components/EnForm/formHelpers";
 let enPageStatus = resolveEnPageStatus();
 
-//
 window.ee = new mitt();
 
 function App() {
   let checkMobile = window.innerWidth < 1200;
-
   const [pageResizing, setPageResizing] = useState(false);
   const [showActions, setShowActions] = useState(false);
   const [isMobile, setIsMobile] = useState(checkMobile);
@@ -85,7 +80,6 @@ function App() {
       window.removeEventListener("resize", handleWindowResize);
     };
   });
-
   // show the correct value based on the current en pages
   useEffect(() => {
     if (enPageStatus === "SUCC" && isMobile) {
@@ -103,7 +97,6 @@ function App() {
       }
     });
   }, []);
-
   return (
     <div className={cx("app", { "modal-open": showFormModal })}>
       <Header />
