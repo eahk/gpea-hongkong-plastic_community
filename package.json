@@ -1,8 +1,16 @@
 {
-  "name": "react-app-try",
+  "name": "plastic_community",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://api.greenpeace.org.hk/2020/react-app-try/",
+  "homepage": "https://api.greenpeace.org.hk/2020/plastic_community",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:en": "PUBLIC_URL=https://api.greenpeace.org.hk/2020/plastic_community react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "yarn run build:en && gpea-npm-en-uploader"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -21,26 +29,18 @@
     "react-id-swiper": "^2.4.0",
     "react-player": "^1.14.2",
     "react-reveal": "^1.2.2",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.4.0",
     "sanitize.css": "^11.0.0",
     "styled-components": "^5.0.0",
     "swiper": "^5.2.1",
     "yup": "^0.28.0"
   },
   "devDependencies": {
-    "husky": "^4.0.0",
+    "husky": "^4.2.3",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
     "react-snap": "^1.23.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:en": "PUBLIC_URL=https://api.greenpeace.org.hk/2020/react-app-try react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "yarn run build:en && gpea-npm-en-uploader"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -18,4 +18,4 @@ export const FORMIK_KEY_TO_EN_KEY = {
 export const RECURRING_PRICES = [200, 300, 500];
 export const ONETIME_PRICES = [500, 800, 1000];
 export const CURRENCY = "HKD";
-export const SUGGESTED_AMOUNT = 100;
+export const SUGGESTED_AMOUNT = 50;

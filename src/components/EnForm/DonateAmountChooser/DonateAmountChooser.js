@@ -116,7 +116,6 @@ export default props => {
           }
           placeholder="其他金額 Other amount"
           onChange={handleOtherAmountChange}
-          onBlur={handleOtherAmountBlur}
         />
         {isSuggesting && isManuallyInputing && (
           <div className="help is-danger">
