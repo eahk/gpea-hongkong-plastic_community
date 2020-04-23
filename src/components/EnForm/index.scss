@@ -31,15 +31,6 @@
   box-shadow: var(--shadow);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  /*
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    white 10px,
-    white 90%,
-    transparent
-  );
-  */
   .is-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -52,9 +43,10 @@
     color: var(--sub-text);
     &.is-active {
       font-weight: bold;
-      background: orange;
-      color: white;
+      background: white;
+      color: var(--orange);
       border-color: var(--orange);
+      border: 2px solid;
     }
   }
 
