@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 //
-import "./index.scss";
-//
 import handle1 from "../../assets/images/7R306760.jpg";
 import handle2 from "../../assets/images/7R306786.jpg";
 import handle3 from "../../assets/images/7R306795.jpg";
@@ -43,11 +41,12 @@ const Handle = styled.div`
     .amount {
       color: var(--orange);
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       margin-bottom: 4px;
     }
     .description {
-      font-size: 0.5rem;
+      color: var(--sub-text);
+      font-size: 12px;
       text-decoration: underline;
     }
   }
@@ -68,7 +67,7 @@ const HandleImageContainer = styled.div`
   }
   &:hover {
     img {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
   }
 `;
