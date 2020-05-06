@@ -70,7 +70,6 @@ const StyledProgress = styled.div`
 `;
 //
 export default props => {
-  const enCount = document.querySelectorAll(".enWidget__fill__count");
   const targetAmount = 100000;
   const targetParticipant = 700;
   const [currentAmount, setCurrentAmount] = useState(0);
@@ -79,6 +78,7 @@ export default props => {
   useEffect(() => {
     let hdlr = setInterval(function() {
       if (document.querySelectorAll(".enWidget__fill__count").length === 2) {
+        const enCount = document.querySelectorAll(".enWidget__fill__count");
         setCurrentAmount(
           parseInt(enCount[0].innerText.replace(/[$,]+/g, ""), 10)
         ); // return fr amount
