@@ -22,12 +22,6 @@ const Current = styled.div`
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: var(--orange);
-  &[format="money"] {
-    &::before {
-      content: "$";
-      position: relative;
-    }
-  }
 `;
 const Goal = styled.small`
   font-size: 0.8rem;
@@ -76,7 +70,8 @@ const StyledProgress = styled.div`
 `;
 //
 export default props => {
-  const targetAmount = 133000;
+  const enCount = document.querySelectorAll(".enWidget__fill__count");
+  const targetAmount = 100000;
   const targetParticipant = 700;
   const [currentAmount, setCurrentAmount] = useState(0);
   const [currentParticipant, setCurrentParticipant] = useState(0);
@@ -84,12 +79,16 @@ export default props => {
   useEffect(() => {
     let hdlr = setInterval(function() {
       if (document.querySelectorAll(".enWidget__fill__count").length === 2) {
-        const enCount = document.querySelectorAll(".enWidget__fill__count");
-        setCurrentAmount(parseInt(enCount[0].innerText.substr(1), 10)); // return fr amount
+        setCurrentAmount(
+          parseInt(enCount[0].innerText.replace(/[$,]+/g, ""), 10)
+        ); // return fr amount
         setCurrentParticipant(parseInt(enCount[1].innerText, 10)); // return number of uni particaipants
-        clearInterval(hdlr);
+        stopInterval();
       }
     }, 1000);
+    function stopInterval() {
+      clearInterval(hdlr);
+    }
     //
     let progressPercent = (currentAmount / targetAmount) * 100;
     setProgress(progressPercent < 1 ? 1 : progressPercent);
@@ -106,7 +105,7 @@ export default props => {
         ></motion.progress>
       </StyledProgress>
       <GoalRow>
-        <Current format="money">{currentAmount.toLocaleString()}</Current>
+        <Current>${currentAmount.toLocaleString()}</Current>
         <Goal>全年目標：${targetAmount.toLocaleString()}</Goal>
       </GoalRow>
       <GoalRow>
