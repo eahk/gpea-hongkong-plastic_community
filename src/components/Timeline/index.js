@@ -17,17 +17,6 @@ export default props => {
           <div className="timeline-item">
             <div className="timeline-marker"></div>
             <div className="timeline-content">
-              <p className="heading">4.22 - 世界地球日</p>
-              <p>
-                地球日前夕舉辦義工日，
-                <strong>遊說共650間店鋪</strong>加入走塑行列
-              </p>
-              <p>舉辦地球日工作坊及活動，嘉許義工及捐助者成為「走塑大使」</p>
-            </div>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-marker"></div>
-            <div className="timeline-content">
               <p className="heading">6.8 - 海洋日</p>
               <p>
                 健康海洋＝健康地球 為海洋打打氣，在世界海洋日
