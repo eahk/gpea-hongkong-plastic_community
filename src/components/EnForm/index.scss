@@ -87,6 +87,13 @@
     }
   }
 
+  .step-1 {
+    .help {
+      margin-top: 12px;
+      color: var(--error);
+    }
+  }
+
   .step-2 {
     &.overlay--loading {
       pointer-events: none;

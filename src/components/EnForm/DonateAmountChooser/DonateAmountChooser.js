@@ -117,11 +117,6 @@ export default props => {
           placeholder="其他金額 Other amount"
           onChange={handleOtherAmountChange}
         />
-        {isSuggesting && isManuallyInputing && (
-          <div className="help is-danger">
-            最低捐款金額為：HKD {props.suggested_amount}
-          </div>
-        )}
       </div>
     </div>
   );

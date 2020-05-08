@@ -245,6 +245,11 @@ export default props => {
                 setDonateAmount(amount);
               }}
             />
+            {disableButton && (
+              <div className="help">
+                為維持最低行政支出，最低每月捐款金額為 HKD {SUGGESTED_AMOUNT}
+              </div>
+            )}
             <button
               className="button enform__button"
               disabled={disableButton}
