@@ -32,7 +32,7 @@ const mainShare = event => {
   const fbShare = () => {
     var baseURL = "https://www.facebook.com/sharer/sharer.php";
     var u =
-      "https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
+      "https://cloud.greenhk.greenpeace.org/petition-plastics-plastic_community?utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
     var t = (window.innerHeight - 436) / 2;
     var l = (window.innerWidth - 626) / 2;
     window.open(
