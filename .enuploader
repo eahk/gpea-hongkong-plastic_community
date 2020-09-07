@@ -25,7 +25,7 @@ module.exports = {
 	}),
 
 	enHeaderFooter: {
-		"execute": true,
+		"execute": false,
 		"enPageId": enPageId,
 		"indexPath": path.join(buildDirPath, 'index.html') // EDIT_HERE: the path to your build/index.html file
 	},

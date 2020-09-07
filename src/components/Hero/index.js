@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 //
-import Goals from "../Goals";
+// import Goals from "../Goals";
 import heroBanner from "../../assets/images/A7306540.jpg";
 //
 export default props => {
@@ -40,7 +40,9 @@ export default props => {
             <p>
               地球日之前，我們期望招募到180位每月捐助者，並在2020整年招募到700位每月支持者，每日約2位熱心市民捐助支持走塑計畫及義工團隊的工作，達成在大埔區再多50間店鋪貼上走塑貼紙的目標，令香港人可以輕鬆走塑，環保消費！
             </p>
+            {/*
             <Goals />
+            */}
           </div>
         </div>
       </div>

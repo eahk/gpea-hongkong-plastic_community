@@ -32,7 +32,7 @@ const mainShare = event => {
   const fbShare = () => {
     var baseURL = "https://www.facebook.com/sharer/sharer.php";
     var u =
-      "https://act.greenpeace.org/page/55748/donate/1?utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
+      "https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&utm_campaign=2020-plastic_community&utm_source=facebook&utm_medium=social&utm_content=thankyou_page";
     var t = (window.innerHeight - 436) / 2;
     var l = (window.innerWidth - 626) / 2;
     window.open(
@@ -57,6 +57,15 @@ const mainShare = event => {
     // provide a fallback here
     fbShare();
   }
+};
+
+const redirectToMC = (donateAmount, donateIntrvl) => {
+  window.location.replace(
+    "https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&donate_amt=" +
+      (donateIntrvl === "recurring" ? "m" : "s") +
+      ":" +
+      donateAmount
+  );
 };
 
 export default props => {
@@ -254,7 +263,8 @@ export default props => {
               className="button enform__button"
               disabled={disableButton}
               onClick={() => {
-                setStepNo(2);
+                // setStepNo(2);
+                redirectToMC(donateAmount, donateIntrvl);
               }}
             >
               {props.isMobile ? "下一步 NEXT" : "立即捐助 DONATE NOW"}
