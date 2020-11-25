@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 //
 import Goals from "../Goals";
 import heroBanner from "../../assets/images/A7306540.jpg";
 //
-export default props => {
+import * as woresspressActions from "../../store/actions/action-types/wordpress-actions";
+import { connect } from "react-redux";
+
+let Hero = ({ wordpress, fetchWordpressContent }) => {
+  useEffect(() => {
+    fetchWordpressContent();
+  }, []);
   return (
     <>
       <section className="section section-hero">
@@ -28,6 +34,11 @@ export default props => {
             </div>
           </div>
           <div className="col-xs-12 col-md-7">
+            {wordpress.map(d => (
+              <p key={d.id} className="subtitle is-orange">
+                {d.title?.rendered}
+              </p>
+            ))}
             <p className="subtitle is-orange">「全城走塑計畫」熱烈募資中！</p>
             <p className="is-orange">
               捐出等同您1%月入的金額，支持我們維持100%財政獨立，與綠色和平攜手令走塑社區在香港遍地開花。
@@ -47,3 +58,19 @@ export default props => {
     </>
   );
 };
+
+const mapStateToProps = ({ wordpress }) => {
+  return {
+    wordpress: wordpress.data
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchWordpressContent: () => {
+      dispatch({ type: woresspressActions.FETCH_WORDPRESS_CONTENT_START });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hero);
