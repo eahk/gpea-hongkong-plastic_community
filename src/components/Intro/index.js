@@ -15,8 +15,8 @@ const ImageSlider = () => {
   const imageList = [
     pic2,
     "https://storage.googleapis.com/planet4-hongkong-stateless/2019/06/c05bf80a-c05bf80a-dsc03216.jpg",
-    "https://media.greenpeace.org/GPIDoc/GPI/Media/TR1/3/2/f/9/GP0STTWGX.jpg?d63704397645",
-    "https://media.greenpeace.org/GPIDoc/GPI/Media/TR1/d/e/8/b/GP0STT8OT.jpg?d63691597170",
+    "https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/02/67ea2794-gp0sttwgx_medium_res.jpg",
+    "https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/02/29e4f67a-gp0stt8ot_medium_res.jpg",
     "https://storage.googleapis.com/planet4-hongkong-stateless/2019/04/e61296f9-a7304293.jpg"
   ];
   const params = {
