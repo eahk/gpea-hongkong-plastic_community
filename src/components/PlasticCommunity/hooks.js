@@ -210,9 +210,7 @@ export const useDistrictRestaurans = () => {
   const [isActionLoading, setIsActionLoading] = useState({});
 
   // fetch restaurants from server side
-  const [restaurantsResponse, restaurantsIsLoading] = useFetch(
-    API_ENDPOINT + "?action=restaurants"
-  );
+  const [restaurantsResponse, restaurantsIsLoading] = useFetch(API_ENDPOINT);
   useEffect(() => {
     setIsActionLoading({
       ...isActionLoading,
@@ -231,7 +229,8 @@ export const useDistrictRestaurans = () => {
 
   // fetch votes from server side
   const [votesResponse, votesIsLoading] = useFetch(
-    API_ENDPOINT + "?action=votes"
+    "https://script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec" +
+      "?action=votes"
   );
   useEffect(() => {
     setIsActionLoading({ ...isActionLoading, fetchingVotes: votesIsLoading });
