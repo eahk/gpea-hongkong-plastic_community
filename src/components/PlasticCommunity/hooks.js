@@ -5,10 +5,11 @@ import { districts as districtsDef, districtNameToId } from "./DistrictsDef";
 /*
 const API_ENDPOINT =
   "https://cors-anywhere.small-service.gpeastasia.org/script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec";
-  */
 const API_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec";
-
+    */
+const API_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwLIFuBYdgsdHNyYyFwtD7coTFYzqBn2xJlwtoU8-_2exVZAwaYZc5hvQ/exec?sheetName=Web_uploaded";
 /**
  * hook version api. Note it assume the response is in json format.
  *
