@@ -13,10 +13,10 @@ const enPageId = 54795 // EDIT_HERE
 const buildDirPath = path.join(__dirname, "build")
 
 module.exports = {
-	ftp: Object.assign({}, secrets["ftp_hk"], { // EDIT_HERE: Which ftp site you want to use
+	ftp: Object.assign({}, secrets["change_hk"], { // EDIT_HERE: Which ftp site you want to use
 		"execute": true,
 		"localDir": buildDirPath,
-		"remoteDir": "/2020/plastic_community", // EDIT_HERE
+		"remoteDir": "/app/plastic-free-community", // EDIT_HERE
 	}),
 
 	enBase: Object.assign({}, secrets["en"], {
@@ -25,7 +25,7 @@ module.exports = {
 	}),
 
 	enHeaderFooter: {
-		"execute": true,
+		"execute": false,
 		"enPageId": enPageId,
 		"indexPath": path.join(buildDirPath, 'index.html') // EDIT_HERE: the path to your build/index.html file
 	},

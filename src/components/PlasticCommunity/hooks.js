@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { districts as districtsDef, districtNameToId } from "./DistrictsDef";
 // Region 區域
 // District 地區
+/*
 const API_ENDPOINT =
-  "https://cors-anywhere.small-service.gpeastasia.org/script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec"; // dev
-
+  "https://cors-anywhere.small-service.gpeastasia.org/script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec";
+const API_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec";
+    */
+const API_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwLIFuBYdgsdHNyYyFwtD7coTFYzqBn2xJlwtoU8-_2exVZAwaYZc5hvQ/exec?sheetName=Web_uploaded";
 /**
  * hook version api. Note it assume the response is in json format.
  *
@@ -205,9 +210,7 @@ export const useDistrictRestaurans = () => {
   const [isActionLoading, setIsActionLoading] = useState({});
 
   // fetch restaurants from server side
-  const [restaurantsResponse, restaurantsIsLoading] = useFetch(
-    API_ENDPOINT + "?action=restaurants"
-  );
+  const [restaurantsResponse, restaurantsIsLoading] = useFetch(API_ENDPOINT);
   useEffect(() => {
     setIsActionLoading({
       ...isActionLoading,
@@ -226,7 +229,8 @@ export const useDistrictRestaurans = () => {
 
   // fetch votes from server side
   const [votesResponse, votesIsLoading] = useFetch(
-    API_ENDPOINT + "?action=votes"
+    "https://script.google.com/macros/s/AKfycbxQzeRwXhNC6tQnc4Kjd9pJiWAUQPIQI8DRE14JSYwMFgCTOlhn/exec" +
+      "?action=votes"
   );
   useEffect(() => {
     setIsActionLoading({ ...isActionLoading, fetchingVotes: votesIsLoading });

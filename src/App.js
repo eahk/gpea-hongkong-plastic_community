@@ -202,11 +202,14 @@ function App() {
             </aside>
             <div className="main-left col-xs-12 col-lg-8 first-lg">
               <Hero />
+              {/*
               <Fade>
                 <DollarHandle />
                 <hr />
               </Fade>
+              */}
               <Fade>
+                <hr />
                 <Intro />
                 <hr />
               </Fade>
