@@ -1,12 +1,12 @@
 {
-  "name": "plastic_community",
+  "name": "plastic-free-community",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://api.greenpeace.org.hk/2020/plastic_community",
+  "homepage": "https://change.greenpeace.org.hk/app/plastic-free-community",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:en": "PUBLIC_URL=https://api.greenpeace.org.hk/2020/plastic_community react-scripts build",
+    "build:en": "PUBLIC_URL=https://change.greenpeace.org.hk/app/plastic-free-community react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "yarn build:en && gpea-npm-en-uploader"
