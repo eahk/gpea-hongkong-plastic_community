@@ -48,23 +48,28 @@ const StyledImgContainer = styled.div`
 const stepData = [
   {
     image: step1,
-    title: "招募義工",
+    title: "每月捐款支持",
     description: "定期舉辦義工招募活動，與校園合作帶領學生、市民參與行動"
   },
   {
     image: step2,
     title: "籌備工作",
-    description: "準備物資，搜集資料選定店鋪地點"
+    description: "組織走塑小隊，選定行動地點"
   },
   {
     image: step3,
-    title: "走進社區",
-    description: "帶領市民、學生義工團隊走進店鋪進行遊說工作"
+    title: "提高走塑意識",
+    description: "與學校合辦「走塑學堂」，讓學生參與「尋找走塑商戶」"
   },
   {
     image: step4,
-    title: "走塑貼紙以茲識別",
-    description: "願意加入走塑的店鋪將按貼上相應等級貼紙"
+    title: "走進社區",
+    description: "遊說商戶，加入走塑行列"
+  },
+  {
+    image: step4,
+    title: "擴展香港走塑社區",
+    description: "在2021年，招募1,100間走塑商戶"
   }
 ];
 
