@@ -61,7 +61,7 @@ const mainShare = event => {
 
 const redirectToMC = (donateAmount, donateIntrvl) => {
   window.location.replace(
-    "https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&donate_amt=" +
+    "https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=plastics&donate_amt=" +
       (donateIntrvl === "recurring" ? "m" : "s") +
       ":" +
       donateAmount
